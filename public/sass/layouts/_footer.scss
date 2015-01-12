@@ -1,0 +1,16 @@
+/* FOOTER STYLES
+====================================================
+==================================================== */
+
+footer {
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	font-size: em(13);
+	color: $gray;
+
+	a {
+		font-weight: 600;
+		color: $green;
+	}
+}

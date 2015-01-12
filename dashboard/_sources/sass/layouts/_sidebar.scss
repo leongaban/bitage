@@ -1,0 +1,103 @@
+/* SIDEBAR
+====================================================
+==================================================== */
+
+#sidebar-wrapper {
+    position: fixed;
+    margin-left: -250px;
+    height: 100%;
+    left: 250px;
+    width: 250px;
+    color: #fff;
+    background: $sidebar;
+    background: -moz-linear-gradient(top,  $sidebar 0%, #8d9296 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$sidebar), color-stop(100%,#8d9296));
+    background: -webkit-linear-gradient(top,  $sidebar 0%,#8d9296 100%);
+    background: -ms-linear-gradient(top,  $sidebar 0%,#8d9296 100%);
+    background: linear-gradient(to bottom,  $sidebar 0%,#8d9296 100%);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 20px;
+    margin: 0;
+    padding: 0;
+    text-indent: 20px;
+    width: 250px;
+    list-style: none;
+    z-index: 3;
+
+    li:not(.sidebar-brand) {
+        line-height: 40px;
+        // border-bottom: 1px solid lighten($sidebar, 5%);
+        &:hover { background: darken($sidebar, 12%); }
+    }
+
+    li:last-child {
+        border-bottom: none;
+    }
+
+    a {
+        display: block;
+        font-size: em(18);
+        color: #eee;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:active {
+            background: lighten($sidebar, 10%);
+        }
+    }
+}
+
+.sidebar-nav a:active,
+li.active-tab {
+    background: $sidebarActive;
+    background: -moz-linear-gradient(left,  #515556 0%, #434748 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515556), color-stop(100%,#434748));
+    background: -webkit-linear-gradient(left,  #515556 0%,#434748 100%);
+    background: -ms-linear-gradient(left,  #515556 0%,#434748 100%);
+    background: linear-gradient(to right,  #515556 0%,#434748 100%);
+}
+
+// li.active-tab {
+//     &:after {
+//         opacity: 1;
+//         position: relative;
+//         float: right;
+//         top: -32px;
+//         right: 5px;
+//         @include triangle(right, 12px, $sidebar);
+//     }
+// }
+
+// Brand Logo
+li.sidebar-brand {
+    margin-bottom: 20px;
+    font-family: 'Changa One', cursive;
+    // font-weight: 800;
+    font-size: em(32);
+}
+
+.quotes {
+    position: absolute;
+    bottom: 40px;
+    color: #ddd;
+
+    p {
+        margin: 0 auto 10px;
+        width: 80%;
+        // font-size: em(18);
+        line-height: em(20);
+    }
+
+    sub {
+        float: right;
+        margin-right: 20px;
+    }
+}

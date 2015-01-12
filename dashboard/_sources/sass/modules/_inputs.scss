@@ -1,0 +1,42 @@
+/* INPUTS, SELECTS, CHECKBOXES, RADIOS
+====================================================
+==================================================== */
+
+// Select type of account
+select#account_type {
+	position: relative;
+	top: 13px;
+	overflow: hidden;
+	margin-right: 10px;
+	padding: 6px 0px;
+	width: 194px;
+	line-height: 21px;
+	text-overflow: ellipsis;
+	text-indent: 10px;
+	color: #555;
+	font-size: inherit;
+	// width: 300px;
+	white-space: nowrap;
+	border: 1px solid #ccc;
+	background-image: url(_sources/images/select_arrow.png), -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
+	background-position: 93% center;
+	background-repeat: no-repeat;
+
+	-webkit-appearance: button;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-padding-end: 20px;
+	-webkit-padding-start: 2px;
+	-webkit-user-select: none;
+}
+
+// Account / Address forms
+.form-input {
+    position: relative;
+    top: 2px;
+    margin: 0 10px 5px 0;
+    padding: 6px 10px;
+    background: #eee;
+    border: 1px solid #ccc;
+    @include rounded(4px);
+}
