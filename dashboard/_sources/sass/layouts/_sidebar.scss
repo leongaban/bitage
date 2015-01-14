@@ -5,19 +5,15 @@
 #sidebar-wrapper {
     position: fixed;
     margin-left: -250px;
-    height: 100%;
     left: 250px;
     width: 250px;
+    height: 100%;
     color: #fff;
-    background: $sidebar;
-    background: -moz-linear-gradient(top,  $sidebar 0%, #8d9296 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$sidebar), color-stop(100%,#8d9296));
-    background: -webkit-linear-gradient(top,  $sidebar 0%,#8d9296 100%);
-    background: -ms-linear-gradient(top,  $sidebar 0%,#8d9296 100%);
-    background: linear-gradient(to bottom,  $sidebar 0%,#8d9296 100%);
+    background: $sidebarActive;
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
+    @include linear-gradient($sidebarActive, $sidebarHover);
 }
 
 .sidebar-nav {
@@ -32,38 +28,28 @@
 
     li:not(.sidebar-brand) {
         line-height: 40px;
-        // border-bottom: 1px solid lighten($sidebar, 5%);
-        &:hover { background: darken($sidebar, 12%); }
+        
+        &:hover {
+            background: lighten($sidebarHover, 5%);
+            // background: $sidebarHover;
+        }
     }
 
-    li:last-child {
-        border-bottom: none;
-    }
+    li:last-child { border-bottom: none; }
 
     a {
         display: block;
         font-size: em(18);
         color: #eee;
 
-        &:hover {
-            text-decoration: none;
-        }
+        &:hover { text-decoration: none; }
 
-        &:active {
-            background: lighten($sidebar, 10%);
-        }
+        &:active { background: lighten($sidebar, 10%); }
     }
 }
 
 .sidebar-nav a:active,
-li.active-tab {
-    background: $sidebarActive;
-    background: -moz-linear-gradient(left,  #515556 0%, #434748 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515556), color-stop(100%,#434748));
-    background: -webkit-linear-gradient(left,  #515556 0%,#434748 100%);
-    background: -ms-linear-gradient(left,  #515556 0%,#434748 100%);
-    background: linear-gradient(to right,  #515556 0%,#434748 100%);
-}
+li.active-tab { background: $sidebarHover; }
 
 // li.active-tab {
 //     &:after {
@@ -78,10 +64,33 @@ li.active-tab {
 
 // Brand Logo
 li.sidebar-brand {
-    margin-bottom: 20px;
-    font-family: 'Changa One', cursive;
-    // font-weight: 800;
-    font-size: em(32);
+    margin-bottom: 30px;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    h1 {
+        margin-bottom: 5px;
+        font-weight: 700;
+        font-size: em(32);
+        text-transform: uppercase;
+        @include text-shadow(2px, 2px, #333);
+    }
+
+    h2 { font-size: em(14); }
+
+    // em {
+    //     color: $red;
+    // }
+
+    // a {
+    //     color: $orange;
+    // }
+
+    a:active { background: none; }
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .quotes {
@@ -92,7 +101,6 @@ li.sidebar-brand {
     p {
         margin: 0 auto 10px;
         width: 80%;
-        // font-size: em(18);
         line-height: em(20);
     }
 

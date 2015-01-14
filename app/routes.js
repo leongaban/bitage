@@ -4,10 +4,11 @@ module.exports = function(app, passport) {
 
 	// show the home page (will also have our login links)
 	app.get('/', function(req, res) {
-		res.render('index.ejs');
+		res.render('index.hbs');
 	});
+	// Connects and serves the Angular App for the Dashboard
 	app.get('/dashboard', function(req, res) {
-		res.render('dashboard.hbs');
+		res.sendfile('dashboard/index.html');
 	});
 
 	// PROFILE SECTION =========================

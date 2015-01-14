@@ -1,0 +1,19 @@
+// /* HEADER STYLES
+// ====================================================
+// ==================================================== */
+
+#main_nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+
+    li {
+        float: left;
+        margin-left: 25px;
+    }
+
+    a {
+    	color: #fff;
+    }
+}

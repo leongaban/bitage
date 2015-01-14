@@ -1,0 +1,53 @@
+/* BUTTONS
+====================================================
+==================================================== */
+
+.btn {
+	position: relative;
+    // top: 0px;
+	color: #fff;
+    font-weight: 600;
+    text-shadow: 1px 1px #333;
+    background: lighten($button, 10%);
+    border: 1px solid lighten($button, 20%);
+    // box-shadow: 0 3px darken($button, 10%);
+    // border: 1px solid #6e6f72;
+    // box-shadow: 0 3px darken(#333, 10%);
+    // @include linear-gradient(#2e6086, #33636a);
+     
+    // border: 0;
+    cursor: pointer;
+    @include rounded(5px);
+
+    &:hover {
+    	// top: 1px;
+        // background: $buttonHover;
+        // box-shadow: 0 2px darken($button, 10%);
+        border: 1px solid lighten($button, 30%);
+        @include linear-gradient(lighten(#2e6086, 10%), lighten(#33636a, 10%));
+    }
+
+    &:active { 
+        // top: 2px;
+        // background: lighten($buttonHover, 15%);
+        // box-shadow: 0 1px darken($button, 10%);
+        text-shadow: 1px 1px #666;
+        border: 1px solid darken(#6e6f72, 10%);
+        @include linear-gradient(darken(#2e6086, 10%), darken(#33636a, 10%));
+    }
+}
+
+#btn_start_account {
+    padding: 10px 20px;
+    width: 228px;
+    height: 60px;
+    @include rounded(6px);
+
+    &:focus {
+        // top: 1px;
+        // background: $buttonHover;
+        border: 1px solid lighten($button, 30%);
+        @include linear-gradient(lighten(#2e6086, 10%), lighten(#33636a, 10%));
+        @include linear-gradient(darken(#2e6086, 10%), darken(#33636a, 10%));
+    }
+}

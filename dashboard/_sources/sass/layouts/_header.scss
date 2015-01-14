@@ -2,9 +2,7 @@
 // ====================================================
 // ==================================================== */
 
-#main_logo {
-	cursor: pointer;
-}
+#main_logo { cursor: pointer; }
 
 #top_nav {
     position: absolute;
@@ -28,9 +26,7 @@
     line-height: 40px;
 }
 
-.top_link:first-child {
-    margin-left: 0;
-}
+.top_link:first-child { margin-left: 0; }
 
 .avatar {
     position: absolute;
@@ -40,13 +36,12 @@
     border-radius: 50%;
     width: 40px;
     height: 40px; 
-    border: 3px solid lighten($sidebar, 20%);
+    border: 3px solid lighten($sidebar, 10%);
     cursor: pointer;
-    box-shadow: 1px 1px 5px #fff;
+    overflow: hidden;
+    @include rounded(50%);
 
-    &:hover {
-        border: 3px solid darken($sidebar, 10%);
-    }
+    &:hover { border: 3px solid lighten($sidebarHover, 10%); }
 
     img {
         width: 40px;
@@ -55,30 +50,16 @@
 }
 
 #avatar_menu {
-	// display: none;
 	position: absolute;
-	// opacity: 0;
 	top: 50px;
 	right: 0px;
 	padding: 20px 25px;
 	text-align: right;
 	background: $sidebar;
 
-	// -webkit-transition: all 0.5s ease-in-out 0s;
-	// -moz-transition: all 0.5s ease-in-out 0s;
-	// transition: all 0.5s ease-in-out 0s;
+	li { margin-bottom: 15px; }
 
-	li {
-		margin-bottom: 15px;
-	}
+	li:last-child { margin-bottom: 0; }
 
-	li:last-child {
-		margin-bottom: 0;
-	}
-
-	a {
-		color: #fff;
-	}
-
+	a { color: #fff; }
 }
-

@@ -4,7 +4,7 @@
 // get all the tools we need
 var express  = require('express');
 var app      = express();
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 9876;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -19,8 +19,11 @@ var session      = require('express-session');
 
 var configDB = require('./config/database.js');
 
+// Express router
+var router = express.Router();
+
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect('mongodb://localhost:27017'); // connect to our database
 
 // loading static and bower components ===================
 app.use(express.static(__dirname + '/public'));
@@ -44,8 +47,17 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+
+// connecting the #account app
+app.use('/dashboard', router);
+
+// The Angular App itself below
+app.use(express.static(__dirname + '/dashboard'));
+
+
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
 
 // launch ======================================================================
 app.listen(port);

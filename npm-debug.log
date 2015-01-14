@@ -1,7 +1,7 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@1.3.21
-3 info using node@v0.10.24
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info prestart bitage@
 6 info start bitage@
@@ -17,10 +17,10 @@
 10 error You can get their info via:
 10 error     npm owner ls bitage
 10 error There is likely additional logging output above.
-11 error System Linux 3.13.0-36-generic
-12 error command "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-13 error cwd /home/bitage
-14 error node -v v0.10.24
-15 error npm -v 1.3.21
+11 error System Darwin 14.0.0
+12 error command "node" "/usr/local/bin/npm" "start"
+13 error cwd /Users/paulodarocha/bitage
+14 error node -v v0.10.31
+15 error npm -v 1.4.23
 16 error code ELIFECYCLE
 17 verbose exit [ 1, true ]

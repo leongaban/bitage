@@ -6,8 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BITAGE | keep watch over your Bitcoins">
+    <meta name="description" content="BITAGE | keep watch over your coins">
     <meta name="author" content="NodeDallas">
+
+    <meta name="twitter:card" content="app">
+    <meta name="twitter:app:country" content="US">
 
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="application" />
@@ -15,19 +18,27 @@
     <meta property="og:title" content="BITAGE" />
     <meta property="og:image" content="logo@2x.png" />
     <meta property="og:url" content="http://www.bitage.io" />
-    <meta property="og:description" content="Keep watch over your Bitcoins" />
+    <meta property="og:description" content="Keep watch over your coins" />
 
     <link rel="icon" href="favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>
     <link href="bitage.css" rel="stylesheet">
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+    <script src="_assets/js/plugins/particles.min.js"></script>
+    <script src="_assets/js/libs/angular-ui-router.min.js"></script>
+    <script src="_shared/dashboard.js"></script>
+    <script src="_components/accounts.js"></script>
+    <script src="_components/settings.js"></script>
+    <script src="_assets/js/plugins/ng-flow-standalone.min.js"></script>
     <script src="app.js"></script>
 </head>
 
-<body ng-app="bitAge" ng-controller="AcctCtrl">
+<body ng-app="bitAge"
+      ng-controller="DashCtrl"
+      ng-click="pageClick()">
 
     <div id="wrapper">
 
@@ -39,26 +50,35 @@
             </ul>
 
             <div class="avatar"
-                 ng-click="id_avatar_menu.getMenuClick('clicked menu')"
+                 ng-click="id_avatar_menu.getMenuClick('clicked menu', $event)"
                  ng-class="{ active: avatarMenuBool }">
-                 <img src="_sources/images/leon.png" title="settings" alt="user avatar" />
+                 <img src="_assets/img/leon.png" title="settings" alt="user avatar" />
             </div>
 
-            <div ng-show="avatarMenuBool" id="avatar_menu">
+            <div ng-show="avatarMenuBool"
+                 ng-click="menuClick($event)"
+                 id="avatar_menu">
                 <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Account</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a data-ng-click="sectionSelected = 2" ng-click="pageClick()" href="#/settings">Settings</a></li>
+                    <li><a ng-click="pageClick()" href="#">Logout</a></li>
                 </ul>
             </div>
         </nav>
 
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#">BITAGE</a></li>
-                <li><a href="#">My Wallet</a></li>
-                <li class="active-tab"><a href="#">Accounts</a></li>
-                <li><a href="#">Settings</a></li>
+                <li class="sidebar-brand">
+                    <h1><a href="#/accounts">Bit<em>Age</em></a></h1>
+                    <h2>Keep watch over your coins</h2>
+                </li>
+                <li data-ng-class="{'active-tab' : sectionSelected == 1}"
+                    data-ng-click="sectionSelected = 1">
+                    <a href="#/accounts">Accounts</a>
+                </li>
+                <li data-ng-class="{'active-tab' : sectionSelected == 2}"
+                    data-ng-click="sectionSelected = 2">
+                    <a href="#/settings">Settings</a>
+                </li>
             </ul>
             <div class="quotes" title="Nelson Mandela">
                 <p>Money won't create success, the freedom to make it will.</p>
@@ -67,71 +87,61 @@
         </div>
 
         <section id="page-content-wrapper">
-            <!-- content -->
-            <div class="account-content" ng-app="bitAge" ng-controller="AcctCtrl">
-
-                <div class="content_header">
-                    <h1>My account balances</h1>
-                </div>
-
-                <div ng-repeat="account in accounts" 
-                     ng-init="addressId='address-' + $index"
-                     class="widget-container added_address">
-                    <p class="address_label">{{account.label}}<a href="#">edit</a></p>
-
-                    <em class="address_balance">BTC <span>{{account.balance}}</span></em>
-
-                    <div class="qr_btn">
-                        <img src="_sources/images/qr_smll.png" alt=""/>
-                    </div>
-
-                    <div id="address-{{$index}}" class="btc_public_address" ng-click="pubAddress.getClick(addressId)">{{account.address}}</div>
-
-                    <div class="delete_address">
-                        <img src="_sources/images/x.png" alt=""/>
-                    </div>
-                </div>
-
-                <div class="widget-container total_widget">
-                    <ul>
-                        <li><p class="total_label">Total:</p></li>
-                        <li><p class="total_btc">1.009</p><em class="denomination">BTC</em></li>
-                        <li><p class="total_usd">261.8</p><em class="denomination">USD</em></li>
-                        <li><p class="total_euro">218.86</p><em class="denomination">EURO</em></li>
-                        <li class="add_currency_btn_li"><button class="btn btn_small">Add Currency</button></li>
-                    </ul>
-                </div>
-
-                <section class="widget-container add_account_widget">
-
-                    <h1>Add accounts to monitor here:</h1>
-
-                    <form id="add_new_address_form" ng-submit="addAccount()">
-                        <select id="account_type">
-                            <option>Savings</option>
-                            <option>Spending</option>
-                            <option>Donation / Tipping</option>
-                            <option>Gaming / Betting</option>
-                            <option>Mining</option>
-                            <option>Watching</option>
-                        </select>
-
-                        <input type="text" class="form-input" placeholder="Account name" ng-model="label"></input>
-
-                        <input type="text" class="form-input" placeholder="Public address" ng-model="address"></input>
-
-                        <button type="submit" class="btn btn_med">Add</button>
-                    </form>
-                </section>
-            </div>
-            <!-- end content -->
+            <ui-view></ui-view>
         </section>
 
-        <footer>
-            &copy; Bitage.io by <a href="http://nodedallas.io">NodeDallas</a>
-        </footer>
+        <footer>&copy; Bitage.io by <a href="http://nodedallas.io" target="_blank" title="Visit NodeDallas!">NodeDallas</a></footer>
 
     </div>
+
+    <script type="text/javascript">
+        particlesJS('sidebar-wrapper', {
+            particles: {
+              color: '#026f9d',
+              shape: 'circle',
+              opacity: 1,
+              size: 2.5,
+              size_random: true,
+              nb: 40,
+              line_linked: {
+                enable_auto: true,
+                distance: 350,
+                color: '#026f9d',
+                opacity: 0.5,
+                width: .5,
+                condensed_mode: {
+                  enable: false,
+                  rotateX: 600,
+                  rotateY: 600
+                }
+              },
+              anim: {
+                enable: true,
+                speed: 1
+              }
+            },
+            interactivity: {
+              enable: false,
+              mouse: {
+                distance: 250
+              },
+              detect_on: 'canvas',
+              mode: 'grab',
+              line_linked: {
+                opacity: 0.6
+              },
+              events: {
+                onclick: {
+                  push_particles: {
+                    enable: true,
+                    nb: 4
+                  }
+                }
+              }
+            },
+            retina_detect: true
+        });
+    </script>
 
     <script type="text/javascript">
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -141,6 +151,13 @@
         ga('create', 'UA-56442460-2', 'auto');
         ga('send', 'pageview');
     </script>
+
+    <script type="text/javascript">
+        setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0006/1105.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
 
 </body>
 </html>

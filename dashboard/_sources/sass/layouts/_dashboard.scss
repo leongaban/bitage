@@ -13,19 +13,14 @@
 
 }
 
-.account-content {
-    position: relative;
-    width: 100%;
-}
-
 .content_header {
     h1 {
         position: relative;
         top: 65px;
         left: 20px;
         font-size: em(24);
-        // font-weight: 600;
-        color: #666;
+        font-weight: 600;
+        color: #333;
     }
 }
 
@@ -33,131 +28,7 @@
     position: relative;
     top: 80px;
     margin: 1px 20px;
-    padding: 20px;
-    // width: 100%;
+    padding: 18px 20px;
     background: #fff;
     z-index: 2;
-}
-
-.btc_public_address,
-.address_balance,
-.qr_btn {
-    float: left;
-}
-
-.address_label {
-    font-size: em(12);
-    font-weight: 600;
-    line-height: 5px;
-    margin-bottom: 10px;
-
-    a {
-        margin-left: 5px;
-        color: $green;
-
-        &:hover {
-            color: darken($green, 15%);
-        }
-    }
-}
-
-.delete_address {
-    position: relative;
-    top: -5px;
-    width: 30px;
-    height: 30px;
-    float: right;
-    font-size: em(11);
-    cursor: pointer;
-
-    img {
-        position: relative;
-        top: 10px;
-        left: 10px;
-        width: 10px;
-        height: 10px;
-    }
-}
-
-.address_balance {
-    width: 80px;
-    min-width: 60px;
-    padding: 10px;
-    background: #f7f7f7;
-    z-index: 3;
-    @include rounded(4px);
-}
-
-.btc_public_address {
-    margin-left: 10px;
-    padding: 2px 10px;
-    line-height: 30px;
-    margin-top: 3px;
-    font-size: em(11);
-    color: $gray;
-    cursor: pointer;
-    @include rounded(6px);
-
-    &:hover {
-        background: #f7f7f7;
-    }
-}
-
-.qr_btn {
-    margin-left: 15px;
-    position: relative;
-    top: 10px;
-    cursor: pointer;
-}
-
-.total_label,
-.total_btc,
-.total_usd,
-.total_euro,
-.denomination {
-    float: left;
-}
-
-.total_btc,
-.total_usd,
-.total_euro {
-    font-weight: 600;
-}
-
-.total_btc {
-    color: $blue;
-}
-
-.total_usd,
-.total_euro {
-    color: $gray;
-}
-
-.denomination {
-    float: left;
-    margin-left: 5px;
-    font-size: em(8);
-}
-
-.add_account_widget {
-    h1 { margin-bottom: 10px; }
-}
-
-.total_widget {
-    background: lighten(#ccc, 15%);
-
-    li {
-        float: left;
-        margin-left: 20px;
-    }
-
-    li:first-child {
-        margin-left: 0;
-    }
-}
-
-.added_address,
-.total_widget,
-#add_new_address_form {
-    @include clearfix;
 }

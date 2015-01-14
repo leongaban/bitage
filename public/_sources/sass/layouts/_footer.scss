@@ -1,0 +1,17 @@
+/* FOOTER STYLES
+====================================================
+==================================================== */
+
+footer {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	font-size: em(13);
+	color: $gray;
+	text-align: center;
+
+	a {
+		font-weight: 600;
+		color: darken($purple, 5%);
+	}
+}

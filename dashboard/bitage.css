@@ -13,7 +13,7 @@ stylesheets/
 |   	|-- _mixins         	    # Imports all mixins & global vars
 |   |-- _defaults       	    # Global Defaults
 |   |-- _inputs         	    # Input styles
-|   |-- _tables         	    # Table styles
+|   |-- _buttons         	    # Input styles
 |   |-- _icons          	    # Icons styles
 |   |-- _layout         	    # Layout Views
 |   	|-- header
@@ -25,12 +25,12 @@ stylesheets/
 |   |-- _queries
 |
 |-- vendors/            	    # CSS or from other projects
-|   |-- _normalize      	    # http://necolas.github.io/normalize.css
+|   |-- _normalize      	    # http://necolas.github.io/normalize.css v3.0.2
 |   ...
 |
 `-- att_partner_exchange	    # Primary Sass file
 */
-/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -53,7 +53,10 @@ body {
 /* HTML5 display definitions
    ========================================================================== */
 /**
- * Correct `block` display not defined in IE 8/9.
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
  */
 article,
 aside,
@@ -64,6 +67,7 @@ footer,
 header,
 hgroup,
 main,
+menu,
 nav,
 section,
 summary {
@@ -91,8 +95,8 @@ audio:not([controls]) {
   height: 0; }
 
 /**
- * Address `[hidden]` styling not present in IE 8/9.
- * Hide the `template` element in IE, Safari, and Firefox < 22.
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
  */
 [hidden],
 template {
@@ -104,7 +108,7 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 a {
-  background: transparent; }
+  background-color: transparent; }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
@@ -116,27 +120,27 @@ a:hover {
 /* Text-level semantics
    ========================================================================== */
 /**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
  */
 abbr[title] {
   border-bottom: 1px dotted; }
 
 /**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
  */
 b,
 strong {
   font-weight: bold; }
 
 /**
- * Address styling not present in Safari 5 and Chrome.
+ * Address styling not present in Safari and Chrome.
  */
 dfn {
   font-style: italic; }
 
 /**
  * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
+ * contexts in Firefox 4+, Safari, and Chrome.
  */
 h1 {
   font-size: 2em;
@@ -174,13 +178,13 @@ sub {
 /* Embedded content
    ========================================================================== */
 /**
- * Remove border when inside `a` element in IE 8/9.
+ * Remove border when inside `a` element in IE 8/9/10.
  */
 img {
   border: 0; }
 
 /**
- * Correct overflow displayed oddly in IE 9.
+ * Correct overflow not hidden in IE 9/10/11.
  */
 svg:not(:root) {
   overflow: hidden; }
@@ -188,7 +192,7 @@ svg:not(:root) {
 /* Grouping content
    ========================================================================== */
 /**
- * Address margin not present in IE 8/9 and Safari 5.
+ * Address margin not present in IE 8/9 and Safari.
  */
 figure {
   margin: 1em 40px; }
@@ -227,7 +231,7 @@ samp {
  * 1. Correct color not being inherited.
  *    Known issue: affects color of disabled elements.
  * 2. Correct font properties not being inherited.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
 button,
 input,
@@ -242,7 +246,7 @@ textarea {
   /* 3 */ }
 
 /**
- * Address `overflow` set to `hidden` in IE 8/9/10.
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
 button {
   overflow: visible; }
@@ -250,7 +254,7 @@ button {
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
  * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Firefox, IE 8+, and Opera
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
  * Correct `select` style inheritance in Firefox.
  */
 button,
@@ -319,8 +323,8 @@ input[type="number"]::-webkit-outer-spin-button {
   height: auto; }
 
 /**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
  *    (include `-moz` to future-proof).
  */
 input[type="search"] {
@@ -349,7 +353,7 @@ fieldset {
   padding: 0.35em 0.625em 0.75em; }
 
 /**
- * 1. Correct `color` not being inherited in IE 8/9.
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
 legend {
@@ -359,7 +363,7 @@ legend {
   /* 2 */ }
 
 /**
- * Remove default vertical scrollbar in IE 8/9.
+ * Remove default vertical scrollbar in IE 8/9/10/11.
  */
 textarea {
   overflow: auto; }
@@ -540,12 +544,14 @@ html, body {
 body {
   overflow-x: hidden;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
   font-size: 1em;
+  color: #666;
   background: #eee;
-  background: -webkit-linear-gradient(top, #eee 0%, #ddd 100%);
-  background: -o-linear-gradient(top, #eee 0%, #ddd 100%);
-  background: -ms-linear-gradient(top, #eee 0%, #ddd 100%);
-  background: linear-gradient(to bottom, #eee 0%, #ddd 100%); }
+  background: -webkit-linear-gradient(top, #eee 0%, #e1e1e1 100%);
+  background: -o-linear-gradient(top, #eee 0%, #e1e1e1 100%);
+  background: -ms-linear-gradient(top, #eee 0%, #e1e1e1 100%);
+  background: linear-gradient(to bottom, #eee 0%, #e1e1e1 100%); }
 
 strong {
   font-family: omnes_att_iimedium; }
@@ -567,33 +573,16 @@ a {
   a:hover {
     text-decoration: underline; }
 
-*:focus {
-  outline: 0; }
-
-.btn {
-  position: relative;
-  color: #fff;
-  background: #81af4c;
-  border: 0;
-  box-shadow: 0 3px #678b3d;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; }
-  .btn:hover {
-    top: 1px;
-    background: #678b3d; }
-  .btn:active {
-    background: #9ac06e; }
-
-.btn_small {
-  padding: 7px 10px;
-  font-size: 0.6875em; }
-
-.btn_med {
-  padding: 7px 15px; }
+canvas {
+  display: block;
+  vertical-align: bottom; }
 
 /* INPUTS, SELECTS, CHECKBOXES, RADIOS
 ====================================================
 ==================================================== */
+*:focus {
+  outline: 0; }
+
 select#account_type {
   position: relative;
   top: 13px;
@@ -608,7 +597,7 @@ select#account_type {
   font-size: inherit;
   white-space: nowrap;
   border: 1px solid #ccc;
-  background-image: url(_sources/images/select_arrow.png), -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
+  background-image: url(_assets/img/select_arrow.png), -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
   background-position: 93% center;
   background-repeat: no-repeat;
   -webkit-appearance: button;
@@ -626,7 +615,45 @@ select#account_type {
   background: #eee;
   border: 1px solid #ccc;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   border-radius: 4px; }
+
+/* BUTTONS
+====================================================
+==================================================== */
+.btn {
+  position: relative;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 1px 1px #333;
+  background: #6b7979;
+  border: 1px solid #535E5E;
+  box-shadow: 0 3px #3b4343;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+  .btn:hover {
+    top: 1px;
+    background: #778787;
+    box-shadow: 0 2px #3b4343; }
+  .btn:active {
+    top: 2px;
+    text-shadow: 1px 1px #666;
+    background: #9fabab;
+    border: 1px solid #849393;
+    box-shadow: 0 1px #3b4343; }
+
+.btn_tiny {
+  padding: 5px 8px;
+  font-size: 0.5em; }
+
+.btn_small {
+  padding: 8px 10px;
+  font-size: 0.6875em; }
+
+.btn_med {
+  padding: 9px 15px; }
 
 /* LAYOUTS
 ====================================================
@@ -662,11 +689,14 @@ select#account_type {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  border: 3px solid #94999b;
+  border: 3px solid #036894;
   cursor: pointer;
-  box-shadow: 1px 1px 5px #fff; }
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
   .avatar:hover {
-    border: 3px solid #484c4e; }
+    border: 3px solid #047aad; }
   .avatar img {
     width: 40px;
     height: 40px; }
@@ -677,7 +707,7 @@ select#account_type {
   right: 0px;
   padding: 20px 25px;
   text-align: right;
-  background: #616668; }
+  background: #024562; }
   #avatar_menu li {
     margin-bottom: 15px; }
   #avatar_menu li:last-child {
@@ -694,19 +724,28 @@ select#account_type {
 #sidebar-wrapper {
   position: fixed;
   margin-left: -250px;
-  height: 100%;
   left: 250px;
   width: 250px;
+  height: 100%;
   color: #fff;
-  background: #616668;
-  background: -moz-linear-gradient(top, #616668 0%, #8d9296 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #616668), color-stop(100%, #8d9296));
-  background: -webkit-linear-gradient(top, #616668 0%, #8d9296 100%);
-  background: -ms-linear-gradient(top, #616668 0%, #8d9296 100%);
-  background: linear-gradient(to bottom, #616668 0%, #8d9296 100%);
+  background: #01293a;
   overflow-y: auto;
   z-index: 1000;
-  transition: all 0.4s ease 0s; }
+  transition: all 0.4s ease 0s;
+  background-color: #03577b;
+  /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#01293a), to(#03577b));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #01293a, #03577b);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, #01293a, #03577b);
+  /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #01293a, #03577b);
+  /* IE10 */
+  background-image: -o-linear-gradient(top, #01293a, #03577b);
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, #01293a, #03577b);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#01293a', EndColorStr='#03577b'); }
 
 .sidebar-nav {
   position: absolute;
@@ -720,7 +759,7 @@ select#account_type {
   .sidebar-nav li:not(.sidebar-brand) {
     line-height: 40px; }
     .sidebar-nav li:not(.sidebar-brand):hover {
-      background: #434748; }
+      background: #036894; }
   .sidebar-nav li:last-child {
     border-bottom: none; }
   .sidebar-nav a {
@@ -730,21 +769,28 @@ select#account_type {
     .sidebar-nav a:hover {
       text-decoration: none; }
     .sidebar-nav a:active {
-      background: #7a8082; }
+      background: #036894; }
 
 .sidebar-nav a:active,
 li.active-tab {
-  background: #434748;
-  background: -moz-linear-gradient(left, #515556 0%, #434748 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #515556), color-stop(100%, #434748));
-  background: -webkit-linear-gradient(left, #515556 0%, #434748 100%);
-  background: -ms-linear-gradient(left, #515556 0%, #434748 100%);
-  background: linear-gradient(to right, #515556 0%, #434748 100%); }
+  background: #03577b; }
 
 li.sidebar-brand {
-  margin-bottom: 20px;
-  font-family: 'Changa One', cursive;
-  font-size: 2em; }
+  margin-bottom: 30px;
+  font-family: 'Roboto Condensed', sans-serif; }
+  li.sidebar-brand h1 {
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #333; }
+  li.sidebar-brand h2 {
+    font-size: 0.875em; }
+  li.sidebar-brand a:active {
+    background: none; }
+  li.sidebar-brand img {
+    width: 24px;
+    height: 24px; }
 
 .quotes {
   position: absolute;
@@ -762,24 +808,40 @@ li.sidebar-brand {
   padding-left: 250px;
   transition: all 0.4s ease 0s; }
 
-.account-content {
-  position: relative;
-  width: 100%; }
-
 .content_header h1 {
   position: relative;
   top: 65px;
   left: 20px;
   font-size: 1.5em;
-  color: #666; }
+  font-weight: 600;
+  color: #333; }
 
 .widget-container {
   position: relative;
   top: 80px;
   margin: 1px 20px;
-  padding: 20px;
+  padding: 18px 20px;
   background: #fff;
   z-index: 2; }
+
+/* ACCOUNTS
+====================================================
+==================================================== */
+.account-content {
+  position: relative;
+  width: 100%; }
+
+.add_account_widget {
+  border-bottom: 1px solid #048bc6; }
+
+.total_widget {
+  border-top: 1px solid #048bc6;
+  background: #f2f2f2; }
+  .total_widget li {
+    float: left;
+    margin-left: 20px; }
+  .total_widget li:first-child {
+    margin-left: 0; }
 
 .btc_public_address,
 .address_balance,
@@ -791,11 +853,19 @@ li.sidebar-brand {
   font-weight: 600;
   line-height: 5px;
   margin-bottom: 10px; }
-  .address_label a {
-    margin-left: 5px;
-    color: #81af4c; }
-    .address_label a:hover {
-      color: #5a7a35; }
+  .address_label button {
+    float: right;
+    margin-left: 10px; }
+
+.qr_btn {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background-position: -80px -80px;
+  cursor: pointer; }
 
 .delete_address {
   position: relative;
@@ -805,40 +875,34 @@ li.sidebar-brand {
   float: right;
   font-size: 0.6875em;
   cursor: pointer; }
-  .delete_address img {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    width: 10px;
-    height: 10px; }
 
 .address_balance {
   width: 80px;
   min-width: 60px;
   padding: 10px;
   background: #f7f7f7;
+  border: 1px solid #ccc;
   z-index: 3;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   border-radius: 4px; }
+  .address_balance span {
+    font-weight: 600;
+    color: #fc943f; }
 
 .btc_public_address {
-  margin-left: 10px;
-  padding: 2px 10px;
+  margin-left: 20px;
+  padding: 2px 5px;
   line-height: 30px;
   margin-top: 3px;
   font-size: 0.6875em;
   color: #535E5E;
   cursor: pointer;
   -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
   border-radius: 6px; }
   .btc_public_address:hover {
     background: #f7f7f7; }
-
-.qr_btn {
-  margin-left: 15px;
-  position: relative;
-  top: 10px;
-  cursor: pointer; }
 
 .total_label,
 .total_btc,
@@ -847,13 +911,19 @@ li.sidebar-brand {
 .denomination {
   float: left; }
 
+.total_label,
+.total_btc,
+.total_usd,
+.total_euro {
+  line-height: 26px; }
+
+.total_btc {
+  color: #fc943f; }
+
 .total_btc,
 .total_usd,
 .total_euro {
   font-weight: 600; }
-
-.total_btc {
-  color: #0076FF; }
 
 .total_usd,
 .total_euro {
@@ -861,19 +931,9 @@ li.sidebar-brand {
 
 .denomination {
   float: left;
-  margin-left: 5px;
-  font-size: 0.5em; }
-
-.add_account_widget h1 {
-  margin-bottom: 10px; }
-
-.total_widget {
-  background: #f2f2f2; }
-  .total_widget li {
-    float: left;
-    margin-left: 20px; }
-  .total_widget li:first-child {
-    margin-left: 0; }
+  margin: 5px 0 0 5px;
+  font-size: 0.5em;
+  color: #666; }
 
 .added_address:after,
 .total_widget:after,
@@ -881,6 +941,40 @@ li.sidebar-brand {
   content: "";
   display: table;
   clear: both; }
+
+/* PROFILE
+====================================================
+==================================================== */
+.profile_avatar {
+  display: block;
+  margin-bottom: 40px; }
+  .profile_avatar:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .profile_avatar p {
+    float: left;
+    font-size: 0.6875em;
+    line-height: 25px; }
+  .profile_avatar img {
+    width: 180px;
+    height: 180px; }
+
+.image_upload_buttons {
+  margin: 10px 0 20px 0; }
+  .image_upload_buttons .btn {
+    float: left;
+    margin-right: 10px; }
+
+.profile_ul li {
+  margin: 8px 0; }
+.profile_ul li:first-child {
+  margin: 0 0 20px 0; }
+.profile_ul li:last-child {
+  margin-top: 20px; }
+
+.profile_user_name {
+  margin-top: 40px; }
 
 /* FOOTER STYLES
 ====================================================
@@ -893,33 +987,29 @@ footer {
   color: #535E5E; }
   footer a {
     font-weight: 600;
-    color: #81af4c; }
+    color: #740879; }
 
 /*  SVG background images
 ====================================================
 ==================================================== */
+.qr_btn {
+  position: relative;
+  margin: 0 auto;
+  background-size: 640px 640px;
+  background-image: url(_assets/img/bitage_icons.svg), none; }
+
 /*  RESPONSIVE MEDIA QUERIES
 ====================================================
 ==================================================== */
 /* 1600
 ==================================================== */
-/* 1400
-==================================================== */
-/* 1300
-==================================================== */
-/* 1260
-==================================================== */
 /* 1200
-==================================================== */
-/* 1100
 ==================================================== */
 /* 1000
 ==================================================== */
 /* 990
 ==================================================== */
 /* 900
-==================================================== */
-/* 850
 ==================================================== */
 /* 800
 ==================================================== */
@@ -943,13 +1033,11 @@ footer {
 
   .delete_address {
     right: 0; } }
-/* 740
-==================================================== */
-/* 640
-==================================================== */
-/* 600
-==================================================== */
-@media all and (max-width: 600px) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  /* STYLES GO HERE */
+  #sidebar-wrapper {
+    display: none; }
+
   #top_nav {
     font-size: 0.6875em; }
 
@@ -993,8 +1081,6 @@ footer {
   select#account_type {
     margin-bottom: 15px;
     width: 220px; } }
-/* 500
-==================================================== */
 /* 400
 ==================================================== */
 /* 360

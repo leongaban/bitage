@@ -13,7 +13,7 @@ stylesheets/
 |   	|-- _mixins         	    # Imports all mixins & global vars
 |   |-- _defaults       	    # Global Defaults
 |   |-- _inputs         	    # Input styles
-|   |-- _tables         	    # Table styles
+|   |-- _buttons         	    # Input styles
 |   |-- _icons          	    # Icons styles
 |   |-- _layout         	    # Layout Views
 |   	|-- header
@@ -25,7 +25,7 @@ stylesheets/
 |   |-- _queries
 |
 |-- vendors/            	    # CSS or from other projects
-|   |-- _normalize      	    # http://necolas.github.io/normalize.css
+|   |-- _normalize      	    # http://necolas.github.io/normalize.css v3.0.2
 |   ...
 |
 `-- att_partner_exchange	    # Primary Sass file
@@ -36,7 +36,8 @@ stylesheets/
 @import "modules/reset";		// Reset stylesheet
 @import "modules/base";			// Load base files
 @import "modules/defaults";		// Defaults
-@import "modules/inputs";	// Inputs & Selects
+@import "modules/inputs";		// Inputs & Selects
+@import "modules/buttons";		// Buttons
 // @import "modules/tables";	// Tables
 // @import "modules/icons";		// Icons
 @import "modules/layout";		// Load Layouts

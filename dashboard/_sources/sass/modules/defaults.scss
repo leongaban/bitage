@@ -2,20 +2,19 @@
 ====================================================
 ==================================================== */
 
-// Import Bootstrap overrides:
-// @import "bootstrap";
-
 html, body { width: 100%; height: 100%; } 
 
 body {
 	overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;  //300, 600, 800
+	font-weight: 400;
     font-size: em(16);
-	background: #eee;
-	background: -webkit-linear-gradient(top,  #eee 0%,#ddd 100%);
-    background: -o-linear-gradient(top,  #eee 0%,#ddd 100%);
-    background: -ms-linear-gradient(top,  #eee 0%,#ddd 100%);
-    background: linear-gradient(to bottom,  #eee 0%,#ddd 100%);
+    color: #666;
+	background: $body;
+	background: -webkit-linear-gradient(top,  $body 0%,darken($body, 5%) 100%);
+    background: -o-linear-gradient(top,  $body 0%,darken($body, 5%) 100%);
+    background: -ms-linear-gradient(top,  $body 0%,darken($body, 5%) 100%);
+    background: linear-gradient(to bottom,  $body 0%,darken($body, 5%) 100%);
 }
 
 strong { font-family: omnes_att_iimedium; }
@@ -26,37 +25,10 @@ sub { bottom: -0.25em; }
 
 a {
 	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
+	&:hover { text-decoration: underline; }
 }
 
-// removes chrome input highlight
-*:focus { outline: 0; }
-
-.btn {
-	position: relative;
-	color: #fff;
-    background: $green;
-    border: 0;
-    box-shadow: 0 3px darken($green, 10%);
-    @include rounded(5px);
-
-    &:hover {
-    	top: 1px;
-        background: darken($green, 10%);
-    }
-
-    &:active {
-        background: lighten($green, 10%);
-    }
-}
-
-.btn_small {
-    padding: 7px 10px;
-    font-size: em(11);
-}
-
-.btn_med {
-    padding: 7px 15px;
+canvas {
+	display: block;
+	vertical-align: bottom;
 }

@@ -1,0 +1,39 @@
+/* PROFILE
+====================================================
+==================================================== */
+
+.profile_avatar {
+	display: block;
+	margin-bottom: 40px;
+	@include clearfix();
+
+	p {
+		float: left;
+		font-size: em(11);
+		line-height: 25px;
+	}
+
+	img {
+		width: 180px;
+		height: 180px;
+	}
+}
+
+.image_upload_buttons {
+	margin: 10px 0 20px 0;
+
+	.btn {
+		float: left;
+		margin-right: 10px;
+	}
+}
+
+.profile_ul {
+	li { margin: 8px 0; }
+	li:first-child { margin: 0 0 20px 0; }
+	li:last-child { margin-top: 20px; }
+}
+
+.profile_user_name {
+	margin-top: 40px;
+}
