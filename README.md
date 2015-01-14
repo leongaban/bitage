@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 BitAge dashboard
 ================
 
@@ -39,3 +40,7 @@ What is Bitcoin?
 * The future of money
 
 PS: [Click here](https://gitter.im/settings/badger/opt-out) if you would prefer not to receive automatic pull-requests from Gitter 
+=======
+# BITAGE
+The Bitage website &amp; app
+>>>>>>> 53eb1d1592e51395c465da0e1456fd5648f5814a
