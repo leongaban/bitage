@@ -28,15 +28,24 @@
 			<h2>Login to your account</h2>
 
     		<span>
-    			<input id="form_login_email" type="email" placeholder="Email">
+    			<input id="form_login_email" type="email" placeholder="Email" tabindex="1">
     		</span>
 
     		<span>
-    			<input id="form_login_password" type="password" placeholder="Password">
+    			<input id="form_login_password" type="password" placeholder="Password" tabindex="2">
     		</span>
 
     		<span>
-    			<button id="btn_login" class="btn">Sign In</button>
+    			<button id="btn_login" class="btn" tabindex="3">Sign In</button>
+    		</span>
+
+    		<span class="login_comments">
+    			<input id="stay_signed_in" name="stay_signed_in" tabindex="4" type="checkbox" value="1">
+    			<p>Stay signed in on this computer</p>
+    		</span>
+
+    		<span class="login_forgot_password">
+    			<a href="#">Forgot password?</a> | <a href="#">Sign Up</a>
     		</span>
     	</form>
     </section>

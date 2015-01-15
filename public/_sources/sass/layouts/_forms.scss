@@ -2,6 +2,10 @@
 ====================================================
 ==================================================== */
 
+#body_login {
+	// background-image: url("../img/spiral1.jpg");
+}
+
 #login_widget {
     position: absolute;
     margin-left: auto;
@@ -30,4 +34,30 @@
         border: 1px solid #eee;
         @include rounded(4px);
     }
+
+    p {
+    	float: left;
+    	font-size: em(12);
+    	color: #ccc;
+    }
+}
+
+.login_comments {
+	margin-top: 20px;
+}
+
+.login_forgot_password {
+	float: left;
+	width: 100%;
+
+	a {
+		font-size: em(12);
+		color: #fff;
+	}
+}
+
+#stay_signed_in {
+	float: left;
+	margin-right: 10px;
+	width: auto !important;
 }
