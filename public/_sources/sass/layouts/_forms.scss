@@ -47,20 +47,15 @@
     }
 }
 
-.login_comments {
-	margin-top: 20px;
-}
+.login_comments { margin-top: 20px; }
 
 .login_forgot_password {
 	float: left;
 	width: 100%;
-
-		font-size: em(12);
+	font-size: em(12);
 	color: #eee;
 
-	a {
-		color: #fff;
-	}
+	a { color: #fff; }
 }
 
 #stay_signed_in {
