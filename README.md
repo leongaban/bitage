@@ -1,7 +1,9 @@
 BITAGE application
 ================
 
-<strong>The backend and frontend of the Bitage web app</strong>
+<strong>Private repo for the Bitage web app</strong>
+
+<a href="https://twitter.com@leongaban">@leongaban</a> & <a href="https://twitter.com@paulinhorocha">@paulinhorocha</a>
 
 Technologies (MEAN stack):
 
@@ -13,6 +15,3 @@ Technologies (MEAN stack):
 Demo: [link]
 
 - [ ] Start branching
-
-
-![Nodeschool Dallas logo](https://raw.githubusercontent.com/leongaban/dallas/master/nodeschool-dallas.png)
