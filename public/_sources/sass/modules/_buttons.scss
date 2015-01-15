@@ -3,9 +3,9 @@
 ==================================================== */
 
 .btn {
-	position: relative;
+    position: relative;
     // top: 0px;
-	color: #fff;
+    color: #fff;
     font-weight: 600;
     text-shadow: 1px 1px #333;
     background: lighten($button, 10%);
@@ -20,7 +20,7 @@
     @include rounded(5px);
 
     &:hover {
-    	// top: 1px;
+        // top: 1px;
         // background: $buttonHover;
         // box-shadow: 0 2px darken($button, 10%);
         border: 1px solid lighten($button, 30%);
