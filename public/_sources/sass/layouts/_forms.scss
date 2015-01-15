@@ -1,0 +1,33 @@
+/* LOGIN
+====================================================
+==================================================== */
+
+#login_widget {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    top: 15%;
+    left: 0;
+    right: 0;
+    padding: 40px;
+    width: 320px;
+
+    h2 {
+    	margin-bottom: 30px;
+    	font-weight: 300;
+		font-size: em(20);
+		color: #fff;
+    }
+
+    span, input {
+        margin-bottom: 20px;
+        width: 300px;
+    }
+
+    input {
+        padding: 10px 20px;
+        border: 1px solid #eee;
+        @include rounded(4px);
+    }
+}

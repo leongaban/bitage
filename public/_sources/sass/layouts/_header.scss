@@ -15,3 +15,15 @@
 
     a { color: #fff; }
 }
+
+// about, login, register
+.bitage_logo {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    font-size: em(32);
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}

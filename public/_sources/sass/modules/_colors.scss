@@ -18,19 +18,11 @@ $body: #eee;
 
 $primaryColor: 
 	$blue;
-	// $gray;
 
 $secondaryColor:
 	$blue;
-	// $gray;
-	// $americanGreen;
 
 $btc: lighten($orange, 1%);
 
-$sidebar: $primaryColor;
-$sidebarHover: lighten($sidebar, 5%);
-$sidebarActive: darken($sidebar, 8%);
-
 $button: $secondaryColor;
 $buttonHover: lighten($secondaryColor, 15%);
-$buttonActive: lighten($secondaryColor, 15%);
