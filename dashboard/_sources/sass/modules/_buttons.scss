@@ -3,30 +3,23 @@
 ==================================================== */
 
 .btn {
-	position: relative;
-    // top: 1px;
 	color: #fff;
     font-weight: 600;
     text-shadow: 1px 1px #333;
     background: lighten($button, 10%);
-    border: 1px solid $button;
-    box-shadow: 0 3px darken($button, 10%);
-    // border: 0;
+    border: 1px solid lighten($button, 20%);
     cursor: pointer;
     @include rounded(5px);
 
     &:hover {
-    	top: 1px;
         background: $buttonHover;
-        box-shadow: 0 2px darken($button, 10%);
+        border: 1px solid lighten($button, 30%);
     }
 
     &:active { 
-        top: 2px;
         text-shadow: 1px 1px #666;
         background: lighten($buttonHover, 15%);
-        border: 1px solid lighten($buttonHover, 5%);
-        box-shadow: 0 1px darken($button, 10%);
+        border: 1px solid #fff;
     }
 }
 
@@ -37,7 +30,17 @@
 
 .btn_small {
     padding: 8px 10px;
+    height: 30px;
     font-size: em(11);
+    line-height: 10px;
 }
 
-.btn_med { padding: 9px 15px; }
+.btn_med {
+    padding: 9px 15px;
+    height: 36px;
+    line-height: 10px;
+}
+
+.btn_add_account {
+    float: left;
+}
