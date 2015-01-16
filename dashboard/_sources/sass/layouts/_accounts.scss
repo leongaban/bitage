@@ -53,11 +53,12 @@
 
 .delete_address {
     position: relative;
-    top: -5px;
+    // top: -5px;
     width: 30px;
     height: 30px;
     float: right;
-    font-size: em(11);
+    font-size: em(18);
+    color: $buttonHover;
     cursor: pointer;
 
     // img {
