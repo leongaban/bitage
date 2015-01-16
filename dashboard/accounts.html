@@ -19,6 +19,7 @@
             <table>
                 <tr>
                     <td class="td_acct_price">
+                        <div class="icon-pencil-squared"></div>
                         BTC <span>{{account.balance}}</span>
                     </td>
 
@@ -31,8 +32,8 @@
                         <div id="address-{{$index}}" class="btc_public_address" ng-click="pubAddress.getClick(addressId)">{{account.address}}</div>
                     </td>
 
-                    <td class="td_delete_address">
-                        <div class="icon-cancel-circled2"></div>
+                    <td class="td_edit">
+                         <div class="icon-sort"></div>
                     </td>
                 </tr>
             </table>

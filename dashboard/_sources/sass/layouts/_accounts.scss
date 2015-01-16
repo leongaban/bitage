@@ -38,25 +38,31 @@ table {
 }
 
 .td_acct_price {
-    width: 10%;
+    width: 15%;
     span { font-weight: 600; color: $btc; }
 }
 
 .td_acct_addr {
-    width: 55%;
+    width: 50%;
 }
 
-.td_delete_address {
+.td_edit {
     float: right;
     margin-right: 0px;
     width: 20%;
 }
 
 .icon-qrcode-1,
-.btc_public_address {
+.icon-pencil-squared,
+.btc_public_address,
+.icon-sort {
     float: left;
     cursor: pointer;
     &:hover { color: $buttonHover; }
+}
+
+.icon-pencil-squared {
+    margin-right: 5px;
 }
 
 .btc_public_address {
