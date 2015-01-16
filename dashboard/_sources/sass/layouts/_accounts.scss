@@ -7,62 +7,89 @@
     width: 100%;
 }
 
+.total_widget,
 .add_account_widget {
-    border-bottom: 1px solid lighten($primaryColor, 20%);
+    padding: 20px;
+    // border-top: 1px solid lighten($primaryColor, 20%);
+    // border-bottom: 1px solid lighten($primaryColor, 20%);
+}
 
-    h1 {
-        margin-bottom: 10px;
-    }
+.add_account_widget {
+    h1 { margin-bottom: 10px; }
 }
 
 .total_widget {
-    border-top: 1px solid lighten($primaryColor, 20%);
     background: lighten(#ccc, 15%);
 
     li { float: left; margin-left: 20px; }
     li:first-child { margin-left: 0; }
 }
 
-td {
-    margin-right: 20px;
-}
-
-table {
+.accounts_table {
     width: 100%;
+    border-top: 1px solid lighten(#666, 20%);
+
+    .row_body:last-child td {
+        border-bottom: 1px solid lighten(#666, 20%);
+    }
 }
 
-.td_acct_label {
-    width: 15%;
-    font-size: em(14);
-    font-weight: 600;
+.row_head td {
+    padding: 10px 20px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.row_body td {
+    padding: 16px 20px;
+    margin-right: 20px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.row_body {
+    &:hover { background: #f7f7f7; }
 }
 
 .td_acct_price {
-    width: 15%;
+    width: 20%;
     span { font-weight: 600; color: $btc; }
 }
 
-.td_acct_addr {
-    width: 50%;
+.td_acct_label {
+    width: 20%;
+    font-weight: 600;
+    font-size: em(14);
 }
 
+.td_acct_addr { width: 60%; }
+
 .td_edit {
-    float: right;
-    margin-right: 0px;
-    width: 20%;
+    cursor: pointer;
+
+    &:hover {
+        color: $buttonHover;
+    }
 }
+
+// .td_edit {
+//     margin-right: 0px;
+//     width: 5%;
+//     text-align: center;
+//     cursor: pointer;
+// }
 
 .icon-qrcode-1,
 .icon-pencil-squared,
-.btc_public_address,
-.icon-sort {
+.btc_public_address {
     float: left;
     cursor: pointer;
     &:hover { color: $buttonHover; }
 }
 
 .icon-pencil-squared {
-    margin-right: 5px;
+    font-size: em(20);
+    // margin-right: 5px;
 }
 
 .btc_public_address {

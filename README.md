@@ -22,6 +22,7 @@ Demo:
 - [ ] Wallet view
 - [ ] BitcoinJS
 - [ ] Edit address view
+- [ ] Mobile styling
 - [ ] MongoDB setup
 - [ ] BITAGE Express APIs (add_address, save_user, etc...)
 - [ ] Node Oauth - passport.js
