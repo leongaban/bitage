@@ -9,7 +9,7 @@
 .about_container {
 	position: relative;
 	top: 15%;
-	margin: 0 auto;
+	margin: 0 auto 60px;
 	max-width: 800px;
 	width: 80%;
 
@@ -26,6 +26,7 @@
     	text-decoration: underline;
 
     	&:hover {
+            color: lighten($orange, 10%);
     		text-decoration: none;
     	}
     }
