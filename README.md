@@ -1,46 +1,39 @@
-<<<<<<< HEAD
-BitAge dashboard
+BITAGE application
 ================
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/leongaban/dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-<strong>Dashboard for a Bitcoin asset overview app</strong>
+<strong>Private repo for the BITAGE web app</strong>
 
-Demo: http://nodedallas.io/apps/bitage-dashboard/
+<a href="https://twitter.com@leongaban">@leongaban</a> & <a href="https://twitter.com@paulinhorocha">@paulinhorocha</a>
 
-- [x] Style early mockup
-- [x] Get data from mock Angular $scope
-- [x] Get user input to add new accounts
-- [x] Select address on click
-- [x] Add label field (type of account/icons)
-- [ ] User avatar options dropdown (Profile, Account, Logout)
-- [ ] Mockup "My Wallet"
-- [ ] Mockup "My Settings" (Profile, Account/Security)
-- [ ] Allow editing accounts
-- [ ] Allow deleting accounts
-- [ ] Calculate total
-- [ ] Use Blockchain api to get balance
-- [ ] Generate real QR code
-- [ ] Setup full MEAN app (leave mock stage)
-- [ ] Allow reorganizing account
-- [ ] Wireup data (Mongoose)
-- [ ] Start new project with Homepage, Registration and Login
-
-![Nodeschool Dallas logo](https://raw.githubusercontent.com/leongaban/dallas/master/nodeschool-dallas.png)
-
-What's a NodeSchool?
+Technologies (MEAN stack):
 ------
-* Main site: http://nodeschool.io/
-* NodeSchool workshoppers (problem sets): http://nodeschool.io/#workshoppers
+* <a href="http://docs.mongodb.org/manual/" target="_blank">MongoDB</a>
+* <a href="http://expressjs.com/" target="_blank">Express</a>
+* <a href="https://docs.angularjs.org/guide">Angular</a>
+* <a href="http://nodejs.org/api/" target="_blank">Node</a> | <a href="https://www.npmjs.com/" target="_blank">npm</a>
 
-![Bitcoin logo](https://raw.githubusercontent.com/leongaban/dashboard/master/_sources/images/bitcoin.png)
-
-What is Bitcoin?
+Demo:
 ------
-* https://www.youtube.com/watch?v=Gc2en3nHxA4
-* The future of money
+    <a href="http://nodedallas.io/apps/bitage-website/" target="_blank">Website</a>
+    <a href="http://nodedallas.io/apps/bitage-dashboard/" target="_blank">Dashboard</a>
 
-PS: [Click here](https://gitter.im/settings/badger/opt-out) if you would prefer not to receive automatic pull-requests from Gitter 
-=======
-# BITAGE
-The Bitage website &amp; app
->>>>>>> 53eb1d1592e51395c465da0e1456fd5648f5814a
+- [x] Start branching
+- [ ] Settings/Profile view
+- [ ] Wallet view
+- [ ] BitcoinJS
+- [ ] Edit address view
+- [ ] MongoDB setup
+- [ ] BITAGE Express APIs (add_address, save_user, etc...)
+- [ ] Node Oauth - passport.js
+- [ ] 2-factor Authentication
+- [ ] Transactions infinite scroll
+- [ ] Ghost blog
+- [ ] Mailchimp (blog updates)
+- [ ] Sendgrid (notifications)
+- [ ] Get Twitter
+- [ ] Alpha test with Bitcoin meetup
+
+Resources:
+------
+* GAuthify https://www.gauthify.com/
+* BitcoinJS https://github.com/bitcoinjs/bitcoinjs-lib

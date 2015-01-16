@@ -1,0 +1,61 @@
+/* ABOUT
+====================================================
+==================================================== */
+
+#body_about {
+	background-image: url("../img/gems_login.jpg");
+}
+
+.about_container {
+	position: relative;
+	top: 15%;
+	margin: 0 auto 60px;
+	max-width: 800px;
+	width: 80%;
+
+	h1 {
+    	margin-bottom: 30px;
+    	font-weight: 600;
+		font-size: em(36);
+		color: #fff;
+    }
+
+    a {
+    	color: $orange;
+    	font-weight: 600;
+    	text-decoration: underline;
+
+    	&:hover {
+            color: lighten($orange, 10%);
+    		text-decoration: none;
+    	}
+    }
+
+    p {
+    	margin-bottom: em(24);
+    	font-size: em(20);
+    	line-height: em(24);
+    	color: #eee;
+    }
+
+    input {
+        padding: 10px 20px;
+        border: 1px solid #eee;
+        @include rounded(4px);
+
+        &::-webkit-input-placeholder { color: $blue; }
+		&:-moz-placeholder { color: $blue; opacity: 1; }
+		&::-moz-placeholder { color: $blue; opacity: 1; }
+		&:-ms-input-placeholder { color: $blue; }
+    }
+}
+
+.mailchimp {
+	margin-bottom: 10px;
+
+	em {
+		position: relative;
+		top: -9px;
+		font-size: em(11);
+	}
+}

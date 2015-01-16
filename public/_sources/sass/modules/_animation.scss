@@ -2,63 +2,21 @@
 ====================================================
 ==================================================== */
 
-/* when hiding the thing */
-.ng-hide-add { 
-    -webkit-animation:0.5s rollUp ease; 
-    animation:0.5s rollUp ease; 
+@-webkit-keyframes fading-loop {
+    0% { opacity: 1; }
+    50%  { opacity: 0.2; }
+    100% { opacity: 1; }
 }
 
-/* when showing the thing */
-.ng-hide-remove { 
-    -webkit-animation:0.5s rollDown ease; 
-    animation:0.5s rollDown ease; 
+@-moz-keyframes fading-loop {
+    0% { opacity: 1; }
+    50%  { opacity: 0.2; }
+    100% { opacity: 1; }
 }
 
-/* Toggle rollDown */
-@-webkit-keyframes rollDown {
-    0% {
-        opacity: 0;
-        top: 0px;
-    }
-    100% {
-        opacity: 1;
-        top: 50px;
-    }
+@keyframes fading-loop {
+    0% { opacity: 1; }
+    50%  { opacity: 0.2; }
+    100% { opacity: 1; }
 }
 
-@keyframes rollDown {
-    0% {
-        opacity: 0;
-        top: 0px;
-    }
-    100% {
-        opacity: 1;
-        top: 50px;
-    }
-}
-
-
-/* Toggle rollUp */
-@-webkit-keyframes rollUp {
-    0% {
-        opacity: 1;
-        top: 50px;
-    }
-
-    100% {
-        opacity: 0;
-        top: 0px;
-    }
-}
-
-@keyframes rollUp {
-    0% {
-        opacity: 1;
-        top: 0px;
-    }
-
-    100% {
-        opacity: 0;
-        top: -50px;
-    }
-}
