@@ -10,8 +10,6 @@
 .total_widget,
 .add_account_widget {
     padding: 20px;
-    // border-top: 1px solid lighten($primaryColor, 20%);
-    // border-bottom: 1px solid lighten($primaryColor, 20%);
 }
 
 .add_account_widget {
@@ -19,7 +17,7 @@
 }
 
 .total_widget {
-    background: lighten(#ccc, 15%);
+    // background: lighten(#ccc, 15%);
 
     li { float: left; margin-left: 20px; }
     li:first-child { margin-left: 0; }
@@ -27,11 +25,11 @@
 
 .accounts_table {
     width: 100%;
-    border-top: 1px solid lighten(#666, 20%);
+    border-top: 1px solid #eee;
 
-    .row_body:last-child td {
-        border-bottom: 1px solid lighten(#666, 20%);
-    }
+    // .row_body:last-child td {
+    //     border-bottom: 1px solid #ccc;
+    // }
 }
 
 .row_head td {
@@ -66,18 +64,8 @@
 
 .td_edit {
     cursor: pointer;
-
-    &:hover {
-        color: $buttonHover;
-    }
+    &:hover { color: $buttonHover; }
 }
-
-// .td_edit {
-//     margin-right: 0px;
-//     width: 5%;
-//     text-align: center;
-//     cursor: pointer;
-// }
 
 .icon-qrcode-1,
 .icon-pencil-squared,
@@ -87,10 +75,7 @@
     &:hover { color: $buttonHover; }
 }
 
-.icon-pencil-squared {
-    font-size: em(20);
-    // margin-right: 5px;
-}
+.icon-pencil-squared { font-size: em(20); }
 
 .btc_public_address {
     margin: 2px 0 0 10px;

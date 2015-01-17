@@ -14,8 +14,8 @@ Technologies (MEAN stack):
 
 Demo:
 ------
-    <a href="http://nodedallas.io/apps/bitage-website/" target="_blank">Website</a>
-    <a href="http://nodedallas.io/apps/bitage-dashboard/" target="_blank">Dashboard</a>
+* <a href="http://nodedallas.io/apps/bitage-website/" target="_blank">Website</a>
+* <a href="http://nodedallas.io/apps/bitage-dashboard/" target="_blank">Dashboard</a>
 
 - [x] Start branching
 - [ ] Settings/Profile view

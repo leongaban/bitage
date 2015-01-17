@@ -7,10 +7,8 @@
 
 // Select type of account
 select#account_type {
-	float: left;
 	position: relative;
-	z-index: 2;
-	// top: 13px;
+	float: left;
 	overflow: hidden;
 	margin-right: 10px;
 	padding: 6px 0px;
@@ -24,6 +22,7 @@ select#account_type {
 	background: transparent;
 	border: 1px solid #ccc;
 	cursor: pointer;
+	z-index: 2;
 	// @include rounded(4px);
 	// background-image: url(../img/select_arrow.png), -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
 	// background-position: 93% center;
@@ -39,8 +38,6 @@ select#account_type {
 
 // Account / Address forms
 .form-input {
-    // position: relative;
-    // top: 2px;
     float: left;
     margin: 0 10px 5px 0;
     padding: 6px 10px;
@@ -53,7 +50,6 @@ select#account_type {
 	position: absolute;
 	left: 185px;
 	margin-top: 8px;
-	// top: 44px;
 	color: $buttonHover;
 	z-index: 1;
 }
