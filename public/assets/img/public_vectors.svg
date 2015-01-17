@@ -44,7 +44,7 @@
 		</g>
 		<g id="Ring">
 			<g>
-				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M16.4,93.6l-13-13C3.1,80.2,2.6,80,2,80c-1.1,0-2,0.9-2,2
+				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#999999;" d="M16.4,93.6l-13-13C3.1,80.2,2.6,80,2,80c-1.1,0-2,0.9-2,2
 					c0,0.6,0.2,1.1,0.6,1.4l13,13l0,0c0.4,0.4,0.9,0.6,1.4,0.6c1.1,0,2-0.9,2-2C17,94.4,16.8,93.9,16.4,93.6z"/>
 			</g>
 		</g>
@@ -87,17 +87,17 @@
 		</g>
 		<g id="Location_1_">
 			<g>
-				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#CC3366;" d="M52,195.9c-3.2,0-5.9,2.6-5.9,5.9c0,3.7,4.9,8.8,5.9,8.8
-					s5.9-5.1,5.9-8.8C57.9,198.5,55.2,195.9,52,195.9z M52,203.7c-1.1,0-2-0.9-2-2s0.9-2,2-2c1.1,0,2,0.9,2,2S53.1,203.7,52,203.7z"
-					/>
+				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#CC3366;" d="M49.5,195c-4,0-7.3,3.3-7.3,7.3c0,4.6,6.1,11,7.3,11
+					s7.3-6.4,7.3-11C56.8,198.3,53.5,195,49.5,195z M49.5,204.7c-1.3,0-2.4-1.1-2.4-2.4c0-1.3,1.1-2.4,2.4-2.4
+					c1.3,0,2.4,1.1,2.4,2.4C51.9,203.6,50.8,204.7,49.5,204.7z"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<path style="fill:none;stroke:#CC3366;stroke-width:4;stroke-miterlimit:10;" d="M49,193.2c0-2-0.3-4-0.8-5.9"/>
-				<path style="fill:none;stroke:#CC3366;stroke-width:4;stroke-miterlimit:10;stroke-dasharray:9.3738,9.3738;" d="M43.8,179.1
+				<path style="fill:none;stroke:#CC3366;stroke-width:4;stroke-miterlimit:10;" d="M49,192.2c0-2-0.3-4-0.8-5.9"/>
+				<path style="fill:none;stroke:#CC3366;stroke-width:4;stroke-miterlimit:10;stroke-dasharray:9.3738,9.3738;" d="M43.8,178.1
 					c-2.9-3.5-6.8-6.3-11.4-8"/>
-				<path style="fill:none;stroke:#CC3366;stroke-width:4;stroke-miterlimit:10;" d="M27.9,169.9c-1.9-0.4-3.9-0.6-6-0.6"/>
+				<path style="fill:none;stroke:#CC3366;stroke-width:4;stroke-miterlimit:10;" d="M27.9,168.9c-1.9-0.4-3.9-0.6-6-0.6"/>
 			</g>
 		</g>
 	</g>
@@ -106,14 +106,14 @@
 	<g>
 		<g id="File_Browser_Shadow" style="opacity:0.102;">
 			<g>
-				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#010101;" d="M56,244H4c-2.2,0-4,1.8-4,4v52c0,2.2,1.8,4,4,4h52
-					c2.2,0,4-1.8,4-4v-52C60,245.8,58.2,244,56,244z"/>
+				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#010101;" d="M64,244H4c-2.2,0-4,1.8-4,4v52c0,2.2,1.8,4,4,4h60
+					c2.2,0,4-1.8,4-4v-52C68,245.8,66.2,244,64,244z"/>
 			</g>
 		</g>
 		<g id="File_Browser">
 			<g>
-				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M56,240H4c-2.2,0-4,1.8-4,4v52c0,2.2,1.8,4,4,4h52
-					c2.2,0,4-1.8,4-4v-52C60,241.8,58.2,240,56,240z"/>
+				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M64,240H4c-2.2,0-4,1.8-4,4v52c0,2.2,1.8,4,4,4h60
+					c2.2,0,4-1.8,4-4v-52C68,241.8,66.2,240,64,240z"/>
 			</g>
 		</g>
 		<g id="Red">
@@ -133,8 +133,8 @@
 		</g>
 		<g id="Header" style="opacity:0.102;">
 			<g>
-				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#010101;" d="M56,240H4c-2.2,0-4,1.8-4,4v10h60v-10
-					C60,241.8,58.2,240,56,240z M4,300h52c2.2,0,4-4,4-4H0C0,298.2,1.8,300,4,300z"/>
+				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#010101;" d="M64,240H4c-2.2,0-4,1.8-4,4v10h68v-10
+					C68,241.8,66.2,240,64,240z M4,300h60c2.2,0,4-4,4-4H0C0,298.2,1.8,300,4,300z"/>
 			</g>
 		</g>
 		<g id="Text_3_" style="opacity:0.2;">
@@ -145,13 +145,13 @@
 		</g>
 		<g id="Thumbs">
 			<g>
-				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#67C9E8;" d="M56,262H25c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h31
-					c0.6,0,1-0.4,1-1v-4C57,262.4,56.6,262,56,262z M56,272H25c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h31c0.6,0,1-0.4,1-1v-4
-					C57,272.4,56.6,272,56,272z M56,282H25c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h31c0.6,0,1-0.4,1-1v-4C57,282.4,56.6,282,56,282z"/>
+				<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#67C9E8;" d="M62,262H23c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h39
+					c0.6,0,1-0.4,1-1v-4C63,262.4,62.6,262,62,262z M62,272H23c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h39c0.6,0,1-0.4,1-1v-4
+					C63,272.4,62.6,272,62,272z M62,282H23c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h39c0.6,0,1-0.4,1-1v-4C63,282.4,62.6,282,62,282z"/>
 			</g>
 		</g>
 	</g>
 </g>
-<g id="guides">
+<g id="guides" style="display:none;">
 </g>
 </svg>

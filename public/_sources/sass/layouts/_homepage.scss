@@ -77,9 +77,9 @@
 
 	h1 {
 		margin-bottom: 40px;
-		font-family: 'Roboto Condensed', sans-serif;
-		font-weight: 700;
-		font-size: em(58);
+		// font-family: 'Roboto Condensed', sans-serif;
+		// font-weight: 700;
+		font-size: em(60);
 	}
 }
 
@@ -104,12 +104,15 @@
 	justify-content: center;
 	align-items: stretch;
 
+	h2 {
+		font-weight: 600;
+	}
 
 	p {
 		font-size: em(12);
 		line-height: em(20);
 		margin: 10px 0 20px;
-		color: #ccc;
+		color: lighten(#666, 30%);
 	}
 }
 
@@ -126,7 +129,7 @@
 }
 
 .dashboard {
-	width: 60px;
+	width: 68px;
 	height: 64px;
 	background-position: 0 -240px;
 }
