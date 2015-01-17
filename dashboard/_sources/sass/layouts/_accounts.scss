@@ -13,12 +13,15 @@
 }
 
 .add_account_widget {
+    .icon-help-circled {
+        float: left;
+        cursor: pointer;
+        &:hover {color: $buttonHover; }
+    }
     h1 { margin-bottom: 10px; }
 }
 
 .total_widget {
-    // background: lighten(#ccc, 15%);
-
     li { float: left; margin-left: 20px; }
     li:first-child { margin-left: 0; }
 }
@@ -50,7 +53,7 @@
 }
 
 .td_acct_price {
-    width: 20%;
+    width: 15%;
     span { font-weight: 600; color: $btc; }
 }
 
@@ -60,7 +63,7 @@
     font-size: em(14);
 }
 
-.td_acct_addr { width: 60%; }
+.td_acct_addr { width: 65%; }
 
 .td_edit {
     cursor: pointer;

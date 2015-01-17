@@ -6,8 +6,8 @@
         <ul>
             <li><p class="total_label">Total:</p></li>
             <li><p class="total_btc">1.009</p><em class="denomination">BTC</em></li>
-            <li><p class="total_usd">261.8</p><em class="denomination">USD</em></li>
-            <li><p class="total_euro">218.86</p><em class="denomination">EURO</em></li>
+            <li><p class="total_usd">207.40</p><em class="denomination">USD</em></li>
+            <li><p class="total_euro">179.40</p><em class="denomination">EURO</em></li>
             <li class="add_currency_btn_li"><button class="btn btn_small">Edit</button></li>
         </ul>
     </section>
@@ -17,7 +17,7 @@
         <table class="accounts_table">
             <thead>
                 <tr class="row_head">
-                    <td>Balance</td>
+                    <td>BTC Balance</td>
                     <td>Name</td>
                     <td>Address</td>
                     <td>Edit</td>
@@ -28,7 +28,7 @@
                     ng-repeat="account in accounts" 
                     ng-init="addressId='address-' + $index">
                     <td class="td_acct_price">
-                        BTC <span>{{account.balance}}</span>
+                        <span>{{account.balance}}</span>
                     </td>
 
                     <td class="td_acct_label">
@@ -51,7 +51,7 @@
 
     <section class="widget-container add_account_widget">
 
-        <h1>Add accounts to monitor here:</h1>
+        <h1><div class="icon-help-circled"></div>Add accounts to monitor here:</h1>
 
         <form id="add_new_address_form" ng-submit="addAccount()">
             <!-- <select id="account_type">
