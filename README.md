@@ -18,7 +18,7 @@ Demo:
 * <a href="http://nodedallas.io/apps/bitage-dashboard/" target="_blank">Dashboard</a>
 
 - [x] Start branching
-- [ ] Settings/Profile view
+- [x] Settings/Profile view
 - [ ] Wallet view
 - [ ] BitcoinJS
 - [ ] Edit address view

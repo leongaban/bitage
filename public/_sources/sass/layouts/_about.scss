@@ -2,15 +2,15 @@
 ====================================================
 ==================================================== */
 
-#body_about {
-	background-image: url("../img/gems_login.jpg");
-}
+// #body_about {
+// 	background-image: url("../img/gems_login.jpg");
+// }
 
 .about_container {
 	position: relative;
 	top: 15%;
 	margin: 0 auto 60px;
-	max-width: 800px;
+	max-width: 640px;
 	width: 80%;
 
 	h1 {
@@ -21,12 +21,11 @@
     }
 
     a {
-    	color: $orange;
-    	font-weight: 600;
+    	color: $buttonHover;
     	text-decoration: underline;
 
     	&:hover {
-            color: lighten($orange, 10%);
+            color: lighten($buttonHover, 10%);
     		text-decoration: none;
     	}
     }

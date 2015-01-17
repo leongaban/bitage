@@ -57,7 +57,7 @@
 	display: block;
 	padding: 20px 0;
 	width: 100%;
-	color: #DDE2E2;
+	color: #fff;
 	text-align: center;
 	font-size: em(18);
 	text-indent: 20px;
@@ -104,7 +104,7 @@
 }
 
 .input__label--jiro::before {
-	border-top: 2px solid #333;
+	border-top: 2px solid $blue;
 	-webkit-transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
 	transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
 	-webkit-transition-delay: 0.3s;
@@ -113,7 +113,7 @@
 
 .input__label--jiro::after {
 	z-index: -1;
-	background: #333;
+	background: $blue;
 	-webkit-transform: scale3d(1, 0, 1);
 	transform: scale3d(1, 0, 1);
 	-webkit-transform-origin: 50% 0%;
