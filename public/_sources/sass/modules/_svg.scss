@@ -1,3 +1,13 @@
 /*  SVG background images
 ====================================================
 ==================================================== */
+
+.key,
+.globe,
+.dashboard
+{
+	position: relative;
+	margin: 0 auto;
+	background-size: 640px 640px;
+	background-image: url(../img/public_vectors.svg), none;
+}
