@@ -42,8 +42,8 @@ select#account_type {
     margin: 0 10px 5px 0;
     padding: 6px 10px;
     background: #eee;
-    border: 1px solid #ccc;
-    @include rounded(4px);
+    border: 1px solid #ccc;//lighten($gray, 30%);
+    @include rounded(3px);
 }
 
 .icon-down-open {

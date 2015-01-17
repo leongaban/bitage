@@ -68,14 +68,14 @@ li.sidebar-brand {
     font-family: 'Roboto Condensed', sans-serif;
 
     h1 {
-        // margin-bottom: 45px;
+        margin-bottom: 5px;
         font-weight: 700;
         font-size: em(32);
         text-transform: uppercase;
-        @include text-shadow(2px, 2px, #333);
+        // @include text-shadow(2px, 2px, #333);
     }
 
-    // h2 { font-size: em(14); }
+    h2 { font-size: em(14); }
 
     a:active { background: none; }
 

@@ -2,57 +2,50 @@
 
     <div class="content_header"><h1>Settings, Profile &amp; Security</h1></div>
 
-    <div class="widget-container">
-    	<ul class="profile_ul">
+    <div class="widget-container profile_container">
+		<section flow-init="{target: '/upload'}"
+            flow-files-submitted="$flow.upload()"
+            flow-file-success="$file.msg = $message"
+            class="profile_avatar">
+            
+            <div flow-init="{singleFile:true}"
+                 flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 
-    		<li flow-init="{target: '/upload'}"
-                flow-files-submitted="$flow.upload()"
-                flow-file-success="$file.msg = $message"
-                class="profile_avatar">
-                
-                <div flow-init="{singleFile:true}"
-                     flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-
-                    <div class="thumbnail" ng-show="!$flow.files.length">
-                        <img src="http://www.placehold.it/180x180/EFEFEF/AAAAAA&text=no+image" />
-                    </div>
-
-                    <div class="thumbnail" ng-show="$flow.files.length">
-                        <img flow-img="$flow.files[0]" />
-                    </div>
-
-                    <div class="image_upload_buttons">
-                        <span class="btn btn_small" ng-show="!$flow.files.length" flow-btn>Choose Image</span>
-                        <span class="btn btn_small" ng-show="$flow.files.length" flow-btn>Change</span>
-                        <span class="btn btn_small" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove</span>
-                        <p>PNG, GIF, JPG, JPEG files only.</p>
-                    </div>
+                <div class="thumbnail" ng-show="!$flow.files.length">
+                    <img src="http://www.placehold.it/180x180/EFEFEF/AAAAAA&text=no+image" />
                 </div>
 
-    		</li>
+                <div class="thumbnail" ng-show="$flow.files.length">
+                    <img flow-img="$flow.files[0]" />
+                </div>
 
-    		<li class="profile_user_name">
-    			<label for="user_name">Username</label>
-    		</li>
-    		<li>
-    			<input id="user_name" type="text" class="form-input" placeholder="Bitcoin" ng-model="label"></input>
-    		</li>
-    		<li class="profile_email">
-    			<label for="user_email">Email</label>
-    		</li>
-    		<li>
-    			<input id="user_email" type="text" class="form-input" placeholder="bitcoin@bitage.io.com" ng-model="label"></input>
-    		</li>
-    		<li class="profile_password">
-    			<label for="user_password">Password</label>
-    		</li>
-    		<li>
-    			<input id="user_password" type="password" class="form-input" placeholder="Password" value="Password" ng-model="label"></input>
-    		</li>
-    		<li>
-    			<button class="btn btn_med">Save Profile</button>
-    		</li>
-    	</ul>
+                <div class="image_upload_buttons">
+                    <span class="btn btn_small" ng-show="!$flow.files.length" flow-btn>Choose Image</span>
+                    <span class="btn btn_small" ng-show="$flow.files.length" flow-btn>Change</span>
+                    <span class="btn btn_small" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove</span>
+                    <p>PNG, GIF, JPG, JPEG files only.</p>
+                </div>
+            </div>
+		</section>
+
+        <section class="profile_details">
+            <div class="field_set">
+                <label for="user_name">Username</label>
+                <input id="user_name" type="text" class="form-input" placeholder="Bitcoin" ng-model="label"></input>
+            </div>
+
+            <div class="field_set">
+                <label for="user_email">Email</label>
+                <input id="user_email" type="text" class="form-input" placeholder="bitcoin@bitage.io.com" ng-model="label"></input>
+            </div>
+
+            <div class="field_set">
+                <label for="user_password">Password</label>
+                <a href="#" class="change_password">Change Password</a>
+            </div>
+
+            <button class="btn btn_med">Save Profile</button>
+        </section>
+
     </div>
-
 </div>
