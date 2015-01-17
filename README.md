@@ -14,14 +14,15 @@ Technologies (MEAN stack):
 
 Demo:
 ------
-    <a href="http://nodedallas.io/apps/bitage-website/">Website</a>
-    <a href="http://nodedallas.io/apps/bitage-dashboard/">Dashboard</a>
+* <a href="http://nodedallas.io/apps/bitage-website/" target="_blank">Website</a>
+* <a href="http://nodedallas.io/apps/bitage-dashboard/" target="_blank">Dashboard</a>
 
 - [x] Start branching
 - [ ] Settings/Profile view
 - [ ] Wallet view
 - [ ] BitcoinJS
 - [ ] Edit address view
+- [ ] Mobile styling
 - [ ] MongoDB setup
 - [ ] BITAGE Express APIs (add_address, save_user, etc...)
 - [ ] Node Oauth - passport.js
