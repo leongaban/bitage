@@ -1,0 +1,97 @@
+/* WALLET
+====================================================
+==================================================== */
+
+.wallet-content {
+    position: relative;
+    width: 100%;
+}
+
+.wallet-balance {
+	padding: 20px;
+
+	.current_balance,
+	.btc_amount,
+	h1,
+	li { float: left; }
+}
+
+.wallet_table {
+	width: 100%;
+}
+
+.wallet-transactions {
+	margin-top: 1px;
+	padding: 0 20px 20px 20px;
+
+	.row_body td {
+	    padding: 16px 20px;
+	    margin-right: 20px;
+	    border-right: none;
+	    border-bottom: 1px solid #eee;
+	    // border-bottom: 1px solid #eee;
+	}
+
+	.icon-download {
+		color: $green;
+	}
+
+	.icon-upload {
+		color: $red;
+	}
+
+	.date {
+		font-size: em(11);
+		color: #ccc;
+	}
+}
+
+.td_icon {
+	padding-right: 0 !important;
+	width: 10%;
+}
+
+.td_comment {
+	padding-left: 0 !important;
+	width: 70%;
+	line-height: 20px;
+}
+
+.td_amount {
+	width: 20%;
+}
+
+.current_balance {
+	font-size: em(18);
+	font-weight: 600;
+	line-height: 40px;
+
+	.btc_amount { margin-left: 10px; color: $orange; }
+
+	.usd_amount {
+		float: left;
+		margin-left: 15px;
+	}
+
+	.denomination { margin-top: -2px; }
+}
+
+.green {
+	color: $green;
+}
+
+.red {
+	color: $red;
+}
+
+.wallet_actions {
+	float: right;
+
+	.icon { float: left; margin-right: 10px; }
+
+	.btn_med { padding-left: 10px; }
+
+	span { position: relative; top: 2px; }
+
+	li:first-child { margin-right: 20px; }
+}

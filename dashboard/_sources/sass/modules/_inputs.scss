@@ -44,6 +44,10 @@ select#account_type {
     background: #eee;
     border: 1px solid #ccc;//lighten($gray, 30%);
     @include rounded(3px);
+
+    &:focus {
+    	border: 1px solid darken(#ccc, 10%);
+    }
 }
 
 .icon-down-open {

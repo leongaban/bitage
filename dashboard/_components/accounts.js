@@ -10,10 +10,10 @@
 
 		$scope.accounts = [];
 		$scope.accounts = [
+			{ type: 'Savings', label: 'BitAge', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
 			{ type: 'Savings', label: 'Blockchain.info', balance: '0.003', address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH' },
 			{ type: 'Savings', label: 'Coinbase wallet', balance: '0.003', address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W' },
-			{ type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' },
-			{ type: 'Savings', label: 'Wood wallet', balance: '1', address: '1Pto8Mm6PphDwJYL3UyNxMPqFUFoigGUUU' }
+			{ type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' }
 		];
 
 		$scope.addAccount = function() {
