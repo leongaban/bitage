@@ -14,12 +14,12 @@ Technologies (MEAN stack):
 
 Demo:
 ------
-* <a href="http://nodedallas.io/apps/bitage-website/" target="_blank">Website</a>
-* <a href="http://nodedallas.io/apps/bitage-dashboard/" target="_blank">Dashboard</a>
+http://nodedallas.io/apps/bitage-website/
+http://nodedallas.io/apps/bitage-dashboard/
 
 - [x] Start branching
 - [x] Settings/Profile view
-- [ ] Wallet view
+- [x] Wallet view
 - [ ] BitcoinJS
 - [ ] Edit address view
 - [ ] Mobile styling
