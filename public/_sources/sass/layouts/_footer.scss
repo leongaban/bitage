@@ -11,10 +11,7 @@ footer {
 	color: $gray;
 	z-index: 3;
 
-	a {
-		font-weight: 600;
-		color: darken($purple, 5%);
-	}
+	a { font-weight: 600; color: darken($purple, 5%); }
 }
 
 .biticker-value {
@@ -25,7 +22,7 @@ footer {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	color: #fff;
+	color: darken(#fff, 30%);
 }
 
 .biticker-loading { color: #fff; }
@@ -33,8 +30,5 @@ footer {
 #body_about,
 #body_login,
 #body_register {
-	footer {
-		position: absolute;
-		bottom: 20px;
-	}
+	footer { position: absolute; bottom: 20px; }
 }

@@ -7,10 +7,10 @@ BITAGE application
 
 Technologies (MEAN stack):
 ------
-* <a href="http://docs.mongodb.org/manual/" target="_blank">MongoDB</a>
-* <a href="http://expressjs.com/" target="_blank">Express</a>
-* <a href="https://docs.angularjs.org/guide">Angular</a>
-* <a href="http://nodejs.org/api/" target="_blank">Node</a> | <a href="https://www.npmjs.com/" target="_blank">npm</a>
+* <a href="http://docs.mongodb.org/manual/">MongoDB</a>
+* <a href="http://expressjs.com/">Express</a>
+* <a href="https://docs.angularjs.org/guide">Angular</a> | <a href="http://ngmodules.org/">ngmodules</a>
+* <a href="http://nodejs.org/api/">Node</a> | <a href="https://www.npmjs.com/">npm</a>
 
 Demo:
 ------

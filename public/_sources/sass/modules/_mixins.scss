@@ -15,9 +15,9 @@ $em-base: 16;
 }
 
 @mixin noselect() {
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -121,32 +121,14 @@ $em-base: 16;
 
 //@include linear-gradient(color, color);
 @mixin linear-gradient($fromColor, $toColor) {
-    background-color: $toColor; /* Fallback Color */
-    background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
-    background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
-    background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
-    background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
-    background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+    background-color: $toColor;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+    background-image: -webkit-linear-gradient(top, $fromColor, $toColor);
+    background-image:    -moz-linear-gradient(top, $fromColor, $toColor);
+    background-image:     -ms-linear-gradient(top, $fromColor, $toColor);
     background-image:         linear-gradient(top, $fromColor, $toColor);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
 }
-
-/* FROM BOURBON */
-// http://bourbon.io/docs/#font-face
-
-/* FLEXBOX */
-// Flexible grid
-// @function flex-grid($columns, $container-columns: $fg-max-columns) {
-//     $width: $columns * $fg-column + ($columns - 1) * $fg-gutter;
-//     $container-width: $container-columns * $fg-column + ($container-columns - 1) * $fg-gutter;
-//     @return percentage($width / $container-width);
-// }
-
-// Flexible gutter
-// @function flex-gutter($container-columns: $fg-max-columns, $gutter: $fg-gutter) {
-//     $container-width: $container-columns * $fg-column + ($container-columns - 1) * $fg-gutter;
-//     @return percentage($gutter / $container-width);
-// }
 
 // CSS diagonal stripes
 // background: repeating-linear-gradient(

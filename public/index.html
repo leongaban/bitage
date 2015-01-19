@@ -28,8 +28,6 @@
         <div class="biticker-container" data-currency="USD"></div>
         <nav id="main_nav">
             <ul>
-                <li>
-                </li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="login.html">Sign In</a></li>
@@ -39,6 +37,7 @@
     </header>
 
     <section id="home_intro">
+
         <h1>BitAge</h1>
         <h2>A Bitcoin Services Company</h2>
 
@@ -69,6 +68,7 @@
                 </span>
             </form>
         </section>
+
     </section>
 
     <section id="bitcoin_services">
@@ -95,44 +95,15 @@
                 <div class="dashboard"></div>
             </div>
         </div>
+
     </section>
 
-    <footer>
-        &copy; <script>document.write(new Date().getFullYear())</script> BitAge
-    </footer>
+    <footer>&copy; <script>document.write(new Date().getFullYear())</script> BitAge</footer>
 
     <script src="assets/js/plugins/biticker.min.js"></script>
     <script src="assets/js/plugins/classie.min.js"></script>
     <script>
-        (function() {
-            if (!String.prototype.trim) {
-                (function() {
-                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-                    String.prototype.trim = function() {
-                        return this.replace(rtrim, '');
-                    };
-                })();
-            }
-
-            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-                if( inputEl.value.trim() !== '' ) {
-                    classie.add( inputEl.parentNode, 'input--filled' );
-                }
-
-                inputEl.addEventListener( 'focus', onInputFocus );
-                inputEl.addEventListener( 'blur', onInputBlur );
-            } );
-
-            function onInputFocus( ev ) {
-                classie.add( ev.target.parentNode, 'input--filled' );
-            }
-
-            function onInputBlur( ev ) {
-                if( ev.target.value.trim() === '' ) {
-                    classie.remove( ev.target.parentNode, 'input--filled' );
-                }
-            }
-        })();
+        (function(){function e(e){classie.add(e.target.parentNode,"input--filled")}function t(e){if(e.target.value.trim()===""){classie.remove(e.target.parentNode,"input--filled")}}if(!String.prototype.trim){(function(){var e=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;String.prototype.trim=function(){return this.replace(e,"")}})()}[].slice.call(document.querySelectorAll("input.input__field")).forEach(function(n){if(n.value.trim()!==""){classie.add(n.parentNode,"input--filled")}n.addEventListener("focus",e);n.addEventListener("blur",t)})})();
     </script>
 
     <script>

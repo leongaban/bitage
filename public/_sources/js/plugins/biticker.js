@@ -12,7 +12,6 @@
     }
   };
   checkReady(function($) {
-    // $('<link />', {rel:'stylesheet', type:'text/css', href: 'http://ronency.github.io/biticker/stylesheets/biticker.css'}).appendTo('head');
     function trigger(event, data) {
       $(document).trigger(event, data);
     }
@@ -42,7 +41,16 @@
     var createTicker = function(ticker){
       var currency = ticker.data('currency');
       fetchDataForCurrency(currency);
-      setInterval(function(){fetchDataForCurrency(currency);}, 30000);
+
+      // update every minute/30secs with flicker
+      setInterval(function(){
+        fetchDataForCurrency(currency);
+        $('.biticker-value').addClass('biticker-loading');
+
+        setInterval(function(){
+          $('.biticker-value').removeClass('biticker-loading');
+        }, 1000);
+      }, 30000);
     };
 
     var bindTicker = function(e, ticker){
@@ -68,10 +76,11 @@
       var html =  singleHtml.replace('#value#', symbol + data.last)
                             .replace('#ask#', symbol + data.ask)
                             .replace('#bid#', symbol + data.bid);
+
       ticker.addClass('biticker-loading')
             .html(html)
             .removeClass('biticker-loading');
-      // setInterval(function(){fetchDataForCurrency(currency);}, 1000);
+
     };
   });
 })();
