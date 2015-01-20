@@ -16,7 +16,6 @@
 	var app = angular.module('bitAge',
 		['ui.router',
 		 'app-header',
-		 'app-home',
 		 'app-about',
 		 'app-login',
 		 'app-register'])
@@ -29,8 +28,7 @@
 			$stateProvider
 				.state('home', {
 					url: '/home',
-					templateUrl: '_views/home.html',
-					controller: 'HomeCtrl',
+					templateUrl: '_views/home.html'
 				})
 
 				.state('about', {
