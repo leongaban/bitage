@@ -32,7 +32,7 @@ module.exports = function(app, passport) {
 		// LOGIN ===============================
 		// show the login form
 		app.get('/login', function(req, res) {
-			res.render('login.ejs', { message: req.flash('loginMessage') });
+			res.render('login.hbs', { message: req.flash('loginMessage') });
 		});
 
 		// process the login form
