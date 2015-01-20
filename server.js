@@ -23,7 +23,7 @@ var configDB = require('./config/database.js');
 var router = express.Router();
 
 // configuration ===============================================================
-mongoose.connect('mongodb://localhost:27017'); // connect to our database
+mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox'); // connect to our database
 
 // loading static and bower components ===================
 app.use(express.static(__dirname + '/public'));
@@ -54,6 +54,18 @@ app.use('/dashboard', router);
 // The Angular App itself below
 app.use(express.static(__dirname + '/dashboard'));
 
+// GHOST BLOG ENGINE TO RUN AS NPM PACKAGE
+
+var ghost = require('ghost'),
+    parentApp = express();
+
+ghost().then(function (ghostServer) {
+    parentApp.use(ghostServer.config.paths.subdir, ghostServer.rootApp);
+
+    ghostServer.start(parentApp);
+    console.log('Ghost server running on 2368');
+});
+
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
@@ -61,4 +73,4 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 
 // launch ======================================================================
 app.listen(port);
-console.log('Server running at' + port);
+console.log('Server running at ' + port);
