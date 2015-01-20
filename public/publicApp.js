@@ -15,7 +15,6 @@
 
 	var app = angular.module('bitAge',
 		['ui.router',
-		 'app-header',
 		 'app-about',
 		 'app-login',
 		 'app-register'])

@@ -22,7 +22,7 @@ http://nodedallas.io/apps/bitage-dashboard/
 - [x] Settings/Profile view
 - [x] Wallet view
 - [x] Ghost blog setup
-- [ ] Angularize Public views
+- [x] Angularize Public views
 - [ ] Node Oauth - passport.js
 - [ ] Edit address view
 - [ ] Mobile styling
