@@ -12,9 +12,10 @@ Technologies (MEAN stack):
 * <a href="https://docs.angularjs.org/guide">Angular</a> | <a href="http://ngmodules.org/">ngmodules</a>
 * <a href="http://nodejs.org/api/">Node</a> | <a href="https://www.npmjs.com/">npm</a>
 
-Demo:
+Demos:
 ------
-http://nodedallas.io/apps/bitage-website/ <br/>
+http://nodedallas.io/apps/bitage-website/
+
 http://nodedallas.io/apps/bitage-dashboard/
 
 - [x] Start branching
