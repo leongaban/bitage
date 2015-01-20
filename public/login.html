@@ -8,12 +8,12 @@
     <link href="assets/css/bitage_web.css" rel="stylesheet">
 </head>
 
-<body id="body_register">
+<body id="body_login">
 	<header>
 		<section class="bitage_logo">
 			<h1><a href="index.html">BitAge</a></h1>
 		</section>
-
+        
         <nav id="main_nav">
             <ul>
                 <li><a href="about.html">About</a></li>
@@ -24,28 +24,29 @@
         </nav>
     </header>
 
-    <section id="register_widget">
+    <section id="login_widget">
     	<form>
-			<h2>Create your account</h2>
-
-            <span>
-                <input id="form_register_name" type="text" placeholder="Full Name" tabindex="1">
-            </span>
+			<h2>Login to your account</h2>
 
     		<span>
-    			<input id="form_register_email" type="email" placeholder="Email" tabindex="2">
+    			<input id="form_login_email" type="email" placeholder="Email" tabindex="1">
     		</span>
 
     		<span>
-    			<input id="form_register_password" type="password" placeholder="Choose Password" tabindex="3">
+    			<input id="form_login_password" type="password" placeholder="Password" tabindex="2">
     		</span>
 
     		<span>
-    			<button id="btn_register" class="btn" tabindex="4">Create Account</button>
+    			<button id="btn_login" class="btn" tabindex="3">Sign In</button>
+    		</span>
+
+    		<span class="login_comments">
+    			<input id="stay_signed_in" name="stay_signed_in" tabindex="4" type="checkbox" value="1">
+    			<p>Stay signed in on this computer</p>
     		</span>
 
     		<span class="login_forgot_password">
-    			Have an account? | <a href="login.html">Sign In</a>
+    			<a href="#">Forgot password?</a> | <a href="register.html">Sign Up</a>
     		</span>
     	</form>
     </section>
