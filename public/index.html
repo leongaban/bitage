@@ -4,15 +4,15 @@
     <!-- (C) 2015 @leongaban & @paulinhorocha -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BITAGE | Welcome to the age of Bitcoin</title>
+    <title>BitAge | Welcome to the age of Bitcoin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BITAGE | Welcome to the age of Bitcoin">
+    <meta name="description" content="BitAge | Welcome to the age of Bitcoin">
     <meta name="author" content="@leongaban &amp; @paulinhorocha">
 
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="BITAGE">
-    <meta property="og:title" content="BITAGE" />
+    <meta property="og:site_name" content="BitAge">
+    <meta property="og:title" content="BitAge" />
     <meta property="og:image" content="logo@2x.png" />
     <meta property="og:url" content="http://bitage.io" />
     <meta property="og:description" content="Welcome to the age of Bitcoin" />
@@ -25,6 +25,7 @@
 
 <body id="body_home">
     <header>
+        <div class="biticker-container" data-currency="USD"></div>
         <nav id="main_nav">
             <ul>
                 <li><a href="about.html">About</a></li>
@@ -36,12 +37,12 @@
     </header>
 
     <section id="home_intro">
-        <h1>BITAGE</h1>
-        <h2>In the age of Bitcoin, we help you keep watch over your assets.</h2>
+
+        <h1>BitAge</h1>
+        <h2>A Bitcoin Services Company</h2>
 
         <section id="fast_signup" class="content">
-            <h3>Join the age of digital money</h3>
-
+            <h3>Get a wallet and join the age of Bitcoin</h3>
             <form>
                 <span class="input input_jiro">
                     <input class="input__field input__field--jiro" type="text" id="input-1" />
@@ -63,49 +64,46 @@
                 </span>
 
                 <span class="input input_jiro">
-                    <button id="btn_start_account" class="btn">Create Account</button>
+                    <button id="btn_start_account" class="btn">Create Wallet</button>
                 </span>
             </form>
         </section>
+
     </section>
 
-    <footer>
-        &copy; <script>document.write(new Date().getFullYear())</script> Bitage.io
-        <div class="biticker-container" data-currency="USD"></div>
-    </footer>
+    <section id="bitcoin_services">
+
+        <h1>Our Bitcoin Services</h1>
+
+        <div class="service_blocks">
+
+            <div class="service_block">
+                <h2>A secure online wallet</h2>
+                <p>Safely store your bitcoins and conveniently access them with ease</p>
+                <div class="key"></div>
+            </div>
+
+            <div class="service_block">
+                <h2>Spend and tip</h2>
+                <p>Buy, send or tip across the globe, instantly</p>
+                <div class="globe"></div>
+            </div>
+
+            <div class="service_block last_block">
+                <h2>Monitor multiple accounts</h2>
+                <p>We make it easy to keep track of all your bitcoins</p>
+                <div class="dashboard"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>&copy; <script>document.write(new Date().getFullYear())</script> BitAge</footer>
 
     <script src="assets/js/plugins/biticker.min.js"></script>
     <script src="assets/js/plugins/classie.min.js"></script>
     <script>
-        (function() {
-            if (!String.prototype.trim) {
-                (function() {
-                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-                    String.prototype.trim = function() {
-                        return this.replace(rtrim, '');
-                    };
-                })();
-            }
-
-            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-                if( inputEl.value.trim() !== '' ) {
-                    classie.add( inputEl.parentNode, 'input--filled' );
-                }
-
-                inputEl.addEventListener( 'focus', onInputFocus );
-                inputEl.addEventListener( 'blur', onInputBlur );
-            } );
-
-            function onInputFocus( ev ) {
-                classie.add( ev.target.parentNode, 'input--filled' );
-            }
-
-            function onInputBlur( ev ) {
-                if( ev.target.value.trim() === '' ) {
-                    classie.remove( ev.target.parentNode, 'input--filled' );
-                }
-            }
-        })();
+        (function(){function e(e){classie.add(e.target.parentNode,"input--filled")}function t(e){if(e.target.value.trim()===""){classie.remove(e.target.parentNode,"input--filled")}}if(!String.prototype.trim){(function(){var e=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;String.prototype.trim=function(){return this.replace(e,"")}})()}[].slice.call(document.querySelectorAll("input.input__field")).forEach(function(n){if(n.value.trim()!==""){classie.add(n.parentNode,"input--filled")}n.addEventListener("focus",e);n.addEventListener("blur",t)})})();
     </script>
 
     <script>
