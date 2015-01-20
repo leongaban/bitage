@@ -14,21 +14,22 @@ Technologies (MEAN stack):
 
 Demo:
 ------
-http://nodedallas.io/apps/bitage-website/
+http://nodedallas.io/apps/bitage-website/ <br/>
 http://nodedallas.io/apps/bitage-dashboard/
 
 - [x] Start branching
 - [x] Settings/Profile view
 - [x] Wallet view
-- [ ] BitcoinJS
+- [x] Ghost blog setup
+- [ ] Angularize Public views
+- [ ] Node Oauth - passport.js
 - [ ] Edit address view
 - [ ] Mobile styling
+- [ ] BitcoinJS
 - [ ] MongoDB setup
 - [ ] BITAGE Express APIs (add_address, save_user, etc...)
-- [ ] Node Oauth - passport.js
 - [ ] 2-factor Authentication
 - [ ] Transactions infinite scroll
-- [ ] Ghost blog
 - [ ] Mailchimp (blog updates)
 - [ ] Sendgrid (notifications)
 - [ ] Get Twitter
