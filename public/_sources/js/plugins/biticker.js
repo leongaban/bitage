@@ -43,14 +43,14 @@
       fetchDataForCurrency(currency);
 
       // update every minute/30secs with flicker
-      setInterval(function(){
-        fetchDataForCurrency(currency);
-        $('.biticker-value').addClass('biticker-loading');
+      // setInterval(function(){
+      //   fetchDataForCurrency(currency);
+      //   $('.biticker-value').addClass('biticker-loading');
 
-        setInterval(function(){
-          $('.biticker-value').removeClass('biticker-loading');
-        }, 1000);
-      }, 30000);
+      //   setInterval(function(){
+      //     $('.biticker-value').removeClass('biticker-loading');
+      //   }, 1000);
+      // }, 60000);
     };
 
     var bindTicker = function(e, ticker){

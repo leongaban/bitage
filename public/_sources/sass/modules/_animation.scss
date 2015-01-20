@@ -4,19 +4,18 @@
 
 @-webkit-keyframes fading-loop {
     0% { opacity: 1; }
-    50%  { opacity: 0.2; }
+    50%  { opacity: 0.4; }
     100% { opacity: 1; }
 }
 
 @-moz-keyframes fading-loop {
     0% { opacity: 1; }
-    50%  { opacity: 0.2; }
+    50%  { opacity: 0.4; }
     100% { opacity: 1; }
 }
 
 @keyframes fading-loop {
     0% { opacity: 1; }
-    50%  { opacity: 0.2; }
+    50%  { opacity: 0.4; }
     100% { opacity: 1; }
 }
-

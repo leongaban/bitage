@@ -3,9 +3,9 @@
 ==================================================== */
 
 #body_id {
-	// background-image: url("../img/mountains.jpg");
-	// background-image: url("../img/ocean.jpg");
 	background: $gray;
+	// background-image: url("../img/ocean.jpg");
+	// background-image: url("../img/mountains.jpg");
 	background-image: url("../img/shapes.gif");
 	background-position: center;
 }
@@ -24,9 +24,6 @@
 	margin-right: auto;
 	margin-bottom: 40px;
 	margin-top: 135px;
-	left: 0;
-	right: 0;
-	height: auto;
 	text-align: center;
 	color: #333;
 
@@ -70,10 +67,7 @@
 	background: #fff;
 	@include clearfix();
 
-	h1 {
-		margin-bottom: 40px;
-		font-size: em(56);
-	}
+	h1 { margin-bottom: 40px; font-size: em(56); }
 }
 
 .service_blocks {

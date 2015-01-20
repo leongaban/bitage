@@ -5,8 +5,7 @@
 	BITAGE.io Public views app
 	"Keep watch over your Bitcoins"
 	
-   		by: NodeDallas.io
-   		(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+   	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
 ============================================ */
@@ -27,11 +26,13 @@
 			$stateProvider
 				.state('home', {
 					url: '/home',
+					data : { pageTitle: 'A Bitcoin Services Company' },
 					templateUrl: '_views/home.html'
 				})
 
 				.state('about', {
 					url: '/about',
+					data : { pageTitle: 'About BitAge' },
 					templateUrl: '_views/about.html',
 					controller: 'AboutCtrl'
 				})
@@ -48,12 +49,14 @@
 					controller: 'RegisterCtrl'
 				});
 
-			// default view:
 			$urlRouterProvider.otherwise('/home');
 	}])
 
 	.controller('MainCtrl', ['$scope', '$state',  function($scope, $state) {
-		$scope.showLogo = function(){
+		$scope.showLogo = function() {
+	    	return $state.is('home');
+	   	}
+	   	$scope.showTicker = function() {
 	    	return $state.is('home');
 	   	}
 	}]);

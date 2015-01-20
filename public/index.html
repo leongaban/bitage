@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- (C) 2015 @leongaban & @paulinhorocha -->
+    <!-- @leongaban & @paulinhorocha -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BitAge | Welcome to the age of Bitcoin</title>
+    <title>BitAge | A Bitcoin Services Company</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BitAge | Welcome to the age of Bitcoin">
+    <meta name="description" content="BitAge | A Bitcoin Services Company">
     <meta name="author" content="@leongaban &amp; @paulinhorocha">
 
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BitAge">
     <meta property="og:title" content="BitAge" />
-    <meta property="og:image" content="logo@2x.png" />
+    <meta property="og:image" content="_assets/img/logo@2x.png" />
     <meta property="og:url" content="http://bitage.io" />
-    <meta property="og:description" content="Welcome to the age of Bitcoin" />
+    <meta property="og:description" content="A Bitcoin Services Company" />
 
     <link rel="icon" href="favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet'>
@@ -28,13 +28,13 @@
       ng-controller="MainCtrl">
 
     <header>
-        <section 
-            ng-hide="showLogo()"
-            class="bitage_logo">
+        <section ng-hide="showLogo()" class="bitage_logo">
             <h1><a ui-sref="home">BitAge</a></h1>
         </section>
 
-        <div class="biticker-container" data-currency="USD"></div>
+        <div ng-show="showTicker()" 
+             class="biticker-container" data-currency="USD"></div>
+
         <nav id="main_nav">
             <ul>
                 <li><a ui-sref="about">About</a></li>
