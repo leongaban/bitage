@@ -2,11 +2,6 @@
 ====================================================
 ==================================================== */
 
-/* 1600
-==================================================== */
-@media all and (max-width: 1600px) {
-}
-
 /* 1200
 ==================================================== */
 @media all and (max-width: 1200px) {
@@ -30,6 +25,11 @@
 /* 800
 ==================================================== */
 @media all and (max-width: 800px) {
+	.biticker-value {
+		left: 20px;
+		margin: 0;
+		text-align: left;
+	}
 }
 
 /* 768 (Mobile Break)
@@ -38,10 +38,13 @@
     
 }
 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) {
-    
+/* 600
+==================================================== */
+@media all and (max-width: 600px) {
+	.biticker-container,
+    .biticker-value {
+    	display: none;
+    }
 }
 
 /* 400
