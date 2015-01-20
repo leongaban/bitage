@@ -9,11 +9,12 @@
     width: 250px;
     height: 100%;
     color: #fff;
-    background: $sidebarActive;
+    background-image: url("../img/shapes.gif");
+    background-size: 600px 225px;
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
-    @include linear-gradient($sidebarActive, $sidebarHover);
+    // @include linear-gradient($sidebarActive, $sidebarHover);
 }
 
 .sidebar-nav {
@@ -28,11 +29,7 @@
 
     li:not(.sidebar-brand) {
         line-height: 40px;
-        
-        &:hover {
-            background: lighten($sidebarHover, 5%);
-            // background: $sidebarHover;
-        }
+        &:hover { background: lighten($sidebarHover, 5%); }
     }
 
     li:last-child { border-bottom: none; }
@@ -41,9 +38,7 @@
         display: block;
         font-size: em(18);
         color: #eee;
-
         &:hover { text-decoration: none; }
-
         &:active { background: lighten($sidebar, 10%); }
     }
 }
@@ -64,26 +59,16 @@ li.active-tab { background: $sidebarHover; }
 
 // Brand Logo
 li.sidebar-brand {
-    margin-bottom: 30px;
-    font-family: 'Roboto Condensed', sans-serif;
+    margin-bottom: 25px;
 
     h1 {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+        font-family: 'Roboto Condensed', sans-serif;
         font-weight: 700;
         font-size: em(32);
-        text-transform: uppercase;
-        @include text-shadow(2px, 2px, #333);
     }
 
     h2 { font-size: em(14); }
-
-    // em {
-    //     color: $red;
-    // }
-
-    // a {
-    //     color: $orange;
-    // }
 
     a:active { background: none; }
 

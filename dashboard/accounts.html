@@ -5,22 +5,30 @@
     <section class="widget-container total_widget">
         <ul>
             <li><p class="total_label">Total:</p></li>
-            <li><p class="total_btc">1.009</p><em class="denomination">BTC</em></li>
-            <li><p class="total_usd">261.8</p><em class="denomination">USD</em></li>
-            <li><p class="total_euro">218.86</p><em class="denomination">EURO</em></li>
-            <li class="add_currency_btn_li"><button class="btn btn_small">Edit</button></li>
+            <li><p class="total_btc">1.010</p><em class="denomination">BTC</em></li>
+            <li><p class="total_usd">= 207.40</p><em class="denomination">USD</em></li>
+            <!-- <li><p class="total_euro">179.40</p><em class="denomination">EURO</em></li> -->
+            <!-- <li class="add_currency_btn_li"><button class="btn btn_small">Edit</button></li> -->
         </ul>
     </section>
 
-    <section ng-repeat="account in accounts" 
-             ng-init="addressId='address-' + $index"
-             class="widget-container added_address">
+    <section class="widget-container added_address">
 
-            <table>
-                <tr>
+        <table class="accounts_table">
+            <thead>
+                <tr class="row_head">
+                    <td>Balance</td>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Edit</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row_body"
+                    ng-repeat="account in accounts" 
+                    ng-init="addressId='address-' + $index">
                     <td class="td_acct_price">
-                        <div class="icon-pencil-squared"></div>
-                        BTC <span>{{account.balance}}</span>
+                        <span>{{account.balance}}</span>
                     </td>
 
                     <td class="td_acct_label">
@@ -33,19 +41,20 @@
                     </td>
 
                     <td class="td_edit">
-                         <div class="icon-sort"></div>
+                        <div class="icon-pencil-squared"></div>
                     </td>
                 </tr>
-            </table>
+            </tbody>
+        </table>
 
     </section>
 
     <section class="widget-container add_account_widget">
 
-        <h1>Add accounts to monitor here:</h1>
+        <h1><div class="icon-help-circled"></div>Add accounts to monitor here:</h1>
 
         <form id="add_new_address_form" ng-submit="addAccount()">
-            <select id="account_type">
+            <!-- <select id="account_type">
                 <option>Savings</option>
                 <option>Spending</option>
                 <option>Donation / Tipping</option>
@@ -53,7 +62,8 @@
                 <option>Mining</option>
                 <option>Watching</option>
             </select>
-            <div class="icon-down-open"></div>
+
+            <div class="icon-down-open"></div> -->
 
             <input type="text" class="form-input" placeholder="Account name" ng-model="label"></input>
 

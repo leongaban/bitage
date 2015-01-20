@@ -16,6 +16,7 @@
 	var app = angular.module('bitAge',
 		['ui.router', 
 		 'app-dashboard',
+		 'app-wallet',
 		 'app-accounts',
 		 'app-settings'])
 
@@ -25,6 +26,12 @@
 		function($stateProvider, $urlRouterProvider) {
 
 			$stateProvider
+				.state('wallet', {
+					url: '/wallet',
+					templateUrl: 'wallet.html',
+					controller: 'WalletCtrl'
+				})
+
 				.state('accounts', {
 					url: '/accounts',
 					templateUrl: 'accounts.html',
@@ -37,6 +44,7 @@
 					controller: 'SettingsCtrl'
 				});
 
+			// default view:
 			$urlRouterProvider.otherwise('accounts');
 	}]);
 

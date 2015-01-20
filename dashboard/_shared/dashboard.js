@@ -9,7 +9,7 @@
 	.controller('DashCtrl', ['$scope', function($scope) {
 
 		// Accounts tab selected:
-		$scope.sectionSelected = 1;
+		$scope.sectionSelected = 2;
 
 		// add timeout for avatar_menu
 		// add click on body to hide menu

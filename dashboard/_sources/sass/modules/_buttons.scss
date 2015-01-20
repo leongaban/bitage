@@ -5,19 +5,19 @@
 .btn {
 	color: #fff;
     font-weight: 600;
-    text-shadow: 1px 1px #333;
+    // text-shadow: 1px 1px #333;
     background: lighten($button, 10%);
-    border: 1px solid lighten($button, 20%);
+    border: 1px solid lighten($button, 10%);
     cursor: pointer;
-    @include rounded(5px);
+    @include rounded(3px);
 
     &:hover {
         background: $buttonHover;
-        border: 1px solid lighten($button, 30%);
+        border: 1px solid $buttonHover;
     }
 
     &:active { 
-        text-shadow: 1px 1px #666;
+        // text-shadow: 1px 1px #666;
         background: lighten($buttonHover, 15%);
         border: 1px solid #fff;
     }
@@ -29,9 +29,9 @@
 }
 
 .btn_small {
-    padding: 8px 10px;
+    padding: 7px 10px;
     height: 30px;
-    font-size: em(11);
+    font-size: em(12);
     line-height: 10px;
 }
 
@@ -41,6 +41,4 @@
     line-height: 10px;
 }
 
-.btn_add_account {
-    float: left;
-}
+.btn_add_account { float: left; }

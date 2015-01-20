@@ -2,6 +2,10 @@
 ====================================================
 ==================================================== */
 
+.profile_container {
+	padding: 20px;
+}
+
 .profile_avatar {
 	display: block;
 	margin-bottom: 40px;
@@ -22,16 +26,38 @@
 .image_upload_buttons {
 	margin: 10px 0 20px 0;
 
-	.btn {
+	span {
 		float: left;
+	}
+
+	.btn {
 		margin-right: 10px;
+		height: auto;
 	}
 }
 
-.profile_ul {
-	li { margin: 8px 0; }
-	li:first-child { margin: 0 0 20px 0; }
-	li:last-child { margin-top: 20px; }
+.profile_details {
+	width: 350px;
+	@include clearfix();
+
+	label {
+		float: left;
+		margin-right: 8px;
+		width: 100px;
+		@include clearfix();
+	}
+}
+
+.field_set {
+	float: left;
+	margin-bottom: 8px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.change_password {
+	float: left;
+	color: $buttonHover;
 }
 
 .profile_user_name {
