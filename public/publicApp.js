@@ -15,6 +15,7 @@
 
 	var app = angular.module('bitAge',
 		['ui.router',
+		 'app-header',
 		 'app-home',
 		 'app-about',
 		 'app-login',
@@ -29,7 +30,7 @@
 				.state('home', {
 					url: '/home',
 					templateUrl: '_views/home.html',
-					controller: 'HomeCtrl'
+					controller: 'HomeCtrl',
 				})
 
 				.state('about', {
@@ -52,6 +53,12 @@
 
 			// default view:
 			$urlRouterProvider.otherwise('/home');
+	}])
+
+	.controller('MainCtrl', ['$scope', '$state',  function($scope, $state) {
+		$scope.showLogo = function(){
+	    	return $state.is('home');
+	   	}
 	}]);
 
 })();

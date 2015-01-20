@@ -1,12 +1,12 @@
 /*global angular */
 /* =========================================
-   ABOUT Module
+   HEADER Module
    ========================================= */
 
 (function() {
 
-	var app = angular.module('app-about', [])
-	.controller('AboutCtrl', ['$scope', function($scope) {
+	var app = angular.module('app-header', [])
+	.controller('HeaderCtrl', ['$scope', function($scope) {
 
 
 	}]);
