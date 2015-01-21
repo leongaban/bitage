@@ -50,9 +50,9 @@
                     <li ng-click="sidebarClick();">
                         <a ui-sref="wallet" ng-click="closeMenu();">Wallet</a>
                     </li>
-                    <li ng-click="sidebarClick();">
+                    <!-- <li ng-click="sidebarClick();">
                         <a ui-sref="accounts" ng-click="closeMenu();">Accounts</a>
-                    </li>
+                    </li> -->
                     <li ng-click="sidebarClick();">
                         <a ui-sref="settings" ng-click="closeMenu();">Settings</a>
                     </li>
@@ -67,16 +67,16 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <h1>Bit<em>Age</em></h1>
-                    <h2>A Bitcoin Services Company</h2>
+                    <!-- <h2>A Bitcoin Services Company</h2> -->
                 </li>
                 <li ng-click="sidebarClick();"
                     ng-class="{active: $state.includes('wallet')}">
                     <a ui-sref="wallet">Wallet</a>
                 </li>
-                <li ng-click="sidebarClick();"
+                <!-- <li ng-click="sidebarClick();"
                     ng-class="{active: $state.includes('accounts')}">
                     <a ui-sref="accounts">Accounts</a>
-                </li>
+                </li> -->
                 <li ng-click="sidebarClick();"
                     ng-class="{active: $state.includes('settings')}">
                     <a ui-sref="settings">Settings</a>
@@ -100,62 +100,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
     <script src="_assets/js/libs/angular-ui-router.min.js"></script>
     <script src="_components/wallet.js"></script>
-    <script src="_components/accounts.js"></script>
+    <!--<script src="_components/accounts.js"></script>-->
     <script src="_components/settings.js"></script>
     <script src="_assets/js/plugins/ng-flow-standalone.min.js"></script>
     <script src="dashApp.js"></script>
-
-    <!--
-    <script src="_assets/js/plugins/particles.min.js"></script>
-    <script type="text/javascript">
-        particlesJS('sidebar-wrapper', {
-            particles: {
-              color: '#026f9d',
-              shape: 'circle',
-              opacity: 1,
-              size: 2.5,
-              size_random: true,
-              nb: 50,
-              line_linked: {
-                enable_auto: true,
-                distance: 350,
-                color: '#026f9d',
-                opacity: 0.5,
-                width: .5,
-                condensed_mode: {
-                  enable: false,
-                  rotateX: 600,
-                  rotateY: 600
-                }
-              },
-              anim: {
-                enable: true,
-                speed: 1
-              }
-            },
-            interactivity: {
-              enable: false,
-              mouse: {
-                distance: 250
-              },
-              detect_on: 'canvas',
-              mode: 'grab',
-              line_linked: {
-                opacity: 0.6
-              },
-              events: {
-                onclick: {
-                  push_particles: {
-                    enable: true,
-                    nb: 4
-                  }
-                }
-              }
-            },
-            retina_detect: true
-        });
-    </script>
-    -->
 
     <script type="text/javascript">
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

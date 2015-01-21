@@ -50,13 +50,15 @@ li.active { background: $sidebarHover; }
 
 // Brand Logo
 li.sidebar-brand {
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
+    margin-bottom: 36px;
 
     h1 {
         margin-bottom: 10px;
         font-family: 'Roboto Condensed', sans-serif;
         font-weight: 700;
-        font-size: em(32);
+        // font-size: em(32);
+        font-size: em(48);
     }
 
     h2 { font-size: em(14); }

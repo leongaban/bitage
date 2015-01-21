@@ -2,11 +2,10 @@
 /* =========================================
 --------------------------------------------
 
-	BITAGE.io
+	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
 	
-   		by: NodeDallas.io
-   		(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+   	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
 ============================================ */
@@ -15,9 +14,8 @@
 
 	var app = angular.module('bitAge',
 		['ui.router', 
-		 // 'app-dashboard',
 		 'app-wallet',
-		 'app-accounts',
+		 // 'app-accounts',
 		 'app-settings'])
 
 	.config([
@@ -44,15 +42,13 @@
 					controller: 'SettingsCtrl'
 				});
 
-			// default view:
-			$urlRouterProvider.otherwise('accounts');
+			$urlRouterProvider.otherwise('wallet');
 	}])
 
 	.controller('DashCtrl', ['$scope', '$state', function($scope, $state) {
 
 		// Wallet tab selected:
 		$scope.$state = $state;
-
 		$scope.sidebarClick = function() {
 			return $state.includes($state.current.name);
 		};
