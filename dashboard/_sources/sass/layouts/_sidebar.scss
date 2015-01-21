@@ -29,7 +29,9 @@
 
     li:not(.sidebar-brand) {
         line-height: 40px;
-        &:hover { background: lighten($sidebarHover, 5%); }
+        &:hover {
+            background: darken($sidebarHover, 5%);
+        }
     }
 
     li:last-child { border-bottom: none; }
@@ -45,17 +47,6 @@
 
 .sidebar-nav a:active,
 li.active { background: $sidebarHover; }
-
-// li.active {
-//     &:after {
-//         opacity: 1;
-//         position: relative;
-//         float: right;
-//         top: -32px;
-//         right: 5px;
-//         @include triangle(right, 12px, $sidebar);
-//     }
-// }
 
 // Brand Logo
 li.sidebar-brand {

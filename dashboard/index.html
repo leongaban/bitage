@@ -25,14 +25,14 @@
 
 <body ng-app="bitAge"
       ng-controller="DashCtrl"
-      ng-click="pageClick()"
+      ng-click="closeMenu()"
       class="geo">
 
     <div id="wrapper">
 
         <nav id="top_nav">
             <ul class="top_link_group">
-                <li class="top_link"><a href="#">Features</a></li>
+                <!-- <li class="top_link"><a href="#">Features</a></li> -->
                 <li class="top_link"><a href="#">Blog</a></li>
                 <li class="top_link"><a href="#">Help</a></li>
             </ul>
@@ -48,16 +48,16 @@
                  id="avatar_menu">
                 <ul>
                     <li ng-click="sidebarClick();">
-                        <a ui-sref="wallet">Wallet</a>
+                        <a ui-sref="wallet" ng-click="closeMenu();">Wallet</a>
                     </li>
                     <li ng-click="sidebarClick();">
-                        <a ui-sref="accounts">Accounts</a>
+                        <a ui-sref="accounts" ng-click="closeMenu();">Accounts</a>
                     </li>
                     <li ng-click="sidebarClick();">
-                        <a ui-sref="settings">Settings</a>
+                        <a ui-sref="settings" ng-click="closeMenu();">Settings</a>
                     </li>
                     <li>
-                        <a ng-click="pageClick()" href="#">Logout</a>
+                        <a ng-click="closeMenu()" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -66,7 +66,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <h1><a ui-sref="accounts">Bit<em>Age</em></a></h1>
+                    <h1>Bit<em>Age</em></h1>
                     <h2>A Bitcoin Services Company</h2>
                 </li>
                 <li ng-click="sidebarClick();"
@@ -92,7 +92,7 @@
             <ui-view></ui-view>
         </section>
 
-        <footer>&copy; BitAge by <a href="http://nodedallas.io" target="_blank" title="Visit NodeDallas!">NodeDallas</a></footer>
+        <footer>&copy; BitAge</footer>
 
     </div>
 

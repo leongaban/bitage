@@ -52,7 +52,10 @@
 
 		// Wallet tab selected:
 		$scope.$state = $state;
-		
+
+		$scope.sidebarClick = function() {
+			return $state.includes($state.current.name);
+		};
 
 		// Avatar Menu:
 		var id_avatar_menu = document.getElementById("avatar_menu");
@@ -64,14 +67,9 @@
 		};
 
 		// detect click on body & close menu
-		$scope.pageClick = function () {
+		$scope.closeMenu = function () {
 			$scope.avatarMenuBool = false;
 		};
-
-		$scope.sidebarClick = function() {
-			return $state.includes($state.current.name);
-			$scope.avatarMenuBool = false;
-		}
 
 		// stop the event from bubbling up any further
 		$scope.menuClick = function ($event) {
