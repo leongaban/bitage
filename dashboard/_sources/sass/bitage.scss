@@ -13,7 +13,8 @@ stylesheets/
 |   	|-- _mixins         	    # Imports all mixins & global vars
 |   |-- _defaults       	    # Global Defaults
 |   |-- _inputs         	    # Input styles
-|   |-- _buttons         	    # Input styles
+|   |-- _buttons         	    # Button styles
+|   |-- _modals         	    # Modal styles
 |   |-- _icons          	    # Icons styles
 |   |-- _layout         	    # Layout Views
 |   	|-- header
@@ -38,6 +39,7 @@ stylesheets/
 @import "modules/defaults";		// Defaults
 @import "modules/inputs";		// Inputs & Selects
 @import "modules/buttons";		// Buttons
+@import "modules/modals";		// Modals
 // @import "modules/tables";	// Tables
 // @import "modules/icons";		// Icons
 @import "modules/layout";		// Load Layouts

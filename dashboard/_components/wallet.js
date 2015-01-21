@@ -7,11 +7,7 @@
 
 	var app = angular.module('app-wallet', [])
 	.controller('WalletCtrl', ['$scope', function($scope) {
-
 		
-		
-		$scope.wallet = {};
-	    
 	}]);
 
 })();

@@ -44,9 +44,9 @@
 }
 
 .sidebar-nav a:active,
-li.active-tab { background: $sidebarHover; }
+li.active { background: $sidebarHover; }
 
-// li.active-tab {
+// li.active {
 //     &:after {
 //         opacity: 1;
 //         position: relative;
