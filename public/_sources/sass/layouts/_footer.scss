@@ -4,11 +4,11 @@
 
 footer {
 	position: relative;
-	margin-bottom: 20px;
+	margin-bottom: 60px;
 	width: 100%;
 	font-size: em(13);
 	text-align: center;
-	color: $gray;
+	color: #666;
 	z-index: 3;
 
 	a { font-weight: 600; color: darken($purple, 5%); }

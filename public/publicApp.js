@@ -26,7 +26,6 @@
 			$stateProvider
 				.state('home', {
 					url: '/home',
-					data : { pageTitle: 'A Bitcoin Services Company' },
 					templateUrl: '_views/home.html'
 				})
 
