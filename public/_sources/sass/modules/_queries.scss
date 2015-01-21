@@ -59,6 +59,11 @@
     	right: 40px;
     }
 
+    // About
+    .about_container {
+    	width: 90%;
+    }
+
     // About, Login, Register
     .bitage_logo {
     	display: none;
@@ -78,6 +83,23 @@
     #btn_subscribe {
     	margin: 20px 0 0 0;
     }
+
+    // Login, Register
+    #login_widget, #register_widget {
+    	top: 135px;
+    	margin-top: 0;
+    	padding: 20px 40px 20px 15px;
+    	// width: auto;
+
+    	// input { width: auto; }
+
+    	p { margin-bottom: 10px; }
+
+    }
+
+	footer {
+		top: 135px;
+	}
 }
 
 /* 400
