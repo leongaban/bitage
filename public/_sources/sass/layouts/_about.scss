@@ -55,7 +55,7 @@
     }
 }
 
-.mailchimp {
+.mailchimp_badge {
 	margin-bottom: 10px;
 
 	em {
@@ -63,4 +63,12 @@
 		top: -9px;
 		font-size: em(11);
 	}
+}
+
+.mailchimp {
+    // float: left;
+    margin: 0 !important;
+    width: 120px;
+    height: 30px;
+    background-position: -80px -120px;
 }

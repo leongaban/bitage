@@ -9,12 +9,13 @@
     width: 250px;
     height: 100%;
     color: #fff;
-    background-image: url("../img/shapes.gif");
-    background-size: 600px 225px;
+    // background-image: url("../img/shapes.gif");
+    // background-size: 600px 225px;
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
     // @include linear-gradient($sidebarActive, $sidebarHover);
+    @include linear-gradient($dgray, $lgray);
 }
 
 .sidebar-nav {
@@ -30,7 +31,7 @@
     li:not(.sidebar-brand) {
         line-height: 40px;
         &:hover {
-            background: darken($sidebarHover, 5%);
+            background: $button;
         }
     }
 
@@ -41,12 +42,11 @@
         font-size: em(18);
         color: #eee;
         &:hover { text-decoration: none; }
-        &:active { background: lighten($sidebar, 10%); }
     }
 }
 
 .sidebar-nav a:active,
-li.active { background: $sidebarHover; }
+li.active { background: $button; }
 
 // Brand Logo
 li.sidebar-brand {

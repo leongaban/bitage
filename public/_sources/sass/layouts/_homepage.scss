@@ -3,7 +3,7 @@
 ==================================================== */
 
 #body_id {
-	background: $gray;
+	background: $dgray;
 	// background-image: url("../img/ocean.jpg");
 	// background-image: url("../img/mountains.jpg");
 	// background-image: url("../img/pattern.jpg");
@@ -11,6 +11,7 @@
 	// background-image: url(../img/tri.svg), none;
 	// background-size: cover;
 	background-position: center;
+	@include linear-gradient($dgray, $lgray);
 }
 
 // BitAge logo:
@@ -67,10 +68,10 @@
 	padding: 60px 0;
 	width: 100%;
 	text-align: center;
-	background: #fff;
+	background: #1c1e21;
 	@include clearfix();
 
-	h1 { margin-bottom: 40px; font-size: em(56); }
+	h1 { margin-bottom: 40px; font-size: em(56); color: #fff; }
 }
 
 .service_blocks {
@@ -94,7 +95,7 @@
 	justify-content: center;
 	align-items: stretch;
 
-	h2 { font-weight: 600; }
+	h2 { font-weight: 600; color: #eee; }
 
 	p {
 		font-size: em(12);
