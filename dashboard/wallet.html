@@ -29,7 +29,23 @@
 
     <section class="widget-container wallet-transactions">
     	<table class="wallet_table">
-    		<tr class="row_body">
+    		
+            <tr class="row_body"
+                ng-repeat="trans in transactions">
+
+                <td class="td_icon" ng-switch="{{trans.type}}">
+                    <div ng-switch-when="incoming" class="icon-download"></div>
+                    <div ng-switch-when="outgoing" class="icon-upload"></div>
+                </td>
+                <td class="td_comment">
+                    {{ trans.comment }}
+                    <p class="date">{{ trans.time }}</p>
+                </td>
+                <td class="td_amount green">{{ trans.amount }}</td>
+
+            </tr>
+
+            <!--<tr class="row_body">
     			<td class="td_icon"><div class="icon-download"></div></td>
     			<td class="td_comment">
     				Recieved from multiple addresses
@@ -68,7 +84,7 @@
     				<p class="date">Jan 12th 2015</p>
     			</td>
     			<td class="td_amount red">- 0.064904</td>
-    		</tr>
+    		</tr> -->
     	</table>
     </section>
 
