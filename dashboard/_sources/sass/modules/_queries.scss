@@ -15,16 +15,16 @@
 /* 1000
 ==================================================== */
 @media all and (max-width: 1000px) {
-}
 
-/* 990
-==================================================== */
-@media all and (max-width: 990px) {
 }
 
 /* 900
 ==================================================== */
 @media all and (max-width: 900px) {
+	.td_icon {
+		padding-right: 20px !important;
+		width: 5%;
+	}
 }
 
 /* 800
@@ -56,6 +56,14 @@
 
     .delete_address {
     	right: 0;
+	}
+
+	.widget-container {
+		margin: 0;
+	}
+
+	.wallet-transactions {
+		padding: 0;
 	}
 }
 

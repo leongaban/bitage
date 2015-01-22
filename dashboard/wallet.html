@@ -37,15 +37,13 @@
                     <div ng-switch-when="incoming" class="icon-download"></div>
                     <div ng-switch-when="outgoing" class="icon-upload"></div>
                 </td>
-                <td class="td_comment">
+
+                <td class="td_comment" ng-switch="trans.type">
+                    <div ng-switch-when="incoming" class="green">+ {{ trans.amount }}</div>
+                    <div ng-switch-when="outgoing" class="red">- {{ trans.amount }}</div>
                     {{ trans.comment }}
                     <p class="date">{{ trans.time }}</p>
                 </td>
-                <td class="td_icon" ng-switch="trans.type">
-                    <div ng-switch-when="incoming" class="green">+ {{ trans.amount }}</div>
-                    <div ng-switch-when="outgoing" class="red">- {{ trans.amount }}</div>
-                </td>
-
             </tr>
 
     	</table>
