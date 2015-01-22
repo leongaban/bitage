@@ -24,7 +24,7 @@
 </head>
 
 <body ng-app="bitAge"
-      ng-controller="DashCtrl"
+      ng-controller="DashCtrl as dash"
       ng-click="closeMenu()"
       class="geo">
 
@@ -38,7 +38,7 @@
             </ul>
 
             <div class="avatar"
-                 ng-click="id_avatar_menu.getMenuClick('clicked menu', $event)"
+                 ng-click="getMenuClick('clicked menu', $event)"
                  ng-class="{ active: avatarMenuBool }">
                  <img src="_assets/img/leon.png" title="settings" alt="user avatar" />
             </div>
@@ -47,13 +47,13 @@
                  ng-click="menuClick($event)"
                  id="avatar_menu">
                 <ul>
-                    <li ng-click="sidebarClick();">
+                    <li ng-click="dash.sidebarClick();">
                         <a ui-sref="wallet" ng-click="closeMenu();">Wallet</a>
                     </li>
-                    <!-- <li ng-click="sidebarClick();">
+                    <!-- <li ng-click="dash.sidebarClick();">
                         <a ui-sref="accounts" ng-click="closeMenu();">Accounts</a>
                     </li> -->
-                    <li ng-click="sidebarClick();">
+                    <li ng-click="dash.sidebarClick();">
                         <a ui-sref="settings" ng-click="closeMenu();">Settings</a>
                     </li>
                     <li>
@@ -69,15 +69,15 @@
                     <h1>Bit<em>Age</em></h1>
                     <!-- <h2>A Bitcoin Services Company</h2> -->
                 </li>
-                <li ng-click="sidebarClick();"
+                <li ng-click="dash.sidebarClick();"
                     ng-class="{active: $state.includes('wallet')}">
                     <a ui-sref="wallet">Wallet</a>
                 </li>
-                <!-- <li ng-click="sidebarClick();"
+                <!-- <li ng-click="dash.sidebarClick();"
                     ng-class="{active: $state.includes('accounts')}">
                     <a ui-sref="accounts">Accounts</a>
                 </li> -->
-                <li ng-click="sidebarClick();"
+                <li ng-click="dash.sidebarClick();"
                     ng-class="{active: $state.includes('settings')}">
                     <a ui-sref="settings">Settings</a>
                 </li>

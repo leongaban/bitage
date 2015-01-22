@@ -47,28 +47,28 @@
 
 	.controller('DashCtrl', ['$scope', '$state', function($scope, $state) {
 
+		var vm = $scope;
+
 		// Wallet tab selected:
-		$scope.$state = $state;
-		$scope.sidebarClick = function() {
+		vm.$state = $state;
+		vm.sidebarClick = function() {
 			return $state.includes($state.current.name);
 		};
 
 		// Avatar Menu:
-		var id_avatar_menu = document.getElementById("avatar_menu");
-		$scope.avatarMenuBool = false;
-		$scope.id_avatar_menu = {};
-		$scope.id_avatar_menu.getMenuClick = function(val, $event) {
+		vm.avatarMenuBool = false;
+		vm.getMenuClick = function(val, $event) {
 			$event.stopPropagation();
-			$scope.avatarMenuBool = !$scope.avatarMenuBool;
+			vm.avatarMenuBool = !vm.avatarMenuBool;
 		};
 
 		// detect click on body & close menu
-		$scope.closeMenu = function () {
-			$scope.avatarMenuBool = false;
+		vm.closeMenu = function () {
+			vm.avatarMenuBool = false;
 		};
 
 		// stop the event from bubbling up any further
-		$scope.menuClick = function ($event) {
+		vm.menuClick = function ($event) {
 			$event.stopPropagation();
 		};
 
