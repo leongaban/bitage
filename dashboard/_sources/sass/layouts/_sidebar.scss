@@ -9,11 +9,11 @@
     width: 250px;
     height: 100%;
     color: #fff;
-    // background-image: url("../img/shapes.gif");
-    // background-size: 600px 225px;
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
+    // background-image: url("../img/shapes.gif");
+    // background-size: 600px 225px;
     // @include linear-gradient($sidebarActive, $sidebarHover);
     @include linear-gradient($dgray, $lgray);
 }

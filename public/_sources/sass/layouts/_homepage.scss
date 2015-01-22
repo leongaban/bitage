@@ -4,13 +4,13 @@
 
 #body_id {
 	background: $dgray;
+	// background-image: url("../img/gems.jpg");
 	// background-image: url("../img/ocean.jpg");
 	// background-image: url("../img/mountains.jpg");
 	// background-image: url("../img/pattern.jpg");
-	background-image: url("../img/shapes.gif");
-	// background-image: url(../img/tri.svg), none;
+	// background-image: url("../img/shapes.gif");
 	// background-size: cover;
-	background-position: center;
+	// background-position: center;
 	@include linear-gradient($dgray, $lgray);
 }
 
