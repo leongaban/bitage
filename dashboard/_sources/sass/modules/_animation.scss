@@ -90,8 +90,13 @@
 
 /* when hiding the thing */
 .ng-hide-add { 
-    -webkit-animation:0.5s fadeOut ease; 
-    animation:0.5s fadeOut ease; 
+    -webkit-animation:0.3s fadeOut ease; 
+    animation:0.3s fadeOut ease;
+}
+
+.ng-modal-overlay {
+    -webkit-animation: none !important;
+    animation: none !important;    
 }
 
 /* when showing the thing */
@@ -102,41 +107,22 @@
 
 /* Toggle fadeIn */
 @-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
-
 
 /* Toggle fadeOut */
 @-webkit-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
