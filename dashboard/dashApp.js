@@ -26,19 +26,19 @@
 			$stateProvider
 				.state('wallet', {
 					url: '/wallet',
-					templateUrl: 'wallet.html',
+					templateUrl: '_views/wallet.html',
 					controller: 'WalletCtrl'
 				})
 
 				.state('accounts', {
 					url: '/accounts',
-					templateUrl: 'accounts.html',
+					templateUrl: '_views/accounts.html',
 					controller: 'AcctCtrl'
 				})
 
 				.state('settings', {
 					url: '/settings',
-					templateUrl: 'settings.html',
+					templateUrl: '_views/settings.html',
 					controller: 'SettingsCtrl'
 				});
 
@@ -48,6 +48,8 @@
 	.controller('DashCtrl', ['$scope', '$state', function($scope, $state) {
 
 		var vm = $scope;
+		vm.title = "Your Public Address:";
+		vm.public_address ="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
 
 		// Wallet tab selected:
 		vm.$state = $state;

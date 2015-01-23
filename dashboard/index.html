@@ -9,17 +9,17 @@
     <meta name="description" content="BITAGE | A Bitcoin Services Company">
     <meta name="author" content="NodeDallas">
 
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="application" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="application">
     <meta property="og:site_name" content="BITAGE">
-    <meta property="og:title" content="BITAGE" />
-    <meta property="og:image" content="logo@2x.png" />
-    <meta property="og:url" content="http://www.bitage.io" />
-    <meta property="og:description" content="A Bitcoin Services Company" />
+    <meta property="og:title" content="BITAGE">
+    <meta property="og:image" content="logo@2x.png">
+    <meta property="og:url" content="http://www.bitage.io">
+    <meta property="og:description" content="A Bitcoin Services Company">
 
     <link rel="icon" href="favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,800' rel='stylesheet'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet'>
     <link href="_assets/css/bitage.css" rel="stylesheet">
 </head>
 
@@ -27,6 +27,18 @@
       ng-controller="DashCtrl as dash"
       ng-click="closeMenu()"
       class="geo">
+
+    <section class="modal ng-modal-dialog">
+        <div class="close_modal icon-cancel-1"></div>
+        <h1>{{title}}</h1>
+        <div class="modal_qr">
+            <img src="_assets/img/qrcode.png"/>
+        </div>
+        <p class="public_address">{{public_address}}</p>
+        <!-- <button class="btn btn_med">Send to Email</button> -->
+    </section>
+
+    <div class="ng-modal-overlay"></div>
 
     <div id="wrapper">
 
