@@ -14,10 +14,7 @@
 .top_link_group {
 	margin-right: 70px;
 
-	a {
-        color: $gray;
-        cursor: pointer;
-    }
+	a { color: $gray; cursor: pointer; }
 }
 
 .top_link {
@@ -43,10 +40,7 @@
 
     &:hover { border: 3px solid lighten($sidebarHover, 10%); }
 
-    img {
-        width: 40px;
-        height: 40px;
-    }
+    img { width: 40px; height: 40px; }
 }
 
 #avatar_menu {
