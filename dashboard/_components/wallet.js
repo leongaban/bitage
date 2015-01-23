@@ -25,13 +25,8 @@
 		vm.$parent.title = "Your Public Address";
 		// vm.$parent.title = "Send Bitcoin";
 
-		vm.test = function() {
-			console.log('test');
-		};
-
 		// Button actions
 		vm.openModal = function(m) {
-			console.log(m);
 			vm.$parent.modal = m;
 		};
 

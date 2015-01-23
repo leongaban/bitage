@@ -49,7 +49,12 @@
 
 		var vm = $scope;
 
-		// Wallet tab selected:
+		// Button actions
+		vm.closeModal = function() {
+			vm.modal = false;
+		};
+
+		// Sidebar tab select:
 		vm.$state = $state;
 		vm.sidebarClick = function() {
 			return $state.includes($state.current.name);

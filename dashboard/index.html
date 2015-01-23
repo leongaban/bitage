@@ -29,12 +29,13 @@
       class="geo">
 
     <section ng-show="modal" class="modal ng-modal-dialog">
-        <div class="close_modal icon-cancel-1"></div>
+        <div ng-click="closeModal()" class="close_modal icon-cancel-1"></div>
         <h1>{{title}}</h1>
         <div ng-bind-html="receive_modal_bind"></div>
     </section>
 
-    <div ng-show="modal" class="ng-modal-overlay"></div>
+    <div ng-show="modal"
+         ng-click="closeModal()" class="ng-modal-overlay"></div>
 
     <div id="wrapper">
 
