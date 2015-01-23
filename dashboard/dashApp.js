@@ -48,8 +48,6 @@
 	.controller('DashCtrl', ['$scope', '$state', function($scope, $state) {
 
 		var vm = $scope;
-		vm.title = "Your Public Address:";
-		vm.public_address ="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
 
 		// Wallet tab selected:
 		vm.$state = $state;

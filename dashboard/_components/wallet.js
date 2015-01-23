@@ -9,6 +9,16 @@
 	.controller('WalletCtrl', ['$scope', function($scope) {
 		
 		var vm = $scope;
+
+		// Modal receive bitcoin:
+		vm.$parent.modal = true;
+		vm.$parent.modal_receive = false;
+
+		// vm.$parent.title = "Your Public Address:";
+		vm.$parent.title = "Send Bitcoin:";
+		vm.$parent.qr_code = "_assets/img/qrcode.png";
+		vm.$parent.public_address ="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
+
 		vm.transactions = [
 			{
 				type: 'incoming',
