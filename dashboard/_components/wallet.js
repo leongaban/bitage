@@ -14,20 +14,31 @@
 		// Modal vars:
 		var public_address ="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
 		var qr_code = "_assets/img/qrcode.png";
-		var receive_modal_html = '<div ng-show="modal_receive" class="modal_qr"><img src="'+qr_code+'"/></div><p ng-show="modal_receive" class="public_address">'+public_address+'</p>';
-		var send_modal_html = '<div ng-show="modal_send" class="send_form"><div class="label_input_combo"><label for="to_input">Send to address</label><input id="to_input" class="form-input" type="text" placeholder=""></div><div class="label_input_combo"><div class="btn_usd noselect">USD</div><label for="amount_input" class="label_amount">Amount</label><input id="amount_input" class="form-input" type="text" placeholder=""></div><button class="btn btn_med btn_send_now">Send</button></div>;'
+		var receive_html = '<div ng-show="modal_receive" class="modal_qr"><img src="'+qr_code+'"/></div><p ng-show="modal_receive" class="public_address">'+public_address+'</p>';
+		var send_html = '<div ng-show="modal_send" class="send_form"><div class="label_input_combo"><label for="to_input">Send to address</label><input id="to_input" class="form-input" type="text" placeholder=""></div><div class="label_input_combo"><div class="btn_usd noselect">USD</div><label for="amount_input" class="label_amount">Amount</label><input id="amount_input" class="form-input" type="text" placeholder=""></div><button class="btn btn_med btn_send_now">Send</button></div>';
 
 		// Modal settings:
 		vm.$parent.modal = false;
 		vm.$parent.modal_receive = true;
-		vm.$parent.receive_modal_bind = $sce.trustAsHtml(receive_modal_html);
 		vm.$parent.modal_send = false;
-		vm.$parent.title = "Your Public Address";
-		// vm.$parent.title = "Send Bitcoin";
-
+		
 		// Button actions
 		vm.openModal = function(m) {
 			vm.$parent.modal = m;
+
+			switch (m) {
+				case 'receive':
+					vm.$parent.title = "Your Public Address";
+					vm.$parent.modal_bind = $sce.trustAsHtml(receive_html);
+					break;
+				case 'send':
+					vm.$parent.title = "Send Bitcoin";
+					vm.$parent.modal_bind = $sce.trustAsHtml(send_html);
+					break;
+				case 'transactions':
+					console.log('transactions');
+					break;
+			}
 		};
 
 		vm.transactions = [
