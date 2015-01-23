@@ -1,7 +1,5 @@
 <div class="wallet-content">
 
-	<div>{{title}}</div>
-
     <div class="content_header"><h1>My wallet</h1></div>
 
     <section class="widget-container wallet-balance">
@@ -10,18 +8,18 @@
 			<span class="btc_amount">1.01045678</span>
 			<em class="denomination">BTC</em>
 			<span class="usd_amount">= $234.30</span>
-			<em class="denomination">USD</em>
+			<em ng-click="test();" class="denomination">USD</em>
 		</div>
 
 		<ul class="wallet_actions">
 			<li>
-				<button class="btn btn_med">
+				<button ng-click="openModal('receive')" class="btn btn_med">
 					<div class="icon icon-download"></div>
 					<span>Receive Bitcoin</span>
 				</button>
 			</li>
 			<li>
-				<button class="btn btn_med">
+				<button ng-click="openModal('send')" class="btn btn_med">
 					<div class="icon icon-upload"></div>
 					<span>Send Bitcoin</span>
 				</button>

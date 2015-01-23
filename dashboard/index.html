@@ -28,31 +28,13 @@
       ng-click="closeMenu()"
       class="geo">
 
-    <section ng-show="modal"
-             class="modal ng-modal-dialog">
+    <section ng-show="modal" class="modal ng-modal-dialog">
         <div class="close_modal icon-cancel-1"></div>
-
         <h1>{{title}}</h1>
-        <!-- Modal Receive -->
-        <div ng-show="modal_receive" class="modal_qr"><img src="{{qr_code}}"/></div>
-        <p ng-show="modal_receive" class="public_address">{{public_address}}</p>
-        <!-- <button class="btn btn_med">Send to Email</button> -->
-
-        <!-- Modal Send -->
-        <div class="send_form">
-            <label for="to_input">To:</label>
-            <input id="to_input" class="form-input" type="text" placeholder="">
-
-            <label for="amount_input">Amount:</label>
-            <!-- <div class="btc">BTC</div> -->
-            <input id="amount_input" class="form-input" type="text" placeholder="">
-            <button class="btn btn_small btn_usd">USD</button>
-
-            <button class="btn btn_med btn_send_now">Send</button>
-        </div>
+        <div ng-bind-html="receive_modal_bind"></div>
     </section>
 
-    <div class="ng-modal-overlay"></div>
+    <div ng-show="modal" class="ng-modal-overlay"></div>
 
     <div id="wrapper">
 

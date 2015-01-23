@@ -29,14 +29,9 @@
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
+    @include rounded(4px);
 
-    p {
-        // margin-bottom: 20px;
-    }
-}
-
-.modal_qr {
-    // cursor: pointer;
+    h1 { font-size: em(24); }
 }
 
 .public_address {
@@ -71,38 +66,50 @@
 .send_form {
     margin-top: 20px;
     padding-right: 20px;
-    width: auto;
+    width: 320px;
+
+    .form-input {
+        float: none;
+    }
 
     label {
         float: left;
-        margin-right: 10px;
+        margin-bottom: 5px;
+        // margin-right: 10px;
         // width: 80px;
-        text-align: right;
-        line-height: em(32);
+        // line-height: em(32);
     }
+}
+
+.label_amount {
+    position: relative;
+    top: 7px;
 }
 
 #to_input,
 #amount_input {
-    float: left;
     width: 100%;
-}
-
-#to_input {
-    margin-bottom: 15px;
-}
-
-#amount_input {
-    width: 80%;
-    // margin-top: -15px;
-}
-
-.switch {
-    width: 80px;
-    height: 40px;
 }
 
 .btn_usd {
     float: right;
+    position: relative;
+    top: 32px;
+    right: -15px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    @include rounded(4px);
+
+    &:hover {
+        color: #fff;
+        background: #ccc;
+    }
+
+    &:active {
+        color: #fff;
+        background: darken(#ccc, 10%);
+    }
 }
 

@@ -6,18 +6,34 @@
 (function() {
 
 	var app = angular.module('app-wallet', [])
-	.controller('WalletCtrl', ['$scope', function($scope) {
+	.controller('WalletCtrl', ['$scope', '$sce', function($scope, $sce) {
 		
 		var vm = $scope;
+		// $sce = Strict Contextual Escaping
 
-		// Modal receive bitcoin:
-		vm.$parent.modal = true;
-		vm.$parent.modal_receive = false;
+		// Modal vars:
+		var public_address ="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
+		var qr_code = "_assets/img/qrcode.png";
+		var receive_modal_html = '<div ng-show="modal_receive" class="modal_qr"><img src="'+qr_code+'"/></div><p ng-show="modal_receive" class="public_address">'+public_address+'</p>';
+		var send_modal_html = '<div ng-show="modal_send" class="send_form"><div class="label_input_combo"><label for="to_input">Send to address</label><input id="to_input" class="form-input" type="text" placeholder=""></div><div class="label_input_combo"><div class="btn_usd noselect">USD</div><label for="amount_input" class="label_amount">Amount</label><input id="amount_input" class="form-input" type="text" placeholder=""></div><button class="btn btn_med btn_send_now">Send</button></div>;'
 
-		// vm.$parent.title = "Your Public Address:";
-		vm.$parent.title = "Send Bitcoin:";
-		vm.$parent.qr_code = "_assets/img/qrcode.png";
-		vm.$parent.public_address ="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
+		// Modal settings:
+		vm.$parent.modal = false;
+		vm.$parent.modal_receive = true;
+		vm.$parent.receive_modal_bind = $sce.trustAsHtml(receive_modal_html);
+		vm.$parent.modal_send = false;
+		vm.$parent.title = "Your Public Address";
+		// vm.$parent.title = "Send Bitcoin";
+
+		vm.test = function() {
+			console.log('test');
+		};
+
+		// Button actions
+		vm.openModal = function(m) {
+			console.log(m);
+			vm.$parent.modal = m;
+		};
 
 		vm.transactions = [
 			{
