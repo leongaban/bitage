@@ -4,7 +4,7 @@
 
 .wallet-content {
     position: relative;
-    margin-left: 20px;
+    // margin-left: 20px;
     width: 100%;
 }
 
@@ -56,6 +56,7 @@
 }
 
 .current_balance {
+	margin-right: 20px;
 	font-size: em(18);
 	font-weight: 600;
 	line-height: 40px;
