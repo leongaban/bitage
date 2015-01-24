@@ -33,14 +33,27 @@
     border-radius: 50%;
     width: 40px;
     height: 40px; 
-    border: 3px solid lighten($sidebar, 10%);
+    // border: 3px solid lighten($sidebar, 10%);
+    border: 3px solid $sidebar;
+    background: $sidebar;
     cursor: pointer;
     overflow: hidden;
     @include rounded(50%);
 
-    &:hover { border: 3px solid lighten($sidebarHover, 10%); }
+    &:hover {
+        background: lighten($sidebar, 10%);
+        // border: 3px solid lighten($sidebarHover, 10%);
+    }
 
-    img { width: 40px; height: 40px; }
+    .icon-down-dir {
+        position: relative;
+        top: 6px;
+        left: 2px;
+        font-size: em(26);
+        color: #fff;
+    }
+
+    // img { width: 40px; height: 40px; }
 }
 
 #avatar_menu {
