@@ -40,6 +40,10 @@
 					break;
 
 				case 'send':
+					// API call to check address
+					// Calculate Bitcoin / USD
+					// Complete transaction
+					
 					vm.$parent.modal_send = true;
 					vm.$parent.switchCurrency = function() {
 						if (vm.$parent.currency === 'USD') {

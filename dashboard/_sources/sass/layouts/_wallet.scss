@@ -4,24 +4,20 @@
 
 .wallet-content {
     position: relative;
-    // margin-left: 20px;
     width: 100%;
 }
 
 .wallet-balance {
 	padding: 20px;
 
-	.current_balance,
-	.btc_amount,
-	h1,
-	li { float: left; }
+	.current_balance, .btc_amount,
+	h1, li { float: left; }
 }
 
 .wallet_table { width: 100%; }
 
 .wallet-transactions {
 	margin-top: 1px;
-	// padding: 0 20px 20px 20px;
 
 	.row_body {
 		// cursor: pointer;
@@ -38,9 +34,15 @@
 
 	.icon-upload { color: $red; }
 
-	.date {
+	.date, .type {
+		float: left;
 		font-size: em(11);
 		color: #ccc;
+	}
+
+	.type {
+		margin-left: 5px;
+		font-weight: 600;
 	}
 }
 

@@ -42,7 +42,7 @@
                     <div ng-switch-when="incoming" class="green">+ {{ trans.amount }}</div>
                     <div ng-switch-when="outgoing" class="red">- {{ trans.amount }}</div>
                     <p class="comment">{{ trans.comment }}</p>
-                    <p class="date">{{ trans.time }}</p>
+                    <p class="date">{{ trans.time }}</p><span class="type">- {{ trans.status }}</span>
                 </td>
             </tr>
 
