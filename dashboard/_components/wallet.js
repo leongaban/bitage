@@ -5,24 +5,20 @@
 
 (function() {
 
-	var app = angular.module('app-wallet', [])
-	.controller('WalletCtrl', ['$scope', '$sce', '$compile', function($scope, $sce, $compile) {
+	var app = angular.module('app-wallet', ['wallet-directives'])
+	.controller('WalletCtrl', ['$scope', '$sce', function($scope, $sce) {
 		
-		var vm = $scope;
-		// $sce = Strict Contextual Escaping
+		var vm 			    	= $scope,
+			public_address  	= '',
+			qr_code 	    	= '';
+			vm.$parent.currency	= 'USD';
 
-		var public_address = '',
-			qr_code 	   = '',
-			currency	   = 'USD';
-
-		var send_html = '<div ng-show="modal_send" class="send_form"><div class="label_input_combo"><label for="to_input">Send to address</label><input id="to_input" class="form-input" type="text" placeholder=""></div><div class="label_input_combo"><div ng-click="switchCurrency()" class="btn_usd noselect">'+currency+'</div><label for="amount_input" class="label_amount">Amount</label><input id="amount_input" class="form-input" type="text" placeholder=""></div><button class="btn btn_med btn_send_now">Send</button></div>';
-
-		// Modal settings:
-		vm.$parent.modal 		 = false;
-		vm.$parent.modal_receive = true;
-		vm.$parent.modal_send 	 = false;
+			// Modal settings:
+			vm.$parent.modal 	= false;
+			vm.modal_receive 	= false;
+			vm.modal_send 	 	= false;
 		
-		// Button actions
+		// Open Receive or Send modals:
 		vm.openModal = function(m) {
 			vm.$parent.modal = m;
 
@@ -32,28 +28,24 @@
 					// Code to generate QR code
 					// Update receive_obj
 
-					vm.$parent.title = "Your Public Address";
-					public_address   = "17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
-					qr_code 		 = "_assets/img/qrcode.png";
+					public_address = "17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
+					qr_code 	   = "_assets/img/qrcode.png";
 
-					vm.$parent.modal_bind = $sce.trustAsHtml('<div ng-show="modal_receive" class="modal_qr"><img src="'+qr_code+'"/></div><p ng-show="modal_receive" class="public_address">'+public_address+'</p>');
+					vm.$parent.modal_bind  = $sce.trustAsHtml('<h1>Your Public Address</h1><div ng-show="modal_receive" class="modal_qr"><img src="'+qr_code+'"/></div><p ng-show="modal_receive" class="public_address">'+public_address+'</p>');
 
 					break;
 
 				case 'send':
-					vm.$parent.title = "Send Bitcoin";
-					vm.$parent.modal_bind = $sce.trustAsHtml(send_html);
-					// vm.$parent.modal_bind = $compile($sce.trustAsHtml(send_html));
-					break;
-			}
-		};
+					vm.$parent.modal_send = true;
+					vm.$parent.switchCurrency = function() {
+						if (vm.$parent.currency === 'USD') {
+							vm.$parent.currency = 'BTC';
+						} else if (vm.$parent.currency = 'BTC') {
+							vm.$parent.currency = 'USD';
+						}
+					};
 
-		vm.$parent.switchCurrency = function() {
-			console.log('clicked');
-			if (currency === 'USD') {
-				currency = 'BTC';
-			} else {
-				currency === 'USD';
+					break;
 			}
 		};
 

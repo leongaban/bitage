@@ -27,11 +27,8 @@
       ng-controller="DashCtrl as dash"
       ng-click="closeMenu()">
 
-    <section ng-show="modal" class="modal ng-modal-dialog">
-        <div ng-click="closeModal()" class="close_modal icon-cancel-1"></div>
-        <h1>{{title}}</h1>
-        <div ng-bind-html="modal_bind"></div>
-    </section>
+    <receive-modal></receive-modal>
+    <send-modal></send-modal>
 
     <div ng-show="modal"
          ng-click="closeModal()" class="ng-modal-overlay"></div>
@@ -108,6 +105,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
     <script src="_assets/js/libs/angular-ui-router.min.js"></script>
+    <script src="_components/walletDirective.js"></script>
     <script src="_components/wallet.js"></script>
     <script src="_components/accounts.js"></script>
     <script src="_components/settings.js"></script>

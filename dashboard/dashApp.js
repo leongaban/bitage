@@ -15,6 +15,7 @@
 	var app = angular.module('bitAge',
 		['ui.router', 
 		 'app-wallet',
+		 'wallet-directives',
 		 // 'app-accounts',
 		 'app-settings'])
 
