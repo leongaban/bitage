@@ -3814,15 +3814,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/public\/_assets\/css\/bitage_web.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/css\/bitage_web.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/public\/_assets\/img\/gems.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -3863,28 +3854,6 @@
 		"initialSize": 143116,
 		"inputAbbreviatedPath": "\/public\/_assets\/img\/ocean.jpg",
 		"outputAbbreviatedPath": "\/public\/_assets\/img\/ocean.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/_assets\/img\/pattern.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 34127,
-		"inputAbbreviatedPath": "\/public\/_assets\/img\/pattern.jpg",
-		"outputAbbreviatedPath": "\/public\/_assets\/img\/pattern.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/_assets\/img\/texture.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 79674,
-		"inputAbbreviatedPath": "\/public\/_assets\/img\/texture.jpg",
-		"outputAbbreviatedPath": "\/public\/_assets\/img\/texture.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -3969,11 +3938,11 @@
 	"\/public\/_sources\/js\/plugins\/classie.js": {
 		"fileType": 64,
 		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/public\/_sources\/js\/plugins\/classie.js",
-		"outputAbbreviatedPath": "\/public\/_sources\/js\/plugins\/min\/classie-min.js",
+		"outputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/classie.min.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
+		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
@@ -4050,22 +4019,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/_sources\/sass\/layouts\/_header.scss",
 		"outputAbbreviatedPath": "\/public\/_sources\/sass\/css\/_header.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
-		},
-	"\/public\/_sources\/sass\/layouts\/_homepage.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 10,
-		"fileType": 4,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_sources\/sass\/layouts\/_homepage.scss",
-		"outputAbbreviatedPath": "\/public\/_sources\/sass\/css\/_homepage.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -4281,38 +4234,11 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/public\/_views\/about.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_views\/about.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/public\/_views\/home.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/_views\/home.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/public\/_views\/login.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_views\/login.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/public\/_views\/register.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_views\/register.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
