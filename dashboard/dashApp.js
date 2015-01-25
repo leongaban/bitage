@@ -50,11 +50,6 @@
 
 		var vm = $scope;
 
-		// Button actions
-		vm.closeModal = function() {
-			vm.modal = false;
-		};
-
 		// Sidebar tab select:
 		vm.$state = $state;
 		vm.sidebarClick = function() {

@@ -28,10 +28,14 @@
 					// Code to generate QR code
 					// Update receive_obj
 
-					public_address = "17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
-					qr_code 	   = "_assets/img/qrcode.png";
+					vm.$parent.modal_receive  = true;
+					vm.$parent.public_address = "17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
+					vm.$parent.qr_code 	      = "_assets/img/qrcode.png";
 
-					vm.$parent.modal_bind  = $sce.trustAsHtml('<h1>Your Public Address</h1><div ng-show="modal_receive" class="modal_qr"><img src="'+qr_code+'"/></div><p ng-show="modal_receive" class="public_address">'+public_address+'</p>');
+					vm.$parent.closeModal = function() {
+						vm.$parent.modal_receive = false;
+						vm.$parent.modal = false;
+					};
 
 					break;
 
@@ -43,6 +47,11 @@
 						} else if (vm.$parent.currency = 'BTC') {
 							vm.$parent.currency = 'USD';
 						}
+					};
+
+					vm.$parent.closeModal = function() {
+						vm.$parent.modal_send = false;
+						vm.$parent.modal = false;
 					};
 
 					break;
