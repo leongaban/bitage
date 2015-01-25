@@ -30,9 +30,7 @@
 
     li:not(.sidebar-brand) {
         line-height: 40px;
-        &:hover {
-            background: $button;
-        }
+        &:hover { background: $button; }
     }
 
     li:last-child { border-bottom: none; }
@@ -65,10 +63,7 @@ li.sidebar-brand {
 
     a:active { background: none; }
 
-    img {
-        width: 24px;
-        height: 24px;
-    }
+    img { width: 24px; height: 24px; }
 }
 
 .quotes {
