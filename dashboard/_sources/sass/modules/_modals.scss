@@ -4,7 +4,7 @@
 
 // Wallet:
 .ng-modal-overlay {
-    z-index: 9999;
+    z-index: 999;
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +16,7 @@
 }
 
 .ng-modal-dialog {
-    z-index: 10000;
+    z-index: 1000;
     position: absolute;
     top: 40%;
     left: 50%;

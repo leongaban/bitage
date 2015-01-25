@@ -1,0 +1,29 @@
+/* NOTIFICATIONS
+====================================================
+==================================================== */
+
+.ng-notification,
+.notify-msg,
+.notify-bg {
+	position: absolute;
+	width: 100%;
+}
+
+.ng-notification {
+	z-index: 1001;
+	cursor: pointer;
+}
+
+.notify-msg {
+	padding: 15px 0;
+	text-align: center;
+	color: #fff;
+	z-index: 1002;
+}
+
+.notify-bg {
+	height: 45px;
+	background: $blue;
+	opacity: .9;
+	z-index: 1001;
+}

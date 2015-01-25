@@ -5,18 +5,25 @@
 
 (function() {
 
-	var app = angular.module('app-wallet', ['wallet-directives'])
-	.controller('WalletCtrl', ['$scope', '$sce', function($scope, $sce) {
+	var app = angular.module('app-wallet',
+		['wallet-directives',
+		 'notification-directives'])
+
+	.controller('WalletCtrl', ['$scope', '$sce', '$timeout', function($scope, $sce, $timeout) {
 		
 		var vm 			    	= $scope,
 			public_address  	= '',
 			qr_code 	    	= '';
 			vm.$parent.currency	= 'USD';
-
-			// Modal settings:
 			vm.$parent.modal 	= false;
-			vm.modal_receive 	= false;
-			vm.modal_send 	 	= false;
+
+		var timeoutMsg = function() {
+			vm.$parent.notification = false;
+		};
+
+		vm.$parent.closeMsg = function() {
+			vm.$parent.notification = false;	
+		};
 		
 		// Open Receive or Send modals:
 		vm.openModal = function(m) {
@@ -29,8 +36,8 @@
 					// Update receive_obj
 
 					vm.$parent.modal_receive  = true;
-					vm.$parent.public_address = "17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH";
-					vm.$parent.qr_code 	      = "_assets/img/qrcode.png";
+					vm.$parent.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+					vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
 
 					vm.$parent.closeModal = function() {
 						vm.$parent.modal_receive = false;
@@ -43,14 +50,31 @@
 					// API call to check address
 					// Calculate Bitcoin / USD
 					// Complete transaction
-					
+
 					vm.$parent.modal_send = true;
+					vm.$parent.send_btn_text = 'Send';
+
 					vm.$parent.switchCurrency = function() {
 						if (vm.$parent.currency === 'USD') {
 							vm.$parent.currency = 'BTC';
 						} else if (vm.$parent.currency = 'BTC') {
 							vm.$parent.currency = 'USD';
 						}
+					};
+
+					vm.$parent.sendTransaction = function() {
+
+						// Make API call to check address
+						vm.$parent.send_btn_text = 'Sending...';
+
+						// Get response back and close modal
+						vm.$parent.modal_send = false;
+						vm.$parent.modal = false;
+
+						// Show notification
+						vm.$parent.message = 'Transaction sent!';
+						vm.$parent.notification = true;
+						$timeout(timeoutMsg, 4000);
 					};
 
 					vm.$parent.closeModal = function() {

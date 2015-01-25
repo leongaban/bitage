@@ -3301,6 +3301,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/dashboard\/_components\/notificationDirective.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/notificationDirective.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/notificationDirective-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/dashboard\/_components\/settings.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -3599,6 +3610,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_sources\/sass\/modules\/_modals.scss",
 		"outputAbbreviatedPath": "\/dashboard\/_sources\/sass\/css\/_modals.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dashboard\/_sources\/sass\/modules\/_notifications.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_sources\/sass\/modules\/_notifications.scss",
+		"outputAbbreviatedPath": "\/dashboard\/_sources\/sass\/css\/_notifications.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
