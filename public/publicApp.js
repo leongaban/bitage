@@ -24,14 +24,10 @@
 		function($stateProvider, $urlRouterProvider) {
 
 			$stateProvider
-				.state('home', {
-					url: '/home',
-					templateUrl: '_views/home.html'
-				})
+				.state('home', { url: '/home' })
 
 				.state('about', {
 					url: '/about',
-					data : { pageTitle: 'About BitAge' },
 					templateUrl: '_views/about.html',
 					controller: 'AboutCtrl'
 				})
@@ -52,6 +48,9 @@
 	}])
 
 	.controller('MainCtrl', ['$scope', '$state',  function($scope, $state) {
+		$scope.showHome = function() {
+	    	return $state.is('home');
+	   	}
 		$scope.showLogo = function() {
 	    	return $state.is('home');
 	   	}

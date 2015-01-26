@@ -32,8 +32,7 @@
             <h1><a ui-sref="home">Bitage</a></h1>
         </section>
 
-        <div ng-show="showTicker()" 
-             class="biticker-container" data-currency="USD"></div>
+        <div ng-show="showTicker()" class="biticker-container" data-currency="USD"></div>
 
         <nav id="main_nav">
             <ul>
@@ -46,6 +45,70 @@
     </header>
 
     <ui-view></ui-view>
+
+    <section id="home_intro" ng-show="showHome()">
+
+        <h1>Bitage</h1>
+        <h2>A Bitcoin Services Company</h2>
+
+        <section id="fast_signup" class="content">
+
+            <h3>Get a wallet and join the age of Bitcoin</h3>
+
+            <form>
+                <span class="input input_jiro">
+                    <input class="input__field input__field--jiro" type="text" id="input-1" />
+                    <label class="input__label input__label--jiro" for="input-1">
+                        <span class="input__label-content input__label-content--jiro">Full Name</span>
+                    </label>
+                </span>
+                <span class="input input_jiro">
+                    <input class="input__field input__field--jiro" type="text" id="input-2" />
+                    <label class="input__label input__label--jiro" for="input-2">
+                        <span class="input__label-content input__label-content--jiro">Email</span>
+                    </label>
+                </span>
+                <span class="input input_jiro">
+                    <input class="input__field input__field--jiro" type="password" id="input-3" />
+                    <label class="input__label input__label--jiro" for="input-3">
+                        <span class="input__label-content input__label-content--jiro">Password</span>
+                    </label>
+                </span>
+
+                <span class="input input_jiro">
+                    <button id="btn_start_account" class="btn">Create Wallet</button>
+                </span>
+            </form>
+
+        </section>
+    </section>
+
+    <section id="bitcoin_services" ng-show="showHome()">
+
+        <h1>Our Bitcoin Services</h1>
+
+        <div class="service_blocks">
+
+            <div class="service_block">
+                <h2>A secure online wallet</h2>
+                <p>Safely store your bitcoins and conveniently access them with ease</p>
+                <div class="key"></div>
+            </div>
+
+            <div class="service_block">
+                <h2>Spend and tip</h2>
+                <p>Buy, send or tip across the globe, instantly</p>
+                <div class="globe"></div>
+            </div>
+
+            <div class="service_block last_block">
+                <h2>Monitor multiple accounts</h2>
+                <p>We make it easy to keep track of all your bitcoins</p>
+                <div class="dashboard"></div>
+            </div>
+        </div>
+
+    </section>
 
     <footer>&copy; <script>document.write(new Date().getFullYear())</script> Bitage.io</footer>
 
@@ -60,37 +123,7 @@
     <script src="_assets/js/plugins/biticker.min.js"></script>
     <script src="_assets/js/plugins/classie.min.js"></script>
     <script>
-    // !function(){function t(t){classie.add(t.target.parentNode,"input--filled")}function e(t){""===t.target.value.trim()&&classie.remove(t.target.parentNode,"input--filled")}String.prototype.trim||!function(){var t=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;String.prototype.trim=function(){return this.replace(t,"")}}(),[].slice.call(document.querySelectorAll("input.input__field")).forEach(function(i){""!==i.value.trim()&&classie.add(i.parentNode,"input--filled"),i.addEventListener("focus",t),i.addEventListener("blur",e)})}();
-    
-        (function() {
-            if (!String.prototype.trim) {
-                (function() {
-                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-                    String.prototype.trim = function() {
-                        return this.replace(rtrim, '');
-                    };
-                })();
-            }
-
-            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-                if( inputEl.value.trim() !== '' ) {
-                    classie.add( inputEl.parentNode, 'input--filled' );
-                }
-
-                inputEl.addEventListener( 'focus', onInputFocus );
-                inputEl.addEventListener( 'blur', onInputBlur );
-            } );
-
-            function onInputFocus( ev ) {
-                classie.add( ev.target.parentNode, 'input--filled' );
-            }
-
-            function onInputBlur( ev ) {
-                if( ev.target.value.trim() === '' ) {
-                    classie.remove( ev.target.parentNode, 'input--filled' );
-                }
-            }
-        })();
+        !function(){function t(t){classie.add(t.target.parentNode,"input--filled")}function e(t){""===t.target.value.trim()&&classie.remove(t.target.parentNode,"input--filled")}String.prototype.trim||!function(){var t=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;String.prototype.trim=function(){return this.replace(t,"")}}(),[].slice.call(document.querySelectorAll("input.input__field")).forEach(function(i){""!==i.value.trim()&&classie.add(i.parentNode,"input--filled"),i.addEventListener("focus",t),i.addEventListener("blur",e)})}();
     </script>
 
     <script>
