@@ -4,9 +4,9 @@
 
 #main_logo { cursor: pointer; }
 
-.mobile_logo {
-    display: none;
-}
+.mobile_logo { display: none; }
+
+.show_mobile { display: none; }
 
 #top_nav {
     position: absolute;
@@ -17,7 +17,6 @@
 
 .top_link_group {
 	margin-right: 70px;
-
 	a { color: $gray; cursor: pointer; }
 }
 
@@ -44,14 +43,9 @@
     overflow: hidden;
     @include rounded(50%);
 
-    &:hover {
-        // background: lighten($sidebar, 10%);
-        border: 1px solid $button;
-    }
+    &:hover { border: 1px solid $button; }
 
-    &:active {
-        background: lighten(#ccc, 20%);
-    }
+    &:active { background: lighten(#ccc, 20%); }
 
     .icon-down-dir {
         position: relative;

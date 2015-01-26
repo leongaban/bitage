@@ -21,10 +21,7 @@
 /* 900
 ==================================================== */
 @media all and (max-width: 900px) {
-	.td_icon {
-		padding-right: 20px !important;
-		width: 5%;
-	}
+	.td_icon { padding-right: 20px !important; width: 5%; }
 }
 
 /* 800
@@ -45,27 +42,15 @@
 
 	.mobile_logo {
 		display: block;
-		position: absolute;
-		top: 28px;
-		left: 20px;
-		font-size: em(20);
-		font-family: 'Roboto Condensed', sans-serif;
-        font-weight: 700;
-        color: #666;
+		float: left;
+		margin-right: 5px;
 	}
 
-	#wrapper {
-     	padding-left: 0;
-    }
+	#wrapper { padding-left: 0; }
 
-    #sidebar-wrapper {
-     	left: 0;
-    }
+    #sidebar-wrapper { left: 0; }
 
-    #wrapper.active {
-    	position: relative;
-     	left: 250px;
-    }
+    #wrapper.active { position: relative; left: 250px; }
 
     #wrapper.active #sidebar-wrapper {
     	left: 250px;
@@ -73,46 +58,29 @@
     	transition: all 0.4s ease 0s;
     }
 
-    .delete_address {
-    	right: 0;
-	}
+    .delete_address { right: 0; }
 
-	.widget-container {
-		margin: 0;
-	}
+	.widget-container { margin: 0; }
 
-	.wallet-transactions {
-		padding: 0;
-	}
+	.wallet-transactions { padding: 0; }
 }
 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) {
+@media all and (max-width: 640px) {
 	
 	/* STYLES GO HERE */
-	#sidebar-wrapper {
-		display: none;
-	}
+	.hide_mobile { display: none; }
 
-	#top_nav {
-		font-size: em(11);
-	}
+	.show_mobile { display: block; }
 
-	.content_header h1 {
-		font-size: em(18);
-	}
+	#sidebar-wrapper { display: none; }
 
-	.address_label {
-		line-height: 0;
-		margin-bottom: 25px;
-	}
+	.content_header h1 { font-size: em(18); }
+
+	.address_label { line-height: 0; margin-bottom: 25px; }
 
 	.btc_public_address,
 	.address_balance,
-	.qr_btn {
-	    float: none;
-	}
+	.qr_btn { float: none; }
 
 	.address_balance {
 		padding: 5px 10px;
@@ -138,15 +106,9 @@ and (max-device-width : 667px) {
 		img { left: 10px; }
 	}
 
-	li.add_currency_btn_li {
-		margin-top: 15px;
-		margin-left: 0;
-	}
+	li.add_currency_btn_li { margin-top: 15px; margin-left: 0; }
 
-	select#account_type {
-		margin-bottom: 15px;
-		width: 220px;
-	}
+	select#account_type { margin-bottom: 15px; width: 220px; }
 }
 
 /* 400

@@ -38,9 +38,9 @@
 
         <nav id="top_nav" class="noselect">
             <ul class="top_link_group">
-                <li class="top_link"><a href="#">Features</a></li>
-                <li class="top_link"><a href="#">Blog</a></li>
-                <li class="top_link"><a href="#">Help</a></li>
+                <li class="top_link hide_mobile"><a href="#">Features</a></li>
+                <li class="top_link hide_mobile"><a href="#">Blog</a></li>
+                <li class="top_link hide_mobile"><a href="#">Help</a></li>
             </ul>
 
             <div class="avatar"
@@ -63,6 +63,19 @@
                     <li ng-click="dash.sidebarClick();">
                         <a ui-sref="settings" ng-click="closeMenu();">Settings</a>
                     </li>
+
+                    <!-- <li ng-click="dash.sidebarClick();" class="show_mobile">
+                        <a ui-sref="#" ng-click="closeMenu();">Features</a>
+                    </li>
+
+                    <li ng-click="dash.sidebarClick();" class="show_mobile">
+                        <a ui-sref="#" ng-click="closeMenu();">Blog</a>
+                    </li> -->
+
+                    <li ng-click="dash.sidebarClick();" class="show_mobile">
+                        <a ui-sref="#" ng-click="closeMenu();">Help</a>
+                    </li>
+
                     <li>
                         <a ng-click="closeMenu()" href="#">Logout</a>
                     </li>
