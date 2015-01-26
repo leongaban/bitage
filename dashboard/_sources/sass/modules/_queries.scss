@@ -35,6 +35,25 @@
 /* 768 (Mobile Break)
 ==================================================== */
 @media all and (max-width: 768px) {
+	.content_header {
+		h1 {
+			font-size: em(20);
+			font-weight: 300;
+			color: #666;
+		}
+	}
+
+	.mobile_logo {
+		display: block;
+		position: absolute;
+		top: 28px;
+		left: 20px;
+		font-size: em(20);
+		font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 700;
+        color: #666;
+	}
+
 	#wrapper {
      	padding-left: 0;
     }
