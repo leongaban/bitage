@@ -24,6 +24,8 @@
 		vm.$parent.closeMsg = function() {
 			vm.$parent.notification = false;	
 		};
+
+		// Express response listener here for incoming transaction:
 		
 		// Open Receive or Send modals:
 		vm.openModal = function(m) {
