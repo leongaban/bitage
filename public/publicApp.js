@@ -2,7 +2,7 @@
 /* =========================================
 --------------------------------------------
 
-	BITAGE.io Public views app
+	Bigate Public views
 	"Keep watch over your Bitcoins"
 	
    	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
