@@ -1,6 +1,7 @@
 node_modules/
 bower_components
 public/components
+config.codekit
 .sass-cache
 npm-debug.log
 *.cache

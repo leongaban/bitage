@@ -5,7 +5,6 @@
 #body_id {
 	background: $dgray;
 	background-image: url("../img/shapes.gif");
-	// background-image: url("../img/gems.jpg");
 	// background-image: url("../img/ocean.jpg");
 	// background-image: url("../img/mountains.jpg");
 	// background-size: cover;
@@ -83,7 +82,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0 20px;
-	width: 80%;
+	width: 50%;
 	@include clearfix();
 	// flexbox
 	display: flex;
