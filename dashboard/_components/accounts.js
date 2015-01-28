@@ -18,7 +18,7 @@
 
 		$scope.addAccount = function() {
 			// Don't add account if blank
-		    if ($scope.label === '' || 
+		    if ($scope.label === '' ||
 		    	$scope.label === undefined ||
 		    	$scope.address === undefined) { return; }
 
@@ -39,16 +39,16 @@
 			var text = document.getElementById(element),
 				range = document.createRange(),
 				selection = window.getSelection();
-			range.selectNodeContents(text);
-			selection.removeAllRanges();
-		    selection.addRange(range);
+				range.selectNodeContents(text);
+				selection.removeAllRanges();
+			    selection.addRange(range);
 		};
 
 		$scope.pubAddress = {};
 		$scope.pubAddress.getClick = function(the_id) {
 			selectAddress(the_id);
 		};
-	    
+
 	}]);
 
 })();
