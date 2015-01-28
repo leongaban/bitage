@@ -59,6 +59,12 @@
 		font-size: em(32);
 		color: #eee;
 	}
+
+	p {
+		margin-top: 10px;
+		font-size: em(12);
+		color: $red;
+	}
 }
 
 // Our Bitcoin Services hero:
