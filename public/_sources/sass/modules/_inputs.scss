@@ -43,16 +43,16 @@
 	user-select: none;
 }
 
-.input__label-content {
+.input_content {
 	position: relative;
 	display: block;
 	padding: 1.6em 0;
 	width: 100%;
 }
 
-.input_jiro { margin: 2em 40px 0 0; }
+.jiro { margin: 2em 40px 0 0; }
 
-.input__field--jiro {
+.jiro_field {
 	opacity: 0;
 	display: block;
 	padding: 20px 0;
@@ -67,7 +67,7 @@
 	overflow: hidden;
 }
 
-.input__label--jiro {
+.jiro_label {
 	position: absolute;
 	left: 0;
 	padding: 0 0.85em;
@@ -77,7 +77,7 @@
 	// pointer-events: none;
 }
 
-.input__label-content--jiro {
+.jiro_content {
 	opacity: 1;
 	cursor: pointer;
 	@include transition(all, 0.5s, ease-in-out);
@@ -91,8 +91,8 @@
 	}
 }
 
-.input__label--jiro::before,
-.input__label--jiro::after {
+.jiro_label::before,
+.jiro_label::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -103,7 +103,7 @@
 	transition: transform 0.3s;
 }
 
-.input__label--jiro::before {
+.jiro_label::before {
 	border-top: 2px solid $blue;
 	-webkit-transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
 	transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
@@ -111,7 +111,7 @@
 	transition-delay: 0.3s;
 }
 
-.input__label--jiro::after {
+.jiro_label::after {
 	z-index: -1;
 	background: $blue;
 	-webkit-transform: scale3d(1, 0, 1);
@@ -120,35 +120,35 @@
 	transform-origin: 50% 0%;
 }
 
-.input__field--jiro:focus,
-.input--filled .input__field--jiro {
+.jiro_field:focus,
+.input--filled .jiro_field {
 	opacity: 1;
 	-webkit-transition-delay: 0.3s;
 	transition-delay: 0.3s;
 }
 
-.input__field--jiro:focus + .input__label--jiro .input__label-content--jiro,
-.input--filled .input__label-content--jiro {
+.jiro_field:focus + .jiro_label .jiro_content,
+.input--filled .jiro_content {
 	-webkit-transform: translate3d(0, -80%, 0);
 	transform: translate3d(0, -80%, 0);
 	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.input__field--jiro:focus + .input__label--jiro::before,
-.input--filled .input__label--jiro::before {
+.jiro_field:focus + .jiro_label::before,
+.input--filled .jiro_label::before {
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
 }
 
-.input__field--jiro:focus + .input__label--jiro::before,
-.input--filled .input__label--jiro::before {
+.jiro_field:focus + .jiro_label::before,
+.input--filled .jiro_label::before {
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
 
-.input__field--jiro:focus + .input__label--jiro::after,
-.input--filled .input__label--jiro::after {
+.jiro_field:focus + .jiro_label::after,
+.input--filled .jiro_label::after {
 	-webkit-transform: scale3d(1, 1, 1);
 	transform: scale3d(1, 1, 1);
 	-webkit-transition-delay: 0.3s;

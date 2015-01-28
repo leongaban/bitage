@@ -55,29 +55,34 @@
 
             <h3>Get a wallet and join the age of Bitcoin</h3>
 
-            <form>
-                <span class="input input_jiro">
-                    <input class="input__field input__field--jiro" type="text" id="input-1" />
-                    <label class="input__label input__label--jiro" for="input-1">
-                        <span class="input__label-content input__label-content--jiro">Full Name</span>
+            <form name="quick_signup_form" ng-submit="submitForm(userForm.$valid)" novalidate>
+
+                <span class="input jiro">
+                    <input ng-model="fullname" required
+                           class="input__field jiro_field" type="text" id="input-1" />
+                    <label class="input__label jiro_label" for="input-1">
+                        <span class="input_content jiro_content">Full Name</span>
                     </label>
                 </span>
-                <span class="input input_jiro">
-                    <input class="input__field input__field--jiro" type="text" id="input-2" />
-                    <label class="input__label input__label--jiro" for="input-2">
-                        <span class="input__label-content input__label-content--jiro">Email</span>
+                <span class="input jiro">
+                    <input ng-model="email" required
+                           class="input__field jiro_field" type="text" id="input-2" />
+                    <label class="input__label jiro_label" for="input-2">
+                        <span class="input_content jiro_content">Email</span>
                     </label>
                 </span>
-                <span class="input input_jiro">
-                    <input class="input__field input__field--jiro" type="password" id="input-3" />
-                    <label class="input__label input__label--jiro" for="input-3">
-                        <span class="input__label-content input__label-content--jiro">Password</span>
+                <span class="input jiro">
+                    <input ng-model="user.password" ng-minlength="6" required
+                           class="input__field jiro_field" type="password" id="input-3" />
+                    <label class="input__label jiro_label" for="input-3">
+                        <span class="input_content jiro_content">Password</span>
                     </label>
                 </span>
 
-                <span class="input input_jiro">
-                    <button id="btn_start_account" class="btn">Create Wallet</button>
+                <span class="input jiro">
+                    <button id="btn_start_account" type="submit" class="btn">Create Wallet</button>
                 </span>
+
             </form>
 
         </section>
