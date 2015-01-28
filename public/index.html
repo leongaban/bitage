@@ -55,32 +55,45 @@
 
             <h3>Get a wallet and join the age of Bitcoin</h3>
 
-            <form name="quick_signup_form" ng-submit="submitForm(userForm.$valid)" novalidate>
+            <form name="quickForm" ng-submit="submitForm(quickForm.$valid)" novalidate>
 
-                <span class="input jiro">
+                <span class="input jiro" class="form-group">
                     <input ng-model="fullname" required
-                           class="input__field jiro_field" type="text" id="input-1" />
+                           name="name" type="text" id="input-1" 
+                           class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-1">
                         <span class="input_content jiro_content">Full Name</span>
+                        <p ng-show="quickForm.name.$invalid && !quickForm.name.$pristine"
+                           class="help-block">Name required.</p>
+                        <!-- <p>Name required.</p> -->
                     </label>
                 </span>
-                <span class="input jiro">
+
+                <span class="input jiro" class="form-group">
                     <input ng-model="email" required
-                           class="input__field jiro_field" type="text" id="input-2" />
+                           name="email" type="email" id="input-2"
+                           class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-2">
                         <span class="input_content jiro_content">Email</span>
+                        <p ng-show="quickForm.email.$invalid && !quickForm.email.$pristine"
+                           class="help-block">Enter a valid email.</p>
                     </label>
                 </span>
-                <span class="input jiro">
+
+                <span class="input jiro" class="form-group">
                     <input ng-model="user.password" ng-minlength="6" required
-                           class="input__field jiro_field" type="password" id="input-3" />
+                           name="password" type="password" id="input-3"
+                           class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-3">
                         <span class="input_content jiro_content">Password</span>
+                        <p ng-show="quickForm.password.$error.minlength"
+                           class="help-block">Password is too short.</p>
                     </label>
                 </span>
 
                 <span class="input jiro">
-                    <button id="btn_start_account" type="submit" class="btn">Create Wallet</button>
+                    <button ng-disabled="quickForm.$invalid"
+                            id="btn_start_account" type="submit" class="btn">Create Wallet</button>
                 </span>
 
             </form>

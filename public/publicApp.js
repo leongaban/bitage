@@ -48,15 +48,28 @@
 	}])
 
 	.controller('MainCtrl', ['$scope', '$state',  function($scope, $state) {
-		$scope.showHome = function() {
+
+		var vm = $scope;
+
+		vm.showHome = function() {
 	    	return $state.is('home');
 	   	}
-		$scope.showLogo = function() {
+		vm.showLogo = function() {
 	    	return $state.is('home');
 	   	}
-	   	$scope.showTicker = function() {
+	   	vm.showTicker = function() {
 	    	return $state.is('home');
 	   	}
+
+	   	// Quick form submit          
+        vm.submitForm = function(isValid) {
+
+            // check to make sure form is valid
+            if (isValid) {
+                alert('our form is amazing');
+            }
+
+        };
 	}]);
 
 })();
