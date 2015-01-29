@@ -5,6 +5,10 @@
 // removes chrome input highlight
 *:focus { outline: 0; }
 
+// button:disabled {
+//     background: $lgray;
+// }
+
 .input {
 	position: relative;
 	z-index: 1;

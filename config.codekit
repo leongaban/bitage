@@ -3845,17 +3845,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/_assets\/img\/gems1.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 67033,
-		"inputAbbreviatedPath": "\/public\/_assets\/img\/gems1.jpg",
-		"outputAbbreviatedPath": "\/public\/_assets\/img\/gems1.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/public\/_assets\/img\/logo@2x.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3874,17 +3863,6 @@
 		"initialSize": 120049,
 		"inputAbbreviatedPath": "\/public\/_assets\/img\/mountains.jpg",
 		"outputAbbreviatedPath": "\/public\/_assets\/img\/mountains.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/_assets\/img\/mt.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 89063,
-		"inputAbbreviatedPath": "\/public\/_assets\/img\/mt.jpg",
-		"outputAbbreviatedPath": "\/public\/_assets\/img\/mt.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -3935,36 +3913,36 @@
 		},
 	"\/public\/_components\/about.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/public\/_components\/about.js",
 		"outputAbbreviatedPath": "\/public\/_components\/min\/about-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_components\/login.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/public\/_components\/login.js",
 		"outputAbbreviatedPath": "\/public\/_components\/min\/login-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_components\/register.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/public\/_components\/register.js",
 		"outputAbbreviatedPath": "\/public\/_components\/min\/register-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_sources\/js\/plugins\/biticker.js": {
 		"fileType": 64,
