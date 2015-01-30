@@ -14,10 +14,10 @@
 }
 
 // BitAge logo:
-#home_intro h1,
+// #home_intro h1,
 .bitage_logo {
-	// font-family: 'Roboto Condensed', sans-serif;
-	font-family: 'Droid Serif', serif;
+	font-family: 'Roboto Condensed', sans-serif;
+	// font-family: 'Droid Serif', serif;
 	font-weight: 700;
 	// font-style: italic;
 }
@@ -37,22 +37,22 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 40px;
-	margin-top: 135px;
+	margin-top: 100px;
+	width: 80%;
 	text-align: center;
 	color: #333;
 	z-index: 3;
 
-	h1 {
-		margin-bottom: 24px;
-		font-size: em(128);
-		letter-spacing: -3px;
-		color: #fff;
-	}
+	// h1 {
+	// 	margin-bottom: 24px;
+	// 	font-size: em(128);
+	// 	color: #fff;
+	// }
 
-	h2 { 
-		// color: $buttonHover;
-		color: #fff;
-	}
+	// h2 { 
+	// 	color: $buttonHover;
+	// 	color: #fff;
+	// }
 
 	// h2 { letter-spacing: 3px; }
 
@@ -60,23 +60,28 @@
 		font-weight: 300;
 		font-size: em(20);
 		line-height: em(24);
-		// color: #fff;
+		color: #fff;
 	}
+}
+
+.opening_copy {
+	text-align: left;
 }
 
 // Hero signup form:
 #fast_signup {
 	position: relative;
-	margin-top: 20px;
+	// margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
-	padding: 40px 20px 40px 20px;
+	padding: 20px 20px 40px 20px;
 
-	h3 {
+	h2 {
 		margin: 10px 0 40px;
-		font-size: em(32);
+		font-size: em(40);
+		line-height: em(24);
 		color: #eee;
-		color: $buttonHover;
+		// color: $buttonHover;
 	}
 
 	p {
@@ -96,7 +101,12 @@
 	background: #1c1e21;
 	@include clearfix();
 
-	h1 { margin-bottom: 40px; font-size: em(56); color: #fff; }
+	h1 {
+		margin-bottom: 40px;
+		// font-size: em(56);
+		font-size: em(32);
+		color: #fff;
+	}
 }
 
 .service_blocks {

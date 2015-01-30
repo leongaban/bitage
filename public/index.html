@@ -18,8 +18,8 @@
     <meta property="og:description" content="A Bitcoin Services Company" />
 
     <link rel="icon" href="favicon.ico">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet'> -->
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Droid+Serif:700,700italic' rel='stylesheet' type='text/css'> -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,800' rel='stylesheet'>
     <link href="_assets/css/bitage_web.css" rel="stylesheet">
 </head>
@@ -29,7 +29,7 @@
       ng-controller="MainCtrl">
 
     <header>
-        <section ng-hide="showLogo()" class="bitage_logo">
+        <section class="bitage_logo">
             <h1><a ui-sref="home">Bitage</a></h1>
         </section>
 
@@ -49,16 +49,22 @@
 
     <section id="home_intro" ng-show="showHome()">
 
-        <h1>Bitage</h1>
-        <h2>A Bitcoin Services Company</h2>
+        <!-- <div class="opening_copy">
+            <h2>Bitcoin is money for the internet age,<br/> it's the best way to send value across the globe,<br/> and we're here to help make it easy.</h2>
+        </div> -->
+        <!-- <h1>Bitage</h1> -->
 
         <section id="fast_signup" class="content">
 
-            <h3>Get a wallet and join the age of Bitcoin</h3>
+            <!-- <h1>Get a wallet and join the age of Bitcoin</h1> -->
+            <h2>
+                Join in the age of Bitcoin<br/>
+                start by getting your own digital wallet
+            </h2>
 
             <form name="quickForm" ng-submit="submitForm(quickForm.$valid)" novalidate>
 
-                <span class="input jiro" class="form-group">
+                <!-- <span class="input jiro" class="form-group">
                     <input ng-model="fullname" required
                            name="name" type="text" id="input-1" 
                            class="input__field jiro_field" />
@@ -67,7 +73,7 @@
                         <p ng-show="quickForm.name.$invalid && !quickForm.name.$pristine"
                            class="help-block">Name required.</p>
                     </label>
-                </span>
+                </span> -->
 
                 <span class="input jiro" class="form-group">
                     <input ng-model="email" required
