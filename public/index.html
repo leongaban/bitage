@@ -36,11 +36,14 @@
 
         <div ng-show="showTicker()" class="biticker-container" data-currency="USD"></div>
 
-        <div class="mobile_nav">
-            <div ng-click="mobileMenu()" class="icon-menu"></div>
+        <div class="mobile_nav noselect">
+                <!-- ng-click="mobileMenu()" -->
+            <div 
+            ng-click="isMobileNavOpen = !isMobileNavOpen"
+                class="icon-menu"></div>
         </div>
 
-        <nav id="main_nav">
+        <nav id="main_nav" ng-init="isMobileNavOpen = true" ng-show="isMobileNavOpen">
             <ul>
                 <li><a ui-sref="about">About</a></li>
                 <li><a href="http://localhost:2368">Blog</a></li>
