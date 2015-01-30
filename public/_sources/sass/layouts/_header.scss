@@ -13,7 +13,24 @@
     a { color: #fff; }
 }
 
-// about, login, register
+.mobile_nav {
+    display: none;
+    float: right;
+    position: relative;
+    margin-right: 30px;
+    font-size: em(32);
+    z-index: 4;
+}
+
+.icon-menu {
+    color: #fff;
+    cursor: pointer;
+    
+    &:hover {
+        color: $buttonHover;
+    }
+}
+
 .bitage_logo {
     position: relative;
     top: 20px;

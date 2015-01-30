@@ -32,20 +32,41 @@
 ==================================================== */
 @media all and (max-width: 800px) {
 
-    #home_intro {
-        h1 {
-            margin-bottom: 24px;
-            font-size: em(96);
-            letter-spacing: -3px;
-            color: #fff;
+    #main_nav  {
+        display: none;
+        right: 0;
+        margin: 60px 0 0 0;
+        padding: 20px 0 0 0;
+        text-align: center;
+        width: 100%;
+        background: $blue;
+        z-index: 4;
+
+        li {
+            float: none;
+            margin-bottom: 30px;
         }
     }
 
-	.biticker-value {
-		left: 20px;
-		margin: 0;
-		text-align: left;
-	}
+    .mobile_nav {
+        display: block;
+    }
+
+    #fast_signup {
+        padding: 20px;
+
+        h2 {
+            margin: 10px 0 40px;
+            font-size: em(32);
+            line-height: em(24);
+            color: #eee;
+        }
+    }
+
+    .biticker-value {
+        margin-top: 12px;
+        font-size: em(12);
+    }
 
 	.service_blocks {
 		flex-direction: column;
@@ -70,14 +91,9 @@
 /* 600
 ==================================================== */
 @media all and (max-width: 600px) {
-	.biticker-container,
-    .biticker-value {
-    	display: none;
-    }
-
-    #main_nav {
-    	right: 40px;
-    }
+    // #main_nav {
+    // 	right: 40px;
+    // }
 
     // About
     .about_container {
@@ -85,13 +101,13 @@
     }
 
     // About, Login, Register
-    .bitage_logo {
-    	display: none;
-    }
+    // .bitage_logo {
+    // 	display: none;
+    // }
 
-    .mobile_logo {
-    	display: block;
-    }
+    // .mobile_logo {
+    // 	display: block;
+    // }
 
     .about_container h1 {
     	float: left;
