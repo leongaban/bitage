@@ -4,7 +4,8 @@
 
 #body_id {
 	background: $dgray;
-	background-image: url("../img/shapes.gif");
+	// background-image: url("../img/shapes.gif");
+	background-image: url("../img/blue.gif");
 	// background-image: url("../img/ocean.jpg");
 	// background-image: url("../img/mountains.jpg");
 	// background-size: cover;
@@ -67,8 +68,9 @@
 }
 
 // Our Bitcoin Services hero:
-#bitcoin_services {
-	margin: 100px 0 60px 0;
+#bitcoin_services,
+#whatisbitcoin {
+	// margin: 100px 0 60px 0;
 	padding: 60px 0;
 	width: 100%;
 	text-align: center;
@@ -126,3 +128,36 @@
 	height: 64px;
 	background-position: 0 -240px;
 }
+
+#whatisbitcoin {
+	margin-bottom: 60px;
+	padding-bottom: 80px;
+	border-top: 1px solid #333;
+
+	h4 {
+		margin: 40px 0 20px;
+		color: lighten(#666, 10%);
+	}
+
+	p {
+		margin: 0 auto 20px;
+		max-width: 880px;
+		width: 80%;
+		font-size: em(20);
+		line-height: em(28);
+		text-align: left;
+		color: lighten(#666, 30%);
+	}
+
+	a {
+    	color: $buttonHover;
+    	text-decoration: underline;
+
+    	&:hover {
+            color: lighten($buttonHover, 10%);
+    		text-decoration: none;
+    	}
+    }
+}
+
+.bitcoin_video { margin-bottom: 40px; }
