@@ -3902,6 +3902,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/public\/_assets\/js\/plugins\/particles.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/particles.min.js",
+		"outputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/min\/particles.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/public\/_components\/about.js": {
 		"fileType": 64,
 		"ignore": 1,
