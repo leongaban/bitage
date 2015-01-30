@@ -19,6 +19,12 @@
         color: #fff;
     }
 
+    .help-block {
+        position: absolute;
+        top: -25px;
+        color: $red;
+    }
+
     h2 {
     	margin-bottom: 30px;
     	font-weight: 300;
@@ -27,6 +33,7 @@
     }
 
     span, input {
+        position: relative;
         margin-bottom: 20px;
         width: 300px;
     }

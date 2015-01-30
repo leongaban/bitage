@@ -1,14 +1,23 @@
 <section id="login_widget">
-	<form>
+
+	<form name="loginForm" ng-submit="submitLoginForm(loginForm.$valid)" novalidate>
 		<span ui-sref="home" class="mobile_logo">Bitage</span>
 		<h2>Login to your account</h2>
 
-		<span>
-			<input id="form_login_email" type="email" placeholder="Email" tabindex="1">
+		<span class="form-group">
+			<input ng-model="email" required
+				   id="form_login_email" name="email" type="email" placeholder="Email" tabindex="1">
+
+			<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" 
+			   class="help-block">Enter a valid email.</p>
 		</span>
 
-		<span>
-			<input id="form_login_password" type="password" placeholder="Password" tabindex="2">
+		<span class="form-group">
+			<input ng-model="user.password" ng-minlength="6" required
+				   id="form_login_password" name="password" type="password" placeholder="Password" tabindex="2">
+
+			<p ng-show="loginForm.password.$error.minlength"
+			   class="help-block">Password is too short.</p>
 		</span>
 
 		<span>
@@ -24,4 +33,5 @@
 			<a ui-sref="#">Forgot password?</a> | <a ui-sref="register">Sign Up</a>
 		</span>
 	</form>
+
 </section>
