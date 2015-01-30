@@ -20,8 +20,8 @@
     }
 
     .help-block {
-        position: relative;
-        top: -10px;
+        position: absolute;
+        top: -25px;
         color: $red;
     }
 
@@ -33,6 +33,7 @@
     }
 
     span, input {
+        position: relative;
         margin-bottom: 20px;
         width: 300px;
     }

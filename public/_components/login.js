@@ -16,6 +16,8 @@
             // check to make sure form is valid
             if (isValid) {
                 alert('our form is amazing');
+            } else {
+            	alert('Please correct the form')
             }
 
         };
