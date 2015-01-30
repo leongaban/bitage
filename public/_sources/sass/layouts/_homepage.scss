@@ -37,31 +37,11 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 40px;
-	margin-top: 100px;
+	margin-top: 80px;
 	width: 80%;
 	text-align: center;
 	color: #333;
 	z-index: 3;
-
-	// h1 {
-	// 	margin-bottom: 24px;
-	// 	font-size: em(128);
-	// 	color: #fff;
-	// }
-
-	// h2 { 
-	// 	color: $buttonHover;
-	// 	color: #fff;
-	// }
-
-	// h2 { letter-spacing: 3px; }
-
-	h2, h3 {
-		font-weight: 300;
-		font-size: em(20);
-		line-height: em(24);
-		color: #fff;
-	}
 }
 
 .opening_copy {
@@ -71,17 +51,15 @@
 // Hero signup form:
 #fast_signup {
 	position: relative;
-	// margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 20px 20px 40px 20px;
 
 	h2 {
-		margin: 10px 0 40px;
+		margin: 10px 0 60px;
 		font-size: em(40);
 		line-height: em(24);
 		color: #eee;
-		// color: $buttonHover;
 	}
 
 	p {
@@ -94,7 +72,6 @@
 // Our Bitcoin Services hero:
 #bitcoin_services,
 #whatisbitcoin {
-	// margin: 100px 0 60px 0;
 	padding: 60px 0;
 	width: 100%;
 	text-align: center;
@@ -103,7 +80,6 @@
 
 	h1 {
 		margin-bottom: 40px;
-		// font-size: em(56);
 		font-size: em(32);
 		color: #fff;
 	}
@@ -130,7 +106,7 @@
 	justify-content: center;
 	align-items: stretch;
 
-	h2 { font-weight: 600; color: #eee; }
+	h2 { font-weight: 500; color: #eee; }
 
 	p {
 		font-size: em(12);
