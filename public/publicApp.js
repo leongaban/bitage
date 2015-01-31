@@ -74,7 +74,7 @@
             console.log(vm.formData);
             
             // process the form
-            vm.$parent.processForm = function() {
+            vm.processForm = function() {
                 $http({
                     method  : 'POST',
                     url     : 'process.php',
