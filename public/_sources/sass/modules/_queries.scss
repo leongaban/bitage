@@ -14,11 +14,6 @@
     .service_blocks { width: 90%; }
 }
 
-/* 990
-==================================================== */
-@media all and (max-width: 990px) {
-}
-
 /* 900
 ==================================================== */
 @media all and (max-width: 900px) {
@@ -58,9 +53,9 @@
 
 	.service_blocks { flex-direction: column; }
 
-	.service_block { padding: 20px 20px 20px 0; width: 100%; }
+	.service_block  { padding: 20px 20px 20px 0; width: 100%; }
 
-    .bitcoin_video { width: 80%; }
+    .bitcoin_video  { width: 80%; }
 }
 
 /* 768 (Mobile Break)
@@ -72,11 +67,11 @@
 ==================================================== */
 @media all and (max-width: 600px) {
 
-    .jiro { margin: 4em 40px 0 0; }
+    .jiro           { margin: 4em 40px 0 0; }
     .jiro_facebook,
-    .jiro_twitter { margin-top: 20px; }
+    .jiro_twitter   { margin-top: 20px; }
 
-    #btn_subscribe { margin: 20px 0 0 0; }
+    #btn_subscribe  { margin: 20px 0 0 0; }
 
     #login_widget, #register_widget {
     	top: 135px;
