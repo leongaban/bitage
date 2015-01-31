@@ -2,16 +2,38 @@
 // ====================================================
 // ==================================================== */
 
+#main_nav,
+#mobile_nav {
+    position: absolute;
+    right: 30px;
+    z-index: 4;
+}
+
 #main_nav {
     display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 3;
+    top: 40px;
 
     li { float: left; margin-left: 25px; }
 
     a { color: #fff; }
+}
+
+#mobile_nav {
+    top: 90px;
+
+    li {
+        border-bottom: 1px solid darken($blue, 5%);
+        background: $blue;
+    }
+
+    a {
+        display: block;
+        padding: 15px 180px 15px 20px;
+        color: #fff;
+        text-decoration: none;
+        background-size:100%;
+        &:hover { background: lighten($blue, 10%); }
+    }
 }
 
 .mobile_nav {
@@ -20,22 +42,19 @@
     position: relative;
     margin-right: 30px;
     font-size: em(32);
-    z-index: 4;
+    z-index: 5;
 }
 
 .icon-menu {
     color: #fff;
     cursor: pointer;
-    
-    &:hover {
-        color: $buttonHover;
-    }
+    &:hover { color: $buttonHover; }
 }
 
 .bitage_logo {
     position: relative;
-    top: 20px;
-    left: 20px;
+    top: 30px;
+    left: 30px;
     width: 120px;
     font-size: em(32);
     -webkit-user-select: none;
@@ -47,3 +66,5 @@
         text-decoration: none;
     }
 }
+
+.biticker-value { margin-top: 20px; }

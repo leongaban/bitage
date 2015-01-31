@@ -5,17 +5,13 @@
 /* 1600
 ==================================================== */
 @media all and (max-width: 1600px) {
-    .service_blocks {
-        width: 70%;
-    }
+    .service_blocks { width: 70%; }
 }
 
 /* 1000
 ==================================================== */
 @media all and (max-width: 1000px) {
-    .service_blocks {
-        width: 90%;
-    }
+    .service_blocks { width: 90%; }
 }
 
 /* 990
@@ -48,9 +44,7 @@
         }
     }
 
-    .mobile_nav {
-        display: block;
-    }
+    .mobile_nav { display: block; }
 
     #fast_signup {
         padding: 20px;
@@ -63,79 +57,39 @@
         }
     }
 
-    .biticker-value {
-        margin-top: 12px;
-        font-size: em(12);
-    }
+    .biticker-value { margin-left: 40px; }
 
-	.service_blocks {
-		flex-direction: column;
-	}
+	.service_blocks { flex-direction: column; }
 
 	.service_block {
 		padding: 20px 20px 20px 0;
 		width: 100%;
 	}
 
-    .bitcoin_video {
-        width: 80%;
-    }
+    .bitcoin_video { width: 80%; }
 }
 
 /* 768 (Mobile Break)
 ==================================================== */
 @media all and (max-width: 768px) {
-    
 }
 
 /* 600
 ==================================================== */
 @media all and (max-width: 600px) {
-    // #main_nav {
-    // 	right: 40px;
-    // }
 
-    // About
-    .about_container {
-    	width: 90%;
-    }
+    #btn_subscribe { margin: 20px 0 0 0; }
 
-    // About, Login, Register
-    // .bitage_logo {
-    // 	display: none;
-    // }
-
-    // .mobile_logo {
-    // 	display: block;
-    // }
-
-    .about_container h1 {
-    	float: left;
-    	margin-top: -5px;
-    	margin-right: 30px;
-    	line-height: em(20);
-    }
-
-    #btn_subscribe {
-    	margin: 20px 0 0 0;
-    }
-
-    // Login, Register
     #login_widget, #register_widget {
     	top: 135px;
     	margin-top: 0;
     	padding: 20px 40px 20px 15px;
-    	// width: auto;
-
-    	// input { width: auto; }
 
     	p { margin-bottom: 10px; }
 
     }
 
-	footer {
-		top: 135px;
-	}
+	footer { top: 135px; }
 }
 
 /* 400

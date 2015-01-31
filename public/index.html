@@ -37,18 +37,24 @@
         <div ng-show="showTicker()" class="biticker-container" data-currency="USD"></div>
 
         <div class="mobile_nav noselect">
-                <!-- ng-click="mobileMenu()" -->
-            <div 
-            ng-click="isMobileNavOpen = !isMobileNavOpen"
-                class="icon-menu"></div>
+            <div ng-click="isMobileNavOpen = !isMobileNavOpen" class="icon-menu"></div>
         </div>
 
-        <nav id="main_nav" ng-init="isMobileNavOpen = true" ng-show="isMobileNavOpen">
+        <nav id="main_nav">
             <ul>
                 <li><a ui-sref="about">About</a></li>
                 <li><a href="http://localhost:2368">Blog</a></li>
                 <li><a ui-sref="login">Sign In</a></li>
                 <li><a ui-sref="register">Create Account</a></li>
+            </ul>
+        </nav>
+
+        <nav id="mobile_nav" ng-show="isMobileNavOpen">
+            <ul>
+                <li><a ng-click="isMobileNavOpen = false" ui-sref="about">About</a></li>
+                <li><a ng-click="isMobileNavOpen = false" href="http://localhost:2368">Blog</a></li>
+                <li><a ng-click="isMobileNavOpen = false" ui-sref="login">Sign In</a></li>
+                <li><a ng-click="isMobileNavOpen = false" ui-sref="register">Create Account</a></li>
             </ul>
         </nav>
     </header>
@@ -151,7 +157,7 @@
 
         <p>Here at Bitage, we're excited about all the future potential of bitcoin as well as helping as many people as we can start taking advantage of its unique properties, both as a store of value and send money across the globe for a fraction of the cost of traditional means.</p>
 
-        <p>To learn more about our thoughts on bitcoin, check out <a href="#">our blog</a>. If you are ready to get started using bitcoin <a ui-sref="register">create an account</a> and get your own free digital wallet with us.
+        <p>To learn more about our thoughts on bitcoin, check out <a href="#">our blog</a>. If you are ready to get started using bitcoin <a ui-sref="register">create an account</a> and get your own free digital wallet with us.</p>
 
     </section>
 
@@ -160,6 +166,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
     <script src="_assets/js/libs/angular-ui-router.min.js"></script>
+    <script src="_assets/js/plugins/matchmedia-ng.min.js"></script>
     <script src="_components/about.js"></script>
     <script src="_components/login.js"></script>
     <script src="_components/register.js"></script>
