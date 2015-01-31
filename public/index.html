@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- @leongaban & @paulinhorocha -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bitage | A Bitcoin Services Company</title>
@@ -18,10 +17,8 @@
     <meta property="og:description" content="A Bitcoin Services Company" />
 
     <link rel="icon" href="favicon.ico">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet'> -->
-    <!-- <link href='http://fonts.googleapis.com/css?family=Droid+Serif:700,700italic,400' rel='stylesheet' type='text/css'> -->
     <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,800' rel='stylesheet'> -->
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,500,700|Raleway' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,500,700' rel='stylesheet'>
     <link href="_assets/css/bitage_web.css" rel="stylesheet">
 </head>
 
@@ -50,18 +47,18 @@
         </nav>
 
         <nav id="mobile_nav" ng-show="isMobileNavOpen">
-            <ul>
-                <li><a ng-click="isMobileNavOpen = false" ui-sref="about">About</a></li>
-                <li><a ng-click="isMobileNavOpen = false" href="http://localhost:2368">Blog</a></li>
-                <li><a ng-click="isMobileNavOpen = false" ui-sref="login">Sign In</a></li>
-                <li><a ng-click="isMobileNavOpen = false" ui-sref="register">Create Account</a></li>
+            <ul ng-click="isMobileNavOpen = false">
+                <li><a ui-sref="about">About</a></li>
+                <li><a href="http://localhost:2368">Blog</a></li>
+                <li><a ui-sref="login">Sign In</a></li>
+                <li><a ui-sref="register">Create Account</a></li>
             </ul>
         </nav>
     </header>
 
     <ui-view></ui-view>
 
-    <section id="home_intro" ng-show="showHome()">
+    <section id="home_intro" ng-show="showHome()" class="noselect">
 
         <section id="fast_signup" class="content">
 
@@ -72,7 +69,7 @@
 
             <form name="quickForm" ng-submit="submitForm(quickForm.$valid)" novalidate>
 
-                <!-- <span class="input jiro" class="form-group">
+                <span class="input jiro" class="form-group">
                     <input ng-model="fullname" required
                            name="name" type="text" id="input-1" 
                            class="input__field jiro_field" />
@@ -81,7 +78,7 @@
                         <p ng-show="quickForm.name.$invalid && !quickForm.name.$pristine"
                            class="help-block">Name required.</p>
                     </label>
-                </span> -->
+                </span>
 
                 <span class="input jiro" class="form-group">
                     <input ng-model="email" required
@@ -107,6 +104,14 @@
 
                 <span class="input jiro">
                     <button id="btn_start_account" type="submit" class="btn">Create Wallet</button>
+                </span>
+
+                <span class="input jiro jiro_facebook">
+                    <button id="btn_use_facebook" type="submit" class="btn">Use Facebook</button>
+                </span>
+
+                <span class="input jiro jiro_twitter">
+                    <button id="btn_use_twitter" type="submit" class="btn">Use Twitter</button>
                 </span>
 
             </form>
@@ -181,47 +186,26 @@
     <script src="_assets/js/plugins/particles.min.js"></script>
     <script type="text/javascript">
         particlesJS('particle_bg', {
-            particles: {
-                color: '#024562',
-                shape: 'circle',
-                opacity: 1,
-                size: .5,
+            particles: { color: '#024562', shape: 'circle',
+                opacity: .8,
+                size: 1,
                 size_random: true,
                 nb: 250,
                 line_linked: {
                     enable_auto: true,
-                    distance: 25,
+                    distance: 20,
                     color: '#fff',
                     opacity: 0.5,
-                    width: 1,
+                    width: 2,
                     condensed_mode: {
                         enable: false,
-                        rotateX: 600,
+                        rotateX: 500,
                         rotateY: 600
                     }
                 },
-                anim: {
-                    enable: true,
-                    speed: 3
-                    }
-                },
-                interactivity: {
-                    enable: false,
-                    mouse: {
-                    distance: 200
-                },
-                detect_on: 'canvas',
-                mode: 'grab',
-                line_linked: {
-                    opacity: .5
-                },
-                events: {
-                    onclick: {
-                      enable: false,
-                      mode: 'push',
-                      nb: 4
-                    }
-                }
+                anim: { enable: true, speed: 3 }},
+                interactivity: { enable: false, mouse: { distance: 200 },
+                events: {onclick: {enable: false}}
             },
             retina_detect: true
         });

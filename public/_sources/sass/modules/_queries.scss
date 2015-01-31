@@ -38,10 +38,7 @@
         background: $blue;
         z-index: 4;
 
-        li {
-            float: none;
-            margin-bottom: 30px;
-        }
+        li { float: none; margin-bottom: 30px; }
     }
 
     .mobile_nav { display: block; }
@@ -61,10 +58,7 @@
 
 	.service_blocks { flex-direction: column; }
 
-	.service_block {
-		padding: 20px 20px 20px 0;
-		width: 100%;
-	}
+	.service_block { padding: 20px 20px 20px 0; width: 100%; }
 
     .bitcoin_video { width: 80%; }
 }
@@ -77,6 +71,10 @@
 /* 600
 ==================================================== */
 @media all and (max-width: 600px) {
+
+    .jiro { margin: 4em 40px 0 0; }
+    .jiro_facebook,
+    .jiro_twitter { margin-top: 20px; }
 
     #btn_subscribe { margin: 20px 0 0 0; }
 

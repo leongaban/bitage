@@ -14,18 +14,18 @@
     &:hover {
         border: 1px solid lighten($button, 30%);
         background: lighten($button, 15%);
-        // @include linear-gradient(lighten(#2e6086, 10%), lighten(#33636a, 10%));
     }
 
     &:active { 
         text-shadow: 1px 1px #666;
         border: 1px solid darken(#6e6f72, 10%);
         background: lighten($button, 20%);
-        // @include linear-gradient(darken(#2e6086, 10%), darken(#33636a, 10%));
     }
 }
 
 #btn_start_account,
+#btn_use_facebook,
+#btn_use_twitter,
 #btn_login,
 #btn_subscribe {
     padding: 10px 20px;
@@ -34,14 +34,36 @@
     &:focus {
         border: 1px solid lighten($button, 30%);
         background: lighten($button, 15%);
-        // @include linear-gradient(lighten(#2e6086, 10%), lighten(#33636a, 10%));
-        // @include linear-gradient(darken(#2e6086, 10%), darken(#33636a, 10%));
     }
 }
 
-#btn_start_account {
+#btn_start_account,
+#btn_use_facebook,
+#btn_use_twitter {
     width: 228px;
     height: 60px;
+}
+
+#btn_use_facebook {
+    background: $facebook;
+    text-shadow: 1px 1px #666;
+    border: 1px solid lighten($facebook, 20%);
+
+    &:hover {
+        border: 1px solid lighten($facebook, 30%);
+        background: lighten($facebook, 5%);
+    }
+}
+
+#btn_use_twitter {
+    background: $twitter;
+    text-shadow: 1px 1px #666;
+    border: 1px solid lighten($twitter, 20%);
+
+    &:hover {
+        border: 1px solid lighten($twitter, 30%);
+        background: lighten($twitter, 5%);
+    }
 }
 
 #btn_login,

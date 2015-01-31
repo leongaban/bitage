@@ -2,7 +2,7 @@
 /* =========================================
 --------------------------------------------
 
-	Bigate Public views
+	Biage Public views
 	"Keep watch over your Bitcoins"
 	
    	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
@@ -55,14 +55,8 @@
 
 		var vm = $scope;
 
+		// Mobile nav
 		vm.isMobileNavOpen = false;
-
-		// vm.desktop = matchmedia.isDesktop();
-		// if (vm.desktop) {
-		// 	alert('desktop')
-		//     vm.isMobileNavOpen = false;
-		// };
-
 		var unregister = matchmedia.onDesktop( function(mediaQueryList){
 			vm.isDesktop = mediaQueryList.matches;
 			vm.isMobileNavOpen = false;
@@ -71,9 +65,7 @@
 		vm.showHome = function() {
 	    	return $state.is('home');
 	   	}
-		vm.showLogo = function() {
-	    	return $state.is('home');
-	   	}
+
 	   	vm.showTicker = function() {
 	    	return $state.is('home');
 	   	}
