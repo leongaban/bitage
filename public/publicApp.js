@@ -50,8 +50,8 @@
 			$urlRouterProvider.otherwise('/home');
 	}])
 
-	.controller('MainCtrl', ['$scope', '$state', 'matchmedia',
-		function($scope, $state, matchmedia) {
+	.controller('MainCtrl', ['$scope', '$location', '$state', 'matchmedia',
+		function($scope, $location, $state, matchmedia) {
 
 		var vm = $scope;
 
@@ -75,11 +75,15 @@
             
             // process the form
             vm.processForm = function() {
-                $http({
-                    method  : 'POST',
-                    url     : 'process.php',
-                    data    : $.param(vm.formData),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+            	// make an API call
+				$http.post('$location/signup').then(function($.param(vm.formData)) {
+
+                // $http({
+                //     method  : 'POST',
+                //     url     : 'process.php',
+                //     data    : $.param(vm.formData),
+                //     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
                 .success(function(data) {
                     console.log(data);
