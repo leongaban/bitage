@@ -5,6 +5,12 @@ Bitage application
 
 <a href="https://twitter.com@leongaban">@leongaban</a> & <a href="https://twitter.com@paulinhorocha">@paulinhorocha</a>
 
+RUN
+------
+<code>$ npm install pm2 -g</code>
+<code>$ pm2 start app.js</code>
+<code>https://github.com/leongaban/Bitage.git</code>
+
 Technologies (MEAN stack):
 ------
 * <a href="http://docs.mongodb.org/manual/">MongoDB</a>
