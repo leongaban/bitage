@@ -69,7 +69,7 @@
             <form name="quickForm" ng-submit="submitForm(quickForm.$valid)" novalidate>
 
                 <span class="input jiro" class="form-group">
-                    <input ng-model="fullname" required
+                    <input ng-model="formData.fullname" required
                            name="name" type="text" id="input-1" 
                            class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-1">
@@ -80,7 +80,7 @@
                 </span>
 
                 <span class="input jiro" class="form-group">
-                    <input ng-model="email" required
+                    <input ng-model="formData.email" required
                            name="email" type="email" id="input-2"
                            class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-2">
@@ -91,7 +91,7 @@
                 </span>
 
                 <span class="input jiro" class="form-group">
-                    <input ng-model="user.password" ng-minlength="6" required
+                    <input ng-model="formData.password" ng-minlength="6" required
                            name="password" type="password" id="input-3"
                            class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-3">
