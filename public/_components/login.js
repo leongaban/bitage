@@ -14,26 +14,16 @@
             console.log(vm.formData);
             
             // process the form
-            vm.$parent.processForm = function() {
-                $http({
+            // login data contains remember boolean
+            var request = $http({
                     method  : 'POST',
-                    url     : 'process.php',
+                    url     : '/signin',
                     data    : $.param(vm.formData),
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
-                .success(function(data) {
-                    console.log(data);
-
-                    if (!data.success) {
-                        console.log('display error on page');
-                        alert('There was an error in getting response');
-                      // if not successful, bind errors to error variables
-                    } else {
-                        console.log('success! time to login...');
-                    }
-
+                .success(function() {
+                
                 });
-            };
         };
 
 		// Quick form submit          
@@ -44,7 +34,7 @@
                 // alert('our form is amazing');
                 postLoginForm();
             } else {
-            	alert('Please correct the form')
+            	alert('Please correct the form');
             }
 
         };

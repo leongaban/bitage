@@ -11,7 +11,7 @@
     var vm = $scope;
     var location = $location;
 
-    // Quick form submit          
+    // Sign up form submit          
     vm.$parent.submitRegisterForm = function(isValid) {
 
         // check to make sure form is valid

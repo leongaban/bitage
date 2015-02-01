@@ -55,10 +55,12 @@
 
 		var vm = $scope;
 
+		// Show HTML only on home
 		vm.showHome = function() {
 	    	return $state.is('home');
 	   	}
 
+	   	// Display BTC ticker
 	   	vm.showTicker = function() {
 	    	return $state.is('home');
 	   	}
@@ -74,13 +76,21 @@
             console.log(vm.formData);
             
             // process the form
-
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(vm.formData),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function() {
+                 
+                });
 		};
 
 	   	// Quick form submit          
         vm.submitForm = function(isValid) {
             if (isValid) {
-                console.log('home page submit')
+                console.log('home page submit');
                 postSignUpForm();
             } else {
             	alert('Please correct the form');
