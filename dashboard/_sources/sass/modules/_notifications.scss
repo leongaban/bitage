@@ -4,15 +4,9 @@
 
 .ng-notification,
 .notify-msg,
-.notify-bg {
-	position: absolute;
-	width: 100%;
-}
+.notify-bg { position: absolute; width: 100%; }
 
-.ng-notification {
-	z-index: 1001;
-	cursor: pointer;
-}
+.ng-notification { z-index: 1001; cursor: pointer; }
 
 .notify-msg {
 	padding: 15px 0;
@@ -23,7 +17,9 @@
 
 .notify-bg {
 	height: 45px;
-	background: $blue;
 	opacity: .9;
 	z-index: 1001;
+
+	.success { background: $green; }
+	.error { background: $red; }
 }

@@ -16,16 +16,12 @@
 		line-height: em(22);
 	}
 
-	p {
-		font-size: em(14);
-	}
+	p { font-size: em(14); }
 
 	a {
 		color: $buttonHover;
 		text-decoration: none;
-		&:hover {
-			text-decoration: underline;
-		}
+		&:hover { text-decoration: underline; }
 	}
 }
 
@@ -34,7 +30,5 @@
     margin-top: 20px;
     width: 100%;
 
-    .btn {
-    	margin-top: 10px;
-    }
+    .btn { margin-top: 10px; }
 }
