@@ -4,7 +4,7 @@
 
 // Wallet:
 .ng-modal-overlay {
-    z-index: 999;
+    z-index: 1001;
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +16,7 @@
 }
 
 .ng-modal-dialog {
-    z-index: 1000;
+    z-index: 1002;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -38,28 +38,19 @@
     padding: 10px;
     font-size: em(12);
     background: #eee;
-    // cursor: pointer;
     @include rounded(4px);
 }
 
-.icon-paper-plane {
-    float: left;
-}
+.icon-paper-plane { float: left; }
 
-.close_modal {
-    cursor: pointer;
-}
+.close_modal { cursor: pointer; }
 
 .icon-cancel-1 {
-    // margin-right: -10px;
     position: absolute;
     top: -35px;
     right: -5px;
     font-size: em(24);
     color: #fff;
-    opacity: .3;
-
-    &:hover { opacity: 1; }
 }
 
 // Send modal:
@@ -68,28 +59,15 @@
     padding-right: 20px;
     width: 320px;
 
-    .form-input {
-        float: none;
-    }
+    .form-input { float: none; }
 
-    label {
-        float: left;
-        margin-bottom: 5px;
-        // margin-right: 10px;
-        // width: 80px;
-        // line-height: em(32);
-    }
+    label { float: left; margin-bottom: 5px; }
 }
 
-.label_amount {
-    position: relative;
-    top: 7px;
-}
+.label_amount { position: relative; top: 7px; }
 
 #to_input,
-#amount_input {
-    width: 100%;
-}
+#amount_input { width: 100%; }
 
 .btn_usd {
     float: right;

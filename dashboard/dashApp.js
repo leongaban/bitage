@@ -17,7 +17,8 @@
 		 'app-wallet',
 		 'wallet-directives',
 		 // 'app-accounts',
-		 'app-settings'])
+		 'app-settings',
+		 'app-help'])
 
 	.config([
 		'$stateProvider',
@@ -41,6 +42,12 @@
 					url: '/settings',
 					templateUrl: '_views/settings.html',
 					controller: 'SettingsCtrl'
+				})
+
+				.state('help', {
+					url: '/help',
+					templateUrl: '_views/help.html',
+					controller: 'HelpCtrl'
 				});
 
 			$urlRouterProvider.otherwise('wallet');
