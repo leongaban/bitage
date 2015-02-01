@@ -7,7 +7,7 @@ module.exports = function(app, passport) {
 		res.render('index.hbs');	});
 	
 	//Connects and serves the Angular App for the Dashboard
-	app.get('/dashboard', function(req, res) {
+	app.get('/dashboard:id', function(req, res) {
 		res.sendfile('dashboard/index.html');
 	});
 

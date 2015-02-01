@@ -6,15 +6,15 @@
 (function() {
 
   var app = angular.module('app-register', [])
-  .controller('RegisterCtrl', ['$scope','$http', function($scope, $http) {
+  .controller('RegisterCtrl', ['$scope','$http', '$location', function($scope, $http, $location) {
 
       var vm = $scope;
+      var location = $location;
 
     // Quick form submit          
         vm.$parent.submitRegisterForm = function(isValid) {
 
-            // vm.$parent.formData = {};
-            var newUser = 'test';
+
             // check to make sure form is valid
             if (isValid) {
 
