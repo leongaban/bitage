@@ -2,25 +2,25 @@
 
 // set up ======================================================================
 // get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 9876;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
-var hbs = require('handlebars');
-var cons = require('consolidate');
-var bitcoin = require('bitcoinjs-lib');
+var express  	 = require('express');
+var app      	 = express();
+var port     	 = process.env.PORT || 9876;
+var mongoose 	 = require('mongoose');
+var passport 	 = require('passport');
+var flash    	 = require('connect-flash');
+var hbs 	 	 = require('handlebars');
+var cons 	 	 = require('consolidate');
+var bitcoin  	 = require('bitcoinjs-lib');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-var configDB = require('./config/database.js');
+var configDB 	 = require('./config/database.js');
 
 // Express router
-var router = express.Router();
+var router 		 = express.Router();
 
 // configuration ===============================================================
 mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox'); // connect to our database

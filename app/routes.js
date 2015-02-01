@@ -79,7 +79,6 @@ module.exports = function(app, passport) {
 				failureRedirect : '/'
 			}));
 
-
 	// google ---------------------------------
 
 		// send to google to do the authentication
@@ -129,7 +128,6 @@ module.exports = function(app, passport) {
 				successRedirect : '/profile',
 				failureRedirect : '/'
 			}));
-
 
 	// google ---------------------------------
 
@@ -186,7 +184,6 @@ module.exports = function(app, passport) {
 			res.redirect('/profile');
 		});
 	});
-
 
 };
 
