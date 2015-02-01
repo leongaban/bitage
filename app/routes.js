@@ -4,12 +4,11 @@ module.exports = function(app, passport) {
 
 	// show the home page (will also have our login links)
 	app.get('/', function(req, res) {
-		res.render('index.hbs');
-	});
+		res.render('index.hbs');	});
 	// Connects and serves the Angular App for the Dashboard
-	app.get('/dashboard', function(req, res) {
-		res.sendfile('dashboard/index.html');
-	});
+	// app.get('/dashboard', function(req, res) {
+	// 	res.sendfile('dashboard/index.html');
+	// });
 
 	// PROFILE SECTION =========================
 	app.get('/profile', isLoggedIn, function(req, res) {
@@ -47,13 +46,16 @@ module.exports = function(app, passport) {
 		app.get('/signup', function(req, res) {
 			res.render('signup.ejs', { message: req.flash('signupMessage') });
 		});
-
+		app.post('/signup', function(req, res) {
+			console.log('It is reaching EXPRESS');
+			res.end();
+		});
 		// process the signup form
-		app.post('/signup', passport.authenticate('local-signup', {
-			successRedirect : '/profile', // redirect to the secure profile section
-			failureRedirect : '/signup', // redirect back to the signup page if there is an error
-			failureFlash : true // allow flash messages
-		}));
+		// app.post('/signup', passport.authenticate('local-signup', {
+		// 	successRedirect : '/profile', // redirect to the secure profile section
+		// 	failureRedirect : '/signup', // redirect back to the signup page if there is an error
+		// 	failureFlash : true // allow flash messages
+		// }));
 
 	// facebook -------------------------------
 

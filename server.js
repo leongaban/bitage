@@ -25,6 +25,7 @@ var router = express.Router();
 // configuration ===============================================================
 mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox'); // connect to our database
 
+
 // loading static and bower components ===================
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
@@ -54,18 +55,7 @@ app.use('/dashboard', router);
 // The Angular App itself below
 app.use(express.static(__dirname + '/dashboard'));
 
-// GHOST BLOG ENGINE TO RUN AS NPM PACKAGE
-
-var ghost = require('ghost'),
-    parentApp = express();
-
-ghost().then(function (ghostServer) {
-    parentApp.use(ghostServer.config.paths.subdir, ghostServer.rootApp);
-
-    ghostServer.start(parentApp);
-    console.log('Ghost server running on 2368');
-});
-
+app.get('/blog', function(req,res) {});
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport

@@ -103,6 +103,7 @@ module.exports = function(passport) {
                                 return done(err);
 
                             return done(null, newUser);
+                            console.log(newUser);
                         });
                     }
 

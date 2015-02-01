@@ -50,8 +50,8 @@
 			$urlRouterProvider.otherwise('/home');
 	}])
 
-	.controller('MainCtrl', ['$scope', '$location', '$state', 'matchmedia',
-		function($scope, $location, $state, matchmedia) {
+	.controller('MainCtrl', ['$scope', '$http','$location', '$state', 'matchmedia',
+		function($scope, $http, $location, $state, matchmedia) {
 
 		var vm = $scope;
 
@@ -64,7 +64,7 @@
 	   	}
 
 		// Mobile nav
-		vm.isMobileNavOpen = false;
+		vm.isMobileNavOpen = false
 		var unregister = matchmedia.onDesktop( function(mediaQueryList) {
 			vm.isDesktop = mediaQueryList.matches;
 			vm.isMobileNavOpen = false;
@@ -74,36 +74,13 @@
             console.log(vm.formData);
             
             // process the form
-            vm.processForm = function() {
 
-            	// make an API call
-				$http.post('$location/signup').then(function($.param(vm.formData)) {
-
-                // $http({
-                //     method  : 'POST',
-                //     url     : 'process.php',
-                //     data    : $.param(vm.formData),
-                //     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function(data) {
-                    console.log(data);
-
-                    if (!data.success) {
-                        console.log('display error on page');
-                        alert('There was an error in getting response');
-                      // if not successful, bind errors to error variables
-                    } else {
-                        console.log('success! time to login...');
-                    }
-
-                });
-            };
 		};
 
 	   	// Quick form submit          
         vm.submitForm = function(isValid) {
             if (isValid) {
-                // alert('our form is amazing');
+                console.log('home page submit')
                 postSignUpForm();
             } else {
             	alert('Please correct the form');
