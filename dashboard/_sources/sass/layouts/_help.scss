@@ -25,9 +25,14 @@
 	}
 }
 
+.field_message {
+	float: none !important;
+
+	textarea { width: 80%; }
+}
+
 .send_message_btn_area {
-    float: none;
-    margin-top: 20px;
+    float: left;
     width: 100%;
 
     .btn { margin-top: 10px; }

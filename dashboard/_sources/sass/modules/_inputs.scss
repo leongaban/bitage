@@ -57,11 +57,3 @@ select#account_type {
 	color: $buttonHover;
 	z-index: 1;
 }
-
-.field_message {
-	float: none !important;
-
-	textarea {
-		width: 80%;
-	}
-}
