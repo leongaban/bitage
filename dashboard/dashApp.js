@@ -53,9 +53,9 @@
 			$urlRouterProvider.otherwise('wallet');
 	}])
 
-	.controller('DashCtrl', ['$scope', '$state', function($scope, $state) {
+	.controller('DashCtrl', ['$state', function($state) {
 
-		var vm = $scope;
+		var vm = this;
 
 		// Sidebar tab select:
 		vm.$state = $state;
@@ -65,7 +65,7 @@
 
 		// Avatar Menu open/close:
 		vm.avatarMenuBool = false;
-		vm.getMenuClick = function(val, $event) {
+		vm.clickAvatar = function(val, $event) {
 			$event.stopPropagation();
 			vm.avatarMenuBool = !vm.avatarMenuBool;
 		};
