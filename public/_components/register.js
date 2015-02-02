@@ -10,21 +10,21 @@
         ['$scope','$http', '$location', 'registerService',
         function($scope, $http, $location, registerService) {
 
-    var vm = $scope;
-    var location = $location;
+        var vm = $scope;
+        var location = $location;
 
-    // Sign up form submit          
-    vm.$parent.submitRegisterForm = function(isValid) {
+        // Sign up form submit          
+        vm.$parent.submitRegisterForm = function(isValid) {
 
-        // check to make sure form is valid
-        if (isValid) {
-            console.log('Creating user:');
-            registerService.postSignUpForm(vm.formData);
-        } else {
-            alert('Please correct the form');
-        }
+            // check to make sure form is valid
+            if (isValid) {
+                console.log('Creating user:');
+                registerService.postSignUpForm(vm.formData);
+            } else {
+                alert('Please correct the form');
+            }
 
-    };
+        };
 
     }])
 
