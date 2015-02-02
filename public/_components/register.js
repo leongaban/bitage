@@ -7,24 +7,24 @@
 
     var app = angular.module('app-register', [])
     .controller('RegisterCtrl',
-        ['$scope','$http', '$location', 'registerService',
-        function($scope, $http, $location, registerService) {
+        ['$http', '$location', 'registerService',
+        function($http, $location, registerService) {
 
-    var vm = $scope;
-    var location = $location;
+        var vm = this;
+        var location = $location;
 
-    // Sign up form submit          
-    vm.$parent.submitRegisterForm = function(isValid) {
+        // Sign up form submit          
+        vm.submitForm = function(isValid) {
 
-        // check to make sure form is valid
-        if (isValid) {
-            console.log('Creating user:');
-            registerService.postSignUpForm(vm.formData);
-        } else {
-            alert('Please correct the form');
-        }
+            // check to make sure form is valid
+            if (isValid) {
+                console.log('Creating user:');
+                registerService.postSignUpForm(vm.formData);
+            } else {
+                alert('Please correct the form');
+            }
 
-    };
+        };
 
     }])
 

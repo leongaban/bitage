@@ -30,10 +30,10 @@
             <h1><a ui-sref="home">Bitage</a></h1>
         </section>
 
-        <div ng-show="showTicker()" class="biticker-container" data-currency="USD"></div>
+        <div ng-show="main.showTicker()" class="biticker-container" data-currency="USD"></div>
 
         <div class="mobile_nav noselect">
-            <div ng-click="isMobileNavOpen = !isMobileNavOpen" class="icon-menu"></div>
+            <div ng-click="main.isMobileNavOpen = !main.isMobileNavOpen" class="icon-menu"></div>
         </div>
 
         <nav id="main_nav">
@@ -45,8 +45,8 @@
             </ul>
         </nav>
 
-        <nav id="mobile_nav" ng-show="isMobileNavOpen">
-            <ul ng-click="isMobileNavOpen = false">
+        <nav id="mobile_nav" ng-show="main.isMobileNavOpen">
+            <ul ng-click="main.isMobileNavOpen = false">
                 <li><a ui-sref="about">About</a></li>
                 <li><a href="http://localhost:2368">Blog</a></li>
                 <li><a ui-sref="login">Sign In</a></li>
@@ -57,7 +57,7 @@
 
     <ui-view></ui-view> 
 
-    <section id="home_intro" ng-show="showHome()" class="noselect">
+    <section id="home_intro" ng-show="main.showHome()" class="noselect">
 
         <section id="fast_signup" class="content">
 
@@ -66,7 +66,7 @@
                 Get your own digital wallet
             </h2>
 
-            <form name="quickForm" ng-submit="submitForm(quickForm.$valid)" novalidate>
+            <form name="quickForm" ng-submit="main.submitForm(quickForm.$valid)" novalidate>
 
                 <span class="input jiro" class="form-group">
                     <input ng-model="formData.fullname" required
@@ -118,9 +118,9 @@
         </section>
     </section>
 
-    <div ng-show="showHome()" id="particle_bg"></div>
+    <div ng-show="main.showHome()" id="particle_bg"></div>
 
-    <section id="bitcoin_services" ng-show="showHome()">
+    <section id="bitcoin_services" ng-show="main.showHome()">
 
         <h1>Our Bitcoin Services</h1>
 
@@ -147,7 +147,7 @@
 
     </section>
 
-    <section id="whatisbitcoin" ng-show="showHome()">
+    <section id="whatisbitcoin" ng-show="main.showHome()">
 
         <h1>What is Bitcoin</h1>
 

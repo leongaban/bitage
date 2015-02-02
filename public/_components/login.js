@@ -6,9 +6,9 @@
 (function() {
 
 	var app = angular.module('app-login', [])
-	.controller('LoginCtrl', ['$scope', function($scope) {
+	.controller('LoginCtrl', ['$http', function($http) {
 
-		var vm = $scope;
+        var vm = this;
 
         var postLoginForm = function() {
             console.log(vm.formData);
@@ -27,7 +27,7 @@
         };
 
 		// Quick form submit          
-        vm.$parent.submitLoginForm = function(isValid) {
+        vm.submitLoginForm = function(isValid) {
 
             // check to make sure form is valid
             if (isValid) {

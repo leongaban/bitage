@@ -68,25 +68,3 @@
 
 #to_input,
 #amount_input { width: 100%; }
-
-.btn_usd {
-    float: right;
-    position: relative;
-    top: 32px;
-    right: -15px;
-    padding: 5px;
-    background: #fff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    @include rounded(4px);
-
-    &:hover {
-        color: #fff;
-        background: #ccc;
-    }
-
-    &:active {
-        color: #fff;
-        background: darken(#ccc, 10%);
-    }
-}

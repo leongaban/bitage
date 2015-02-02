@@ -1,10 +1,11 @@
-<section id="login_widget">
+<section id="login_widget"
+		 ng-controller="LoginCtrl as login">
 
-	<form name="loginForm" ng-submit="submitLoginForm(loginForm.$valid)" novalidate>
+	<form name="loginForm" ng-submit="login.submitLoginForm(loginForm.$valid)" novalidate>
 		<h2>Login to your account</h2>
 
 		<span class="form-group">
-			<input ng-model="formData.email" name="email" required
+			<input ng-model="login.formData.email" name="email" required
 				   id="form_login_email" type="email" placeholder="Email" tabindex="1">
 
 			<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" 
@@ -12,7 +13,7 @@
 		</span>
 
 		<span class="form-group">
-			<input ng-model="formData.password" ng-minlength="6" name="password" required
+			<input ng-model="login.formData.password" ng-minlength="6" name="password" required
 				   id="form_login_password" type="password" placeholder="Password" tabindex="2">
 
 			<p ng-show="loginForm.password.$error.minlength"
@@ -24,7 +25,7 @@
 		</span>
 
 		<span class="login_comments">
-			<input ng-model="formData.remember" id="stay_signed_in" name="stay_signed_in" tabindex="4" type="checkbox" value="1">
+			<input ng-model="login.formData.remember" id="stay_signed_in" name="stay_signed_in" tabindex="4" type="checkbox" value="1">
 			<p>Stay signed in for 30 days</p>
 		</span>
 
