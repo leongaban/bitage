@@ -51,10 +51,10 @@
 	}])
 
 	.controller('MainCtrl', 
-		['$scope', '$http', '$location', '$state', 'matchmedia', 'homeService',
-		function($scope, $http, $location, $state, matchmedia, homeService) {
+		['$http', '$location', '$state', 'matchmedia', 'homeService',
+		function($http, $location, $state, matchmedia, homeService) {
 
-		var vm = $scope;
+		var vm = this;
 
 		// Show HTML only on home
 		vm.showHome = function() {

@@ -92,7 +92,6 @@
 				amount: 0.064904
 			}
 		];
-
 	}])
 
 	.service('walletModalService', [function() {
@@ -114,6 +113,7 @@
 	    	vm.$parent.modal_send = true;
 			vm.$parent.send_btn_text = 'Send';
 
+			// btn_usd in walletDirective html
 			vm.$parent.switchCurrency = function() {
 				if (vm.$parent.currency === 'USD') {
 					vm.$parent.currency = 'BTC';

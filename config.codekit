@@ -3389,7 +3389,7 @@
 		"outputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -3975,17 +3975,6 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/public\/_components\/about.js",
 		"outputAbbreviatedPath": "\/public\/_components\/min\/about-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/public\/_components\/homeService.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/public\/_components\/homeService.js",
-		"outputAbbreviatedPath": "\/public\/_components\/min\/homeService-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
