@@ -63,19 +63,19 @@
 			return $state.includes($state.current.name);
 		};
 
-		// Avatar Menu:
+		// Avatar Menu open/close:
 		vm.avatarMenuBool = false;
 		vm.getMenuClick = function(val, $event) {
 			$event.stopPropagation();
 			vm.avatarMenuBool = !vm.avatarMenuBool;
 		};
 
-		// detect click on body & close menu
+		// Detect click on body & close menu
 		vm.closeMenu = function () {
 			vm.avatarMenuBool = false;
 		};
 
-		// stop the event from bubbling up any further
+		// Stop the event from bubbling up any further
 		vm.menuClick = function ($event) {
 			$event.stopPropagation();
 		};
