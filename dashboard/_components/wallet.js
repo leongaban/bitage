@@ -13,18 +13,18 @@
 		['$scope', '$sce', '$timeout', 'walletModalService',
 		function($scope, $sce, $timeout, walletModalService) {
 		
-		var vm 			   = this,
-			public_address = '',
-			qr_code 	   = '';
-			vm.currency	   = 'USD';
-			vm.modal       = false;
+		var vm 			    	= $scope,
+			public_address  	= '',
+			qr_code 	    	= '';
+			vm.$parent.currency	= 'USD';
+			vm.$parent.modal 	= false;
 
 		var timeoutMsg = function() {
-			vm.notification = false;
+			vm.$parent.notification = false;
 		};
 
-		vm.closeMsg = function() {
-			vm.notification = false;	
+		vm.$parent.closeMsg = function() {
+			vm.$parent.notification = false;	
 		};
 
 		// Express response listener here for incoming transaction:
@@ -33,19 +33,14 @@
 		vm.openModal = function(m) {
 
 			// Show overlay:
-			console.log($scope.$parent);
-			// vm.modal = m;
-			$scope.$parent.modal = m;
-
-			console.log($scope.$parent.modal);
+			vm.$parent.modal = m;
 
 			switch (m) {
 				case 'receive':
 					// API call to get user public address
 					// Code to generate QR code
 					// Update receive_obj
-
-					// walletModalService.modalRecieve(vm);
+					walletModalService.modalRecieve(vm);
 
 					break;
 
@@ -53,8 +48,7 @@
 					// API call to check address
 					// Calculate Bitcoin / USD
 					// Complete transaction
-					
-					// walletModalService.modalSend(vm);
+					walletModalService.modalSend(vm);
 
 					break;
 			}
@@ -104,48 +98,48 @@
 
 		// wire modal recieve
 	    this.modalRecieve = function(vm) {
-	        vm.modal_receive = true;
-			vm.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			vm.qr_code 	      = '_assets/img/qrcode.png';
+	        vm.$parent.modal_receive  = true;
+			vm.$parent.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+			vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
 
-			vm.closeModal = function() {
-				vm.modal_receive = false;
-				vm.modal = false;
+			vm.$parent.closeModal = function() {
+				vm.$parent.modal_receive = false;
+				vm.$parent.modal = false;
 			};
 	    };
 
 	    // wire modal send
 	    this.modalSend = function(vm) {
-	    	vm.modal_send = true;
-			vm.send_btn_text = 'Send';
+	    	vm.$parent.modal_send = true;
+			vm.$parent.send_btn_text = 'Send';
 
 			// btn_usd in walletDirective html
-			vm.switchCurrency = function() {
-				if (vm.currency === 'USD') {
-					vm.currency = 'BTC';
-				} else if (vm.currency = 'BTC') {
-					vm.currency = 'USD';
+			vm.$parent.switchCurrency = function() {
+				if (vm.$parent.currency === 'USD') {
+					vm.$parent.currency = 'BTC';
+				} else if (vm.$parent.currency = 'BTC') {
+					vm.$parent.currency = 'USD';
 				}
 			};
 
-			vm.sendTransaction = function() {
+			vm.$parent.sendTransaction = function() {
 
 				// Make API call to check address
-				vm.send_btn_text = 'Sending...';
+				vm.$parent.send_btn_text = 'Sending...';
 
 				// Get response back and close modal
-				vm.modal_send = false;
-				vm.modal = false;
+				vm.$parent.modal_send = false;
+				vm.$parent.modal = false;
 
 				// Show notification
-				vm.message = 'Transaction sent!';
-				vm.notification = true;
+				vm.$parent.message = 'Transaction sent!';
+				vm.$parent.notification = true;
 				$timeout(timeoutMsg, 4000);
 			};
 
-			vm.closeModal = function() {
-				vm.modal_send = false;
-				vm.modal = false;
+			vm.$parent.closeModal = function() {
+				vm.$parent.modal_send = false;
+				vm.$parent.modal = false;
 			};
 	    }
 	}]);

@@ -10,10 +10,7 @@
 
 	    return {
 	        restrict: 'E',
-	        template: '<section ng-show="modal_receive" class="modal ng-modal-dialog"><div ng-click="closeModal()" class="close_modal icon-cancel-1"></div><h1>Your Public Address</h1><div class="modal_qr"><img src="{{qr_code}}"/></div><p class="public_address">{{public_address}}</p></section>',
-	        link: function(scope, el, attr) {
-	        	scope.modal_receive = false;
-	        }
+	        template: '<section ng-show="modal_receive" class="modal ng-modal-dialog"><div ng-click="closeModal()" class="close_modal icon-cancel-1"></div><h1>Your Public Address</h1><div class="modal_qr"><img src="{{qr_code}}"/></div><p class="public_address">{{public_address}}</p></section>'
 	    };
 	})
 
