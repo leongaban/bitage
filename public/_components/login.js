@@ -8,7 +8,6 @@
 	var app = angular.module('app-login', [])
 	.controller('LoginCtrl', ['$http', function($http) {
 
-		// var vm = $scope;
         var vm = this;
 
         var postLoginForm = function() {

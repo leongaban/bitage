@@ -31,20 +31,17 @@
 
 				.state('about', {
 					url: '/about',
-					templateUrl: '_views/about.html',
-					controller: 'AboutCtrl'
+					templateUrl: '_views/about.html'
 				})
 
 				.state('login', {
 					url: '/login',
 					templateUrl: '_views/login.html'
-					// controller: 'LoginCtrl'
 				})
 
 				.state('register', {
 					url: '/register',
-					templateUrl: '_views/register.html',
-					controller: 'RegisterCtrl'
+					templateUrl: '_views/register.html'
 				});
 
 			$urlRouterProvider.otherwise('/home');
