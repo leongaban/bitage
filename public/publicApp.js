@@ -89,7 +89,6 @@
         this.postSignUpForm = function(fdata) {
             console.log(fdata);
             
-            // process the form
             var request = $http({
                     method  : 'POST',
                     url     : '/signup',
