@@ -28,8 +28,7 @@
 			$stateProvider
 				.state('wallet', {
 					url: '/wallet',
-					templateUrl: '_views/wallet.html',
-					controller: 'WalletCtrl'
+					templateUrl: '_views/wallet.html'
 				})
 
 				.state('accounts', {
@@ -56,6 +55,8 @@
 	.controller('DashCtrl', ['$state', function($state) {
 
 		var vm = this;
+
+		vm.modal = false;
 
 		// Sidebar tab select:
 		vm.$state = $state;
