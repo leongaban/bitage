@@ -37,8 +37,8 @@
 
 				.state('login', {
 					url: '/login',
-					templateUrl: '_views/login.html',
-					controller: 'LoginCtrl'
+					templateUrl: '_views/login.html'
+					// controller: 'LoginCtrl'
 				})
 
 				.state('register', {
