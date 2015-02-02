@@ -11,7 +11,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/app\/nodemailer.js": {
 		"fileType": 64,
@@ -80,7 +80,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/dist\/js\/bootstrap.min.js": {
 		"fileType": 64,
@@ -91,7 +91,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/dist\/js\/npm.js": {
 		"fileType": 64,
@@ -102,7 +102,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/grunt\/bs-commonjs-generator.js": {
 		"fileType": 64,
@@ -113,7 +113,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/grunt\/bs-lessdoc-parser.js": {
 		"fileType": 64,
@@ -124,7 +124,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/grunt\/bs-raw-files-generator.js": {
 		"fileType": 64,
@@ -135,7 +135,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/Gruntfile.js": {
 		"fileType": 64,
@@ -146,7 +146,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/affix.js": {
 		"fileType": 64,
@@ -157,7 +157,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/alert.js": {
 		"fileType": 64,
@@ -168,7 +168,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/button.js": {
 		"fileType": 64,
@@ -179,7 +179,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/carousel.js": {
 		"fileType": 64,
@@ -190,7 +190,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/collapse.js": {
 		"fileType": 64,
@@ -201,7 +201,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/dropdown.js": {
 		"fileType": 64,
@@ -212,7 +212,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/modal.js": {
 		"fileType": 64,
@@ -223,7 +223,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/popover.js": {
 		"fileType": 64,
@@ -234,7 +234,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/scrollspy.js": {
 		"fileType": 64,
@@ -245,7 +245,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/tab.js": {
 		"fileType": 64,
@@ -256,7 +256,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/tooltip.js": {
 		"fileType": 64,
@@ -267,7 +267,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/js\/transition.js": {
 		"fileType": 64,
@@ -278,7 +278,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/bootstrap\/less\/alerts.less": {
 		"allowInsecureImports": 0,
@@ -2223,7 +2223,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/dist\/jquery.min.js": {
 		"fileType": 64,
@@ -2234,7 +2234,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax.js": {
 		"fileType": 64,
@@ -2245,7 +2245,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/jsonp.js": {
 		"fileType": 64,
@@ -2256,7 +2256,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/load.js": {
 		"fileType": 64,
@@ -2267,7 +2267,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/parseJSON.js": {
 		"fileType": 64,
@@ -2278,7 +2278,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/parseXML.js": {
 		"fileType": 64,
@@ -2289,7 +2289,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/script.js": {
 		"fileType": 64,
@@ -2300,7 +2300,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/var\/nonce.js": {
 		"fileType": 64,
@@ -2311,7 +2311,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/var\/rquery.js": {
 		"fileType": 64,
@@ -2322,7 +2322,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/ajax\/xhr.js": {
 		"fileType": 64,
@@ -2333,7 +2333,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes.js": {
 		"fileType": 64,
@@ -2344,7 +2344,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes\/attr.js": {
 		"fileType": 64,
@@ -2355,7 +2355,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes\/classes.js": {
 		"fileType": 64,
@@ -2366,7 +2366,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes\/min\/classes-min.js": {
 		"fileType": 64,
@@ -2377,7 +2377,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes\/prop.js": {
 		"fileType": 64,
@@ -2388,7 +2388,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes\/support.js": {
 		"fileType": 64,
@@ -2399,7 +2399,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/attributes\/val.js": {
 		"fileType": 64,
@@ -2410,7 +2410,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/callbacks.js": {
 		"fileType": 64,
@@ -2421,7 +2421,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/core.js": {
 		"fileType": 64,
@@ -2432,7 +2432,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/core\/access.js": {
 		"fileType": 64,
@@ -2443,7 +2443,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/core\/init.js": {
 		"fileType": 64,
@@ -2454,7 +2454,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/core\/parseHTML.js": {
 		"fileType": 64,
@@ -2465,7 +2465,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/core\/ready.js": {
 		"fileType": 64,
@@ -2476,7 +2476,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/core\/var\/rsingleTag.js": {
 		"fileType": 64,
@@ -2487,7 +2487,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css.js": {
 		"fileType": 64,
@@ -2498,7 +2498,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/addGetHookIf.js": {
 		"fileType": 64,
@@ -2509,7 +2509,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/curCSS.js": {
 		"fileType": 64,
@@ -2520,7 +2520,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/defaultDisplay.js": {
 		"fileType": 64,
@@ -2531,7 +2531,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/hiddenVisibleSelectors.js": {
 		"fileType": 64,
@@ -2542,7 +2542,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/support.js": {
 		"fileType": 64,
@@ -2553,7 +2553,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/swap.js": {
 		"fileType": 64,
@@ -2564,7 +2564,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/var\/cssExpand.js": {
 		"fileType": 64,
@@ -2575,7 +2575,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/var\/getStyles.js": {
 		"fileType": 64,
@@ -2586,7 +2586,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/var\/isHidden.js": {
 		"fileType": 64,
@@ -2597,7 +2597,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/var\/rmargin.js": {
 		"fileType": 64,
@@ -2608,7 +2608,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/css\/var\/rnumnonpx.js": {
 		"fileType": 64,
@@ -2619,7 +2619,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/data.js": {
 		"fileType": 64,
@@ -2630,7 +2630,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/data\/accepts.js": {
 		"fileType": 64,
@@ -2641,7 +2641,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/data\/Data.js": {
 		"fileType": 64,
@@ -2652,7 +2652,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/data\/var\/data_priv.js": {
 		"fileType": 64,
@@ -2663,7 +2663,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/data\/var\/data_user.js": {
 		"fileType": 64,
@@ -2674,7 +2674,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/deferred.js": {
 		"fileType": 64,
@@ -2685,7 +2685,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/deprecated.js": {
 		"fileType": 64,
@@ -2696,7 +2696,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/dimensions.js": {
 		"fileType": 64,
@@ -2707,7 +2707,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/effects.js": {
 		"fileType": 64,
@@ -2718,7 +2718,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/effects\/animatedSelector.js": {
 		"fileType": 64,
@@ -2729,7 +2729,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/effects\/Tween.js": {
 		"fileType": 64,
@@ -2740,7 +2740,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/event.js": {
 		"fileType": 64,
@@ -2751,7 +2751,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/event\/ajax.js": {
 		"fileType": 64,
@@ -2762,7 +2762,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/event\/alias.js": {
 		"fileType": 64,
@@ -2773,7 +2773,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/event\/support.js": {
 		"fileType": 64,
@@ -2784,7 +2784,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/exports\/amd.js": {
 		"fileType": 64,
@@ -2795,7 +2795,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/exports\/global.js": {
 		"fileType": 64,
@@ -2806,7 +2806,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/intro.js": {
 		"fileType": 64,
@@ -2817,7 +2817,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/jquery.js": {
 		"fileType": 64,
@@ -2828,7 +2828,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/manipulation.js": {
 		"fileType": 64,
@@ -2839,7 +2839,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/manipulation\/_evalUrl.js": {
 		"fileType": 64,
@@ -2850,7 +2850,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/manipulation\/support.js": {
 		"fileType": 64,
@@ -2861,7 +2861,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/manipulation\/var\/rcheckableType.js": {
 		"fileType": 64,
@@ -2872,7 +2872,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/offset.js": {
 		"fileType": 64,
@@ -2883,7 +2883,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/outro.js": {
 		"fileType": 64,
@@ -2894,7 +2894,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/queue.js": {
 		"fileType": 64,
@@ -2905,7 +2905,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/queue\/delay.js": {
 		"fileType": 64,
@@ -2916,7 +2916,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/selector-native.js": {
 		"fileType": 64,
@@ -2927,7 +2927,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/selector-sizzle.js": {
 		"fileType": 64,
@@ -2938,7 +2938,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/selector.js": {
 		"fileType": 64,
@@ -2949,7 +2949,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/serialize.js": {
 		"fileType": 64,
@@ -2960,7 +2960,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/sizzle\/dist\/sizzle.js": {
 		"fileType": 64,
@@ -2971,7 +2971,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/sizzle\/dist\/sizzle.min.js": {
 		"fileType": 64,
@@ -2982,7 +2982,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/traversing.js": {
 		"fileType": 64,
@@ -2993,7 +2993,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/traversing\/findFilter.js": {
 		"fileType": 64,
@@ -3004,7 +3004,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/traversing\/var\/rneedsContext.js": {
 		"fileType": 64,
@@ -3015,7 +3015,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/arr.js": {
 		"fileType": 64,
@@ -3026,7 +3026,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/class2type.js": {
 		"fileType": 64,
@@ -3037,7 +3037,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/concat.js": {
 		"fileType": 64,
@@ -3048,7 +3048,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/hasOwn.js": {
 		"fileType": 64,
@@ -3059,7 +3059,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/indexOf.js": {
 		"fileType": 64,
@@ -3070,7 +3070,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/pnum.js": {
 		"fileType": 64,
@@ -3081,7 +3081,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/push.js": {
 		"fileType": 64,
@@ -3092,7 +3092,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/rnotwhite.js": {
 		"fileType": 64,
@@ -3103,7 +3103,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/slice.js": {
 		"fileType": 64,
@@ -3114,7 +3114,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/strundefined.js": {
 		"fileType": 64,
@@ -3125,7 +3125,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/support.js": {
 		"fileType": 64,
@@ -3136,7 +3136,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/var\/toString.js": {
 		"fileType": 64,
@@ -3147,7 +3147,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/bower_components\/jquery\/src\/wrap.js": {
 		"fileType": 64,
@@ -3158,7 +3158,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/config\/auth.js": {
 		"fileType": 64,
@@ -3169,7 +3169,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/config\/database.js": {
 		"fileType": 64,
@@ -3180,7 +3180,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/config\/passport.js": {
 		"fileType": 64,
@@ -3191,7 +3191,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/_assets\/css\/bitage.css": {
 		"fileType": 16,
@@ -3277,7 +3277,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/_assets\/js\/plugins\/ng-flow-standalone.min.js": {
 		"fileType": 64,
@@ -3288,7 +3288,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/_assets\/js\/plugins\/particles.js": {
 		"fileType": 64,
@@ -3299,7 +3299,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/_assets\/js\/plugins\/particles.min.js": {
 		"fileType": 64,
@@ -3310,7 +3310,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/_components\/accounts.js": {
 		"fileType": 64,
@@ -3358,8 +3358,8 @@
 		},
 	"\/dashboard\/_components\/wallet.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/wallet.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/wallet-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -3369,8 +3369,8 @@
 		},
 	"\/dashboard\/_components\/walletDirective.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/walletDirective.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/walletDirective-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -3807,7 +3807,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/bitage-app\/public\/stylesheets\/style.css": {
 		"fileType": 16,
@@ -3827,7 +3827,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/bitage-app\/routes\/users.js": {
 		"fileType": 64,
@@ -3838,12 +3838,12 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/dashApp.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/dashApp.js",
 		"outputAbbreviatedPath": "\/dashboard\/min\/dashApp-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -3923,7 +3923,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_assets\/js\/plugins\/biticker.min.js": {
 		"fileType": 64,
@@ -3956,7 +3956,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_assets\/js\/plugins\/particles.min.js": {
 		"fileType": 64,
@@ -3967,7 +3967,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_components\/about.js": {
 		"fileType": 64,
@@ -4011,7 +4011,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_sources\/js\/plugins\/classie.js": {
 		"fileType": 64,
@@ -4416,7 +4416,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/views\/index_files\/analytics.js": {
 		"fileType": 64,
@@ -4427,7 +4427,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/views\/index_files\/biticker.min.js": {
 		"fileType": 64,
@@ -4438,7 +4438,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/views\/index_files\/classie.min.js": {
 		"fileType": 64,
@@ -4449,7 +4449,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/views\/index_files\/jquery.min.js": {
 		"fileType": 64,
@@ -4460,7 +4460,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		}
 	},
 "hooks": [
@@ -4649,7 +4649,7 @@
 	"javascriptAutoOutputPathStyle": 2,
 	"javascriptCreateSourceMap": 1,
 	"javascriptOutputStyle": 1,
-	"javascriptSyntaxCheckerStyle": 1,
+	"javascriptSyntaxCheckerStyle": 0,
 	"jsCheckerReservedNamesString": "",
 	"jsHintFlags2": {
 		"asi": {

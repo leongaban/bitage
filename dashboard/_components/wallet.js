@@ -33,7 +33,8 @@
 		vm.openModal = function(m) {
 
 			// Show overlay:
-			vm.$parent.modal = m;
+			// vm.$parent.modal = m;
+			this.$parent.modal = m;
 
 			switch (m) {
 				case 'receive':
