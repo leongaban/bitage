@@ -1,6 +1,6 @@
 /*global angular */
 /* =========================================
-   LOGIN Module
+   Login Controller
    ========================================= */
 
 (function() {
