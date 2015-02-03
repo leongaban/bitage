@@ -30,6 +30,10 @@ Sprint tracking:
 ------
 https://www.pivotaltracker.com/n/projects/1254408
 
+Team communication:
+------
+https://bitage.slack.com/
+
 Documents & Resources:
 ------
 https://basecamp.com/2841132/projects/8131292
