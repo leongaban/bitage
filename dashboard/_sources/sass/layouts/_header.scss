@@ -36,15 +36,14 @@
     border-radius: 50%;
     width: 40px;
     height: 40px; 
-    // border: 3px solid lighten($sidebar, 10%);
-    // border: 1px dashed $button;
+    border: 3px solid lighten($sidebar, 10%);
     // background: $sidebar;
     cursor: pointer;
     overflow: hidden;
     @include rounded(50%);
 
     &:hover {
-        // border: 1px solid $button;
+        border: 3px solid lighten($buttonHover, 5%);
         .icon-menu {
             color: $buttonHover;
         }
@@ -60,7 +59,7 @@
         color: $button;
     }
 
-    // img { width: 40px; height: 40px; }
+    img { width: 40px; height: 40px; }
 }
 
 #avatar_menu {

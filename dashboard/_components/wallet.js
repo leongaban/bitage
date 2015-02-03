@@ -135,7 +135,7 @@
 				// Show notification
 				vm.$parent.message = 'Transaction sent!';
 				vm.$parent.notification = true;
-				$timeout(timeoutMsg, 4000);
+				vm.$timeout(timeoutMsg, 4000);
 			};
 
 			vm.$parent.closeModal = function() {

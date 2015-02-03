@@ -37,7 +37,7 @@
 
         <nav id="top_nav" class="noselect">
             <ul class="top_link_group">
-                <!-- <li class="top_link hide_mobile"><a href="#">Features</a></li> -->
+                <li class="top_link hide_mobile"><a href="#">Features</a></li>
                 <li class="top_link hide_mobile"><a href="#">Blog</a></li>
                 <li class="top_link hide_mobile"><a ui-sref="help">Help</a></li>
             </ul>
@@ -45,8 +45,8 @@
             <div class="avatar"
                  ng-click="dash.clickAvatar('clicked menu', $event)"
                  ng-class="{ active: dash.avatarMenuBool }">
-                 <div class="icon-menu"></div>
-                 <!-- <img src="_assets/img/leon.png" title="settings" alt="user avatar" /> -->
+                 <!-- <div class="icon-menu"></div> -->
+                 <img src="_assets/img/leon.png" title="settings" alt="user avatar" />
             </div>
 
             <div ng-show="dash.avatarMenuBool"
@@ -56,9 +56,9 @@
                     <li ng-click="dash.sidebarClick();">
                         <a ui-sref="wallet" ng-click="dash.closeMenu();">Wallet</a>
                     </li>
-                    <!-- <li ng-click="dash.sidebarClick();">
+                    <li ng-click="dash.sidebarClick();">
                         <a ui-sref="accounts" ng-click="dash.closeMenu();">Accounts</a>
-                    </li> -->
+                    </li>
                     <li ng-click="dash.sidebarClick();">
                         <a ui-sref="settings" ng-click="dash.closeMenu();">Settings</a>
                     </li>
@@ -92,9 +92,9 @@
                     ng-class="{active: dash.$state.includes('wallet')}">
                     <a ui-sref="wallet">Wallet</a>
                 </li>
-                <!-- <li ng-click="dash.sidebarClick();"
+                <li ng-click="dash.sidebarClick();"
                     ng-class="{active: dash.$state.includes('accounts')}">
-                    <a ui-sref="accounts">Accounts</a> -->
+                    <a ui-sref="accounts">Accounts</a>
                 </li>
                 <li ng-click="dash.sidebarClick();"
                     ng-class="{active: dash.$state.includes('settings')}">
