@@ -2,15 +2,6 @@
 ====================================================
 ==================================================== */
 
-// #body_about {
-// 	background-image: url("../img/gems_login.jpg");
-// }
-
-.mobile_logo {
-    display: none;
-    cursor: pointer;
-}
-
 .about_container {
 	position: relative;
     margin-left: auto;
@@ -22,7 +13,6 @@
 
 	h1 {
     	margin-bottom: 30px;
-    	// font-weight: 600;
 		font-size: em(36);
 		color: #fff;
     }
@@ -68,7 +58,6 @@
 }
 
 .mailchimp {
-    // float: left;
     margin: 0 !important;
     width: 120px;
     height: 30px;

@@ -980,7 +980,10 @@ select#account_type {
   color: #fff;
   overflow-y: auto;
   z-index: 1000;
-  transition: all 0.4s ease 0s;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
   background-image: url("../img/shapes.gif");
   background-size: 600px 225px; }
 
