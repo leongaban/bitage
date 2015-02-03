@@ -36,18 +36,20 @@
     border-radius: 50%;
     width: 40px;
     height: 40px; 
-    // border: 3px solid lighten($sidebar, 10%);
-    // border: 1px dashed $button;
-    // background: $sidebar;
+
+    border: 3px solid lighten($sidebar, 10%);
+    // border: 3px dashed $button;
+    background: $sidebar;
+
     cursor: pointer;
     overflow: hidden;
     @include rounded(50%);
 
     &:hover {
-        // border: 1px solid $button;
-        .icon-menu {
-            color: $buttonHover;
-        }
+        border: 3px solid lighten($buttonHover, 10%);
+        // .icon-menu {
+        //     color: $buttonHover;
+        // }
     }
 
     &:active { background: lighten(#ccc, 20%); }
@@ -60,7 +62,7 @@
         color: $button;
     }
 
-    // img { width: 40px; height: 40px; }
+    img { width: 40px; height: 40px; }
 }
 
 #avatar_menu {

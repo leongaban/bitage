@@ -797,7 +797,8 @@ select#account_type {
   line-height: 10px; }
 
 .btn_add_account {
-  float: left; }
+  float: left;
+  height: 32px; }
 
 .btn_send_now {
   float: left;
@@ -935,13 +936,15 @@ select#account_type {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  border: 3px solid #036894;
+  background: #024562;
   cursor: pointer;
   overflow: hidden;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%; }
-  .avatar:hover .icon-menu {
-    color: #047aad; }
+  .avatar:hover {
+    border: 3px solid #059ddf; }
   .avatar:active {
     background: white; }
   .avatar .icon-menu {
@@ -950,6 +953,9 @@ select#account_type {
     left: 3px;
     font-size: 1.5em;
     color: #024562; }
+  .avatar img {
+    width: 40px;
+    height: 40px; }
 
 #avatar_menu {
   position: absolute;
@@ -1203,16 +1209,16 @@ li.sidebar-brand {
     color: #047aad; }
 
 .icon-qrcode-1,
-.icon-pencil-squared,
+.icon-edit,
 .btc_public_address {
   float: left;
   cursor: pointer; }
   .icon-qrcode-1:hover,
-  .icon-pencil-squared:hover,
+  .icon-edit:hover,
   .btc_public_address:hover {
     color: #047aad; }
 
-.icon-pencil-squared {
+.icon-edit {
   font-size: 1.25em; }
 
 .btc_public_address {
