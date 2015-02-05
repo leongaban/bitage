@@ -16,6 +16,7 @@
 		['ui.router', 
 		 'app-wallet',
 		 'wallet-directives',
+		 'notification-directives',
 		 'app-accounts',
 		 'app-settings',
 		 'app-help'])

@@ -20,8 +20,8 @@
 			vm.$parent.modal 	= false;
 
 		var timeoutMsg = function() {
-			vm.$parent.notification = false;
-		};
+ 			vm.$parent.notification = false;
+ 		};
 
 		vm.$parent.closeMsg = function() {
 			vm.$parent.notification = false;	
@@ -33,8 +33,8 @@
 		vm.openModal = function(m) {
 
 			// Show overlay:
-			// vm.$parent.modal = m;
-			this.$parent.modal = m;
+			vm.$parent.modal = m;
+			// this.$parent.modal = m;
 
 			switch (m) {
 				case 'receive':
@@ -49,7 +49,7 @@
 					// API call to check address
 					// Calculate Bitcoin / USD
 					// Complete transaction
-					walletModalService.modalSend(vm);
+					walletModalService.modalSend(vm, $timeout, timeoutMsg);
 
 					break;
 			}
@@ -110,7 +110,7 @@
 	    };
 
 	    // wire modal send
-	    this.modalSend = function(vm) {
+	    this.modalSend = function(vm, $timeout, timeoutMsg) {
 	    	vm.$parent.modal_send = true;
 			vm.$parent.send_btn_text = 'Send';
 
@@ -135,7 +135,7 @@
 				// Show notification
 				vm.$parent.message = 'Transaction sent!';
 				vm.$parent.notification = true;
-				vm.$timeout(timeoutMsg, 4000);
+				$timeout(timeoutMsg, 4000);
 			};
 
 			vm.$parent.closeModal = function() {
