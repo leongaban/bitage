@@ -708,10 +708,12 @@ canvas {
   height: 45px;
   opacity: .9;
   z-index: 1001; }
-  .notify-bg .success {
-    background: #249B7A; }
-  .notify-bg .error {
-    background: #F25A43; }
+
+.notify-bg.success {
+  background: #249B7A; }
+
+.notify-bg.error {
+  background: #F25A43; }
 
 /* INPUTS, SELECTS, CHECKBOXES, RADIOS
 ====================================================

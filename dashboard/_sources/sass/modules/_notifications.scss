@@ -19,7 +19,7 @@
 	height: 45px;
 	opacity: .9;
 	z-index: 1001;
-
-	.success { background: $green; }
-	.error { background: $red; }
 }
+
+.notify-bg.success { background: $green; }
+.notify-bg.error { background: $red; }
