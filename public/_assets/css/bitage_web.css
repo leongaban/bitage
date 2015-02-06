@@ -1292,8 +1292,9 @@ canvas {
 ==================================================== */
 footer {
   position: relative;
-  margin-bottom: 60px;
-  width: 100%;
+  margin: 0 auto 60px auto;
+  padding-bottom: 10px;
+  width: 145px;
   font-size: 0.8125em;
   text-align: center;
   color: #666;
@@ -1301,7 +1302,13 @@ footer {
 }
 footer a {
   font-weight: 600;
-  color: #740879;
+  color: #036894;
+}
+footer p, footer div {
+  float: left;
+}
+footer div {
+  margin-left: 5px;
 }
 
 .biticker-value {
