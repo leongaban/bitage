@@ -14,13 +14,9 @@ footer {
 
 	a { font-weight: 600; color: lighten($blue, 10%); }
 
-	p, div {
-		float: left;
-	}
+	p, div { float: left; }
 
-	div {
-		margin-left: 5px;
-	}
+	div { margin-left: 5px; }
 }
 
 .biticker-value {
