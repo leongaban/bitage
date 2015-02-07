@@ -40,15 +40,16 @@
 				alert('our form is amazing');
 				var data = this.formData;
 
-				// post form in helpService
+				// Post form in helpService
 				helpService.postHelpForm($http, data);
 
-				// Show notification
+				// Show success notification
 				vms.$parent.message = 'Thanks! We will get back to you soon.';
 				vms.$parent.notification = true;
 				$timeout(timeoutMsg, 4000);
-				
+
 			} else {
+				// Show error notification
 				alert('Please correct the form');
 			}
 
@@ -59,7 +60,7 @@
 	.service('helpService', [function() {
 
 		this.postHelpForm = function($http, data) {
-			console.log(data);
+			console.log(data.message);
 
 			// process the form
 			// login data contains remember boolean
@@ -67,7 +68,7 @@
 					method  : 'POST',
 					url     : '/help',
 					// data    : $.param(vm.formData),
-					data    : data,
+					data    : data.message,
 					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 				})
 				.success(function() {

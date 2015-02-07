@@ -1332,8 +1332,10 @@ li.sidebar-brand {
 ==================================================== */
 .help_container {
   padding: 20px; }
-  .help_container .help-block {
-    float: left;
+  .help_container .help-error {
+    /* float: left; */
+    position: absolute;
+    top: -30px;
     font-size: 0.875em;
     font-weight: 500;
     color: #F25A43; }
@@ -1356,14 +1358,18 @@ li.sidebar-brand {
       text-decoration: underline; }
 
 .field_message {
+  position: relative;
+  top: 10px;
   float: none !important; }
   .field_message textarea {
     padding: 20px;
     width: 80%;
+    height: 100px;
     line-height: 24px; }
 
 .send_message_btn_area {
   float: left;
+  margin-top: 10px;
   width: 100%; }
   .send_message_btn_area .btn {
     margin-top: 10px; }

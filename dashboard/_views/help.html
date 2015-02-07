@@ -14,15 +14,24 @@
             <section>
                 <div class="help_instructions">
                     <h2>Have a question or need help and support?</h2>
-                    <p>Please use the form below, or tweet us at <a href="http://twitter.com/bitageio" target="_blank">@bitageio</a> <span class="icon-twitter"></span></p>
+                    <p>Please use the form below, or tweet us at
+                        <a href="http://twitter.com/bitageio" target="_blank">@bitageio</a>
+                        <span class="icon-twitter"></span>
+                    </p>
                 </div>
 
                 <div class="field_set field_message">
-                    <textarea id="contact_message" type="text" class="form-input" name="message"
-                              placeholder="Your Message" ng-model="help.formData.message" ng-minlength="25" required></textarea>
 
                     <p ng-show="helpForm.message.$error.minlength"
-                       class="help-block">Your message is a tab bit short.</p>
+                       class="help-error">Your message is a tab bit short.</p>
+
+                    <textarea ng-model="help.formData.message"
+                              ng-minlength="25" required
+                              id="contact_message"
+                              class="form-input"
+                              name="message"
+                              type="text"
+                              placeholder="Your Message"></textarea>
                 </div>
 
                 <div class="send_message_btn_area">
