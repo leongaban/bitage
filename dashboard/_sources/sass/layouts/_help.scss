@@ -39,7 +39,11 @@
 .field_message {
 	float: none !important;
 
-	textarea { width: 80%; }
+	textarea {
+		padding: 20px;
+		width: 80%;
+		line-height: 24px;
+	}
 }
 
 .send_message_btn_area {

@@ -3334,6 +3334,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/dashboard\/_components\/min\/wallet-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/min\/wallet-min.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/min\/wallet-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/dashboard\/_components\/notificationDirective.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -3358,8 +3369,8 @@
 		},
 	"\/dashboard\/_components\/wallet.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/wallet.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/wallet-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -3369,8 +3380,8 @@
 		},
 	"\/dashboard\/_components\/walletDirective.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/walletDirective.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/walletDirective-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -3860,12 +3871,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/public\/_assets\/css\/bitage_web.css": {
-		"fileType": 16,
-		"ignore": 1,
+	"\/dashboard\/README.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/css\/bitage_web.css",
-		"outputAbbreviatedPath": "No Output Path",
+		"inputAbbreviatedPath": "\/dashboard\/README.md",
+		"outputAbbreviatedPath": "\/dashboard\/README.html",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
@@ -4391,6 +4405,18 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/public\/README.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/README.md",
+		"outputAbbreviatedPath": "\/public\/README.html",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/README.md": {
 		"enableFootnoteSupport": 0,

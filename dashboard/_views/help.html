@@ -19,7 +19,7 @@
 
                 <div class="field_set field_message">
                     <textarea id="contact_message" type="text" class="form-input" name="message"
-                              placeholder="Your Message" ng-model="label" ng-minlength="25" required></textarea>
+                              placeholder="Your Message" ng-model="help.formData.message" ng-minlength="25" required></textarea>
 
                     <p ng-show="helpForm.message.$error.minlength"
                        class="help-block">Your message is a tab bit short.</p>

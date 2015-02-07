@@ -1358,7 +1358,9 @@ li.sidebar-brand {
 .field_message {
   float: none !important; }
   .field_message textarea {
-    width: 80%; }
+    padding: 20px;
+    width: 80%;
+    line-height: 24px; }
 
 .send_message_btn_area {
   float: left;
