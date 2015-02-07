@@ -55,11 +55,7 @@
 		cursor: default;
 	}
 
-	p {
-		margin-top: 5px;
-		font-size: em(12);
-		color: $red;
-	}
+	p { margin-top: 5px; font-size: em(12); color: $red; }
 }
 
 // Our Bitcoin Services hero:
@@ -71,11 +67,7 @@
 	background: #1c1e21;
 	@include clearfix();
 
-	h1 {
-		margin-bottom: 40px;
-		font-size: em(32);
-		color: #fff;
-	}
+	h1 { margin-bottom: 40px; font-size: em(32); color: #fff; }
 }
 
 .service_blocks {
@@ -132,10 +124,7 @@
 	padding-bottom: 80px;
 	border-top: 1px solid #333;
 
-	h4 {
-		margin: 40px 0 20px;
-		color: lighten(#666, 10%);
-	}
+	h4 { margin: 40px 0 20px; color: lighten(#666, 10%); }
 
 	p {
 		margin: 0 auto 20px;

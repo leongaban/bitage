@@ -4,8 +4,8 @@
 
 	Biage Public views
 	"Keep watch over your Bitcoins"
-	
-   	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
 ============================================ */
@@ -47,7 +47,7 @@
 			$urlRouterProvider.otherwise('/home');
 	}])
 
-	.controller('MainCtrl', 
+	.controller('MainCtrl',
 		['$http', '$location', '$state', 'matchmedia', 'homeService',
 		function($http, $location, $state, matchmedia, homeService) {
 
@@ -56,12 +56,12 @@
 		// Show HTML only on home
 		vm.showHome = function() {
 	    	return $state.is('home');
-	   	}
+		}
 
-	   	// Display BTC ticker
-	   	vm.showTicker = function() {
+		// Display BTC ticker
+		vm.showTicker = function() {
 	    	return $state.is('home');
-	   	}
+		}
 
 		// Mobile nav
 		vm.isMobileNavOpen = false
@@ -70,7 +70,7 @@
 			vm.isMobileNavOpen = false;
 		});
 
-	   	// Quick form submit          
+		// Quick form submit
         vm.submitForm = function(isValid) {
             if (isValid) {
                 console.log('Creating user:');
@@ -85,7 +85,7 @@
 
         this.postSignUpForm = function(fdata) {
             console.log(fdata);
-            
+
             var request = $http({
                     method  : 'POST',
                     url     : '/signup',
@@ -93,7 +93,7 @@
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
                 .success(function() {
-                 
+
                 });
         };
     }]);

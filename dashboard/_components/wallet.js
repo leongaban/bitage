@@ -10,9 +10,9 @@
 		 'notification-directives'])
 
 	.controller('WalletCtrl',
-		['$scope', '$sce', '$timeout', 'walletModalService',
-		function($scope, $sce, $timeout, walletModalService) {
-		
+	['$scope', '$sce', '$timeout', 'walletModalService',
+	function($scope, $sce, $timeout, walletModalService) {
+
 		var vm 			    	= $scope,
 			public_address  	= '',
 			qr_code 	    	= '';
@@ -24,11 +24,11 @@
  		};
 
 		vm.$parent.closeMsg = function() {
-			vm.$parent.notification = false;	
+			vm.$parent.notification = false;
 		};
 
 		// Express response listener here for incoming transaction:
-		
+
 		// Open Receive or Send modals:
 		vm.openModal = function(m) {
 

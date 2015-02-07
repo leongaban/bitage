@@ -2,6 +2,19 @@
 ====================================================
 ==================================================== */
 
+.help_container {
+	padding: 20px;
+
+	.help-error {
+		/* float: left; */
+		position: absolute;
+		top: -30px;
+		font-size: em(14);
+		font-weight: 500;
+		color: $red;
+	}
+}
+
 .help_instructions {
 	margin-bottom: 20px;
 
@@ -26,13 +39,21 @@
 }
 
 .field_message {
+	position: relative;
+	top: 10px;
 	float: none !important;
 
-	textarea { width: 80%; }
+	textarea {
+		padding: 20px;
+		width: 80%;
+		height: 100px;
+		line-height: 24px;
+	}
 }
 
 .send_message_btn_area {
     float: left;
+	margin-top: 10px;
     width: 100%;
 
     .btn { margin-top: 10px; }
