@@ -5,7 +5,7 @@
 	Biage Public views
 	"Keep watch over your Bitcoins"
 
-   	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
 ============================================ */

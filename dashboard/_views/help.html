@@ -1,4 +1,5 @@
-<div class="settings-content">
+<div class="settings-content"
+     ng-controller="HelpCtrl as help">
 
     <div class="content_header">
         <h1>
@@ -7,22 +8,28 @@
         </h1>
     </div>
 
-    <div class="widget-container profile_container">
-        
-        <section>
-            <div class="help_instructions">
-                <h2>Have a question or need help and support?</h2>
-                <p>Please use the form below, or tweet us at <a href="http://twitter.com/bitageio" target="_blank">@bitageio</a> <span class="icon-twitter"></span></p>
-            </div>
+    <div class="widget-container help_container">
 
-            <div class="field_set field_message">
-                <textarea id="contact_message" type="text" class="form-input" placeholder="Your Message" ng-model="label"></textarea>
-            </div>
+        <form name="helpForm" ng-submit="help.submitHelpForm(helpForm.$valid)" novalidate>
+            <section>
+                <div class="help_instructions">
+                    <h2>Have a question or need help and support?</h2>
+                    <p>Please use the form below, or tweet us at <a href="http://twitter.com/bitageio" target="_blank">@bitageio</a> <span class="icon-twitter"></span></p>
+                </div>
 
-            <div class="send_message_btn_area">
-                <button class="btn btn_med">Send Message</button>
-            </div>
-        </section>
+                <div class="field_set field_message">
+                    <textarea id="contact_message" type="text" class="form-input" name="message"
+                              placeholder="Your Message" ng-model="label" ng-minlength="25" required></textarea>
+
+                    <p ng-show="helpForm.message.$error.minlength"
+                       class="help-block">Your message is a tab bit short.</p>
+                </div>
+
+                <div class="send_message_btn_area">
+                    <button class="btn btn_med">Send Message</button>
+                </div>
+            </section>
+        </form>
 
     </div>
 </div>

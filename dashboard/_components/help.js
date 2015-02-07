@@ -8,8 +8,8 @@
 	var app = angular.module('app-help',['notification-directives'])
 
 	.controller('HelpCtrl', ['$scope', function($scope) {
-		
-		var vm = $scope;
+
+		var vm = this;
 
 		// setup e-mail data with unicode symbols
 		// send user name, email and public address
@@ -19,6 +19,19 @@
 		    subject: 'Bitage Help Request! ✔', // Subject line
 		    text: 'Hello world ✔', // plaintext body
 		    html: '<b>Hello world ✔</b>' // html body
+		};
+
+		// Quick form submit
+		vm.submitHelpForm = function(isValid) {
+
+			// check to make sure form is valid
+			if (isValid) {
+				alert('our form is amazing');
+				postLoginForm();
+			} else {
+				alert('Please correct the form');
+			}
+
 		};
 
 	}]);

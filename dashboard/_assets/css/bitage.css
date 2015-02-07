@@ -1330,6 +1330,14 @@ li.sidebar-brand {
 /* HELP & SUPPORT
 ====================================================
 ==================================================== */
+.help_container {
+  padding: 20px; }
+  .help_container .help-block {
+    float: left;
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #F25A43; }
+
 .help_instructions {
   margin-bottom: 20px; }
   .help_instructions .icon-twitter {
