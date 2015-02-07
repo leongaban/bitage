@@ -9,14 +9,15 @@
 
 	.controller('HelpCtrl', ['$scope', '$http', function($scope, $http) {
 
-		var vm = this;
+		var vmt = this;
+		var vms = $scope;
 
 		var timeoutMsg = function() {
-			vm.$parent.notification = false;
+			vms.$parent.notification = false;
 		};
 
-		$scope.$parent.closeMsg = function() {
-			$scope.$parent.notification = false;
+		vms.$parent.closeMsg = function() {
+			vms.$parent.notification = false;
 		};
 
 		// setup e-mail data with unicode symbols
@@ -29,8 +30,13 @@
 		    html: '<b>Hello world ✔</b>' // html body
 		};
 
-		var postHelpForm = function() {
-			console.log(vm.formData);
+		var postHelpForm = function(timeoutMsg) {
+			console.log(vmt.formData);
+
+			// Show notification
+			vms.$parent.message = 'Thanks! We will get back to you soon.';
+			vms.$parent.notification = true;
+			// $timeout(timeoutMsg, 4000);
 
 			// process the form
 			// login data contains remember boolean
@@ -46,16 +52,16 @@
 		};
 
 		// Quick form submit
-		vm.submitHelpForm = function(isValid) {
+		vmt.submitHelpForm = function(isValid) {
 
 			// check to make sure form is valid
 			if (isValid) {
 				alert('our form is amazing');
 				postHelpForm();
 				// Show notification
-				vm.$parent.message = 'Thanks! We will get back to you soon.';
-				vm.$parent.notification = true;
-				$timeout(timeoutMsg, 4000);
+				// vms.$parent.message = 'Thanks! We will get back to you soon.';
+				// vms.$parent.notification = true;
+				// $timeout(timeoutMsg, 4000);
 			} else {
 				alert('Please correct the form');
 			}
