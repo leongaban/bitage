@@ -46,12 +46,13 @@
 
 			// Show overlay:
 			vm.$parent.modal = m;
+			accountsService.modalEditAccount(vm);
 
 			// This needs to be refactored, exists in wallet.js and should be in a reusable service:
-			vm.$parent.closeModal = function() {
-				vm.$parent.modal_receive = false;
-				vm.$parent.modal = false;
-			};
+			// vm.$parent.closeModal = function() {
+			// 	vm.$parent.modal_receive = false;
+			// 	vm.$parent.modal = false;
+			// };
 		};
 
 		// select public addresses on click
@@ -74,10 +75,10 @@
 	.service('accountsService', [function() {
 
 		// wire modal recieve
-	    this.modalRecieve = function(vm) {
+	    this.modalEditAccount = function(vm) {
 	        vm.$parent.modal_edit_account  = true;
-			vm.$parent.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
+			vm.$parent.send_btn_text = 'save';
+			// vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
 
 			vm.$parent.closeModal = function() {
 				vm.$parent.modal_edit_account = false;
