@@ -835,9 +835,9 @@ select#account_type {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #013349;
+  background: #012c3f;
   cursor: pointer;
-  opacity: .8; }
+  opacity: .9; }
 
 .ng-modal-dialog {
   z-index: 1002;

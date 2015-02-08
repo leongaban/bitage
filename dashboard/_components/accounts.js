@@ -42,10 +42,9 @@
 		};
 
 		// Open edit account modal:
-		this.editAccount = function(m) {
-			// console.log('account id = ' + m);
-			vm.dash.modal = m;
-			accountsService.modalEditAccount(vm.dash);
+		this.editAccount = function(id, label, address) {
+			vm.dash.modal = id;
+			accountsService.modalEditAccount(vm.dash, id, label, address);
 		};
 
 		// select public addresses on click
@@ -68,8 +67,10 @@
 	.service('accountsService', [function() {
 
 		// Wire modal recieve
-	    this.modalEditAccount = function(vm) {
+	    this.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
+	        vm.acct_label = label;
+	        vm.acct_address = address;
 			vm.save_btn_text = 'save';
 	    };
 
