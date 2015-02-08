@@ -43,18 +43,9 @@
 
 		// Open edit account modal:
 		vm.editAccount = function(m) {
-
-			// Show overlay:
-			// vm.$parent.modal = m;
 			console.log('account id = ' + m);
 			console.log(vm.dash);
 			accountsService.modalEditAccount(vm.dash);
-
-			// This needs to be refactored, exists in wallet.js and should be in a reusable service:
-			// vm.$parent.closeModal = function() {
-			// 	vm.$parent.modal_receive = false;
-			// 	vm.$parent.modal = false;
-			// };
 		};
 
 		// select public addresses on click
@@ -76,12 +67,10 @@
 
 	.service('accountsService', [function() {
 
-		// wire modal recieve
+		// Wire modal recieve
 	    this.modalEditAccount = function(vm) {
 	        vm.modal_edit_account = true;
 			vm.save_btn_text = 'save';
-	  //       vm.$parent.modal_edit_account = true;
-			// vm.$parent.send_btn_text = 'save';
 	    };
 
 	}]);
