@@ -5,33 +5,56 @@
 
 (function() {
 
-	var app = angular.module('app-accounts', ['ngAnimate'])
-	.controller('AcctCtrl', ['$scope', function($scope) {
+	var app = angular.module('app-accounts',
+		['ngAnimate', 'account-directives'])
 
-		$scope.accounts = [];
-		$scope.accounts = [
-			{ type: 'Savings', label: 'BitAge', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
+	.controller('AcctCtrl', 
+		['$scope', 'accountsService',
+		function($scope, accountsService) {
+
+		var vm = $scope;
+			vm.$parent.modal = false;
+
+		vm.accounts = [];
+		vm.accounts = [
+			{ type: 'Savings', label: 'Bitage', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
 			{ type: 'Savings', label: 'Blockchain.info', balance: '3.001', address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH' },
 			{ type: 'Savings', label: 'Coinbase wallet', balance: '0.562', address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W' },
 			{ type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' }
 		];
 
-		$scope.addAccount = function() {
+		vm.addAccount = function() {
 			// Don't add account if blank
-		    if ($scope.label === '' ||
-		    	$scope.label === undefined ||
-		    	$scope.address === undefined) { return; }
+		    if (vm.label === '' ||
+		    	vm.label === undefined ||
+		    	vm.address === undefined) { return; }
 
 		    // Add new account to accounts []
-		    $scope.accounts.push({
-				label: $scope.label,
+		    vm.accounts.push({
+				label: vm.label,
 				balance: 0,
-				address: $scope.address
+				address: vm.address
 		    });
 
 		    // Reset inputs
-		    $scope.label = '';
-		    $scope.address = '';
+		    vm.label = '';
+		    vm.address = '';
+		};
+
+		// Open edit account modal:
+		vm.editAccount = function(m) {
+
+			// Show overlay:
+			// vm.$parent.modal = m;
+			console.log('account id = ' + m);
+			console.log(vm.dash);
+			accountsService.modalEditAccount(vm.dash);
+
+			// This needs to be refactored, exists in wallet.js and should be in a reusable service:
+			// vm.$parent.closeModal = function() {
+			// 	vm.$parent.modal_receive = false;
+			// 	vm.$parent.modal = false;
+			// };
 		};
 
 		// select public addresses on click
@@ -44,10 +67,22 @@
 			    selection.addRange(range);
 		};
 
-		$scope.pubAddress = {};
-		$scope.pubAddress.getClick = function(the_id) {
+		vm.pubAddress = {};
+		vm.pubAddress.getClick = function(the_id) {
 			selectAddress(the_id);
 		};
+
+	}])
+
+	.service('accountsService', [function() {
+
+		// wire modal recieve
+	    this.modalEditAccount = function(vm) {
+	        vm.modal_edit_account = true;
+			vm.save_btn_text = 'save';
+	  //       vm.$parent.modal_edit_account = true;
+			// vm.$parent.send_btn_text = 'save';
+	    };
 
 	}]);
 

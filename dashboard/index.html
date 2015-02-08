@@ -24,59 +24,60 @@
 
 <body ng-app="bitAge"
       ng-controller="DashCtrl as dash"
-      ng-click="closeMenu()">
+      ng-click="dash.closeMenu()">
 
     <notification-msg></notification-msg>
     <receive-modal></receive-modal>
     <send-modal></send-modal>
+    <edit-account-modal></edit-account-modal>
 
     <div ng-show="modal"
-         ng-click="closeModal()" class="ng-modal-overlay"></div>
+         ng-click="dash.closeModal()" class="ng-modal-overlay"></div>
 
     <div id="wrapper">
 
         <nav id="top_nav" class="noselect">
             <ul class="top_link_group">
-                <!-- <li class="top_link hide_mobile"><a href="#">Features</a></li> -->
+                <li class="top_link hide_mobile"><a href="#">Features</a></li>
                 <li class="top_link hide_mobile"><a href="#">Blog</a></li>
-                <li class="top_link hide_mobile"><a href="#">Help</a></li>
+                <li class="top_link hide_mobile"><a ui-sref="help">Help</a></li>
             </ul>
 
             <div class="avatar"
-                 ng-click="getMenuClick('clicked menu', $event)"
-                 ng-class="{ active: avatarMenuBool }">
-                 <div class="icon-down-dir"></div>
-                 <!-- <img src="_assets/img/leon.png" title="settings" alt="user avatar" /> -->
+                 ng-click="dash.clickAvatar('clicked menu', $event)"
+                 ng-class="{ active: dash.avatarMenuBool }">
+                 <!-- <div class="icon-menu"></div> -->
+                 <img src="_assets/img/leon.png" title="settings" alt="user avatar" />
             </div>
 
-            <div ng-show="avatarMenuBool"
-                 ng-click="menuClick($event)"
+            <div ng-show="dash.avatarMenuBool"
+                 ng-click="dash.menuClick($event)"
                  id="avatar_menu">
                 <ul>
                     <li ng-click="dash.sidebarClick();">
-                        <a ui-sref="wallet" ng-click="closeMenu();">Wallet</a>
+                        <a ui-sref="wallet" ng-click="dash.closeMenu();">Wallet</a>
                     </li>
-                    <!-- <li ng-click="dash.sidebarClick();">
-                        <a ui-sref="accounts" ng-click="closeMenu();">Accounts</a>
-                    </li> -->
                     <li ng-click="dash.sidebarClick();">
-                        <a ui-sref="settings" ng-click="closeMenu();">Settings</a>
+                        <a ui-sref="accounts" ng-click="dash.closeMenu();">Accounts</a>
+                    </li>
+                    <li ng-click="dash.sidebarClick();">
+                        <a ui-sref="settings" ng-click="dash.closeMenu();">Settings</a>
                     </li>
 
                     <!-- <li ng-click="dash.sidebarClick();" class="show_mobile">
-                        <a ui-sref="#" ng-click="closeMenu();">Features</a>
+                        <a ui-sref="#" ng-click="dash.closeMenu();">Features</a>
                     </li>
 
                     <li ng-click="dash.sidebarClick();" class="show_mobile">
-                        <a ui-sref="#" ng-click="closeMenu();">Blog</a>
+                        <a ui-sref="#" ng-click="dash.closeMenu();">Blog</a>
                     </li> -->
 
                     <li ng-click="dash.sidebarClick();" class="show_mobile">
-                        <a ui-sref="#" ng-click="closeMenu();">Help</a>
+                        <a ui-sref="help" ng-click="dash.closeMenu();">Help</a>
                     </li>
 
                     <li>
-                        <a ng-click="closeMenu()" href="#">Logout</a>
+                        <a ng-click="dash.closeMenu()" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -89,15 +90,15 @@
                     <h2>Welcome to the age of bitcoin</h2>
                 </li>
                 <li ng-click="dash.sidebarClick();"
-                    ng-class="{active: $state.includes('wallet')}">
+                    ng-class="{active: dash.$state.includes('wallet')}">
                     <a ui-sref="wallet">Wallet</a>
                 </li>
-                <!-- <li ng-click="dash.sidebarClick();"
-                    ng-class="{active: $state.includes('accounts')}">
-                    <a ui-sref="accounts">Accounts</a> -->
+                <li ng-click="dash.sidebarClick();"
+                    ng-class="{active: dash.$state.includes('accounts')}">
+                    <a ui-sref="accounts">Accounts</a>
                 </li>
                 <li ng-click="dash.sidebarClick();"
-                    ng-class="{active: $state.includes('settings')}">
+                    ng-class="{active: dash.$state.includes('settings')}">
                     <a ui-sref="settings">Settings</a>
                 </li>
             </ul>
@@ -118,11 +119,13 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
     <script src="_assets/js/libs/angular-ui-router.min.js"></script>
-    <script src="_components/notificationDirective.js"></script>
-    <script src="_components/walletDirective.js"></script>
+    <script src="_components/notificationDirectives.js"></script>
+    <script src="_components/walletDirectives.js"></script>
     <script src="_components/wallet.js"></script>
     <script src="_components/accounts.js"></script>
+    <script src="_components/accountsDirectives.js"></script>
     <script src="_components/settings.js"></script>
+    <script src="_components/help.js"></script>
     <script src="_assets/js/plugins/ng-flow-standalone.min.js"></script>
     <script src="dashApp.js"></script>
 

@@ -3,7 +3,7 @@ Bitage application
 
 <strong>Private repo for the Bitage web app</strong>
 
-<a href="https://twitter.com@leongaban">@leongaban</a> & <a href="https://twitter.com@paulinhorocha">@paulinhorocha</a>
+<a href="https://twitter.com/leongaban">@leongaban</a> & <a href="https://twitter.com/paulinhorocha">@paulinhorocha</a>
 
 RUN
 ------
@@ -29,6 +29,10 @@ http://nodedallas.io/apps/dash/
 Sprint tracking:
 ------
 https://www.pivotaltracker.com/n/projects/1254408
+
+Team communication:
+------
+https://bitage.slack.com/
 
 Documents & Resources:
 ------

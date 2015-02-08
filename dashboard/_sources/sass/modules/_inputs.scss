@@ -40,14 +40,12 @@ select#account_type {
 .form-input {
     float: left;
     margin: 0 10px 5px 0;
-    padding: 6px 10px;
+    padding: 8px 12px;
     background: #eee;
     border: 1px solid #ccc;//lighten($gray, 30%);
     @include rounded(3px);
 
-    &:focus {
-    	border: 1px solid darken(#ccc, 10%);
-    }
+    &:focus { border: 1px solid darken(#ccc, 10%); }
 }
 
 .icon-down-open {

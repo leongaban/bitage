@@ -7,7 +7,7 @@ module.exports = function(app, passport) {
 		res.render('index.hbs');	});
 	
 	//Connects and serves the Angular App for the Dashboard
-	app.get('/dashboard', function(req, res) {
+	app.get('/dashboard:id', function(req, res) {
 		res.sendfile('dashboard/index.html');
 	});
 
@@ -79,7 +79,6 @@ module.exports = function(app, passport) {
 				failureRedirect : '/'
 			}));
 
-
 	// google ---------------------------------
 
 		// send to google to do the authentication
@@ -129,7 +128,6 @@ module.exports = function(app, passport) {
 				successRedirect : '/profile',
 				failureRedirect : '/'
 			}));
-
 
 	// google ---------------------------------
 
@@ -186,7 +184,6 @@ module.exports = function(app, passport) {
 			res.redirect('/profile');
 		});
 	});
-
 
 };
 

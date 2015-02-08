@@ -16,8 +16,10 @@
 		['ui.router', 
 		 'app-wallet',
 		 'wallet-directives',
-		 // 'app-accounts',
-		 'app-settings'])
+		 'notification-directives',
+		 'app-accounts',
+		 'app-settings',
+		 'app-help'])
 
 	.config([
 		'$stateProvider',
@@ -41,14 +43,22 @@
 					url: '/settings',
 					templateUrl: '_views/settings.html',
 					controller: 'SettingsCtrl'
+				})
+
+				.state('help', {
+					url: '/help',
+					templateUrl: '_views/help.html',
+					controller: 'HelpCtrl'
 				});
 
 			$urlRouterProvider.otherwise('wallet');
 	}])
 
-	.controller('DashCtrl', ['$scope', '$state', function($scope, $state) {
+	.controller('DashCtrl', 
+		['$scope', '$state',
+		function($scope, $state) {
 
-		var vm = $scope;
+		var vm = this;
 
 		// Sidebar tab select:
 		vm.$state = $state;
@@ -56,21 +66,29 @@
 			return $state.includes($state.current.name);
 		};
 
-		// Avatar Menu:
+		// Avatar Menu open/close:
 		vm.avatarMenuBool = false;
-		vm.getMenuClick = function(val, $event) {
+		vm.clickAvatar = function(val, $event) {
 			$event.stopPropagation();
 			vm.avatarMenuBool = !vm.avatarMenuBool;
 		};
 
-		// detect click on body & close menu
+		// Detect click on body & close menu
 		vm.closeMenu = function () {
 			vm.avatarMenuBool = false;
 		};
 
-		// stop the event from bubbling up any further
+		// Stop the event from bubbling up any further
 		vm.menuClick = function ($event) {
 			$event.stopPropagation();
+		};
+
+		// Close all modals in the DashCtrl scope
+		vm.closeModal = function(modal_name) {
+			vm.modal_edit_account = false;
+			$scope.modal_receive = false;
+			$scope.modal_send = false;
+			vm.modal = false;
 		};
 
 	}]);
