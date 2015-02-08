@@ -20,11 +20,11 @@
 			vm.dash.modal 	 = false;
 
 		var timeoutMsg = function() {
- 			vm.$parent.notification = false;
+ 			vm.dash.notification = false;
  		};
 
-		vm.$parent.closeMsg = function() {
-			vm.$parent.notification = false;
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
 		};
 
 		// Express response listener here for incoming transaction:
@@ -118,6 +118,7 @@
 			};
 
 			vm.sendTransaction = function() {
+				console.log(vm);
 
 				// Make API call to check address
 				vm.send_btn_text = 'Sending...';

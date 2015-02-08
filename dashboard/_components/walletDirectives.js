@@ -50,7 +50,7 @@
 							'<input id="amount_input" class="form-input" type="text" placeholder=""> ' + 
 						'</div> ' + 
 						
-						'<button ng-click="sendTransaction()" class="btn btn_med btn_send_now">{{dash.send_btn_text}}</button> ' + 
+						'<button ng-click="dash.sendTransaction()" class="btn btn_med btn_send_now">{{dash.send_btn_text}}</button> ' + 
 					'</div> ' + 
 
 				'</section>'
