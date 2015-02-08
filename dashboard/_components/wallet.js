@@ -13,11 +13,11 @@
 		['$scope', '$sce', '$timeout', 'walletModalService',
 		function($scope, $sce, $timeout, walletModalService) {
 
-		var vm 			    	= $scope,
-			public_address  	= '',
-			qr_code 	    	= '';
-			vm.$parent.currency	= 'USD';
-			vm.$parent.modal 	= false;
+		var vm 			     = $scope,
+			public_address   = '',
+			qr_code 	     = '';
+			vm.dash.currency = 'USD';
+			vm.dash.modal 	 = false;
 
 		var timeoutMsg = function() {
  			vm.$parent.notification = false;
@@ -33,16 +33,14 @@
 		vm.openModal = function(m) {
 
 			// Show overlay:
-			vm.$parent.modal = m;
-			// this.$parent.modal = m;
-			// console.log(vm.$parent.modal);
+			vm.dash.modal = m;
 
 			switch (m) {
 				case 'receive':
 					// API call to get user public address
 					// Code to generate QR code
 					// Update receive_obj
-					walletModalService.modalRecieve(vm);
+					walletModalService.modalRecieve(vm.dash);
 
 					break;
 
@@ -50,7 +48,7 @@
 					// API call to check address
 					// Calculate Bitcoin / USD
 					// Complete transaction
-					walletModalService.modalSend(vm, $timeout, timeoutMsg);
+					walletModalService.modalSend(vm.dash, $timeout, timeoutMsg);
 
 					break;
 			}
@@ -100,37 +98,37 @@
 
 		// wire modal recieve
 	    this.modalRecieve = function(vm) {
-	        vm.$parent.modal_receive  = true;
-			vm.$parent.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
+	        vm.modal_receive  = true;
+			vm.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+			vm.qr_code 	      = '_assets/img/qrcode.png';
 	    };
 
 	    // wire modal send
 	    this.modalSend = function(vm, $timeout, timeoutMsg) {
-	    	vm.$parent.modal_send = true;
-			vm.$parent.send_btn_text = 'Send';
+	    	vm.modal_send = true;
+			vm.send_btn_text = 'Send';
 
 			// btn_usd in walletDirective html
-			vm.$parent.switchCurrency = function() {
-				if (vm.$parent.currency === 'USD') {
-					vm.$parent.currency = 'BTC';
-				} else if (vm.$parent.currency = 'BTC') {
-					vm.$parent.currency = 'USD';
+			vm.switchCurrency = function() {
+				if (vm.currency === 'USD') {
+					vm.currency = 'BTC';
+				} else if (vm.currency = 'BTC') {
+					vm.currency = 'USD';
 				}
 			};
 
-			vm.$parent.sendTransaction = function() {
+			vm.sendTransaction = function() {
 
 				// Make API call to check address
-				vm.$parent.send_btn_text = 'Sending...';
+				vm.send_btn_text = 'Sending...';
 
 				// Get response back and close modal
-				vm.$parent.modal_send = false;
-				vm.$parent.modal = false;
+				vm.modal_send = false;
+				vm.modal = false;
 
 				// Show notification
-				vm.$parent.message = 'Transaction sent!';
-				vm.$parent.notification = true;
+				vm.message = 'Transaction sent!';
+				vm.notification = true;
 				$timeout(timeoutMsg, 4000);
 			};
 	    }

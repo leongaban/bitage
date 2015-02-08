@@ -43,8 +43,8 @@
 
 		// Open edit account modal:
 		vm.editAccount = function(m) {
-			console.log('account id = ' + m);
-			console.log(vm.dash);
+			// console.log('account id = ' + m);
+			vm.dash.modal = m;
 			accountsService.modalEditAccount(vm.dash);
 		};
 

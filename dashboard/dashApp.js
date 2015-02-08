@@ -84,10 +84,10 @@
 		};
 
 		// Close all modals in the DashCtrl scope
-		vm.closeModal = function(modal_name) {
+		vm.closeModal = function() {
 			vm.modal_edit_account = false;
-			$scope.modal_receive = false;
-			$scope.modal_send = false;
+			vm.modal_receive = false;
+			vm.modal_send = false;
 			vm.modal = false;
 		};
 
