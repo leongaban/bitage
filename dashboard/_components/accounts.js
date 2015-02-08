@@ -12,10 +12,8 @@
 	['$scope', 'accountsService',
 	function($scope, accountsService) {
 
-		var vm = this;
-
-		// var vm 			    	= $scope,
-			$scope.$parent.modal 	= false;
+		var vm = $scope;
+			vm.$parent.modal = false;
 
 		vm.accounts = [];
 		vm.accounts = [
@@ -47,9 +45,13 @@
 		vm.editAccount = function(m) {
 
 			// Show overlay:
-			// vm.$parent.modal = m;
-			// this.$parent.modal = m;
-			console.log(m);
+			vm.$parent.modal = m;
+
+			// This needs to be refactored, exists in wallet.js and should be in a reusable service:
+			vm.$parent.closeModal = function() {
+				vm.$parent.modal_receive = false;
+				vm.$parent.modal = false;
+			};
 		};
 
 		// select public addresses on click

@@ -3323,12 +3323,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/dashboard\/_components\/accountsDirective.js": {
+	"\/dashboard\/_components\/accountsDirectives.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/dashboard\/_components\/accountsDirective.js",
-		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/accountsDirective-min.js",
+		"inputAbbreviatedPath": "\/dashboard\/_components\/accountsDirectives.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/accountsDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3345,23 +3345,23 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/dashboard\/_components\/min\/accountsDirective-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_components\/min\/accountsDirective-min.js",
-		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/min\/accountsDirective-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
 	"\/dashboard\/_components\/notificationDirective.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/notificationDirective.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/notificationDirective-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/dashboard\/_components\/notificationDirectives.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/notificationDirectives.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/notificationDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3389,12 +3389,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/dashboard\/_components\/walletDirective.js": {
+	"\/dashboard\/_components\/walletDirectives.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/dashboard\/_components\/walletDirective.js",
-		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/walletDirective-min.js",
+		"inputAbbreviatedPath": "\/dashboard\/_components\/walletDirectives.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/walletDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3864,8 +3864,8 @@
 		},
 	"\/dashboard\/dashApp.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/dashboard\/dashApp.js",
 		"outputAbbreviatedPath": "\/dashboard\/min\/dashApp-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -3881,6 +3881,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/dashboard\/min\/dashApp-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/min\/dashApp-min.js",
+		"outputAbbreviatedPath": "\/dashboard\/min\/min\/dashApp-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/README.md": {
 		"enableFootnoteSupport": 0,
