@@ -18,6 +18,7 @@
 			qr_code 	     = '';
 			vm.dash.currency = 'USD';
 			vm.dash.modal 	 = false;
+			vm.dash.qr_code  = 'http://placehold.it/200&text=Loading+QR+Code';
 
 		var timeoutMsg = function() {
  			vm.dash.notification = false;
