@@ -11,6 +11,7 @@ var flash    	 = require('connect-flash');
 var hbs 	 	 = require('handlebars');
 var cons 	 	 = require('consolidate');
 var bitcoin  	 = require('bitcoinjs-lib');
+var moment = require('moment');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');

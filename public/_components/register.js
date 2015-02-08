@@ -21,7 +21,7 @@
                 console.log('Creating user:');
                 registerService.postSignUpForm(vm.formData);
             } else {
-                alert('Please correct the form');
+               swal({   title: "Ops!",   text: "Please check the form!",   type: "error",   confirmButtonText: "Ok", confirmButtonColor: "#024562" });
             }
 
         };
