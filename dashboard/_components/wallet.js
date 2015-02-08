@@ -31,7 +31,7 @@
 		// Express response listener here for incoming transaction:
 
 		// Open Receive or Send modals:
-		vm.openModal = function(m) {
+		this.openModal = function(m) {
 
 			// Show overlay:
 			vm.dash.modal = m;
@@ -42,7 +42,6 @@
 					// Code to generate QR code
 					// Update receive_obj
 					walletModalService.modalRecieve(vm.dash);
-
 					break;
 
 				case 'send':
@@ -50,13 +49,12 @@
 					// Calculate Bitcoin / USD
 					// Complete transaction
 					walletModalService.modalSend(vm.dash, $timeout, timeoutMsg);
-
 					break;
 			}
 		};
 
 		// Transaction models
-		vm.transactions = [
+		this.transactions = [
 			{
 				type: 'incoming',
 				status: 'Pending',

@@ -29,8 +29,8 @@
 			$stateProvider
 				.state('wallet', {
 					url: '/wallet',
-					templateUrl: '_views/wallet.html',
-					controller: 'WalletCtrl'
+					templateUrl: '_views/wallet.html'
+					// controller: 'WalletCtrl'
 				})
 
 				.state('accounts', {
