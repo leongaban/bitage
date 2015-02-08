@@ -35,6 +35,7 @@
 			// Show overlay:
 			vm.$parent.modal = m;
 			// this.$parent.modal = m;
+			// console.log(vm.$parent.modal);
 
 			switch (m) {
 				case 'receive':

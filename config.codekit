@@ -3193,6 +3193,15 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/dashboard\/_assets\/css\/bitage.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/dashboard\/_assets\/img\/bitcoin.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3303,6 +3312,28 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/dashboard\/_components\/accounts.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/accounts.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/accounts-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dashboard\/_components\/accountsDirectives.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/accountsDirectives.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/accountsDirectives-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/dashboard\/_components\/help.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -3320,6 +3351,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/notificationDirective.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/notificationDirective-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dashboard\/_components\/notificationDirectives.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/notificationDirectives.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/notificationDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3347,16 +3389,16 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dashboard\/_components\/walletDirective.js": {
+	"\/dashboard\/_components\/walletDirectives.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_components\/walletDirective.js",
-		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/walletDirective-min.js",
+		"inputAbbreviatedPath": "\/dashboard\/_components\/walletDirectives.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/walletDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/dashboard\/_sources\/sass\/bitage.scss": {
 		"createSourceMap": 1,
@@ -3582,6 +3624,22 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/dashboard\/_sources\/sass\/modules\/_inputs.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_sources\/sass\/modules\/_inputs.scss",
+		"outputAbbreviatedPath": "\/dashboard\/_sources\/sass\/css\/_inputs.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/dashboard\/_sources\/sass\/modules\/_layout.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -3725,6 +3783,15 @@
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
+		},
+	"\/dashboard\/_views\/accounts.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_views\/accounts.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/dashboard\/_views\/help.html": {
 		"fileType": 8192,
