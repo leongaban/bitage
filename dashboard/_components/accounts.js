@@ -1,6 +1,6 @@
 /*global angular */
 /* =========================================
-   ACCOUNTS Module
+   Accounts module
    ========================================= */
 
 (function() {

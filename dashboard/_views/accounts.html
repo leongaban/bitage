@@ -38,10 +38,12 @@
 
                     <td class="td_acct_addr">
                         <div class="icon-qrcode-1"></div>
-                        <div id="address-{{$index}}" class="btc_public_address" ng-click="pubAddress.getClick(addressId)">{{account.address}}</div>
+                        <div id="address-{{$index}}" class="btc_public_address"
+                             ng-click="pubAddress.getClick(addressId)">{{account.address}}</div>
                     </td>
 
-                    <td class="td_edit" ng-click="acct.editAccount(addressId)">
+                    <td class="td_edit"
+                        ng-click="acct.editAccount(addressId, account.label, account.address)">
                         <div class="icon-edit"></div>
                     </td>
                 </tr>

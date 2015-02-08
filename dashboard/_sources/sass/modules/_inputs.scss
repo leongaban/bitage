@@ -42,7 +42,7 @@ select#account_type {
     margin: 0 10px 5px 0;
     padding: 8px 12px;
     background: #eee;
-    border: 1px solid #ccc;//lighten($gray, 30%);
+    border: 1px solid #ccc;
     @include rounded(3px);
 
     &:focus { border: 1px solid darken(#ccc, 10%); }

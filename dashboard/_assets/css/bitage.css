@@ -894,6 +894,9 @@ select#account_type {
   position: relative;
   top: 7px; }
 
+.public_addy_input {
+  margin-top: 10px; }
+
 #to_input,
 #amount_input {
   width: 100%; }

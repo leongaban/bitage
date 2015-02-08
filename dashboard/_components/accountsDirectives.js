@@ -1,6 +1,6 @@
 /*global angular */
 /* =========================================
-   WALLET Directive
+   Wallet directive
    ========================================= */
 
 (function() {
@@ -26,7 +26,7 @@
 
 						'<div class="label_input_combo"> ' + 
 							'<label for="amount_input" class="label_amount">Public Address</label> ' + 
-							'<input id="amount_input" class="form-input" type="text" placeholder="16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq"> ' + 
+							'<input id="amount_input" class="public_addy_input form-input" type="text" placeholder="16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq"> ' + 
 						'</div> ' + 
 						
 						'<button ng-click="updateWatchAccount()" class="btn btn_med btn_send_now">{{dash.save_btn_text}}</button> ' + 

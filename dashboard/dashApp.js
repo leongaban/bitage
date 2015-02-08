@@ -58,6 +58,7 @@
 		function($scope, $state) {
 
 		var vm = this;
+		vm.qr_code = 'http://placehold.it/200&text=Loading+QR+Code';
 
 		// Sidebar tab select:
 		vm.$state = $state;
