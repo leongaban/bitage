@@ -3193,15 +3193,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/dashboard\/_assets\/css\/bitage.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/dashboard\/_assets\/img\/bitcoin.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3307,17 +3298,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/particles.min.js",
 		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/min\/particles.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/dashboard\/_components\/accounts.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/dashboard\/_components\/accounts.js",
-		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/accounts-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3602,22 +3582,6 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/dashboard\/_sources\/sass\/modules\/_inputs.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 10,
-		"fileType": 4,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_sources\/sass\/modules\/_inputs.scss",
-		"outputAbbreviatedPath": "\/dashboard\/_sources\/sass\/css\/_inputs.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
-		},
 	"\/dashboard\/_sources\/sass\/modules\/_layout.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -3761,15 +3725,6 @@
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
-		},
-	"\/dashboard\/_views\/accounts.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_views\/accounts.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
 		},
 	"\/dashboard\/_views\/help.html": {
 		"fileType": 8192,
