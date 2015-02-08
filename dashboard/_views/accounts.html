@@ -1,4 +1,5 @@
-<div class="account-content">
+<div class="account-content"
+     ng-controller="AcctCtrl as acct">
 
     <div class="content_header"><h1>My account balances</h1></div>
 
@@ -25,7 +26,7 @@
             </thead>
             <tbody>
                 <tr class="row_body"
-                    ng-repeat="account in accounts"
+                    ng-repeat="account in acct.accounts"
                     ng-init="addressId='address-' + $index">
                     <td class="td_acct_price">
                         <span>{{account.balance}}</span>
