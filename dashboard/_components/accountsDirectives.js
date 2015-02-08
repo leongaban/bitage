@@ -12,9 +12,9 @@
 	    	scope: true,
 	        restrict: 'E',
 	        template: 
-	        	'<section ng-show="modal_edit_account" class="modal ng-modal-dialog"> ' + 
+	        	'<section ng-show="dash.modal_edit_account" class="modal ng-modal-dialog"> ' + 
 
-					'<div ng-click="closeModal()" class="close_modal icon-cancel-1"></div> ' + 
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' + 
 
 					'<h1>Edit Watch Account</h1> ' + 
 
@@ -29,7 +29,7 @@
 							'<input id="amount_input" class="form-input" type="text" placeholder="16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq"> ' + 
 						'</div> ' + 
 						
-						'<button ng-click="updateWatchAccount()" class="btn btn_med btn_send_now">{{send_btn_text}}</button> ' + 
+						'<button ng-click="updateWatchAccount()" class="btn btn_med btn_send_now">{{dash.save_btn_text}}</button> ' + 
 					'</div> ' + 
 
 				'</section>'

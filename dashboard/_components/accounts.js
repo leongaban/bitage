@@ -9,8 +9,8 @@
 		['ngAnimate', 'account-directives'])
 
 	.controller('AcctCtrl', 
-	['$scope', 'accountsService',
-	function($scope, accountsService) {
+		['$scope', 'accountsService',
+		function($scope, accountsService) {
 
 		var vm = $scope;
 			vm.$parent.modal = false;
@@ -45,8 +45,10 @@
 		vm.editAccount = function(m) {
 
 			// Show overlay:
-			vm.$parent.modal = m;
-			accountsService.modalEditAccount(vm);
+			// vm.$parent.modal = m;
+			console.log('account id = ' + m);
+			console.log(vm.dash);
+			accountsService.modalEditAccount(vm.dash);
 
 			// This needs to be refactored, exists in wallet.js and should be in a reusable service:
 			// vm.$parent.closeModal = function() {
@@ -76,14 +78,10 @@
 
 		// wire modal recieve
 	    this.modalEditAccount = function(vm) {
-	        vm.$parent.modal_edit_account  = true;
-			vm.$parent.send_btn_text = 'save';
-			// vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
-
-			vm.$parent.closeModal = function() {
-				vm.$parent.modal_edit_account = false;
-				vm.$parent.modal = false;
-			};
+	        vm.modal_edit_account = true;
+			vm.save_btn_text = 'save';
+	  //       vm.$parent.modal_edit_account = true;
+			// vm.$parent.send_btn_text = 'save';
 	    };
 
 	}]);

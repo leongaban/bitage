@@ -10,8 +10,8 @@
 		 'notification-directives'])
 
 	.controller('WalletCtrl',
-	['$scope', '$sce', '$timeout', 'walletModalService',
-	function($scope, $sce, $timeout, walletModalService) {
+		['$scope', '$sce', '$timeout', 'walletModalService',
+		function($scope, $sce, $timeout, walletModalService) {
 
 		var vm 			    	= $scope,
 			public_address  	= '',
@@ -103,11 +103,6 @@
 	        vm.$parent.modal_receive  = true;
 			vm.$parent.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
 			vm.$parent.qr_code 	      = '_assets/img/qrcode.png';
-
-			vm.$parent.closeModal = function() {
-				vm.$parent.modal_receive = false;
-				vm.$parent.modal = false;
-			};
 	    };
 
 	    // wire modal send
@@ -137,11 +132,6 @@
 				vm.$parent.message = 'Transaction sent!';
 				vm.$parent.notification = true;
 				$timeout(timeoutMsg, 4000);
-			};
-
-			vm.$parent.closeModal = function() {
-				vm.$parent.modal_send = false;
-				vm.$parent.modal = false;
 			};
 	    }
 	}]);

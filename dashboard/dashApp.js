@@ -54,7 +54,9 @@
 			$urlRouterProvider.otherwise('wallet');
 	}])
 
-	.controller('DashCtrl', ['$state', function($state) {
+	.controller('DashCtrl', 
+		['$scope', '$state',
+		function($scope, $state) {
 
 		var vm = this;
 
@@ -79,6 +81,14 @@
 		// Stop the event from bubbling up any further
 		vm.menuClick = function ($event) {
 			$event.stopPropagation();
+		};
+
+		// Close all modals in the DashCtrl scope
+		vm.closeModal = function(modal_name) {
+			vm.modal_edit_account = false;
+			$scope.modal_receive = false;
+			$scope.modal_send = false;
+			vm.modal = false;
 		};
 
 	}]);
