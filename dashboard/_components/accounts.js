@@ -43,9 +43,29 @@
 
 		// Open edit account modal:
 		this.editAccount = function(id, label, address) {
-			vm.dash.modal = id;
+			vm.dash.modal = true;
 			accountsService.modalEditAccount(vm.dash, id, label, address);
 		};
+
+		vm.dash.updateAccount = function(i) {
+			console.log('saving...');
+			console.log(i);
+
+			// Don't add account if blank
+		    if (this.new_label === '' ||
+		    	this.new_label === undefined ||
+		    	this.new_address === undefined) { return; }
+
+		    console.log(this.new_label);
+			console.log(this.new_address);
+
+		    vm.acct.accounts[i].label = this.new_label;
+			vm.acct.accounts[i].address = this.new_address;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
+		}
 
 		// select public addresses on click
 		function selectAddress(element) {
@@ -69,6 +89,7 @@
 		// Wire modal recieve
 	    this.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
+	        vm.acct_id = id;
 	        vm.acct_label = label;
 	        vm.acct_address = address;
 			vm.save_btn_text = 'save';

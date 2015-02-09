@@ -38,7 +38,7 @@
 
 					'<h1>Send Bitcoin</h1> ' + 
 
-					'<div class="send_form"> ' + 
+					'<div class="modal_form"> ' + 
 						'<div class="label_input_combo"> ' + 
 							'<label for="to_input">Send to address</label> ' + 
 							'<input id="to_input" class="form-input" type="text" placeholder=""> ' + 

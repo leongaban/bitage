@@ -748,7 +748,7 @@ select#account_type {
 .form-input {
   float: left;
   margin: 0 10px 5px 0;
-  padding: 8px 12px;
+  padding: 6px 12px;
   background: #eee;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -880,13 +880,13 @@ select#account_type {
   font-size: 1.5em;
   color: #fff; }
 
-.send_form {
+.modal_form {
   margin-top: 20px;
   padding-right: 20px;
   width: 320px; }
-  .send_form .form-input {
+  .modal_form .form-input {
     float: none; }
-  .send_form label {
+  .modal_form label {
     float: left;
     margin-bottom: 5px; }
 
