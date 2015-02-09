@@ -50,16 +50,22 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-// connecting the #account app
-app.use('/dashboard', router);
 
 // The Angular App itself below
 app.use(express.static(__dirname + '/dashboard'));
 
-app.get('/blog', function(req,res) {});
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+//dashboard api
+var dashboard = express.Router();
+app.use('/dashboard', dashboard);
+dashboard.get('/', function(req, res) {
+	res.sendfile('dashboard/index.html');
+});
+	
+
 
 
 // launch ======================================================================

@@ -13,13 +13,12 @@
         var vm = this;
         var location = $location;
 
-        // Sign up form submit          
+        // Sign up form submit
         vm.submitForm = function(isValid) {
 
             // check to make sure form is valid
             if (isValid) {
-                console.log('Creating user:');
-                registerService.postSignUpForm(vm.formData);
+                registerService.postSignUpForm(vm.formData, location);
             } else {
                swal({   title: "Ops!",   text: "Please check the form!",   type: "error",   confirmButtonText: "Ok", confirmButtonColor: "#024562" });
             }
@@ -30,9 +29,10 @@
 
     .service('registerService', ['$http', function($http) {
 
-        this.postSignUpForm = function(fdata) {
-            console.log(fdata);
-            
+        this.postSignUpForm = function(fdata, location) {
+
+            console.log(location);
+
             var request = $http({
                     method  : 'POST',
                     url     : '/signup',
@@ -40,7 +40,7 @@
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
                 .success(function() {
-                 
+                    
                 });
         };
     }]);
