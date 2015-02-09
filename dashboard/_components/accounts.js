@@ -8,7 +8,7 @@
 	var app = angular.module('app-accounts',
 		['ngAnimate', 'account-directives'])
 
-	.controller('AcctCtrl', 
+	.controller('AcctCtrl',
 		['$scope', 'accountsService',
 		function($scope, accountsService) {
 
@@ -48,23 +48,30 @@
 		};
 
 		vm.dash.updateAccount = function(i) {
-			console.log('saving...');
-			console.log(i);
 
 			// Don't add account if blank
 		    if (this.new_label === '' ||
 		    	this.new_label === undefined ||
 		    	this.new_address === undefined) { return; }
 
-		    console.log(this.new_label);
-			console.log(this.new_address);
-
 		    vm.acct.accounts[i].label = this.new_label;
 			vm.acct.accounts[i].address = this.new_address;
+
+		    // console.log(this.new_label);
+			// console.log(this.new_address);
+			// console.log(vm.acct.accounts);
 
 			// Reset inputs
 		    this.new_label = '';
 		    this.new_address = '';
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Briefly highlight row
+			var theRow = angular.element( document.querySelector('#acct-'+i));
+			theRow.addClass('ping-row');
 		}
 
 		// select public addresses on click
@@ -86,7 +93,6 @@
 
 	.service('accountsService', [function() {
 
-		// Wire modal recieve
 	    this.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
 	        vm.acct_id = id;
