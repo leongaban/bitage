@@ -20,7 +20,12 @@
             if (isValid) {
                 registerService.postSignUpForm(vm.formData, location);
             } else {
-               swal({   title: "Ops!",   text: "Please check the form!",   type: "error",   confirmButtonText: "Ok", confirmButtonColor: "#024562" });
+               swal({
+                   title: "Oops!",
+                   text: "Please check the form!",
+                   type: "error",
+                   confirmButtonText: "Ok",
+                   confirmButtonColor: "#024562" });
             }
 
         };
@@ -40,7 +45,7 @@
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
                 .success(function() {
-                    
+
                 });
         };
     }]);
