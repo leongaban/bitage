@@ -545,6 +545,26 @@ table {
 /*
    Animation example, for spinners
 */
+.ping-row {
+  -webkit-animation: 1.5s pingRow ease;
+  -moz-animation: 1.5s pingRow ease;
+  animation: 1.5s pingRow ease; }
+
+@keyframes pingRow {
+  0% {
+    background: #047aad; }
+  100% {
+    background: #fff; } }
+@-moz-keyframes pingRow {
+  0% {
+    background: #047aad; }
+  100% {
+    background: #fff; } }
+@-webkit-keyframes pingRow {
+  0% {
+    background: #047aad; }
+  100% {
+    background: #fff; } }
 .animate-spin {
   -webkit-animation: spin 2s infinite linear;
   -moz-animation: spin 2s infinite linear;

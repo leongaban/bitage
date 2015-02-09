@@ -26,8 +26,10 @@
             </thead>
             <tbody>
                 <tr class="row_body"
+                    ng-class="acct.ping-row"
                     ng-repeat="account in acct.accounts"
-                    ng-init="addressId=$index">
+                    ng-init="addressId=$index"
+                    id="acct-{{addressId}}">
                     <td class="td_acct_price">
                         <span>{{account.balance}}</span>
                     </td>
