@@ -29,14 +29,13 @@
 			$stateProvider
 				.state('wallet', {
 					url: '/wallet',
-					templateUrl: '_views/wallet.html',
-					controller: 'WalletCtrl'
+					templateUrl: '_views/wallet.html'
 				})
 
 				.state('accounts', {
 					url: '/accounts',
-					templateUrl: '_views/accounts.html',
-					controller: 'AcctCtrl'
+					templateUrl: '_views/accounts.html'
+					// controller: 'AcctCtrl'
 				})
 
 				.state('settings', {
@@ -59,6 +58,7 @@
 		function($scope, $state) {
 
 		var vm = this;
+		vm.qr_code = 'http://placehold.it/200&text=Loading+QR+Code';
 
 		// Sidebar tab select:
 		vm.$state = $state;
@@ -84,10 +84,10 @@
 		};
 
 		// Close all modals in the DashCtrl scope
-		vm.closeModal = function(modal_name) {
+		vm.closeModal = function() {
 			vm.modal_edit_account = false;
-			$scope.modal_receive = false;
-			$scope.modal_send = false;
+			vm.modal_receive = false;
+			vm.modal_send = false;
 			vm.modal = false;
 		};
 

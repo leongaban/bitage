@@ -1,6 +1,6 @@
 /*global angular */
 /* =========================================
-   ACCOUNTS Module
+   Accounts module
    ========================================= */
 
 (function() {
@@ -15,47 +15,57 @@
 		var vm = $scope;
 			vm.$parent.modal = false;
 
-		vm.accounts = [];
-		vm.accounts = [
+		this.accounts = [];
+		this.accounts = [
 			{ type: 'Savings', label: 'Bitage', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
 			{ type: 'Savings', label: 'Blockchain.info', balance: '3.001', address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH' },
 			{ type: 'Savings', label: 'Coinbase wallet', balance: '0.562', address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W' },
 			{ type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' }
 		];
 
-		vm.addAccount = function() {
+		this.addAccount = function() {
 			// Don't add account if blank
-		    if (vm.label === '' ||
-		    	vm.label === undefined ||
-		    	vm.address === undefined) { return; }
+		    if (this.label === '' ||
+		    	this.label === undefined ||
+		    	this.address === undefined) { return; }
 
 		    // Add new account to accounts []
-		    vm.accounts.push({
-				label: vm.label,
+		    this.accounts.push({
+				label: this.label,
 				balance: 0,
-				address: vm.address
+				address: this.address
 		    });
 
 		    // Reset inputs
-		    vm.label = '';
-		    vm.address = '';
+		    this.label = '';
+		    this.address = '';
 		};
 
 		// Open edit account modal:
-		vm.editAccount = function(m) {
-
-			// Show overlay:
-			// vm.$parent.modal = m;
-			console.log('account id = ' + m);
-			console.log(vm.dash);
-			accountsService.modalEditAccount(vm.dash);
-
-			// This needs to be refactored, exists in wallet.js and should be in a reusable service:
-			// vm.$parent.closeModal = function() {
-			// 	vm.$parent.modal_receive = false;
-			// 	vm.$parent.modal = false;
-			// };
+		this.editAccount = function(id, label, address) {
+			vm.dash.modal = true;
+			accountsService.modalEditAccount(vm.dash, id, label, address);
 		};
+
+		vm.dash.updateAccount = function(i) {
+			console.log('saving...');
+			console.log(i);
+
+			// Don't add account if blank
+		    if (this.new_label === '' ||
+		    	this.new_label === undefined ||
+		    	this.new_address === undefined) { return; }
+
+		    console.log(this.new_label);
+			console.log(this.new_address);
+
+		    vm.acct.accounts[i].label = this.new_label;
+			vm.acct.accounts[i].address = this.new_address;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
+		}
 
 		// select public addresses on click
 		function selectAddress(element) {
@@ -76,12 +86,13 @@
 
 	.service('accountsService', [function() {
 
-		// wire modal recieve
-	    this.modalEditAccount = function(vm) {
+		// Wire modal recieve
+	    this.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
+	        vm.acct_id = id;
+	        vm.acct_label = label;
+	        vm.acct_address = address;
 			vm.save_btn_text = 'save';
-	  //       vm.$parent.modal_edit_account = true;
-			// vm.$parent.send_btn_text = 'save';
 	    };
 
 	}]);

@@ -748,7 +748,7 @@ select#account_type {
 .form-input {
   float: left;
   margin: 0 10px 5px 0;
-  padding: 8px 12px;
+  padding: 6px 12px;
   background: #eee;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -809,7 +809,7 @@ select#account_type {
 .btn_usd {
   float: right;
   position: relative;
-  top: 30px;
+  top: 32px;
   right: -15px;
   padding: 5px;
   background: #fff;
@@ -835,9 +835,9 @@ select#account_type {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #013349;
+  background: #012c3f;
   cursor: pointer;
-  opacity: .8; }
+  opacity: .9; }
 
 .ng-modal-dialog {
   z-index: 1002;
@@ -880,19 +880,22 @@ select#account_type {
   font-size: 1.5em;
   color: #fff; }
 
-.send_form {
+.modal_form {
   margin-top: 20px;
   padding-right: 20px;
   width: 320px; }
-  .send_form .form-input {
+  .modal_form .form-input {
     float: none; }
-  .send_form label {
+  .modal_form label {
     float: left;
     margin-bottom: 5px; }
 
 .label_amount {
   position: relative;
   top: 7px; }
+
+.public_addy_input {
+  margin-top: 10px; }
 
 #to_input,
 #amount_input {
@@ -939,23 +942,15 @@ select#account_type {
   width: 40px;
   height: 40px;
   border: 3px solid #036894;
-<<<<<<< HEAD
-  background: #024562;
-=======
->>>>>>> dash
   cursor: pointer;
   overflow: hidden;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%; }
   .avatar:hover {
-<<<<<<< HEAD
-    border: 3px solid #059ddf; }
-=======
     border: 3px solid #048bc6; }
     .avatar:hover .icon-menu {
       color: #047aad; }
->>>>>>> dash
   .avatar:active {
     background: white; }
   .avatar .icon-menu {

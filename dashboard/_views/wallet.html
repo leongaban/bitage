@@ -1,4 +1,5 @@
-<div class="wallet-content">
+<div class="wallet-content"
+     ng-controller="WalletCtrl as wallet">
 
     <div class="content_header">
     	<h1><span class="mobile_logo"><strong>Bitage</strong> | </span> My Bitcoin wallet</h1>
@@ -15,13 +16,13 @@
 
 		<ul class="wallet_actions">
 			<li>
-				<button ng-click="openModal('receive')" class="btn btn_med">
+				<button ng-click="wallet.openModal('receive')" class="btn btn_med">
 					<div class="icon icon-download-outline"></div>
 					<span>Receive Bitcoin</span>
 				</button>
 			</li>
 			<li>
-				<button ng-click="openModal('send')" class="btn btn_med">
+				<button ng-click="wallet.openModal('send')" class="btn btn_med">
 					<div class="icon icon-upload-outline"></div>
 					<span>Send Bitcoin</span>
 				</button>
@@ -33,7 +34,7 @@
     	<table class="wallet_table">
     		
             <tr class="row_body"
-                ng-repeat="trans in transactions">
+                ng-repeat="trans in wallet.transactions">
 
                 <td class="td_icon" ng-switch="trans.type">
                     <div ng-switch-when="incoming" class="icon-download-outline"></div>

@@ -11,7 +11,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/app\/nodemailer.js": {
 		"fileType": 64,
@@ -3191,7 +3191,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/dashboard\/_assets\/css\/bitage.css": {
 		"fileType": 16,
@@ -3340,17 +3340,6 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/help.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/help-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/dashboard\/_components\/notificationDirective.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/dashboard\/_components\/notificationDirective.js",
-		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/notificationDirective-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4015,14 +4004,14 @@
 		},
 	"\/public\/_components\/register.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/_components\/register.js",
 		"outputAbbreviatedPath": "\/public\/_components\/min\/register-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/public\/_sources\/js\/plugins\/biticker.js": {
 		"fileType": 64,
@@ -4443,8 +4432,8 @@
 		},
 	"\/server.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/server.js",
 		"outputAbbreviatedPath": "\/min\/server-min.js",
 		"outputPathIsOutsideProject": 0,
