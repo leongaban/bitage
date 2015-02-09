@@ -10,7 +10,13 @@
 
 	    return {
 	        restrict: 'E',
-	        template: '<section ng-show="notification" ng-click="closeMsg()" class="ng-notification"><p class="notify-msg">{{message}}</p><div class="notify-bg"></div></section>'
+	        template: 
+	        	'<section ng-show="dash.notification" ' +
+					'ng-click="dash.closeMsg()" ' +
+					'class="ng-notification"> ' +
+					'<p class="notify-msg">{{dash.message}}</p> ' +
+					'<div class="notify-bg success"></div> ' +
+				'</section>'
 	    };
 	});
 

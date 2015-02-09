@@ -1,0 +1,17 @@
+node_modules/
+bower_components
+public/components
+config.codekit
+.sass-cache
+npm-debug.log
+*.cache
+*.node-gyp
+*.npm
+*.pm2
+.bash_history
+.bowerrc
+.profile
+.viminfo
+.idea/
+.swp
+README.html

@@ -35,27 +35,31 @@
     z-index: 3;
     border-radius: 50%;
     width: 40px;
-    height: 40px; 
-    // border: 3px solid lighten($sidebar, 10%);
-    border: 1px dashed $button;
+    height: 40px;  
+    border: 3px solid lighten($sidebar, 10%);
     // background: $sidebar;
     cursor: pointer;
     overflow: hidden;
     @include rounded(50%);
 
-    &:hover { border: 1px solid $button; }
+    &:hover {
+        border: 3px solid lighten($buttonHover, 5%);
+        .icon-menu {
+            color: $buttonHover;
+        }
+    }
 
     &:active { background: lighten(#ccc, 20%); }
 
-    .icon-down-dir {
+    .icon-menu {
         position: relative;
-        top: 6px;
-        left: 2px;
-        font-size: em(26);
+        top: 8px;
+        left: 3px;
+        font-size: em(24);
         color: $button;
     }
 
-    // img { width: 40px; height: 40px; }
+    img { width: 40px; height: 40px; }
 }
 
 #avatar_menu {

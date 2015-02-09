@@ -17,16 +17,12 @@
     }
 
     &:active { 
-        // text-shadow: 1px 1px #666;
         background: lighten($buttonHover, 15%);
         border: 1px solid #fff;
     }
 }
 
-.btn_tiny {
-    padding: 5px 8px;
-    font-size: em(8);
-}
+.btn_tiny { padding: 5px 8px; font-size: em(8); }
 
 .btn_small {
     padding: 7px 10px;
@@ -41,9 +37,24 @@
     line-height: 10px;
 }
 
-.btn_add_account { float: left; }
-
-.btn_send_now {
+.btn_add_account {
     float: left;
-    margin-top: 15px;
+    height: 32px;
+}
+
+.btn_send_now { float: left; margin-top: 15px; }
+
+.btn_usd {
+    float: right;
+    position: relative;
+    top: 32px;
+    right: -15px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    @include rounded(4px);
+
+    &:hover { color: #fff; background: #ccc; }
+    &:active { color: #fff; background: darken(#ccc, 10%); }
 }

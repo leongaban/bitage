@@ -8,9 +8,7 @@
 }
 
 .total_widget,
-.add_account_widget {
-    padding: 20px;
-}
+.add_account_widget { padding: 20px; }
 
 .add_account_widget {
     .icon-help-circled {
@@ -29,10 +27,6 @@
 .accounts_table {
     width: 100%;
     border-top: 1px solid #eee;
-
-    // .row_body:last-child td {
-    //     border-bottom: 1px solid #ccc;
-    // }
 }
 
 .row_head td {
@@ -71,14 +65,14 @@
 }
 
 .icon-qrcode-1,
-.icon-pencil-squared,
+.icon-edit,
 .btc_public_address {
     float: left;
     cursor: pointer;
     &:hover { color: $buttonHover; }
 }
 
-.icon-pencil-squared { font-size: em(20); }
+.icon-edit { font-size: em(20); }
 
 .btc_public_address {
     margin: 2px 0 0 10px;

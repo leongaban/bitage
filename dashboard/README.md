@@ -1,4 +1,4 @@
-BitAge dashboard
+Bitage dashboard views
 ======
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/leongaban/dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -14,18 +14,18 @@ Demo: http://nodedallas.io/apps/bitage-dashboard/
 - [x] Setup Express app
 - [x] User avatar options dropdown
 - [x] Mockup "Settings" (profile + fileupload)
-- [ ] Hide avatar dropdown after click
-- [ ] Solve multiple ng-animation effects issue
-- [ ] Mockup "Settings" (security & email)
-- [ ] Mockup "Themes" in settings
+- [x] Hide avatar dropdown after click
+- [x] Solve multiple ng-animation effects issue
+- [x] Mockup "Settings" (security & email)
+- [ ] User welcome to wallet experience
 - [ ] Allow editing accounts (account API)
 - [ ] Allow deleting accounts (account API)
 - [ ] Calculate total
 - [ ] Use Blockchain api to get balance
+- [ ] Wire up Blockchain transactions (recieve & send)
 - [ ] Generate real QR code
 - [ ] Allow reorganizing account
 - [ ] Wireup data (Mongoose)
-- [ ] Start new project with Homepage, Registration and Login
 
 Running
 ------
@@ -35,14 +35,6 @@ Running
 <p>run the app:</p>
     $ DEBUG=bitage-app ./bin/www
 
-![Nodeschool Dallas logo](https://raw.githubusercontent.com/leongaban/dallas/master/nodeschool-dallas.png)
-
-What's a NodeSchool?
-------
-* Main site: http://nodeschool.io/
-* NodeSchool workshoppers (problem sets): http://nodeschool.io/#workshoppers
-
-![Bitcoin logo](https://raw.githubusercontent.com/leongaban/dashboard/master/_assets/img/bitcoin.png)
 
 What is Bitcoin?
 ------

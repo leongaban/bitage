@@ -4,8 +4,8 @@
 
 	Biage Public views
 	"Keep watch over your Bitcoins"
-	
-   	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
 ============================================ */
@@ -31,37 +31,37 @@
 
 				.state('about', {
 					url: '/about',
-					templateUrl: '_views/about.html',
-					controller: 'AboutCtrl'
+					templateUrl: '_views/about.html'
 				})
 
 				.state('login', {
 					url: '/login',
-					templateUrl: '_views/login.html',
-					controller: 'LoginCtrl'
+					templateUrl: '_views/login.html'
 				})
 
 				.state('register', {
 					url: '/register',
-					templateUrl: '_views/register.html',
-					controller: 'RegisterCtrl'
+					templateUrl: '_views/register.html'
 				});
 
 			$urlRouterProvider.otherwise('/home');
 	}])
 
-	.controller('MainCtrl', ['$scope', '$http','$location', '$state', 'matchmedia',
-		function($scope, $http, $location, $state, matchmedia) {
+	.controller('MainCtrl',
+		['$http', '$location', '$state', 'matchmedia', 'homeService',
+		function($http, $location, $state, matchmedia, homeService) {
 
-		var vm = $scope;
+		var vm = this;
 
+		// Show HTML only on home
 		vm.showHome = function() {
 	    	return $state.is('home');
-	   	}
+		}
 
-	   	vm.showTicker = function() {
+		// Display BTC ticker
+		vm.showTicker = function() {
 	    	return $state.is('home');
-	   	}
+		}
 
 		// Mobile nav
 		vm.isMobileNavOpen = false
@@ -87,16 +87,32 @@
                 });
 		};
 
-	   	// Quick form submit          
+	   	// Quick form submit
         vm.submitForm = function(isValid) {
             if (isValid) {
-                console.log('home page submit')
-                postSignUpForm();
+                console.log('Creating user:');
+                homeService.postSignUpForm(vm.formData);
             } else {
             	alert('Please correct the form');
             }
         };
+	}])
 
-	}]);
+	.service('homeService', ['$http', function($http) {
+
+        this.postSignUpForm = function(fdata) {
+            console.log(fdata);
+
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(fdata),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function() {
+
+                });
+        };
+    }]);
 
 })();

@@ -1,0 +1,60 @@
+/* HELP & SUPPORT
+====================================================
+==================================================== */
+
+.help_container {
+	padding: 20px;
+
+	.help-error {
+		/* float: left; */
+		position: absolute;
+		top: -30px;
+		font-size: em(14);
+		font-weight: 500;
+		color: $red;
+	}
+}
+
+.help_instructions {
+	margin-bottom: 20px;
+
+	.icon-twitter {
+		color: $blue;
+		font-size: em(18);
+	}
+
+	h2 {
+		margin-bottom: 10px;
+		font-size: em(20);
+		line-height: em(22);
+	}
+
+	p { font-size: em(14); }
+
+	a {
+		color: $buttonHover;
+		text-decoration: none;
+		&:hover { text-decoration: underline; }
+	}
+}
+
+.field_message {
+	position: relative;
+	top: 10px;
+	float: none !important;
+
+	textarea {
+		padding: 20px;
+		width: 80%;
+		height: 100px;
+		line-height: 24px;
+	}
+}
+
+.send_message_btn_area {
+    float: left;
+	margin-top: 10px;
+    width: 100%;
+
+    .btn { margin-top: 10px; }
+}

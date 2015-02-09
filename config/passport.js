@@ -3,12 +3,14 @@ var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
-var bitcoin = require('bitcoinjs-lib');
-// load up the user model
-var User       = require('../app/models/user');
+var bitcoin          = require('bitcoinjs-lib');
 
+// load up the user model
+var User             = require('../app/models/user');
+
+var moment           = require('moment');
 // load the auth variables
-var configAuth = require('./auth'); // use this one for testing
+var configAuth       = require('./auth'); // use this one for testing
 
 module.exports = function(passport) {
 
@@ -92,14 +94,17 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
                         // create bitcoin keys and wallet
-                        var key = bitcoin.ECKey.makeRandom();
+                        var key                = bitcoin.ECKey.makeRandom();
+                        var visit              = moment();
 
                         // create the user 
                         var newUser            = new User();
-                        newUser.local.key = key.toWIF();
-                        newUser.local.wallet = key.pub.getAddress().toString();
+                        newUser.local.key      = key.toWIF();
+                        newUser.local.wallet   = key.pub.getAddress().toString();
                         newUser.local.email    = email;
                         newUser.local.password = newUser.generateHash(password);
+
+                        newUser.local.visits   = visit;
 
                         newUser.save(function(err) {
                             if (err)
