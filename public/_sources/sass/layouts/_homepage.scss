@@ -79,6 +79,8 @@
 	// flexbox
 	display: flex;
 	flex-direction: row;
+	-webkit-display: flex;
+	-webkit-flex-direction: row;
 }
 
 .service_block {
@@ -88,8 +90,8 @@
 	width: 310px;
 	font-size: em(20);
 	// flexbox
-	justify-content: center;
-	align-items: stretch;
+	-webkit-justify-content: center;
+	-webkit-align-items: stretch;
 
 	h2 { font-weight: 500; color: #eee; }
 
@@ -99,6 +101,13 @@
 		margin: 10px 0 20px;
 		color: lighten(#666, 30%);
 	}
+}
+
+// Safari hack
+_::-webkit-full-page-media, _:future, :root .service_blocks { padding: 0; }
+_::-webkit-full-page-media, _:future, :root .service_block {
+	padding-left: 0;
+	width: 100%;
 }
 
 .key {
