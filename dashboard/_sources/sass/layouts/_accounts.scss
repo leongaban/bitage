@@ -5,17 +5,20 @@
 .account-content {
     position: relative;
     width: 100%;
+    min-width: 640px;
 }
 
 .total_widget,
 .add_account_widget { padding: 20px; }
 
 .add_account_widget {
+    
     .icon-help-circled {
         float: left;
         cursor: pointer;
         &:hover {color: $buttonHover; }
     }
+
     h1 { margin-bottom: 10px; }
 }
 
