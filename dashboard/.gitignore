@@ -1,7 +1,25 @@
-.DS_Store
-config.codekit
 node_modules/
+<<<<<<< HEAD
 bower_components/
 *.scssc
 README.html
 config.codekit
+=======
+bower_components
+public/components
+config.codekit
+*.codekit
+.sass-cache
+npm-debug.log
+*.cache
+*.node-gyp
+*.npm
+*.pm2
+.bash_history
+.bowerrc
+.profile
+.viminfo
+.idea/
+.swp
+README.html
+>>>>>>> fb86b6c1a2436bb643ec09dfff576f75d815cad1

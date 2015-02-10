@@ -4,8 +4,8 @@
 
 	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
-	
-   	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
 ============================================ */
@@ -13,7 +13,7 @@
 (function() { "use strict";
 
 	var app = angular.module('bitAge',
-		['ui.router', 
+		['ui.router',
 		 'app-wallet',
 		 'wallet-directives',
 		 'notification-directives',
@@ -53,7 +53,7 @@
 			$urlRouterProvider.otherwise('wallet');
 	}])
 
-	.controller('DashCtrl', 
+	.controller('DashCtrl',
 		['$scope', '$state',
 		function($scope, $state) {
 
