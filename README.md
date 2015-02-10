@@ -1,7 +1,6 @@
-Bitage application
+The Bitage.io web application
 ================
-
-<strong>Private repo for the Bitage web app</strong>
+<strong>A Bitcoin Services Company</strong>
 
 <a href="https://twitter.com/leongaban">@leongaban</a> & <a href="https://twitter.com/paulinhorocha">@paulinhorocha</a>
 
@@ -18,22 +17,22 @@ Technologies (MEAN stack):
 * <a href="https://docs.angularjs.org/guide">Angular</a> | <a href="http://ngmodules.org/">ngmodules</a>
 * <a href="http://nodejs.org/api/">Node</a> | <a href="https://www.npmjs.com/">npm</a>
 
-Public demo:
+Demos
 ------
-http://nodedallas.io/apps/web/
+http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
 
-Dashboard demo:
+Sprint tracking
 ------
-http://nodedallas.io/apps/dash/
+https://trello.com/b/pu37qnwO/bitage-io-web-app
 
-Sprint tracking:
+Continuous integration
 ------
-https://www.pivotaltracker.com/n/projects/1254408
+http://codeship.com
 
-Team communication:
+Team communication
 ------
-https://bitage.slack.com/
+https://bitage.slack.com
 
-Documents & Resources:
+Documents
 ------
-https://basecamp.com/2841132/projects/8131292
+https://drive.google.com/a/bitage.io/#my-drive
