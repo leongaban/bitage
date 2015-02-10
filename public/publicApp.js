@@ -70,7 +70,24 @@
 			vm.isMobileNavOpen = false;
 		});
 
-		// Quick form submit
+		var postSignUpForm = function() {
+            console.log(vm.formData);
+            
+            // process the form
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(vm.formData),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function(data) {
+                    console.log('go to wallet');
+
+                    
+                });
+		};
+
+	   	// Quick form submit
         vm.submitForm = function(isValid) {
             if (isValid) {
                 console.log('Creating user:');
