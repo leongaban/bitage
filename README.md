@@ -30,6 +30,10 @@ Sprint tracking:
 ------
 https://www.pivotaltracker.com/n/projects/1254408
 
+Continuous integration:
+------
+http://codeship.com/
+
 Team communication:
 ------
 https://bitage.slack.com/
