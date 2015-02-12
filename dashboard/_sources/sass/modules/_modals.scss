@@ -56,7 +56,7 @@
 // Send modal:
 .modal_form {
     margin-top: 20px;
-    padding-right: 20px;
+    // padding-right: 20px;
     width: 320px;
 
     .form-input { float: none; }
@@ -69,4 +69,4 @@
 .public_addy_input { margin-top: 10px; }
 
 #to_input,
-#amount_input { width: 100%; }
+#amount_input { width: 294px; }

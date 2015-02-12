@@ -36,10 +36,15 @@
 										'type="text" ' +
 										'placeholder="{{dash.acct_address}}"> ' + 
 							'</div> ' + 
-							
+
 							'<button type="submit" ' +
 									'class="btn btn_med btn_send_now"> ' + 
 									'{{dash.save_btn_text}} ' + 
+							'</button> ' + 
+
+							'<button ng-click="dash.removeAccount(dash.acct_id)" ' +
+									'class="btn btn_med btn_remove"> ' + 
+									'Remove' + 
 							'</button> ' + 
 						'</div> ' + 
 					'</form>' +

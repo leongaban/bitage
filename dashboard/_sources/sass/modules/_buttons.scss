@@ -42,13 +42,21 @@
     height: 32px;
 }
 
-.btn_send_now { float: left; margin-top: 15px; }
+.btn_send_now,
+.btn_remove {
+    float: right;
+    margin-top: 15px;
+}
+
+.btn_remove {
+    margin-right: 10px;
+}
 
 .btn_usd {
     float: right;
     position: relative;
-    top: 32px;
-    right: -15px;
+    top: 30px;
+    right: 2px;
     padding: 5px;
     background: #fff;
     border: 1px solid #ccc;
