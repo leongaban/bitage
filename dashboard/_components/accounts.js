@@ -74,6 +74,17 @@
 			theRow.addClass('ping-row');
 		}
 
+		vm.dash.removeAccount = function(i) {
+			console.log(i);
+			var index = vm.acct.accounts.indexOf(i);
+			vm.acct.accounts.splice(i, 1);
+			console.log(vm.acct.accounts);
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+		};
+
 		// select public addresses on click
 		function selectAddress(element) {
 			var text = document.getElementById(element),
