@@ -17,10 +17,10 @@
 
 		this.accounts = [];
 		this.accounts = [
-			{ type: 'Savings', label: 'Bitage', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
-			{ type: 'Savings', label: 'Blockchain.info', balance: '3.001', address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH' },
-			{ type: 'Savings', label: 'Coinbase wallet', balance: '0.562', address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W' },
-			{ type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' }
+			{ id: 'acct-1', type: 'Savings', label: 'Bitage', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
+			{ id: 'acct-2', type: 'Savings', label: 'Blockchain.info', balance: '3.001', address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH' },
+			{ id: 'acct-3', type: 'Savings', label: 'Coinbase wallet', balance: '0.562', address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W' },
+			{ id: 'acct-4', type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' }
 		];
 
 		this.addAccount = function() {
@@ -43,6 +43,7 @@
 
 		// Open edit account modal:
 		this.editAccount = function(id, label, address) {
+			console.log(id);
 			vm.dash.modal = true;
 			accountsService.modalEditAccount(vm.dash, id, label, address);
 		};
@@ -61,28 +62,42 @@
 			// console.log(this.new_address);
 			// console.log(vm.acct.accounts);
 
-			// Reset inputs
-		    this.new_label = '';
-		    this.new_address = '';
-
 			// Hide modal
 			vm.dash.modal_edit_account = false;
 			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
 
 			// Briefly highlight row
 			var theRow = angular.element( document.querySelector('#acct-'+i));
 			theRow.addClass('ping-row');
 		}
 
-		vm.dash.removeAccount = function(i) {
-			console.log(i);
-			var index = vm.acct.accounts.indexOf(i);
-			vm.acct.accounts.splice(i, 1);
+		vm.dash.removeAccount = function(index) {
+			console.log(index);
+			// var index = vm.acct.accounts.indexOf(i);
+			// vm.acct.accounts.splice(i, 1);
+			console.log(vm.acct.accounts);
+
+			for (var i = 0; i < vm.acct.accounts.length; i++) {
+			    var obj = vm.acct.accounts[i];
+
+			    if (index.indexOf(obj.id) !== -1) {
+			        vm.acct.accounts.splice(i, 1);
+			    }
+			}
+
 			console.log(vm.acct.accounts);
 
 			// Hide modal
 			vm.dash.modal_edit_account = false;
 			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
 		};
 
 		// select public addresses on click

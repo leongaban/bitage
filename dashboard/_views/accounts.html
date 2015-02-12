@@ -3,7 +3,8 @@
 
     <div class="content_header"><h1><span class="mobile_logo"><strong>Bitage</strong> | </span>My account balances</h1></div>
 
-    <section class="widget-container total_widget">
+    <section ng-show="!!acct.accounts.length" 
+             class="widget-container total_widget">
         <ul>
             <li><p class="total_label">Total:</p></li>
             <li><p class="total_btc">4.567</p><em class="denomination">BTC</em></li>
@@ -14,7 +15,7 @@
 
     <section class="widget-container added_address">
 
-        <table class="accounts_table">
+        <table ng-show="!!acct.accounts.length" class="accounts_table">
             <thead>
                 <tr class="row_head">
                     <td>Balance</td>
@@ -28,7 +29,8 @@
                     ng-class="acct.ping-row"
                     ng-repeat="account in acct.accounts"
                     ng-init="addressId=$index"
-                    id="acct-{{addressId}}">
+                    id="{{account.id}}">
+                    <!-- id="acct-{{addressId}}"> -->
                     <td class="td_acct_price">
                         <span>{{account.balance}}</span>
                     </td>
@@ -44,7 +46,8 @@
                     </td>
 
                     <td class="td_edit"
-                        ng-click="acct.editAccount(addressId, account.label, account.address)">
+                        ng-click="acct.editAccount(account.id, account.label, account.address)">
+                        <!-- ng-click="acct.editAccount(addressId, account.label, account.address)"> -->
                         <div class="icon-edit"></div>
                     </td>
                 </tr>

@@ -12,6 +12,7 @@
 .add_account_widget { padding: 20px; }
 
 .add_account_widget {
+    border-top: 1px solid #eee;
     
     .icon-help-circled {
         float: left;
@@ -41,8 +42,9 @@
 .row_body td {
     padding: 16px 20px;
     margin-right: 20px;
+    border-top: 1px solid #eee;
     border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    // border-bottom: 1px solid #eee;
 }
 
 .row_body {
