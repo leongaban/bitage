@@ -50,17 +50,28 @@
 
 		vm.dash.updateAccount = function(i) {
 
+			console.log(vm.acct.accounts);
+			console.log(i);
+			console.log(this.new_label);
+			console.log(this.new_address);
+
 			// Don't add account if blank
 		    if (this.new_label === '' ||
 		    	this.new_label === undefined ||
 		    	this.new_address === undefined) { return; }
 
-		    vm.acct.accounts[i].label = this.new_label;
-			vm.acct.accounts[i].address = this.new_address;
+			// find account by id and update it's values
+			function changeAccountValues( id, new_label, new_address ) {
+				for (var i in vm.acct.accounts) {
+					if (vm.acct.accounts[i].id == id) {
+						vm.acct.accounts[i].label = new_label;
+						vm.acct.accounts[i].address = new_address;
+						break;
+					}
+				}
+			}
 
-		    // console.log(this.new_label);
-			// console.log(this.new_address);
-			// console.log(vm.acct.accounts);
+			changeAccountValues (i, this.new_label, this.new_address);
 
 			// Hide modal
 			vm.dash.modal_edit_account = false;
