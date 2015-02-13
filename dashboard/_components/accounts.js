@@ -24,13 +24,18 @@
 		];
 
 		this.addAccount = function() {
+
+			// Create next account id
+			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
+
 			// Don't add account if blank
 		    if (this.label === '' ||
 		    	this.label === undefined ||
 		    	this.address === undefined) { return; }
 
-		    // Add new account to accounts []
+		    // Add new account to accounts array
 		    this.accounts.push({
+				id: nextId,
 				label: this.label,
 				balance: 0,
 				address: this.address
@@ -50,17 +55,12 @@
 
 		vm.dash.updateAccount = function(i) {
 
-			console.log(vm.acct.accounts);
-			console.log(i);
-			console.log(this.new_label);
-			console.log(this.new_address);
-
 			// Don't add account if blank
 		    if (this.new_label === '' ||
 		    	this.new_label === undefined ||
 		    	this.new_address === undefined) { return; }
 
-			// find account by id and update it's values
+			// find account by id and update it's obj values
 			function changeAccountValues( id, new_label, new_address ) {
 				for (var i in vm.acct.accounts) {
 					if (vm.acct.accounts[i].id == id) {
@@ -86,27 +86,20 @@
 			theRow.addClass('ping-row');
 		}
 
-		vm.dash.removeAccount = function(index) {
-			console.log(index);
-			// var index = vm.acct.accounts.indexOf(i);
-			// vm.acct.accounts.splice(i, 1);
-			console.log(vm.acct.accounts);
+		vm.dash.removeAccount = function(acct_id) {
 
+			// find object by id and remove from array
 			for (var i = 0; i < vm.acct.accounts.length; i++) {
 			    var obj = vm.acct.accounts[i];
 
-			    if (index.indexOf(obj.id) !== -1) {
+			    if (acct_id.indexOf(obj.id) !== -1) {
 			        vm.acct.accounts.splice(i, 1);
 			    }
 			}
 
-			console.log(vm.acct.accounts);
-
-			// Hide modal
 			vm.dash.modal_edit_account = false;
 			vm.dash.modal = false;
 
-			// Reset inputs
 		    this.new_label = '';
 		    this.new_address = '';
 		};
