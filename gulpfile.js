@@ -2,13 +2,17 @@
    gulpfile for Bitage app
    ========================================= */
 
-var gulp   = require('gulp'),
-    gutil  = require('gulp-util'),
-    gulpif = require('gulp-if'),
-    uglify = require('gulp-uglify'),
-    concat = require('gulp-concat')
-    es     = require('event-stream');
+var gulp       = require('gulp'),
+    gutil      = require('gulp-util'),
+    gulpif     = require('gulp-if'),
+    uglify     = require('gulp-uglify'),
+    concat     = require('gulp-concat'),
+    sass       = require('gulp-sass'),
+    livereload = require('gulp-livereload'),
+    es         = require('event-stream');
 
+// https://www.npmjs.com/package/gulp-sass/
+var sourcemaps = require('gulp-sourcemaps');
 var shouldMinify = true;
 
 function public_js(shouldMinify) {
@@ -22,6 +26,15 @@ function public_js(shouldMinify) {
         .pipe(gulpif(shouldMinify, uglify()))
         .pipe(gulp.dest('public/_assets/js'));
 };
+
+gulp.task('sass', function () {
+    gulp.src('public/_sources/scss/**/*.scss')
+        .pipe(sourcemaps.init())
+            .pipe(sass())
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('public/_assets/css'))
+        .pipe(livereload());
+});
 
 // Development task
 gulp.task('develop', function () {
