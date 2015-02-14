@@ -1,3 +1,7 @@
+/* =========================================
+   gulpfile for Bitage app
+   ========================================= */
+
 var gulp   = require('gulp'),
     gutil  = require('gulp-util'),
     gulpif = require('gulp-if'),
@@ -14,29 +18,26 @@ function public_js(shouldMinify) {
     var jsComponents = gulp.src('public/_components/*.js');
 
     return es.merge(jsLibs, jsPlugins, jsComponents)
-    // return gulp.src('public/_components/*.js')
         .pipe(concat('bitage_public_all.js'))
         .pipe(gulpif(shouldMinify, uglify()))
         .pipe(gulp.dest('public/_assets/js'));
 };
 
+// Development task
 gulp.task('develop', function () {
     shouldMinify = false;
     return public_js(shouldMinify);
 });
 
+// Production task (minify)
 gulp.task('build', function () {
     shouldMinify = true;
     return public_js(shouldMinify);
 });
 
-// gulp.task('public_js', function () {
-//     gulp.src('public/_components/*.js')
-//         .pipe(uglify())
-//         .pipe(concat('public/bitage_public_all.js'))
-//         .pipe(gulp.dest('public/_assets/js/'));
-// });
-
-// gulp.task('default', function(){
-//     gulp.run('public_js');
-// });
+// Watch for file updates
+gulp.task('watch', function () {
+    gulp.watch('public/_assets/js/libs/*.js', ['develop']);
+    gulp.watch('public/_assets/js/plugins/*.js', ['develop']);
+    gulp.watch('public/_components/*.js', ['develop']);
+});

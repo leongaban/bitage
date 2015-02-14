@@ -4,7 +4,6 @@
 
 	Biage Public views
 	"Keep watch over your Bitcoins"
-
 	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
@@ -72,7 +71,7 @@
 
 		var postSignUpForm = function() {
             console.log(vm.formData);
-            
+
             // process the form
             var request = $http({
                     method  : 'POST',
@@ -83,7 +82,7 @@
                 .success(function(data) {
                     console.log('go to wallet');
 
-                    
+
                 });
 		};
 
