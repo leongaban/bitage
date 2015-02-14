@@ -16,6 +16,7 @@ Technologies (MEAN stack):
 * <a href="http://expressjs.com/">Express</a>
 * <a href="https://docs.angularjs.org/guide">Angular</a> | <a href="http://ngmodules.org/">ngmodules</a>
 * <a href="http://nodejs.org/api/">Node</a> | <a href="https://www.npmjs.com/">npm</a>
+* <a href="http://gulpjs.com">Gulp</a> | <a href="http://gratimax.net/search-gulp-plugins/">Gulp Plugins</a>
 
 Demos
 ------
@@ -25,9 +26,13 @@ Sprint tracking
 ------
 https://trello.com/b/pu37qnwO/bitage-io-web-app
 
+Task runner
+------
+http://gulpjs.com/
+
 Continuous integration
 ------
-http://codeship.com
+http://codeship.com | https://codeship.com/documentation
 
 Team communication
 ------
