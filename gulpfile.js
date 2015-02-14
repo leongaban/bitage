@@ -13,8 +13,8 @@ var shouldMinify = true;
 
 function public_js(shouldMinify) {
 
-    var jsLibs = gulp.src('public/_assets/js/libs/*.js');
-    var jsPlugins = gulp.src('public/_assets/js/plugins/*.js');
+    var jsLibs = gulp.src('public/_sources/js/libs/*.js');
+    var jsPlugins = gulp.src('public/_sources/js/plugins/*.js');
     var jsComponents = gulp.src('public/_components/*.js');
 
     return es.merge(jsLibs, jsPlugins, jsComponents)
@@ -37,7 +37,7 @@ gulp.task('build', function () {
 
 // Watch for file updates
 gulp.task('watch', function () {
-    gulp.watch('public/_assets/js/libs/*.js', ['develop']);
-    gulp.watch('public/_assets/js/plugins/*.js', ['develop']);
+    gulp.watch('public/_sources/js/libs/*.js', ['develop']);
+    gulp.watch('public/_sources/js/plugins/*.js', ['develop']);
     gulp.watch('public/_components/*.js', ['develop']);
 });
