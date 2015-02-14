@@ -7,12 +7,12 @@ var gulp       = require('gulp'),
     gulpif     = require('gulp-if'),
     uglify     = require('gulp-uglify'),
     concat     = require('gulp-concat'),
-    sass       = require('gulp-sass'),
+    sass       = require('gulp-ruby-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
     livereload = require('gulp-livereload'),
     es         = require('event-stream');
 
-// https://www.npmjs.com/package/gulp-sass/
-var sourcemaps = require('gulp-sourcemaps');
+// https://www.npmjs.com/package/gulp-ruby-sass
 var shouldMinify = true;
 
 function public_js(shouldMinify) {
@@ -27,10 +27,10 @@ function public_js(shouldMinify) {
         .pipe(gulp.dest('public/_assets/js'));
 };
 
+// Compile public SASS
 gulp.task('sass', function () {
-    gulp.src('public/_sources/scss/**/*.scss')
+    return sass('public/_sources/sass/bitage_web.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
-            .pipe(sass())
         .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('public/_assets/css'))
         .pipe(livereload());
