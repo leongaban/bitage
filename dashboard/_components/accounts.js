@@ -14,6 +14,7 @@
 
 		var vm = $scope;
 			vm.$parent.modal = false;
+			
 
 		// Setup accounts model
 		this.accounts = [];
