@@ -28,7 +28,7 @@ function public_js(shouldMinify) {
 };
 
 // Compile public SASS
-gulp.task('sass', function () {
+gulp.task('sass_public', function () {
     return sass('public/_sources/sass/bitage_web.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./maps'))
@@ -37,20 +37,22 @@ gulp.task('sass', function () {
 });
 
 // Development task
-gulp.task('develop', function () {
+gulp.task('develop_public', function () {
     shouldMinify = false;
     return public_js(shouldMinify);
 });
 
 // Production task (minify)
-gulp.task('build', function () {
+gulp.task('build_public', function () {
     shouldMinify = true;
     return public_js(shouldMinify);
 });
 
 // Watch for file updates
 gulp.task('watch', function () {
-    gulp.watch('public/_sources/js/libs/*.js', ['develop']);
-    gulp.watch('public/_sources/js/plugins/*.js', ['develop']);
-    gulp.watch('public/_components/*.js', ['develop']);
+    gulp.watch('public/_sources/js/libs/*.js', ['develop_public']);
+    gulp.watch('public/_sources/js/plugins/*.js', ['develop_public']);
+    gulp.watch('public/_components/*.js', ['develop_public']);
+
+    gulp.watch('public/_sources/sass/bitage_web.scss', ['sass_public']);
 });
