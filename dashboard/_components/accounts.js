@@ -14,13 +14,39 @@
 
 		var vm = $scope;
 			vm.$parent.modal = false;
+			
 
+		// Setup accounts model
 		this.accounts = [];
 		this.accounts = [
-			{ id: 'acct-1', type: 'Savings', label: 'Bitage', balance: '1.001', address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq' },
-			{ id: 'acct-2', type: 'Savings', label: 'Blockchain.info', balance: '3.001', address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH' },
-			{ id: 'acct-3', type: 'Savings', label: 'Coinbase wallet', balance: '0.562', address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W' },
-			{ id: 'acct-4', type: 'Savings', label: 'Xapo wallet', balance: '0.003', address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea' }
+			{
+				id: 'acct-1',
+				type: 'Savings',
+				label: 'Bitage',
+				balance: '1.001',
+				address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq'
+			},
+			{
+				id: 'acct-2',
+				type: 'Savings',
+				label: 'Blockchain.info',
+				balance: '3.001',
+				address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH'
+			},
+			{
+				id: 'acct-3',
+				type: 'Savings',
+				label: 'Coinbase wallet',
+				balance: '0.562',
+				address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W'
+			},
+			{
+				id: 'acct-4',
+				type: 'Savings',
+				label: 'Xapo wallet',
+				balance: '0.003',
+				address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea'
+			}
 		];
 
 		this.addAccount = function() {
@@ -48,7 +74,7 @@
 
 		// Open edit account modal:
 		this.editAccount = function(id, label, address) {
-			console.log(id);
+			// console.log(id);
 			vm.dash.modal = true;
 			accountsService.modalEditAccount(vm.dash, id, label, address);
 		};
@@ -88,7 +114,7 @@
 
 		vm.dash.removeAccount = function(acct_id) {
 
-			// find object by id and remove from array
+			// Find object by id and remove from array
 			for (var i = 0; i < vm.acct.accounts.length; i++) {
 			    var obj = vm.acct.accounts[i];
 
@@ -97,14 +123,16 @@
 			    }
 			}
 
+			// Hide modal
 			vm.dash.modal_edit_account = false;
 			vm.dash.modal = false;
 
+			// Reset inputs
 		    this.new_label = '';
 		    this.new_address = '';
 		};
 
-		// select public addresses on click
+		// Select public addresses on click
 		function selectAddress(element) {
 			var text = document.getElementById(element),
 				range = document.createRange(),
@@ -114,6 +142,7 @@
 			    selection.addRange(range);
 		};
 
+		// Select entire address on click
 		vm.pubAddress = {};
 		vm.pubAddress.getClick = function(the_id) {
 			selectAddress(the_id);
@@ -123,6 +152,7 @@
 
 	.service('accountsService', [function() {
 
+		// Wire up edit account modal
 	    this.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
 	        vm.acct_id = id;
