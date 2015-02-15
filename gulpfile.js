@@ -87,7 +87,7 @@ gulp.task('watch', function () {
     gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
     gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
     gulp.watch('public/_components/*.js', ['devsite']);
-    
+
 
     // Watch Dashboard (App) Pages | Styles | Scripts
     gulp.watch('dashboard/*.html').on('change', function(file) {
@@ -95,7 +95,7 @@ gulp.task('watch', function () {
         gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
+    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']).on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });
