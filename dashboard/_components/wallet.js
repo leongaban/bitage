@@ -30,6 +30,7 @@
 
 		// Open Receive or Send modals:
 		this.openModal = function(m) {
+			// console.log(m);
 
 			// Show overlay:
 			vm.dash.modal = m;
@@ -94,39 +95,39 @@
 	.service('walletModalService', [function() {
 
 		// wire modal recieve
-	    this.modalRecieve = function(vm) {
-	        vm.modal_receive  = true;
-			vm.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			vm.qr_code 	      = '_assets/img/qrcode.png';
+	    this.modalRecieve = function(dash) {
+	        dash.modal_receive  = true;
+			dash.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+			dash.qr_code 	      = '_assets/img/qrcode.png';
 	    };
 
 	    // wire modal send
-	    this.modalSend = function(vm, $timeout, timeoutMsg) {
-	    	vm.modal_send = true;
-			vm.send_btn_text = 'Send';
+	    this.modalSend = function(dash, $timeout, timeoutMsg) {
+	    	dash.modal_send = true;
+			dash.send_btn_text = 'Send';
 
 			// btn_usd in walletDirective html
-			vm.switchCurrency = function() {
-				if (vm.currency === 'USD') {
-					vm.currency = 'BTC';
-				} else if (vm.currency = 'BTC') {
-					vm.currency = 'USD';
+			dash.switchCurrency = function() {
+				if (dash.currency === 'USD') {
+					dash.currency = 'BTC';
+				} else if (dash.currency = 'BTC') {
+					dash.currency = 'USD';
 				}
 			};
 
-			vm.sendTransaction = function() {
-				console.log(vm);
+			dash.sendTransaction = function() {
+				console.log(dash);
 
 				// Make API call to check address
-				vm.send_btn_text = 'Sending...';
+				dash.send_btn_text = 'Sending...';
 
 				// Get response back and close modal
-				vm.modal_send = false;
-				vm.modal = false;
+				dash.modal_send = false;
+				dash.modal = false;
 
 				// Show notification
-				vm.message = 'Transaction sent!';
-				vm.notification = true;
+				dash.message = 'Transaction sent!';
+				dash.notification = true;
 				$timeout(timeoutMsg, 4000);
 			};
 	    }

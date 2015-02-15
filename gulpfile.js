@@ -44,9 +44,9 @@ gulp.task('sass_site', function () {
 
 // Compile dashboard SASS
 gulp.task('sass_app', function () {
-    return sass('dashboard/_sources/sass/bitage.scss', { style: 'compressed' })
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('./maps'))
+    return sass('dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
+        // .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('dashboard/_assets/css'))
         .pipe(livereload());
 });

@@ -38,8 +38,7 @@
 
 				.state('settings', {
 					url: '/settings',
-					templateUrl: '_views/settings.html',
-					controller: 'SettingsCtrl'
+					templateUrl: '_views/settings.html'
 				})
 
 				.state('help', {

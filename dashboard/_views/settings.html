@@ -1,4 +1,5 @@
-<div class="settings-content">
+<div class="settings-content"
+     ng-controller="SettingsCtrl as settings">
 
     <div class="content_header">
         <h1><span class="mobile_logo"><strong>Bitage</strong> | </span> My Settings</h1>
@@ -47,7 +48,8 @@
                 <a href="#" class="change_password">Change Password</a>
             </div>
 
-            <button class="btn btn_med">Save Profile</button>
+            <button ng-click="settings.saveProfile('saving...')" 
+                    class="btn btn_med">Save Profile</button>
         </section>
 
     </div>

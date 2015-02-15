@@ -3392,11 +3392,11 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dashboard\/_assets\/css\/bitage.css": {
+	"\/dashboard\/_assets\/css\/bitage_app.css": {
 		"fileType": 16,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage.css",
+		"inputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage_app.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -3500,6 +3500,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/dashboard\/_components\/bitage_scripts.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/bitage_scripts.js",
+		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/bitage_scripts.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/dashboard\/_components\/dashApp.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -3568,7 +3579,7 @@
 		},
 	"\/dashboard\/_sources\/js\/libs\/angular-ui-router.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_sources\/js\/libs\/angular-ui-router.js",
 		"outputAbbreviatedPath": "\/dashboard\/_sources\/js\/libs\/min\/angular-ui-router-min.js",
@@ -3579,7 +3590,7 @@
 		},
 	"\/dashboard\/_sources\/js\/plugins\/ng-flow-standalone.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/ng-flow-standalone.js",
 		"outputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/min\/ng-flow-standalone-min.js",
@@ -3599,15 +3610,15 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dashboard\/_sources\/sass\/bitage.scss": {
-		"createSourceMap": 1,
+	"\/dashboard\/_sources\/sass\/bitage_app.scss": {
+		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_sources\/sass\/bitage.scss",
-		"outputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage.css",
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/dashboard\/_sources\/sass\/bitage_app.scss",
+		"outputAbbreviatedPath": "\/dashboard\/_assets\/css\/bitage_app.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 3,
@@ -4722,6 +4733,68 @@
 	],
 "lastSavedByUser": "Leon Gaban",
 "manualImportLinks": {
+	"\/dashboard\/_components\/bitage_scripts.js": [
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_sources\/js\/libs\/angular-ui-router.js",
+			"position": 0,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/ng-flow-standalone.js",
+			"position": 1,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/dashApp.js",
+			"position": 2,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/notificationDirectives.js",
+			"position": 3,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/wallet.js",
+			"position": 4,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/walletDirectives.js",
+			"position": 5,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/accounts.js",
+			"position": 6,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/accountsDirectives.js",
+			"position": 7,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/settings.js",
+			"position": 8,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/dashboard\/_components\/help.js",
+			"position": 9,
+			"type": 0
+			}
+		]
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
