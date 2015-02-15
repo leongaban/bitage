@@ -4146,17 +4146,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/public\/_assets\/js\/min\/bitage_scripts-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/min\/bitage_scripts-min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/min\/min\/bitage_scripts-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/public\/_components\/about.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -4211,6 +4200,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/public\/_sources\/js\/custom\/classie-forms.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_sources\/js\/custom\/classie-forms.js",
+		"outputAbbreviatedPath": "\/public\/_sources\/js\/custom\/min\/classie-forms-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/_sources\/js\/custom\/particles-custom.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_sources\/js\/custom\/particles-custom.js",
+		"outputAbbreviatedPath": "\/public\/_sources\/js\/custom\/min\/particles-custom-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/public\/_sources\/js\/libs\/angular-ui-router.js": {
 		"fileType": 64,
