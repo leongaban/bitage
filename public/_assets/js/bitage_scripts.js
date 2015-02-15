@@ -4317,21 +4317,6 @@ angular.module('ui.router.state')
     };
   });
 })();
-/*global angular */
-/* =========================================
-   ABOUT Module
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-about', [])
-	.controller('AboutCtrl', ['$scope', function($scope) {
-
-		vm = this;
-
-	}]);
-
-})();
 /*!
  * classie - class helper functions
  * from bonzo https://github.com/ded/bonzo
@@ -4413,50 +4398,6 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-/*global angular */
-/* =========================================
-   Login Controller
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-login', [])
-	.controller('LoginCtrl', ['$http', function($http) {
-
-        var vm = this;
-
-        var postLoginForm = function() {
-            console.log(vm.formData);
-            
-            // process the form
-            // login data contains remember boolean
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signin',
-                    data    : $.param(vm.formData),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-                
-                });
-        };
-
-		// Quick form submit          
-        vm.submitLoginForm = function(isValid) {
-
-            // check to make sure form is valid
-            if (isValid) {
-                // alert('our form is amazing');
-                postLoginForm();
-            } else {
-            	alert('Please correct the form');
-            }
-
-        };
-	    
-	}]);
-
-})();
 /* matchmedia-ng v1.0.5 | (c) 2014 Jason Kulatunga, Inc. | http://analogj.mit-license.org/
  */
 (function(window, angular, undefined) {
@@ -4666,124 +4607,6 @@ angular.module("matchmedia-ng", []).
         }];
     });
 })(window, window.angular);
-/*global angular*/
-/* =========================================
---------------------------------------------
-
-	Biage Public views
-	"Keep watch over your Bitcoins"
-	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
-
---------------------------------------------
-============================================ */
-
-(function() { "use strict";
-
-	var app = angular.module('bitAge',
-		['ui.router',
-		 'matchmedia-ng',
-		 'app-about',
-		 'app-login',
-		 'app-register'])
-
-	.config(['matchmediaProvider', function (matchmediaProvider) {
-		matchmediaProvider.rules.desktop = "(max-width: 800px)";
-	}])
-
-	.config(['$stateProvider', '$urlRouterProvider',
-		function($stateProvider, $urlRouterProvider) {
-
-			$stateProvider
-				.state('home', { url: '/home' })
-
-				.state('about', {
-					url: '/about',
-					templateUrl: '_views/about.html'
-				})
-
-				.state('login', {
-					url: '/login',
-					templateUrl: '_views/login.html'
-				})
-
-				.state('register', {
-					url: '/register',
-					templateUrl: '_views/register.html'
-				});
-
-			$urlRouterProvider.otherwise('/home');
-	}])
-
-	.controller('MainCtrl',
-		['$http', '$location', '$state', 'matchmedia', 'homeService',
-		function($http, $location, $state, matchmedia, homeService) {
-
-		var vm = this;
-
-		// Show HTML only on home
-		vm.showHome = function() {
-	    	return $state.is('home');
-		}
-
-		// Display BTC ticker
-		vm.showTicker = function() {
-	    	return $state.is('home');
-		}
-
-		// Mobile nav
-		vm.isMobileNavOpen = false
-		var unregister = matchmedia.onDesktop( function(mediaQueryList) {
-			vm.isDesktop = mediaQueryList.matches;
-			vm.isMobileNavOpen = false;
-		});
-
-		var postSignUpForm = function() {
-            console.log(vm.formData);
-
-            // process the form
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(vm.formData),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function(data) {
-                    console.log('go to wallet');
-
-
-                });
-		};
-
-	   	// Quick form submit
-        vm.submitForm = function(isValid) {
-            if (isValid) {
-                console.log('Creating user:');
-                homeService.postSignUpForm(vm.formData);
-            } else {
-            	alert('Please correct the form');
-            }
-        };
-	}])
-
-	.service('homeService', ['$http', function($http) {
-
-        this.postSignUpForm = function(fdata) {
-            console.log(fdata);
-
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(fdata),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-
-                });
-        };
-    }]);
-
-})();
-
 /* -----------------------------------------------
 /* Author : Vincent Garreau  - vincentgarreau.com
 /* MIT license: http://opensource.org/licenses/MIT
@@ -5328,60 +5151,6 @@ window.particlesJS = function(tag_id, params){
   }
 
 };
-/*global angular */
-/* =========================================
-   REGISTER Module
-   ========================================= */
-
-(function() {
-
-    var app = angular.module('app-register', [])
-    .controller('RegisterCtrl',
-        ['$http', '$location', 'registerService',
-        function($http, $location, registerService) {
-
-        var vm = this;
-        var location = $location;
-
-        // Sign up form submit
-        vm.submitForm = function(isValid) {
-
-            // check to make sure form is valid
-            if (isValid) {
-                registerService.postSignUpForm(vm.formData, location);
-            } else {
-               swal({
-                   title: "Oops!",
-                   text: "Please check the form!",
-                   type: "error",
-                   confirmButtonText: "Ok",
-                   confirmButtonColor: "#024562" });
-            }
-
-        };
-
-    }])
-
-    .service('registerService', ['$http', function($http) {
-
-        this.postSignUpForm = function(fdata, location) {
-
-            console.log(location);
-
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(fdata),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-
-                });
-        };
-    }]);
-
-})();
-
 // SweetAlert
 // 2014 (c) - Tristan Edwards
 // github.com/t4t5/sweetalert
@@ -6200,3 +5969,263 @@ window.particlesJS = function(tag_id, params){
   }
 
 })(window, document);
+
+/* =========================================
+   Custom particlesJS
+   ========================================= */
+
+particlesJS('particle_bg', {
+    particles: { color: '#024562', shape: 'circle',
+        opacity: .8,
+        size: 1,
+        size_random: true,
+        nb: 250,
+        line_linked: {
+            enable_auto: true,
+            distance: 20,
+            color: '#fff',
+            opacity: 0.5,
+            width: 2,
+            condensed_mode: {
+                enable: false,
+                rotateX: 500,
+                rotateY: 600
+            }
+        },
+        anim: { enable: true, speed: 3 }},
+        interactivity: { enable: false, mouse: { distance: 200 },
+        events: {onclick: {enable: false}}
+    },
+    retina_detect: true
+});
+
+/*global angular */
+/* =========================================
+   ABOUT Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-about', [])
+	.controller('AboutCtrl', ['$scope', function($scope) {
+
+		vm = this;
+
+	}]);
+
+})();
+/*global angular */
+/* =========================================
+   Login Controller
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-login', [])
+	.controller('LoginCtrl', ['$http', function($http) {
+
+        var vm = this;
+
+        var postLoginForm = function() {
+            console.log(vm.formData);
+            
+            // process the form
+            // login data contains remember boolean
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signin',
+                    data    : $.param(vm.formData),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function() {
+                
+                });
+        };
+
+		// Quick form submit          
+        vm.submitLoginForm = function(isValid) {
+
+            // check to make sure form is valid
+            if (isValid) {
+                // alert('our form is amazing');
+                postLoginForm();
+            } else {
+            	alert('Please correct the form');
+            }
+
+        };
+	    
+	}]);
+
+})();
+/*global angular*/
+/* =========================================
+--------------------------------------------
+
+	Biage Public views
+	"Keep watch over your Bitcoins"
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+
+--------------------------------------------
+============================================ */
+
+(function() { "use strict";
+
+	var app = angular.module('bitAge',
+		['ui.router',
+		 'matchmedia-ng',
+		 'app-about',
+		 'app-login',
+		 'app-register'])
+
+	.config(['matchmediaProvider', function (matchmediaProvider) {
+		matchmediaProvider.rules.desktop = "(max-width: 800px)";
+	}])
+
+	.config(['$stateProvider', '$urlRouterProvider',
+		function($stateProvider, $urlRouterProvider) {
+
+			$stateProvider
+				.state('home', { url: '/home' })
+
+				.state('about', {
+					url: '/about',
+					templateUrl: '_views/about.html'
+				})
+
+				.state('login', {
+					url: '/login',
+					templateUrl: '_views/login.html'
+				})
+
+				.state('register', {
+					url: '/register',
+					templateUrl: '_views/register.html'
+				});
+
+			$urlRouterProvider.otherwise('/home');
+	}])
+
+	.controller('MainCtrl',
+		['$http', '$location', '$state', 'matchmedia', 'homeService',
+		function($http, $location, $state, matchmedia, homeService) {
+
+		var vm = this;
+
+		// Show HTML only on home
+		vm.showHome = function() {
+	    	return $state.is('home');
+		}
+
+		// Display BTC ticker
+		vm.showTicker = function() {
+	    	return $state.is('home');
+		}
+
+		// Mobile nav
+		vm.isMobileNavOpen = false
+		var unregister = matchmedia.onDesktop( function(mediaQueryList) {
+			vm.isDesktop = mediaQueryList.matches;
+			vm.isMobileNavOpen = false;
+		});
+
+		var postSignUpForm = function() {
+            console.log(vm.formData);
+
+            // process the form
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(vm.formData),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function(data) {
+                    console.log('go to wallet');
+
+
+                });
+		};
+
+	   	// Quick form submit
+        vm.submitForm = function(isValid) {
+            if (isValid) {
+                console.log('Creating user:');
+                homeService.postSignUpForm(vm.formData);
+            } else {
+            	alert('Please correct the form');
+            }
+        };
+	}])
+
+	.service('homeService', ['$http', function($http) {
+
+        this.postSignUpForm = function(fdata) {
+            console.log(fdata);
+
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(fdata),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function() {
+
+                });
+        };
+    }]);
+
+})();
+
+/*global angular */
+/* =========================================
+   REGISTER Module
+   ========================================= */
+
+(function() {
+
+    var app = angular.module('app-register', [])
+    .controller('RegisterCtrl',
+        ['$http', '$location', 'registerService',
+        function($http, $location, registerService) {
+
+        var vm = this;
+        var location = $location;
+
+        // Sign up form submit
+        vm.submitForm = function(isValid) {
+
+            // check to make sure form is valid
+            if (isValid) {
+                registerService.postSignUpForm(vm.formData, location);
+            } else {
+               swal({
+                   title: "Oops!",
+                   text: "Please check the form!",
+                   type: "error",
+                   confirmButtonText: "Ok",
+                   confirmButtonColor: "#024562" });
+            }
+
+        };
+
+    }])
+
+    .service('registerService', ['$http', function($http) {
+
+        this.postSignUpForm = function(fdata, location) {
+
+            console.log(location);
+
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(fdata),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function() {
+
+                });
+        };
+    }]);
+
+})();

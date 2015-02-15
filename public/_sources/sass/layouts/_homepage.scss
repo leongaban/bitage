@@ -5,16 +5,10 @@
 #body_id {
 	background: $dgray;
 	background-image: url("../img/blue.gif");
-	// background-image: url("../img/mountains.jpg");
-	// background-size: cover;
 	background-position: center;
-	// @include linear-gradient($dgray, $lgray);
 }
 
-.bitage_logo {
-	// font-family: 'Roboto Condensed', sans-serif;
-	font-weight: 700;
-}
+.bitage_logo { font-weight: 700; }
 
 #particle_bg {
 	position: absolute;
@@ -54,7 +48,11 @@
 		cursor: default;
 	}
 
-	p { margin-top: 5px; font-size: em(12); color: $red; }
+	.help-block {
+		margin-top: 5px;
+		font-size: em(12);
+		color: $red;
+	}
 }
 
 // Our Bitcoin Services hero:

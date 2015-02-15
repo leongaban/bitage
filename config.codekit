@@ -3467,12 +3467,12 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dashboard\/_assets\/js\/bitage_app.js": {
+	"\/dashboard\/_assets\/js\/bitage_scripts.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/bitage_app.js",
-		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/min\/bitage_app-min.js",
+		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/bitage_scripts.js",
+		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/min\/bitage_scripts-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4135,23 +4135,23 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/_assets\/js\/bitage_site.js": {
+	"\/public\/_assets\/js\/bitage_scripts.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/bitage_site.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/min\/bitage_site-min.js",
+		"inputAbbreviatedPath": "\/public\/_assets\/js\/bitage_scripts.js",
+		"outputAbbreviatedPath": "\/public\/_assets\/js\/min\/bitage_scripts-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/public\/_assets\/js\/min\/bitage_site-min.js": {
+	"\/public\/_assets\/js\/min\/bitage_scripts-min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/min\/bitage_site-min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/min\/min\/bitage_site-min-min.js",
+		"inputAbbreviatedPath": "\/public\/_assets\/js\/min\/bitage_scripts-min.js",
+		"outputAbbreviatedPath": "\/public\/_assets\/js\/min\/min\/bitage_scripts-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

@@ -2,50 +2,36 @@
    gulpfile for Bitage app
    ========================================= */
 
-var gulp       = require('gulp'),
-    gutil      = require('gulp-util'),
-    gulpif     = require('gulp-if'),
-    uglify     = require('gulp-uglify'),
-    concat     = require('gulp-concat'),
-    sass       = require('gulp-ruby-sass'),
-    sourcemaps = require('gulp-sourcemaps'),
-    livereload = require('gulp-livereload'),
-    es         = require('event-stream');
+var gulp        = require('gulp'),
+    gutil       = require('gulp-util'),
+    gulpif      = require('gulp-if'),
+    uglify      = require('gulp-uglify'),
+    concat      = require('gulp-concat'),
+    sass        = require('gulp-ruby-sass'),
+    streamqueue = require('streamqueue'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    livereload  = require('gulp-livereload'),
+    es          = require('event-stream');
 
 // https://www.npmjs.com/package/gulp-ruby-sass
 var minify = true;
 
-function public_js(minify) {
-    var jsLibs = gulp.src('public/_sources/js/libs/*.js');
-    var jsPlugins = gulp.src('public/_sources/js/plugins/*.js');
-    var jsComponents = gulp.src('public/_components/*.js');
-
-    return es.merge(jsLibs, jsPlugins, jsComponents)
-        .pipe(concat('bitage_site.js'))
-        .pipe(gulpif(minify, uglify()))
-        .pipe(gulp.dest('public/_assets/js'));
-};
-
-function dashboard_js(minify) {
-    var jsLibs = gulp.src('dashboard/_sources/js/libs/*.js');
-    var jsPlugins = gulp.src('dashboard/_sources/js/plugins/*.js');
-    var jsComponents = gulp.src('dashboard/_components/*.js');
-
-    return es.merge(jsLibs, jsPlugins, jsComponents)
-        .pipe(concat('bitage_app.js'))
-        .pipe(gulpif(minify, uglify()))
-        .pipe(gulp.dest('dashboard/_assets/js'));
-};
-
 function compile_js(minify, folder) {
+
     var jsLibs = gulp.src(folder+'/_sources/js/libs/*.js');
     var jsPlugins = gulp.src(folder+'/_sources/js/plugins/*.js');
+    var jsCustom = gulp.src(folder+'/_sources/js/custom/*.js');
     var jsComponents = gulp.src(folder+'/_components/*.js');
 
-    return es.merge(jsLibs, jsPlugins, jsComponents)
-        .pipe(concat('bitage_scripts.js'))
-        .pipe(gulpif(minify, uglify()))
-        .pipe(gulp.dest(folder+'/_assets/js'));
+    return streamqueue({ objectMode: true },
+        jsLibs,
+        jsPlugins,
+        jsCustom,
+        jsComponents
+    )
+    .pipe(concat('bitage_scripts.js'))
+    .pipe(gulpif(minify, uglify()))
+    .pipe(gulp.dest(folder+'/_assets/js'));
 };
 
 // Compile public SASS
@@ -69,14 +55,12 @@ gulp.task('sass_app', function () {
 // Development task
 gulp.task('devsite', function () {
     minify = false;
-    // return public_js(minify);
     return compile_js(minify, 'public');
 });
 
 // Development task
 gulp.task('devapp', function () {
     minify = false;
-    // return dashboard_js(minify);
     return compile_js(minify, 'dashboard');
 });
 
@@ -90,6 +74,26 @@ gulp.task('production', function () {
 gulp.task('watch', function () {
     livereload.listen();
 
+    gulp.watch('public/*.html').on('change', function(file) {
+        livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('Site HTML changed' + ' (' + file.path + ')'));
+    });
+
+    gulp.watch('dashboard/*.html').on('change', function(file) {
+        livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
+    });
+
+    gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
+        livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('Public CSS changed' + ' (' + file.path + ')'));
+    });
+
+    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
+        livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
+    });
+
     gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
     gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
     gulp.watch('public/_components/*.js', ['devsite']);
@@ -98,6 +102,6 @@ gulp.task('watch', function () {
     gulp.watch('dashboard/_sources/js/plugins/*.js', ['devsite']);
     gulp.watch('dashboard/_components/*.js', ['devsite']);
 
-    gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']);
-    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']);
+    // gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']);
+    // gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']);
 });

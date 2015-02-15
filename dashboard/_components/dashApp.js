@@ -34,7 +34,6 @@
 				.state('accounts', {
 					url: '/accounts',
 					templateUrl: '_views/accounts.html'
-					// controller: 'AcctCtrl'
 				})
 
 				.state('settings', {

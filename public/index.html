@@ -70,36 +70,36 @@
 
             <form name="quickForm" ng-submit="main.submitForm(quickForm.$valid)" novalidate>
 
-                <span class="input jiro" class="form-group">
+                <span class="input jiro form-group">
                     <input ng-model="formData.fullname" required
                            name="name" type="text" id="input-1"
                            class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-1">
                         <span class="input_content jiro_content">Full Name</span>
-                        <p ng-show="quickForm.name.$invalid && !quickForm.name.$pristine"
-                           class="help-block">Name required.</p>
+                        <em ng-show="quickForm.name.$invalid && !quickForm.name.$pristine"
+                           class="help-block">Name required.</em>
                     </label>
                 </span>
 
-                <span class="input jiro" class="form-group">
+                <span class="input jiro form-group">
                     <input ng-model="formData.email" required
                            name="email" type="email" id="input-2"
                            class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-2">
                         <span class="input_content jiro_content">Email</span>
-                        <p ng-show="quickForm.email.$invalid && !quickForm.email.$pristine"
-                           class="help-block">Enter a valid email.</p>
+                        <em ng-show="quickForm.email.$invalid && !quickForm.email.$pristine"
+                           class="help-block">Enter a valid email.</em>
                     </label>
                 </span>
 
-                <span class="input jiro" class="form-group">
+                <span class="input jiro form-group" class="">
                     <input ng-model="formData.password" ng-minlength="6" required
                            name="password" type="password" id="input-3"
                            class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-3">
                         <span class="input_content jiro_content">Password</span>
-                        <p ng-show="quickForm.password.$error.minlength"
-                           class="help-block">Password is too short.</p>
+                        <em ng-show="quickForm.password.$error.minlength"
+                           class="help-block">Password is too short.</em>
                     </label>
                 </span>
 
@@ -180,7 +180,7 @@
     <script>
         !function(){function t(t){classie.add(t.target.parentNode,"input--filled")}function e(t){""===t.target.value.trim()&&classie.remove(t.target.parentNode,"input--filled")}String.prototype.trim||!function(){var t=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;String.prototype.trim=function(){return this.replace(t,"")}}(),[].slice.call(document.querySelectorAll("input.input__field")).forEach(function(i){""!==i.value.trim()&&classie.add(i.parentNode,"input--filled"),i.addEventListener("focus",t),i.addEventListener("blur",e)})}();
     </script>
-
+<!--
     <script type="text/javascript">
         particlesJS('particle_bg', {
             particles: { color: '#024562', shape: 'circle',
@@ -207,6 +207,7 @@
             retina_detect: true
         });
     </script>
+-->
 
     <script>
         setTimeout(function(){var a=document.createElement("script");
