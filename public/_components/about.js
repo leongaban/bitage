@@ -8,7 +8,7 @@
 	var app = angular.module('app-about', [])
 	.controller('AboutCtrl', ['$scope', function($scope) {
 
-		vm = this;
+		// vm = this;
 
 	}]);
 

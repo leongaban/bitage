@@ -14,11 +14,19 @@ $em-base: 16;
     @return ($pxval / $base) * 1em;
 }
 
+// Disables cursor text selection
 @mixin noselect() {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+// CSS3 filters
+// http://css-tricks.com/almanac/properties/f/filter/
+@mixin filter($function: none) {
+    // <filter-function> [<filter-function]* | none
+    @include prefixer(filter, $function, webkit spec);
 }
 
 // @include transition(background, .2s, ease-in-out);
