@@ -13,16 +13,15 @@ var gulp        = require('gulp'),
     livereload  = require('gulp-livereload'),
     es          = require('event-stream');
 
-// https://www.npmjs.com/package/gulp-ruby-sass
 var minify = true;
 
 function compile_js(minify, folder) {
-
     var jsLibs = gulp.src(folder+'/_sources/js/libs/*.js');
     var jsPlugins = gulp.src(folder+'/_sources/js/plugins/*.js');
     var jsCustom = gulp.src(folder+'/_sources/js/custom/*.js');
     var jsComponents = gulp.src(folder+'/_components/*.js');
 
+    // Order the streams and compile
     return streamqueue({ objectMode: true },
         jsLibs,
         jsPlugins,
@@ -54,19 +53,19 @@ gulp.task('sass_app', function () {
 
 // Development task
 gulp.task('devsite', function () {
-    minify = false;
+    // minify = false;
     return compile_js(minify, 'public');
 });
 
 // Development task
 gulp.task('devapp', function () {
-    minify = false;
+    // minify = false;
     return compile_js(minify, 'dashboard');
 });
 
 // Production task (minify)
 gulp.task('production', function () {
-    minify = true;
+    // minify = true;
     return public_js(minify);
 });
 
@@ -74,14 +73,10 @@ gulp.task('production', function () {
 gulp.task('watch', function () {
     livereload.listen();
 
+    // Watch Pubic (Site) Pages | Styles | Scripts
     gulp.watch('public/*.html').on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Site HTML changed' + ' (' + file.path + ')'));
-    });
-
-    gulp.watch('dashboard/*.html').on('change', function(file) {
-        livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
@@ -89,14 +84,21 @@ gulp.task('watch', function () {
         gutil.log(gutil.colors.yellow('Public CSS changed' + ' (' + file.path + ')'));
     });
 
+    gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
+    gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
+    gulp.watch('public/_components/*.js', ['devsite']);
+    
+
+    // Watch Dashboard (App) Pages | Styles | Scripts
+    gulp.watch('dashboard/*.html').on('change', function(file) {
+        livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
+    });
+
     gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });
-
-    gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
-    gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
-    gulp.watch('public/_components/*.js', ['devsite']);
 
     gulp.watch('dashboard/_sources/js/libs/*.js', ['devsite']);
     gulp.watch('dashboard/_sources/js/plugins/*.js', ['devsite']);
