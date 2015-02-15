@@ -3467,45 +3467,23 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dashboard\/_assets\/js\/libs\/angular-ui-router.min.js": {
+	"\/dashboard\/_assets\/js\/bitage_app.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/libs\/angular-ui-router.min.js",
-		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/libs\/min\/angular-ui-router.min-min.js",
+		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/bitage_app.js",
+		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/min\/bitage_app-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dashboard\/_assets\/js\/plugins\/ng-flow-standalone.min.js": {
+	"\/dashboard\/_assets\/js\/min\/bitage_app-min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/ng-flow-standalone.min.js",
-		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/min\/ng-flow-standalone.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/dashboard\/_assets\/js\/plugins\/particles.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/particles.js",
-		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/min\/particles-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/dashboard\/_assets\/js\/plugins\/particles.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/particles.min.js",
-		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/plugins\/min\/particles.min-min.js",
+		"inputAbbreviatedPath": "\/dashboard\/_assets\/js\/min\/bitage_app-min.js",
+		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/min\/min\/bitage_app-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3528,6 +3506,17 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/dashboard\/_components\/accountsDirectives.js",
 		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/accountsDirectives-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/dashboard\/_components\/dashApp.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/dashboard\/_components\/dashApp.js",
+		"outputAbbreviatedPath": "\/dashboard\/_components\/min\/dashApp-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3587,6 +3576,39 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/dashboard\/_sources\/js\/libs\/angular-ui-router.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_sources\/js\/libs\/angular-ui-router.js",
+		"outputAbbreviatedPath": "\/dashboard\/_sources\/js\/libs\/min\/angular-ui-router-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dashboard\/_sources\/js\/plugins\/ng-flow-standalone.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/ng-flow-standalone.js",
+		"outputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/min\/ng-flow-standalone-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dashboard\/_sources\/js\/plugins\/particles.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/particles.js",
+		"outputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/min\/particles-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/dashboard\/_sources\/sass\/bitage.scss": {
 		"createSourceMap": 1,
@@ -4050,17 +4072,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dashboard\/dashApp.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/dashApp.js",
-		"outputAbbreviatedPath": "\/dashboard\/min\/dashApp-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/dashboard\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -4092,17 +4103,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 2
-		},
-	"\/min\/gulpfile-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/min\/gulpfile-min.js",
-		"outputAbbreviatedPath": "\/min\/min\/gulpfile-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
 		},
 	"\/public\/_assets\/css\/bitage_web.css": {
 		"fileType": 16,
@@ -4146,56 +4146,12 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/_assets\/js\/libs\/angular-ui-router.min.js": {
+	"\/public\/_assets\/js\/bitage_site.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/libs\/angular-ui-router.min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/libs\/min\/angular-ui-router.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/_assets\/js\/plugins\/biticker.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/biticker.min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/min\/biticker.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/public\/_assets\/js\/plugins\/classie.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/classie.min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/min\/classie.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/public\/_assets\/js\/plugins\/matchmedia-ng.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/matchmedia-ng.min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/min\/matchmedia-ng.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/_assets\/js\/plugins\/particles.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/particles.min.js",
-		"outputAbbreviatedPath": "\/public\/_assets\/js\/plugins\/min\/particles.min-min.js",
+		"inputAbbreviatedPath": "\/public\/_assets\/js\/bitage_site.js",
+		"outputAbbreviatedPath": "\/public\/_assets\/js\/min\/bitage_site-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4223,6 +4179,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/public\/_components\/publicApp.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_components\/publicApp.js",
+		"outputAbbreviatedPath": "\/public\/_components\/min\/publicApp-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/public\/_components\/register.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -4244,6 +4211,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/public\/_sources\/js\/libs\/angular-ui-router.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_sources\/js\/libs\/angular-ui-router.js",
+		"outputAbbreviatedPath": "\/public\/_sources\/js\/libs\/min\/angular-ui-router-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/public\/_sources\/js\/plugins\/biticker.js": {
 		"fileType": 64,
@@ -4277,6 +4255,28 @@
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/public\/_sources\/js\/plugins\/particles.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_sources\/js\/plugins\/particles.js",
+		"outputAbbreviatedPath": "\/public\/_sources\/js\/plugins\/min\/particles-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/_sources\/js\/plugins\/sweet-alert.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/_sources\/js\/plugins\/sweet-alert.js",
+		"outputAbbreviatedPath": "\/public\/_sources\/js\/plugins\/min\/sweet-alert-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/public\/_sources\/sass\/bitage_web.scss": {
 		"createSourceMap": 1,
@@ -4626,17 +4626,6 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
-		},
-	"\/public\/publicApp.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/public\/publicApp.js",
-		"outputAbbreviatedPath": "\/public\/min\/publicApp-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
 		},
 	"\/public\/README.md": {
 		"enableFootnoteSupport": 0,

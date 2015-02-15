@@ -56,9 +56,15 @@ gulp.task('sass_app', function () {
 });
 
 // Development task
-gulp.task('dev', function () {
+gulp.task('devsite', function () {
     minify = false;
     return public_js(minify);
+});
+
+// Development task
+gulp.task('devapp', function () {
+    minify = false;
+    return dashboard_js(minify);
 });
 
 // Production task (minify)
@@ -71,9 +77,9 @@ gulp.task('production', function () {
 gulp.task('watch', function () {
     livereload.listen();
 
-    gulp.watch('public/_sources/js/libs/*.js', ['dev']);
-    gulp.watch('public/_sources/js/plugins/*.js', ['dev']);
-    gulp.watch('public/_components/*.js', ['dev']);
+    gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
+    gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
+    gulp.watch('public/_components/*.js', ['devsite']);
 
     gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']);
     gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']);
