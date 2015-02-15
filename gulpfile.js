@@ -13,16 +13,15 @@ var gulp        = require('gulp'),
     livereload  = require('gulp-livereload'),
     es          = require('event-stream');
 
-// https://www.npmjs.com/package/gulp-ruby-sass
 var minify = true;
 
 function compile_js(minify, folder) {
-
     var jsLibs = gulp.src(folder+'/_sources/js/libs/*.js');
     var jsPlugins = gulp.src(folder+'/_sources/js/plugins/*.js');
     var jsCustom = gulp.src(folder+'/_sources/js/custom/*.js');
     var jsComponents = gulp.src(folder+'/_components/*.js');
 
+    // Order the streams and compile
     return streamqueue({ objectMode: true },
         jsLibs,
         jsPlugins,
@@ -54,19 +53,19 @@ gulp.task('sass_app', function () {
 
 // Development task
 gulp.task('devsite', function () {
-    minify = false;
+    // minify = false;
     return compile_js(minify, 'public');
 });
 
 // Development task
 gulp.task('devapp', function () {
-    minify = false;
+    // minify = false;
     return compile_js(minify, 'dashboard');
 });
 
 // Production task (minify)
 gulp.task('production', function () {
-    minify = true;
+    // minify = true;
     return public_js(minify);
 });
 
