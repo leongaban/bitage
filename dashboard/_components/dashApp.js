@@ -4,7 +4,6 @@
 
 	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
-
 	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
@@ -35,7 +34,6 @@
 				.state('accounts', {
 					url: '/accounts',
 					templateUrl: '_views/accounts.html'
-					// controller: 'AcctCtrl'
 				})
 
 				.state('settings', {

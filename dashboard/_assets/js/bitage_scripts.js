@@ -1,89 +1,3 @@
-(function(){
-  var script = document.createElement("SCRIPT");
-  script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js';
-  script.type = 'text/javascript';
-  document.getElementsByTagName("head")[0].appendChild(script);
-  var checkReady = function(callback) {
-    if (window.jQuery) {
-      callback(jQuery);
-    }
-    else {
-      window.setTimeout(function() { checkReady(callback); }, 20);
-    }
-  };
-  checkReady(function($) {
-    function trigger(event, data) {
-      $(document).trigger(event, data);
-    }
-    function bind(event, handler) {
-      $(document).bind(event, handler);
-    }
-
-    var symbolsRepo = {SGD: '$', ZAR: 'R',
-      USD: '$', AUD: '$', BRL: 'R$', CAD: '$', CNY: '¥',
-      CZK: 'Kč', EUR: '€', GBP: '£', ILS: '₪', JPY: '¥',
-      NOK: 'kr', NZD: '$', PLN: 'zł', RUB: 'RUB', SEK: 'kr'
-    };
-
-    var singleHtml =  '<div class="content"><span class="biticker-value">1 BTC = #value#</span></div>';
-
-    var fetchDataForCurrency = function(currency){
-      $.ajax({
-        url: 'https://api.bitcoinaverage.com/ticker/'+currency+'?v=' + Math.random(),
-        type: 'GET',
-        dataType: 'json',
-        success: function(json){
-          updateTicker(currency, json);
-        }
-      });
-    };
-
-    var createTicker = function(ticker){
-      var currency = ticker.data('currency');
-      fetchDataForCurrency(currency);
-
-      // update every minute/30secs with flicker
-      // setInterval(function(){
-      //   fetchDataForCurrency(currency);
-      //   $('.biticker-value').addClass('biticker-loading');
-
-      //   setInterval(function(){
-      //     $('.biticker-value').removeClass('biticker-loading');
-      //   }, 1000);
-      // }, 60000);
-    };
-
-    var bindTicker = function(e, ticker){
-      ticker = $(ticker);
-      if(ticker.data('isBound'))
-        return;
-      createTicker(ticker);
-      ticker.data('isBound', true)
-    };
-
-    $('.biticker-container').each(function(){
-      var ticker = $(this);
-      if(ticker.data('isBound'))
-        return;
-      bindTicker(null, ticker);
-    });
-
-    bind('biticker:new-ticker-created', bindTicker);
-
-    var updateTicker = function(currency, data){
-      var ticker = $('[data-currency='+currency+']');
-      var symbol = symbolsRepo[currency];
-      var html =  singleHtml.replace('#value#', symbol + data.last)
-                            .replace('#ask#', symbol + data.ask)
-                            .replace('#bid#', symbol + data.bid);
-
-      ticker.addClass('biticker-loading')
-            .html(html)
-            .removeClass('biticker-loading');
-
-    };
-  });
-})();
 /**
  * State-based routing for AngularJS
  * @version v0.2.13
@@ -4319,470 +4233,2075 @@ angular.module('ui.router.state')
 
 /*global angular */
 /* =========================================
-   ABOUT Module
+   Accounts module
    ========================================= */
 
 (function() {
 
-	var app = angular.module('app-about', [])
-	.controller('AboutCtrl', ['$scope', function($scope) {
+	var app = angular.module('app-accounts',
+		['ngAnimate', 'account-directives'])
 
-		vm = this;
+	.controller('AcctCtrl',
+		['$scope', 'accountsService',
+		function($scope, accountsService) {
 
-	}]);
+		var vm = $scope;
+			vm.$parent.modal = false;
+			
 
-})();
-/*!
- * classie - class helper functions
- * from bonzo https://github.com/ded/bonzo
- * 
- * classie.has( elem, 'my-class' ) -> true/false
- * classie.add( elem, 'my-new-class' )
- * classie.remove( elem, 'my-unwanted-class' )
- * classie.toggle( elem, 'my-class' )
- */
+		// Setup accounts model
+		this.accounts = [];
+		this.accounts = [
+			{
+				id: 'acct-1',
+				type: 'Savings',
+				label: 'Bitage',
+				balance: '1.001',
+				address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq'
+			},
+			{
+				id: 'acct-2',
+				type: 'Savings',
+				label: 'Blockchain.info',
+				balance: '3.001',
+				address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH'
+			},
+			{
+				id: 'acct-3',
+				type: 'Savings',
+				label: 'Coinbase wallet',
+				balance: '0.562',
+				address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W'
+			},
+			{
+				id: 'acct-4',
+				type: 'Savings',
+				label: 'Xapo wallet',
+				balance: '0.003',
+				address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea'
+			}
+		];
 
-/*jshint browser: true, strict: true, undef: true */
-/*global define: false */
+		this.addAccount = function() {
 
-( function( window ) {
+			// Create next account id
+			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
 
-'use strict';
+			// Don't add account if blank
+		    if (this.label === '' ||
+		    	this.label === undefined ||
+		    	this.address === undefined) { return; }
 
-// class helper functions from bonzo https://github.com/ded/bonzo
+		    // Add new account to accounts array
+		    this.accounts.push({
+				id: nextId,
+				label: this.label,
+				balance: 0,
+				address: this.address
+		    });
 
-function classReg( className ) {
-  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
-}
-
-// classList support for class management
-// altho to be fair, the api sucks because it won't accept multiple classes at once
-var hasClass, addClass, removeClass;
-
-if ( 'classList' in document.documentElement ) {
-  hasClass = function( elem, c ) {
-    return elem.classList.contains( c );
-  };
-  addClass = function( elem, c ) {
-    elem.classList.add( c );
-  };
-  removeClass = function( elem, c ) {
-    elem.classList.remove( c );
-  };
-}
-else {
-  hasClass = function( elem, c ) {
-    return classReg( c ).test( elem.className );
-  };
-  addClass = function( elem, c ) {
-    if ( !hasClass( elem, c ) ) {
-      elem.className = elem.className + ' ' + c;
-    }
-  };
-  removeClass = function( elem, c ) {
-    elem.className = elem.className.replace( classReg( c ), ' ' );
-  };
-}
-
-function toggleClass( elem, c ) {
-  var fn = hasClass( elem, c ) ? removeClass : addClass;
-  fn( elem, c );
-}
-
-var classie = {
-  // full names
-  hasClass: hasClass,
-  addClass: addClass,
-  removeClass: removeClass,
-  toggleClass: toggleClass,
-  // short names
-  has: hasClass,
-  add: addClass,
-  remove: removeClass,
-  toggle: toggleClass
-};
-
-// transport
-if ( typeof define === 'function' && define.amd ) {
-  // AMD
-  define( classie );
-} else {
-  // browser global
-  window.classie = classie;
-}
-
-})( window );
-
-/*global angular */
-/* =========================================
-   Login Controller
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-login', [])
-	.controller('LoginCtrl', ['$http', function($http) {
-
-        var vm = this;
-
-        var postLoginForm = function() {
-            console.log(vm.formData);
-            
-            // process the form
-            // login data contains remember boolean
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signin',
-                    data    : $.param(vm.formData),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-                
-                });
-        };
-
-		// Quick form submit          
-        vm.submitLoginForm = function(isValid) {
-
-            // check to make sure form is valid
-            if (isValid) {
-                // alert('our form is amazing');
-                postLoginForm();
-            } else {
-            	alert('Please correct the form');
-            }
-
-        };
-	    
-	}]);
-
-})();
-/* matchmedia-ng v1.0.5 | (c) 2014 Jason Kulatunga, Inc. | http://analogj.mit-license.org/
- */
-(function(window, angular, undefined) {
-'use strict';
-
-angular.module("matchmedia-ng", []).
-    provider('matchmedia', function (){
-
-        ///////////////////////////////////////////////////////////////////////
-        // Configuration
-        ///////////////////////////////////////////////////////////////////////
-        /**
-         *
-         * these settings can be changed by injecting matchmediaProvider into
-         * the config function of your module and
-         * changing the matchmediaProvider.rules with your own rule key value
-         * pairs E.G.
-
-         *  angular.module('app').config(['matchmediaProvider', function (matchmediaProvider) {
-         *      matchmediaProvider.rules.phone = "(max-width: 500px)";
-         *      matchmediaProvider.rules.desktop: = "(max-width: 1500px)";
-         *  }]);
-         *
-         * default values taken from twitter bootstrap :
-         * https://github.com/twitter/bootstrap/blob/master/less/responsive-utilities.less
-         */
-        var matchmedia = {
-            rules: {
-                print : "print",
-                screen : "screen",
-                phone : "(max-width: 767px)",
-                tablet : "(min-width: 768px) and (max-width: 979px)",
-                desktop : "(min-width: 979px)",
-                portrait : "(orientation: portrait)",
-                landscape : "(orientation: landscape)"
-            }
-        };
-        matchmedia.$get = ['$window','safeApply', 'logger', function($window, safeApply, logger) {
-
-            logger.log('Creating matchmedia');
-
-            ///////////////////////////////////////////////////////////////////////
-            // Private Methods
-            ///////////////////////////////////////////////////////////////////////
-            function createSafeListener(cb, $scope){
-                return function(mediaQueryList){
-                    safeApply(function() {
-                        cb(mediaQueryList);
-                    },$scope);
-                };
-            }
-
-            ///////////////////////////////////////////////////////////////////////
-            // Public Methods
-            ///////////////////////////////////////////////////////////////////////
-            //should never be called directly, but is available for custom calls.
-            var matchmediaService = {};
-
-            /**
-             * @param {string} query media query to listen on.
-             * @param {function(mediaQueryList)} listener Function to call when the media query is matched.
-             * @returns {function()} Returns a deregistration function for this listener.
-             */
-            matchmediaService.on = function(query, listener, $scope) {
-                var supportsMatchMedia = $window.matchMedia !== undefined && !!$window.matchMedia('all').addListener;
-                if(supportsMatchMedia) {
-                    logger.log('adding listener for query: '+ query);
-                    var mediaQueryList = $window.matchMedia(query);
-                    var handler = createSafeListener(listener, $scope);
-                    mediaQueryList.addListener(handler);
-                    //immediately return the current mediaQueryList;
-                    handler(mediaQueryList);
-
-                    return function() {
-                        logger.log('removing listener from query: '+ query);
-                        mediaQueryList.removeListener(handler);
-
-                    };
-                }
-            };
-            /**
-             * @param {string} query media query to test.
-             * @returns {mediaQueryList} Returns a boolean.
-             */
-            matchmediaService.is = function(query) {
-                logger.log('test query: '+ query);
-                return $window.matchMedia(query).matches;
-            };
-
-
-
-            ///////////////////////////////////////////////////////////////////////
-            // Aliased Methods
-            ///////////////////////////////////////////////////////////////////////
-            matchmediaService.onPrint = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.print,listener, $scope);
-            };
-            matchmediaService.onScreen = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.screen,listener, $scope);
-            };
-            matchmediaService.onPhone = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.phone,listener, $scope);
-            };
-            matchmediaService.onTablet = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.tablet,listener, $scope);
-            };
-            matchmediaService.onDesktop = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.desktop,listener, $scope);
-            };
-            matchmediaService.onPortrait = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.portrait,listener, $scope);
-            };
-            matchmediaService.onLandscape = function(listener, $scope){
-                return matchmediaService.on(matchmedia.rules.landscape,listener, $scope);
-            };
-
-            matchmediaService.isPrint = function(){
-                return matchmediaService.is(matchmedia.rules.print);
-            };
-            matchmediaService.isScreen = function(){
-                return matchmediaService.is(matchmedia.rules.screen);
-            };
-            matchmediaService.isPhone = function(){
-                return matchmediaService.is(matchmedia.rules.phone);
-            };
-            matchmediaService.isTablet = function(){
-                return matchmediaService.is(matchmedia.rules.tablet);
-            };
-            matchmediaService.isDesktop = function(){
-                return matchmediaService.is(matchmedia.rules.desktop);
-            };
-            matchmediaService.isPortrait = function(){
-                return matchmediaService.is(matchmedia.rules.portrait);
-            };
-            matchmediaService.isLandscape = function(){
-                return matchmediaService.is(matchmedia.rules.landscape);
-            };
-            return matchmediaService;
-        }];
-        return matchmedia;
-    })
-    .directive('ajMatchmedia', ['matchmedia', function(matchmedia) {
-        return {
-            restrict: 'E',
-            scope: {
-                'queryListener': '&',
-                'queryMatches': '='
-            },
-            link: function(scope, element, attrs, controllers) {
-                var deregister;
-
-                if (attrs.on && attrs.queryListener) {
-                    if (attrs.on.slice(0, 2) === 'on' && matchmedia[attrs.on] !== 'undefined') {
-                        deregister = matchmedia[attrs.on](function(mediaQueryList) {
-                            scope.queryListener({mediaQueryList: mediaQueryList});
-                        });
-                    } else {
-                        deregister = matchmedia.on(attrs.on, function(mediaQueryList) {
-                            scope.queryListener({mediaQueryList: mediaQueryList});
-                        });
-                    }
-                    scope.$on('$destroy', deregister);
-                } else if (attrs.is && attrs.queryMatches) {
-                    if (attrs.is.slice(0, 2) === 'is' && matchmedia[attrs.is] !== 'undefined') {
-                        scope.queryMatches = matchmedia[attrs.is]();
-                    } else {
-                        scope.queryMatches = matchmedia.is(attrs.is);
-                    }
-                }
-            }
-        };
-    }])
-    .factory('safeApply', ['$rootScope',function($rootScope) {
-        return function(fn, $scope) {
-            $scope = $scope || $rootScope;
-            var phase = $scope.$root.$$phase;
-            if(phase == '$apply' || phase == '$digest') {
-                if (fn) {
-                    $scope.$eval(fn);
-                }
-            } else {
-                if (fn) {
-                    $scope.$apply(fn);
-                } else {
-                    $scope.$apply();
-                }
-            }
-        };
-    }])
-    .provider('logger', function(){
-        this.DEVMODE = false;
-
-        this.setDEVMODE = function(devmode){
-            this.DEVMODE = devmode;
-        };
-
-        this.$get = ['$window', '$log', function($window, $log) {
-            var DEVMODE = this.DEVMODE;
-            var logger = {};
-            logger.log = function(){
-                if (DEVMODE) $log.info(arguments);
-            };
-            logger.always = function(){
-                $log.info(arguments);
-            };
-            return logger;
-        }];
-    });
-})(window, window.angular);
-/*global angular*/
-/* =========================================
---------------------------------------------
-
-	Biage Public views
-	"Keep watch over your Bitcoins"
-	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
-
---------------------------------------------
-============================================ */
-
-(function() { "use strict";
-
-	var app = angular.module('bitAge',
-		['ui.router',
-		 'matchmedia-ng',
-		 'app-about',
-		 'app-login',
-		 'app-register'])
-
-	.config(['matchmediaProvider', function (matchmediaProvider) {
-		matchmediaProvider.rules.desktop = "(max-width: 800px)";
-	}])
-
-	.config(['$stateProvider', '$urlRouterProvider',
-		function($stateProvider, $urlRouterProvider) {
-
-			$stateProvider
-				.state('home', { url: '/home' })
-
-				.state('about', {
-					url: '/about',
-					templateUrl: '_views/about.html'
-				})
-
-				.state('login', {
-					url: '/login',
-					templateUrl: '_views/login.html'
-				})
-
-				.state('register', {
-					url: '/register',
-					templateUrl: '_views/register.html'
-				});
-
-			$urlRouterProvider.otherwise('/home');
-	}])
-
-	.controller('MainCtrl',
-		['$http', '$location', '$state', 'matchmedia', 'homeService',
-		function($http, $location, $state, matchmedia, homeService) {
-
-		var vm = this;
-
-		// Show HTML only on home
-		vm.showHome = function() {
-	    	return $state.is('home');
-		}
-
-		// Display BTC ticker
-		vm.showTicker = function() {
-	    	return $state.is('home');
-		}
-
-		// Mobile nav
-		vm.isMobileNavOpen = false
-		var unregister = matchmedia.onDesktop( function(mediaQueryList) {
-			vm.isDesktop = mediaQueryList.matches;
-			vm.isMobileNavOpen = false;
-		});
-
-		var postSignUpForm = function() {
-            console.log(vm.formData);
-
-            // process the form
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(vm.formData),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function(data) {
-                    console.log('go to wallet');
-
-
-                });
+		    // Reset inputs
+		    this.label = '';
+		    this.address = '';
 		};
 
-	   	// Quick form submit
-        vm.submitForm = function(isValid) {
-            if (isValid) {
-                console.log('Creating user:');
-                homeService.postSignUpForm(vm.formData);
-            } else {
-            	alert('Please correct the form');
-            }
-        };
+		// Open edit account modal:
+		this.editAccount = function(id, label, address) {
+			// console.log(id);
+			vm.dash.modal = true;
+			accountsService.modalEditAccount(vm.dash, id, label, address);
+		};
+
+		vm.dash.updateAccount = function(i) {
+
+			// Don't add account if blank
+		    if (this.new_label === '' ||
+		    	this.new_label === undefined ||
+		    	this.new_address === undefined) { return; }
+
+			// find account by id and update it's obj values
+			function changeAccountValues( id, new_label, new_address ) {
+				for (var i in vm.acct.accounts) {
+					if (vm.acct.accounts[i].id == id) {
+						vm.acct.accounts[i].label = new_label;
+						vm.acct.accounts[i].address = new_address;
+						break;
+					}
+				}
+			}
+
+			changeAccountValues (i, this.new_label, this.new_address);
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
+
+			// Briefly highlight row
+			var theRow = angular.element( document.querySelector('#acct-'+i));
+			theRow.addClass('ping-row');
+		}
+
+		vm.dash.removeAccount = function(acct_id) {
+
+			// Find object by id and remove from array
+			for (var i = 0; i < vm.acct.accounts.length; i++) {
+			    var obj = vm.acct.accounts[i];
+
+			    if (acct_id.indexOf(obj.id) !== -1) {
+			        vm.acct.accounts.splice(i, 1);
+			    }
+			}
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
+		};
+
+		// Select public addresses on click
+		function selectAddress(element) {
+			var text = document.getElementById(element),
+				range = document.createRange(),
+				selection = window.getSelection();
+				range.selectNodeContents(text);
+				selection.removeAllRanges();
+			    selection.addRange(range);
+		};
+
+		// Select entire address on click
+		vm.pubAddress = {};
+		vm.pubAddress.getClick = function(the_id) {
+			selectAddress(the_id);
+		};
+
 	}])
 
-	.service('homeService', ['$http', function($http) {
+	.service('accountsService', [function() {
 
-        this.postSignUpForm = function(fdata) {
-            console.log(fdata);
+		// Wire up edit account modal
+	    this.modalEditAccount = function(vm, id, label, address) {
+	        vm.modal_edit_account = true;
+	        vm.acct_id = id;
+	        vm.acct_label = label;
+	        vm.acct_address = address;
+			vm.save_btn_text = 'save';
+	    };
 
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(fdata),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-
-                });
-        };
-    }]);
+	}]);
 
 })();
+
+/**
+ * @license MIT
+ */
+(function(window, document, undefined) {'use strict';
+  // ie10+
+  var ie10plus = window.navigator.msPointerEnabled;
+  /**
+   * Flow.js is a library providing multiple simultaneous, stable and
+   * resumable uploads via the HTML5 File API.
+   * @param [opts]
+   * @param {number} [opts.chunkSize]
+   * @param {bool} [opts.forceChunkSize]
+   * @param {number} [opts.simultaneousUploads]
+   * @param {bool} [opts.singleFile]
+   * @param {string} [opts.fileParameterName]
+   * @param {number} [opts.progressCallbacksInterval]
+   * @param {number} [opts.speedSmoothingFactor]
+   * @param {Object|Function} [opts.query]
+   * @param {Object|Function} [opts.headers]
+   * @param {bool} [opts.withCredentials]
+   * @param {Function} [opts.preprocess]
+   * @param {string} [opts.method]
+   * @param {string|Function} [opts.testMethod]
+   * @param {string|Function} [opts.uploadMethod]
+   * @param {bool} [opts.prioritizeFirstAndLastChunk]
+   * @param {string|Function} [opts.target]
+   * @param {number} [opts.maxChunkRetries]
+   * @param {number} [opts.chunkRetryInterval]
+   * @param {Array.<number>} [opts.permanentErrors]
+   * @param {Array.<number>} [opts.successStatuses]
+   * @param {Function} [opts.generateUniqueIdentifier]
+   * @constructor
+   */
+  function Flow(opts) {
+    /**
+     * Supported by browser?
+     * @type {boolean}
+     */
+    this.support = (
+        typeof File !== 'undefined' &&
+        typeof Blob !== 'undefined' &&
+        typeof FileList !== 'undefined' &&
+        (
+          !!Blob.prototype.slice || !!Blob.prototype.webkitSlice || !!Blob.prototype.mozSlice ||
+          false
+        ) // slicing files support
+    );
+
+    if (!this.support) {
+      return ;
+    }
+
+    /**
+     * Check if directory upload is supported
+     * @type {boolean}
+     */
+    this.supportDirectory = /WebKit/.test(window.navigator.userAgent);
+
+    /**
+     * List of FlowFile objects
+     * @type {Array.<FlowFile>}
+     */
+    this.files = [];
+
+    /**
+     * Default options for flow.js
+     * @type {Object}
+     */
+    this.defaults = {
+      chunkSize: 1024 * 1024,
+      forceChunkSize: false,
+      simultaneousUploads: 3,
+      singleFile: false,
+      fileParameterName: 'file',
+      progressCallbacksInterval: 500,
+      speedSmoothingFactor: 0.1,
+      query: {},
+      headers: {},
+      withCredentials: false,
+      preprocess: null,
+      method: 'multipart',
+      testMethod: 'GET',
+      uploadMethod: 'POST',
+      prioritizeFirstAndLastChunk: false,
+      target: '/',
+      testChunks: true,
+      generateUniqueIdentifier: null,
+      maxChunkRetries: 0,
+      chunkRetryInterval: null,
+      permanentErrors: [404, 415, 500, 501],
+      successStatuses: [200, 201, 202],
+      onDropStopPropagation: false
+    };
+
+    /**
+     * Current options
+     * @type {Object}
+     */
+    this.opts = {};
+
+    /**
+     * List of events:
+     *  key stands for event name
+     *  value array list of callbacks
+     * @type {}
+     */
+    this.events = {};
+
+    var $ = this;
+
+    /**
+     * On drop event
+     * @function
+     * @param {MouseEvent} event
+     */
+    this.onDrop = function (event) {
+      if ($.opts.onDropStopPropagation) {
+        event.stopPropagation();
+      }
+      event.preventDefault();
+      var dataTransfer = event.dataTransfer;
+      if (dataTransfer.items && dataTransfer.items[0] &&
+        dataTransfer.items[0].webkitGetAsEntry) {
+        $.webkitReadDataTransfer(event);
+      } else {
+        $.addFiles(dataTransfer.files, event);
+      }
+    };
+
+    /**
+     * Prevent default
+     * @function
+     * @param {MouseEvent} event
+     */
+    this.preventEvent = function (event) {
+      event.preventDefault();
+    };
+
+
+    /**
+     * Current options
+     * @type {Object}
+     */
+    this.opts = Flow.extend({}, this.defaults, opts || {});
+  }
+
+  Flow.prototype = {
+    /**
+     * Set a callback for an event, possible events:
+     * fileSuccess(file), fileProgress(file), fileAdded(file, event),
+     * fileRetry(file), fileError(file, message), complete(),
+     * progress(), error(message, file), pause()
+     * @function
+     * @param {string} event
+     * @param {Function} callback
+     */
+    on: function (event, callback) {
+      event = event.toLowerCase();
+      if (!this.events.hasOwnProperty(event)) {
+        this.events[event] = [];
+      }
+      this.events[event].push(callback);
+    },
+
+    /**
+     * Remove event callback
+     * @function
+     * @param {string} [event] removes all events if not specified
+     * @param {Function} [fn] removes all callbacks of event if not specified
+     */
+    off: function (event, fn) {
+      if (event !== undefined) {
+        event = event.toLowerCase();
+        if (fn !== undefined) {
+          if (this.events.hasOwnProperty(event)) {
+            arrayRemove(this.events[event], fn);
+          }
+        } else {
+          delete this.events[event];
+        }
+      } else {
+        this.events = {};
+      }
+    },
+
+    /**
+     * Fire an event
+     * @function
+     * @param {string} event event name
+     * @param {...} args arguments of a callback
+     * @return {bool} value is false if at least one of the event handlers which handled this event
+     * returned false. Otherwise it returns true.
+     */
+    fire: function (event, args) {
+      // `arguments` is an object, not array, in FF, so:
+      args = Array.prototype.slice.call(arguments);
+      event = event.toLowerCase();
+      var preventDefault = false;
+      if (this.events.hasOwnProperty(event)) {
+        each(this.events[event], function (callback) {
+          preventDefault = callback.apply(this, args.slice(1)) === false || preventDefault;
+        }, this);
+      }
+      if (event != 'catchall') {
+        args.unshift('catchAll');
+        preventDefault = this.fire.apply(this, args) === false || preventDefault;
+      }
+      return !preventDefault;
+    },
+
+    /**
+     * Read webkit dataTransfer object
+     * @param event
+     */
+    webkitReadDataTransfer: function (event) {
+      var $ = this;
+      var queue = event.dataTransfer.items.length;
+      var files = [];
+      each(event.dataTransfer.items, function (item) {
+        var entry = item.webkitGetAsEntry();
+        if (!entry) {
+          decrement();
+          return ;
+        }
+        if (entry.isFile) {
+          // due to a bug in Chrome's File System API impl - #149735
+          fileReadSuccess(item.getAsFile(), entry.fullPath);
+        } else {
+          entry.createReader().readEntries(readSuccess, readError);
+        }
+      });
+      function readSuccess(entries) {
+        queue += entries.length;
+        each(entries, function(entry) {
+          if (entry.isFile) {
+            var fullPath = entry.fullPath;
+            entry.file(function (file) {
+              fileReadSuccess(file, fullPath);
+            }, readError);
+          } else if (entry.isDirectory) {
+            entry.createReader().readEntries(readSuccess, readError);
+          }
+        });
+        decrement();
+      }
+      function fileReadSuccess(file, fullPath) {
+        // relative path should not start with "/"
+        file.relativePath = fullPath.substring(1);
+        files.push(file);
+        decrement();
+      }
+      function readError(fileError) {
+        throw fileError;
+      }
+      function decrement() {
+        if (--queue == 0) {
+          $.addFiles(files, event);
+        }
+      }
+    },
+
+    /**
+     * Generate unique identifier for a file
+     * @function
+     * @param {FlowFile} file
+     * @returns {string}
+     */
+    generateUniqueIdentifier: function (file) {
+      var custom = this.opts.generateUniqueIdentifier;
+      if (typeof custom === 'function') {
+        return custom(file);
+      }
+      // Some confusion in different versions of Firefox
+      var relativePath = file.relativePath || file.webkitRelativePath || file.fileName || file.name;
+      return file.size + '-' + relativePath.replace(/[^0-9a-zA-Z_-]/img, '');
+    },
+
+    /**
+     * Upload next chunk from the queue
+     * @function
+     * @returns {boolean}
+     * @private
+     */
+    uploadNextChunk: function (preventEvents) {
+      // In some cases (such as videos) it's really handy to upload the first
+      // and last chunk of a file quickly; this let's the server check the file's
+      // metadata and determine if there's even a point in continuing.
+      var found = false;
+      if (this.opts.prioritizeFirstAndLastChunk) {
+        each(this.files, function (file) {
+          if (!file.paused && file.chunks.length &&
+            file.chunks[0].status() === 'pending' &&
+            file.chunks[0].preprocessState === 0) {
+            file.chunks[0].send();
+            found = true;
+            return false;
+          }
+          if (!file.paused && file.chunks.length > 1 &&
+            file.chunks[file.chunks.length - 1].status() === 'pending' &&
+            file.chunks[0].preprocessState === 0) {
+            file.chunks[file.chunks.length - 1].send();
+            found = true;
+            return false;
+          }
+        });
+        if (found) {
+          return found;
+        }
+      }
+
+      // Now, simply look for the next, best thing to upload
+      each(this.files, function (file) {
+        if (!file.paused) {
+          each(file.chunks, function (chunk) {
+            if (chunk.status() === 'pending' && chunk.preprocessState === 0) {
+              chunk.send();
+              found = true;
+              return false;
+            }
+          });
+        }
+        if (found) {
+          return false;
+        }
+      });
+      if (found) {
+        return true;
+      }
+
+      // The are no more outstanding chunks to upload, check is everything is done
+      var outstanding = false;
+      each(this.files, function (file) {
+        if (!file.isComplete()) {
+          outstanding = true;
+          return false;
+        }
+      });
+      if (!outstanding && !preventEvents) {
+        // All chunks have been uploaded, complete
+        async(function () {
+          this.fire('complete');
+        }, this);
+      }
+      return false;
+    },
+
+
+    /**
+     * Assign a browse action to one or more DOM nodes.
+     * @function
+     * @param {Element|Array.<Element>} domNodes
+     * @param {boolean} isDirectory Pass in true to allow directories to
+     * @param {boolean} singleFile prevent multi file upload
+     * @param {Object} attributes set custom attributes:
+     *  http://www.w3.org/TR/html-markup/input.file.html#input.file-attributes
+     *  eg: accept: 'image/*'
+     * be selected (Chrome only).
+     */
+    assignBrowse: function (domNodes, isDirectory, singleFile, attributes) {
+      if (typeof domNodes.length === 'undefined') {
+        domNodes = [domNodes];
+      }
+
+      each(domNodes, function (domNode) {
+        var input;
+        if (domNode.tagName === 'INPUT' && domNode.type === 'file') {
+          input = domNode;
+        } else {
+          input = document.createElement('input');
+          input.setAttribute('type', 'file');
+          // display:none - not working in opera 12
+          extend(input.style, {
+            visibility: 'hidden',
+            position: 'absolute'
+          });
+          // for opera 12 browser, input must be assigned to a document
+          domNode.appendChild(input);
+          // https://developer.mozilla.org/en/using_files_from_web_applications)
+          // event listener is executed two times
+          // first one - original mouse click event
+          // second - input.click(), input is inside domNode
+          domNode.addEventListener('click', function() {
+            input.click();
+          }, false);
+        }
+        if (!this.opts.singleFile && !singleFile) {
+          input.setAttribute('multiple', 'multiple');
+        }
+        if (isDirectory) {
+          input.setAttribute('webkitdirectory', 'webkitdirectory');
+        }
+        each(attributes, function (value, key) {
+          input.setAttribute(key, value);
+        });
+        // When new files are added, simply append them to the overall list
+        var $ = this;
+        input.addEventListener('change', function (e) {
+          $.addFiles(e.target.files, e);
+          e.target.value = '';
+        }, false);
+      }, this);
+    },
+
+    /**
+     * Assign one or more DOM nodes as a drop target.
+     * @function
+     * @param {Element|Array.<Element>} domNodes
+     */
+    assignDrop: function (domNodes) {
+      if (typeof domNodes.length === 'undefined') {
+        domNodes = [domNodes];
+      }
+      each(domNodes, function (domNode) {
+        domNode.addEventListener('dragover', this.preventEvent, false);
+        domNode.addEventListener('dragenter', this.preventEvent, false);
+        domNode.addEventListener('drop', this.onDrop, false);
+      }, this);
+    },
+
+    /**
+     * Un-assign drop event from DOM nodes
+     * @function
+     * @param domNodes
+     */
+    unAssignDrop: function (domNodes) {
+      if (typeof domNodes.length === 'undefined') {
+        domNodes = [domNodes];
+      }
+      each(domNodes, function (domNode) {
+        domNode.removeEventListener('dragover', this.preventEvent);
+        domNode.removeEventListener('dragenter', this.preventEvent);
+        domNode.removeEventListener('drop', this.onDrop);
+      }, this);
+    },
+
+    /**
+     * Returns a boolean indicating whether or not the instance is currently
+     * uploading anything.
+     * @function
+     * @returns {boolean}
+     */
+    isUploading: function () {
+      var uploading = false;
+      each(this.files, function (file) {
+        if (file.isUploading()) {
+          uploading = true;
+          return false;
+        }
+      });
+      return uploading;
+    },
+
+    /**
+     * should upload next chunk
+     * @function
+     * @returns {boolean|number}
+     */
+    _shouldUploadNext: function () {
+      var num = 0;
+      var should = true;
+      var simultaneousUploads = this.opts.simultaneousUploads;
+      each(this.files, function (file) {
+        each(file.chunks, function(chunk) {
+          if (chunk.status() === 'uploading') {
+            num++;
+            if (num >= simultaneousUploads) {
+              should = false;
+              return false;
+            }
+          }
+        });
+      });
+      // if should is true then return uploading chunks's length
+      return should && num;
+    },
+
+    /**
+     * Start or resume uploading.
+     * @function
+     */
+    upload: function () {
+      // Make sure we don't start too many uploads at once
+      var ret = this._shouldUploadNext();
+      if (ret === false) {
+        return;
+      }
+      // Kick off the queue
+      this.fire('uploadStart');
+      var started = false;
+      for (var num = 1; num <= this.opts.simultaneousUploads - ret; num++) {
+        started = this.uploadNextChunk(true) || started;
+      }
+      if (!started) {
+        async(function () {
+          this.fire('complete');
+        }, this);
+      }
+    },
+
+    /**
+     * Resume uploading.
+     * @function
+     */
+    resume: function () {
+      each(this.files, function (file) {
+        file.resume();
+      });
+    },
+
+    /**
+     * Pause uploading.
+     * @function
+     */
+    pause: function () {
+      each(this.files, function (file) {
+        file.pause();
+      });
+    },
+
+    /**
+     * Cancel upload of all FlowFile objects and remove them from the list.
+     * @function
+     */
+    cancel: function () {
+      for (var i = this.files.length - 1; i >= 0; i--) {
+        this.files[i].cancel();
+      }
+    },
+
+    /**
+     * Returns a number between 0 and 1 indicating the current upload progress
+     * of all files.
+     * @function
+     * @returns {number}
+     */
+    progress: function () {
+      var totalDone = 0;
+      var totalSize = 0;
+      // Resume all chunks currently being uploaded
+      each(this.files, function (file) {
+        totalDone += file.progress() * file.size;
+        totalSize += file.size;
+      });
+      return totalSize > 0 ? totalDone / totalSize : 0;
+    },
+
+    /**
+     * Add a HTML5 File object to the list of files.
+     * @function
+     * @param {File} file
+     * @param {Event} [event] event is optional
+     */
+    addFile: function (file, event) {
+      this.addFiles([file], event);
+    },
+
+    /**
+     * Add a HTML5 File object to the list of files.
+     * @function
+     * @param {FileList|Array} fileList
+     * @param {Event} [event] event is optional
+     */
+    addFiles: function (fileList, event) {
+      var files = [];
+      each(fileList, function (file) {
+        // Uploading empty file IE10/IE11 hangs indefinitely
+        // see https://connect.microsoft.com/IE/feedback/details/813443/uploading-empty-file-ie10-ie11-hangs-indefinitely
+        // Directories have size `0` and name `.`
+        // Ignore already added files
+        if ((!ie10plus || ie10plus && file.size > 0) && !(file.size % 4096 === 0 && (file.name === '.' || file.fileName === '.')) &&
+          !this.getFromUniqueIdentifier(this.generateUniqueIdentifier(file))) {
+          var f = new FlowFile(this, file);
+          if (this.fire('fileAdded', f, event)) {
+            files.push(f);
+          }
+        }
+      }, this);
+      if (this.fire('filesAdded', files, event)) {
+        each(files, function (file) {
+          if (this.opts.singleFile && this.files.length > 0) {
+            this.removeFile(this.files[0]);
+          }
+          this.files.push(file);
+        }, this);
+      }
+      this.fire('filesSubmitted', files, event);
+    },
+
+
+    /**
+     * Cancel upload of a specific FlowFile object from the list.
+     * @function
+     * @param {FlowFile} file
+     */
+    removeFile: function (file) {
+      for (var i = this.files.length - 1; i >= 0; i--) {
+        if (this.files[i] === file) {
+          this.files.splice(i, 1);
+          file.abort();
+        }
+      }
+    },
+
+    /**
+     * Look up a FlowFile object by its unique identifier.
+     * @function
+     * @param {string} uniqueIdentifier
+     * @returns {boolean|FlowFile} false if file was not found
+     */
+    getFromUniqueIdentifier: function (uniqueIdentifier) {
+      var ret = false;
+      each(this.files, function (file) {
+        if (file.uniqueIdentifier === uniqueIdentifier) {
+          ret = file;
+        }
+      });
+      return ret;
+    },
+
+    /**
+     * Returns the total size of all files in bytes.
+     * @function
+     * @returns {number}
+     */
+    getSize: function () {
+      var totalSize = 0;
+      each(this.files, function (file) {
+        totalSize += file.size;
+      });
+      return totalSize;
+    },
+
+    /**
+     * Returns the total size uploaded of all files in bytes.
+     * @function
+     * @returns {number}
+     */
+    sizeUploaded: function () {
+      var size = 0;
+      each(this.files, function (file) {
+        size += file.sizeUploaded();
+      });
+      return size;
+    },
+
+    /**
+     * Returns remaining time to upload all files in seconds. Accuracy is based on average speed.
+     * If speed is zero, time remaining will be equal to positive infinity `Number.POSITIVE_INFINITY`
+     * @function
+     * @returns {number}
+     */
+    timeRemaining: function () {
+      var sizeDelta = 0;
+      var averageSpeed = 0;
+      each(this.files, function (file) {
+        if (!file.paused && !file.error) {
+          sizeDelta += file.size - file.sizeUploaded();
+          averageSpeed += file.averageSpeed;
+        }
+      });
+      if (sizeDelta && !averageSpeed) {
+        return Number.POSITIVE_INFINITY;
+      }
+      if (!sizeDelta && !averageSpeed) {
+        return 0;
+      }
+      return Math.floor(sizeDelta / averageSpeed);
+    }
+  };
+
+
+
+
+
+
+  /**
+   * FlowFile class
+   * @name FlowFile
+   * @param {Flow} flowObj
+   * @param {File} file
+   * @constructor
+   */
+  function FlowFile(flowObj, file) {
+
+    /**
+     * Reference to parent Flow instance
+     * @type {Flow}
+     */
+    this.flowObj = flowObj;
+
+    /**
+     * Reference to file
+     * @type {File}
+     */
+    this.file = file;
+
+    /**
+     * File name. Some confusion in different versions of Firefox
+     * @type {string}
+     */
+    this.name = file.fileName || file.name;
+
+    /**
+     * File size
+     * @type {number}
+     */
+    this.size = file.size;
+
+    /**
+     * Relative file path
+     * @type {string}
+     */
+    this.relativePath = file.relativePath || file.webkitRelativePath || this.name;
+
+    /**
+     * File unique identifier
+     * @type {string}
+     */
+    this.uniqueIdentifier = flowObj.generateUniqueIdentifier(file);
+
+    /**
+     * List of chunks
+     * @type {Array.<FlowChunk>}
+     */
+    this.chunks = [];
+
+    /**
+     * Indicated if file is paused
+     * @type {boolean}
+     */
+    this.paused = false;
+
+    /**
+     * Indicated if file has encountered an error
+     * @type {boolean}
+     */
+    this.error = false;
+
+    /**
+     * Average upload speed
+     * @type {number}
+     */
+    this.averageSpeed = 0;
+
+    /**
+     * Current upload speed
+     * @type {number}
+     */
+    this.currentSpeed = 0;
+
+    /**
+     * Date then progress was called last time
+     * @type {number}
+     * @private
+     */
+    this._lastProgressCallback = Date.now();
+
+    /**
+     * Previously uploaded file size
+     * @type {number}
+     * @private
+     */
+    this._prevUploadedSize = 0;
+
+    /**
+     * Holds previous progress
+     * @type {number}
+     * @private
+     */
+    this._prevProgress = 0;
+
+    this.bootstrap();
+  }
+
+  FlowFile.prototype = {
+    /**
+     * Update speed parameters
+     * @link http://stackoverflow.com/questions/2779600/how-to-estimate-download-time-remaining-accurately
+     * @function
+     */
+    measureSpeed: function () {
+      var timeSpan = Date.now() - this._lastProgressCallback;
+      if (!timeSpan) {
+        return ;
+      }
+      var smoothingFactor = this.flowObj.opts.speedSmoothingFactor;
+      var uploaded = this.sizeUploaded();
+      // Prevent negative upload speed after file upload resume
+      this.currentSpeed = Math.max((uploaded - this._prevUploadedSize) / timeSpan * 1000, 0);
+      this.averageSpeed = smoothingFactor * this.currentSpeed + (1 - smoothingFactor) * this.averageSpeed;
+      this._prevUploadedSize = uploaded;
+    },
+
+    /**
+     * For internal usage only.
+     * Callback when something happens within the chunk.
+     * @function
+     * @param {FlowChunk} chunk
+     * @param {string} event can be 'progress', 'success', 'error' or 'retry'
+     * @param {string} [message]
+     */
+    chunkEvent: function (chunk, event, message) {
+      switch (event) {
+        case 'progress':
+          if (Date.now() - this._lastProgressCallback <
+            this.flowObj.opts.progressCallbacksInterval) {
+            break;
+          }
+          this.measureSpeed();
+          this.flowObj.fire('fileProgress', this, chunk);
+          this.flowObj.fire('progress');
+          this._lastProgressCallback = Date.now();
+          break;
+        case 'error':
+          this.error = true;
+          this.abort(true);
+          this.flowObj.fire('fileError', this, message, chunk);
+          this.flowObj.fire('error', message, this, chunk);
+          break;
+        case 'success':
+          if (this.error) {
+            return;
+          }
+          this.measureSpeed();
+          this.flowObj.fire('fileProgress', this, chunk);
+          this.flowObj.fire('progress');
+          this._lastProgressCallback = Date.now();
+          if (this.isComplete()) {
+            this.currentSpeed = 0;
+            this.averageSpeed = 0;
+            this.flowObj.fire('fileSuccess', this, message, chunk);
+          }
+          break;
+        case 'retry':
+          this.flowObj.fire('fileRetry', this, chunk);
+          break;
+      }
+    },
+
+    /**
+     * Pause file upload
+     * @function
+     */
+    pause: function() {
+      this.paused = true;
+      this.abort();
+    },
+
+    /**
+     * Resume file upload
+     * @function
+     */
+    resume: function() {
+      this.paused = false;
+      this.flowObj.upload();
+    },
+
+    /**
+     * Abort current upload
+     * @function
+     */
+    abort: function (reset) {
+      this.currentSpeed = 0;
+      this.averageSpeed = 0;
+      var chunks = this.chunks;
+      if (reset) {
+        this.chunks = [];
+      }
+      each(chunks, function (c) {
+        if (c.status() === 'uploading') {
+          c.abort();
+          this.flowObj.uploadNextChunk();
+        }
+      }, this);
+    },
+
+    /**
+     * Cancel current upload and remove from a list
+     * @function
+     */
+    cancel: function () {
+      this.flowObj.removeFile(this);
+    },
+
+    /**
+     * Retry aborted file upload
+     * @function
+     */
+    retry: function () {
+      this.bootstrap();
+      this.flowObj.upload();
+    },
+
+    /**
+     * Clear current chunks and slice file again
+     * @function
+     */
+    bootstrap: function () {
+      this.abort(true);
+      this.error = false;
+      // Rebuild stack of chunks from file
+      this._prevProgress = 0;
+      var round = this.flowObj.opts.forceChunkSize ? Math.ceil : Math.floor;
+      var chunks = Math.max(
+        round(this.file.size / this.flowObj.opts.chunkSize), 1
+      );
+      for (var offset = 0; offset < chunks; offset++) {
+        this.chunks.push(
+          new FlowChunk(this.flowObj, this, offset)
+        );
+      }
+    },
+
+    /**
+     * Get current upload progress status
+     * @function
+     * @returns {number} from 0 to 1
+     */
+    progress: function () {
+      if (this.error) {
+        return 1;
+      }
+      if (this.chunks.length === 1) {
+        this._prevProgress = Math.max(this._prevProgress, this.chunks[0].progress());
+        return this._prevProgress;
+      }
+      // Sum up progress across everything
+      var bytesLoaded = 0;
+      each(this.chunks, function (c) {
+        // get chunk progress relative to entire file
+        bytesLoaded += c.progress() * (c.endByte - c.startByte);
+      });
+      var percent = bytesLoaded / this.size;
+      // We don't want to lose percentages when an upload is paused
+      this._prevProgress = Math.max(this._prevProgress, percent > 0.9999 ? 1 : percent);
+      return this._prevProgress;
+    },
+
+    /**
+     * Indicates if file is being uploaded at the moment
+     * @function
+     * @returns {boolean}
+     */
+    isUploading: function () {
+      var uploading = false;
+      each(this.chunks, function (chunk) {
+        if (chunk.status() === 'uploading') {
+          uploading = true;
+          return false;
+        }
+      });
+      return uploading;
+    },
+
+    /**
+     * Indicates if file is has finished uploading and received a response
+     * @function
+     * @returns {boolean}
+     */
+    isComplete: function () {
+      var outstanding = false;
+      each(this.chunks, function (chunk) {
+        var status = chunk.status();
+        if (status === 'pending' || status === 'uploading' || chunk.preprocessState === 1) {
+          outstanding = true;
+          return false;
+        }
+      });
+      return !outstanding;
+    },
+
+    /**
+     * Count total size uploaded
+     * @function
+     * @returns {number}
+     */
+    sizeUploaded: function () {
+      var size = 0;
+      each(this.chunks, function (chunk) {
+        size += chunk.sizeUploaded();
+      });
+      return size;
+    },
+
+    /**
+     * Returns remaining time to finish upload file in seconds. Accuracy is based on average speed.
+     * If speed is zero, time remaining will be equal to positive infinity `Number.POSITIVE_INFINITY`
+     * @function
+     * @returns {number}
+     */
+    timeRemaining: function () {
+      if (this.paused || this.error) {
+        return 0;
+      }
+      var delta = this.size - this.sizeUploaded();
+      if (delta && !this.averageSpeed) {
+        return Number.POSITIVE_INFINITY;
+      }
+      if (!delta && !this.averageSpeed) {
+        return 0;
+      }
+      return Math.floor(delta / this.averageSpeed);
+    },
+
+    /**
+     * Get file type
+     * @function
+     * @returns {string}
+     */
+    getType: function () {
+      return this.file.type && this.file.type.split('/')[1];
+    },
+
+    /**
+     * Get file extension
+     * @function
+     * @returns {string}
+     */
+    getExtension: function () {
+      return this.name.substr((~-this.name.lastIndexOf(".") >>> 0) + 2).toLowerCase();
+    }
+  };
+
+
+
+
+
+
+
+
+  /**
+   * Class for storing a single chunk
+   * @name FlowChunk
+   * @param {Flow} flowObj
+   * @param {FlowFile} fileObj
+   * @param {number} offset
+   * @constructor
+   */
+  function FlowChunk(flowObj, fileObj, offset) {
+
+    /**
+     * Reference to parent flow object
+     * @type {Flow}
+     */
+    this.flowObj = flowObj;
+
+    /**
+     * Reference to parent FlowFile object
+     * @type {FlowFile}
+     */
+    this.fileObj = fileObj;
+
+    /**
+     * File size
+     * @type {number}
+     */
+    this.fileObjSize = fileObj.size;
+
+    /**
+     * File offset
+     * @type {number}
+     */
+    this.offset = offset;
+
+    /**
+     * Indicates if chunk existence was checked on the server
+     * @type {boolean}
+     */
+    this.tested = false;
+
+    /**
+     * Number of retries performed
+     * @type {number}
+     */
+    this.retries = 0;
+
+    /**
+     * Pending retry
+     * @type {boolean}
+     */
+    this.pendingRetry = false;
+
+    /**
+     * Preprocess state
+     * @type {number} 0 = unprocessed, 1 = processing, 2 = finished
+     */
+    this.preprocessState = 0;
+
+    /**
+     * Bytes transferred from total request size
+     * @type {number}
+     */
+    this.loaded = 0;
+
+    /**
+     * Total request size
+     * @type {number}
+     */
+    this.total = 0;
+
+    /**
+     * Size of a chunk
+     * @type {number}
+     */
+    var chunkSize = this.flowObj.opts.chunkSize;
+
+    /**
+     * Chunk start byte in a file
+     * @type {number}
+     */
+    this.startByte = this.offset * chunkSize;
+
+    /**
+     * Chunk end byte in a file
+     * @type {number}
+     */
+    this.endByte = Math.min(this.fileObjSize, (this.offset + 1) * chunkSize);
+
+    /**
+     * XMLHttpRequest
+     * @type {XMLHttpRequest}
+     */
+    this.xhr = null;
+
+    if (this.fileObjSize - this.endByte < chunkSize &&
+        !this.flowObj.opts.forceChunkSize) {
+      // The last chunk will be bigger than the chunk size,
+      // but less than 2*chunkSize
+      this.endByte = this.fileObjSize;
+    }
+
+    var $ = this;
+
+
+    /**
+     * Send chunk event
+     * @param event
+     * @param {...} args arguments of a callback
+     */
+    this.event = function (event, args) {
+      args = Array.prototype.slice.call(arguments);
+      args.unshift($);
+      $.fileObj.chunkEvent.apply($.fileObj, args);
+    };
+    /**
+     * Catch progress event
+     * @param {ProgressEvent} event
+     */
+    this.progressHandler = function(event) {
+      if (event.lengthComputable) {
+        $.loaded = event.loaded ;
+        $.total = event.total;
+      }
+      $.event('progress', event);
+    };
+
+    /**
+     * Catch test event
+     * @param {Event} event
+     */
+    this.testHandler = function(event) {
+      var status = $.status(true);
+      if (status === 'error') {
+        $.event(status, $.message());
+        $.flowObj.uploadNextChunk();
+      } else if (status === 'success') {
+        $.tested = true;
+        $.event(status, $.message());
+        $.flowObj.uploadNextChunk();
+      } else if (!$.fileObj.paused) {
+        // Error might be caused by file pause method
+        // Chunks does not exist on the server side
+        $.tested = true;
+        $.send();
+      }
+    };
+
+    /**
+     * Upload has stopped
+     * @param {Event} event
+     */
+    this.doneHandler = function(event) {
+      var status = $.status();
+      if (status === 'success' || status === 'error') {
+        $.event(status, $.message());
+        $.flowObj.uploadNextChunk();
+      } else {
+        $.event('retry', $.message());
+        $.pendingRetry = true;
+        $.abort();
+        $.retries++;
+        var retryInterval = $.flowObj.opts.chunkRetryInterval;
+        if (retryInterval !== null) {
+          setTimeout(function () {
+            $.send();
+          }, retryInterval);
+        } else {
+          $.send();
+        }
+      }
+    };
+  }
+
+  FlowChunk.prototype = {
+    /**
+     * Get params for a request
+     * @function
+     */
+    getParams: function () {
+      return {
+        flowChunkNumber: this.offset + 1,
+        flowChunkSize: this.flowObj.opts.chunkSize,
+        flowCurrentChunkSize: this.endByte - this.startByte,
+        flowTotalSize: this.fileObjSize,
+        flowIdentifier: this.fileObj.uniqueIdentifier,
+        flowFilename: this.fileObj.name,
+        flowRelativePath: this.fileObj.relativePath,
+        flowTotalChunks: this.fileObj.chunks.length
+      };
+    },
+
+    /**
+     * Get target option with query params
+     * @function
+     * @param params
+     * @returns {string}
+     */
+    getTarget: function(target, params){
+      if(target.indexOf('?') < 0) {
+        target += '?';
+      } else {
+        target += '&';
+      }
+      return target + params.join('&');
+    },
+
+    /**
+     * Makes a GET request without any data to see if the chunk has already
+     * been uploaded in a previous session
+     * @function
+     */
+    test: function () {
+      // Set up request and listen for event
+      this.xhr = new XMLHttpRequest();
+      this.xhr.addEventListener("load", this.testHandler, false);
+      this.xhr.addEventListener("error", this.testHandler, false);
+      var testMethod = evalOpts(this.flowObj.opts.testMethod, this.fileObj, this);
+      var data = this.prepareXhrRequest(testMethod, true);
+      this.xhr.send(data);
+    },
+
+    /**
+     * Finish preprocess state
+     * @function
+     */
+    preprocessFinished: function () {
+      this.preprocessState = 2;
+      this.send();
+    },
+
+    /**
+     * Uploads the actual data in a POST call
+     * @function
+     */
+    send: function () {
+      var preprocess = this.flowObj.opts.preprocess;
+      if (typeof preprocess === 'function') {
+        switch (this.preprocessState) {
+          case 0:
+            this.preprocessState = 1;
+            preprocess(this);
+            return;
+          case 1:
+            return;
+        }
+      }
+      if (this.flowObj.opts.testChunks && !this.tested) {
+        this.test();
+        return;
+      }
+
+      this.loaded = 0;
+      this.total = 0;
+      this.pendingRetry = false;
+
+      var func = (this.fileObj.file.slice ? 'slice' :
+        (this.fileObj.file.mozSlice ? 'mozSlice' :
+          (this.fileObj.file.webkitSlice ? 'webkitSlice' :
+            'slice')));
+      var bytes = this.fileObj.file[func](this.startByte, this.endByte, this.fileObj.file.type);
+
+      // Set up request and listen for event
+      this.xhr = new XMLHttpRequest();
+      this.xhr.upload.addEventListener('progress', this.progressHandler, false);
+      this.xhr.addEventListener("load", this.doneHandler, false);
+      this.xhr.addEventListener("error", this.doneHandler, false);
+
+      var uploadMethod = evalOpts(this.flowObj.opts.uploadMethod, this.fileObj, this);
+      var data = this.prepareXhrRequest(uploadMethod, false, this.flowObj.opts.method, bytes);
+      this.xhr.send(data);
+    },
+
+    /**
+     * Abort current xhr request
+     * @function
+     */
+    abort: function () {
+      // Abort and reset
+      var xhr = this.xhr;
+      this.xhr = null;
+      if (xhr) {
+        xhr.abort();
+      }
+    },
+
+    /**
+     * Retrieve current chunk upload status
+     * @function
+     * @returns {string} 'pending', 'uploading', 'success', 'error'
+     */
+    status: function (isTest) {
+      if (this.pendingRetry || this.preprocessState === 1) {
+        // if pending retry then that's effectively the same as actively uploading,
+        // there might just be a slight delay before the retry starts
+        return 'uploading';
+      } else if (!this.xhr) {
+        return 'pending';
+      } else if (this.xhr.readyState < 4) {
+        // Status is really 'OPENED', 'HEADERS_RECEIVED'
+        // or 'LOADING' - meaning that stuff is happening
+        return 'uploading';
+      } else {
+        if (this.flowObj.opts.successStatuses.indexOf(this.xhr.status) > -1) {
+          // HTTP 200, perfect
+		      // HTTP 202 Accepted - The request has been accepted for processing, but the processing has not been completed.
+          return 'success';
+        } else if (this.flowObj.opts.permanentErrors.indexOf(this.xhr.status) > -1 ||
+            !isTest && this.retries >= this.flowObj.opts.maxChunkRetries) {
+          // HTTP 415/500/501, permanent error
+          return 'error';
+        } else {
+          // this should never happen, but we'll reset and queue a retry
+          // a likely case for this would be 503 service unavailable
+          this.abort();
+          return 'pending';
+        }
+      }
+    },
+
+    /**
+     * Get response from xhr request
+     * @function
+     * @returns {String}
+     */
+    message: function () {
+      return this.xhr ? this.xhr.responseText : '';
+    },
+
+    /**
+     * Get upload progress
+     * @function
+     * @returns {number}
+     */
+    progress: function () {
+      if (this.pendingRetry) {
+        return 0;
+      }
+      var s = this.status();
+      if (s === 'success' || s === 'error') {
+        return 1;
+      } else if (s === 'pending') {
+        return 0;
+      } else {
+        return this.total > 0 ? this.loaded / this.total : 0;
+      }
+    },
+
+    /**
+     * Count total size uploaded
+     * @function
+     * @returns {number}
+     */
+    sizeUploaded: function () {
+      var size = this.endByte - this.startByte;
+      // can't return only chunk.loaded value, because it is bigger than chunk size
+      if (this.status() !== 'success') {
+        size = this.progress() * size;
+      }
+      return size;
+    },
+
+    /**
+     * Prepare Xhr request. Set query, headers and data
+     * @param {string} method GET or POST
+     * @param {bool} isTest is this a test request
+     * @param {string} [paramsMethod] octet or form
+     * @param {Blob} [blob] to send
+     * @returns {FormData|Blob|Null} data to send
+     */
+    prepareXhrRequest: function(method, isTest, paramsMethod, blob) {
+      // Add data from the query options
+      var query = evalOpts(this.flowObj.opts.query, this.fileObj, this, isTest);
+      query = extend(this.getParams(), query);
+
+      var target = evalOpts(this.flowObj.opts.target, this.fileObj, this, isTest);
+      var data = null;
+      if (method === 'GET' || paramsMethod === 'octet') {
+        // Add data from the query options
+        var params = [];
+        each(query, function (v, k) {
+          params.push([encodeURIComponent(k), encodeURIComponent(v)].join('='));
+        });
+        target = this.getTarget(target, params);
+        data = blob || null;
+      } else {
+        // Add data from the query options
+        data = new FormData();
+        each(query, function (v, k) {
+          data.append(k, v);
+        });
+        data.append(this.flowObj.opts.fileParameterName, blob, this.fileObj.file.name);
+      }
+
+      this.xhr.open(method, target, true);
+      this.xhr.withCredentials = this.flowObj.opts.withCredentials;
+
+      // Add data from header options
+      each(evalOpts(this.flowObj.opts.headers, this.fileObj, this, isTest), function (v, k) {
+        this.xhr.setRequestHeader(k, v);
+      }, this);
+
+      return data;
+    }
+  };
+
+  /**
+   * Remove value from array
+   * @param array
+   * @param value
+   */
+  function arrayRemove(array, value) {
+    var index = array.indexOf(value);
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+  }
+
+  /**
+   * If option is a function, evaluate it with given params
+   * @param {*} data
+   * @param {...} args arguments of a callback
+   * @returns {*}
+   */
+  function evalOpts(data, args) {
+    if (typeof data === "function") {
+      // `arguments` is an object, not array, in FF, so:
+      args = Array.prototype.slice.call(arguments);
+      data = data.apply(null, args.slice(1));
+    }
+    return data;
+  }
+  Flow.evalOpts = evalOpts;
+
+  /**
+   * Execute function asynchronously
+   * @param fn
+   * @param context
+   */
+  function async(fn, context) {
+    setTimeout(fn.bind(context), 0);
+  }
+
+  /**
+   * Extends the destination object `dst` by copying all of the properties from
+   * the `src` object(s) to `dst`. You can specify multiple `src` objects.
+   * @function
+   * @param {Object} dst Destination object.
+   * @param {...Object} src Source object(s).
+   * @returns {Object} Reference to `dst`.
+   */
+  function extend(dst, src) {
+    each(arguments, function(obj) {
+      if (obj !== dst) {
+        each(obj, function(value, key){
+          dst[key] = value;
+        });
+      }
+    });
+    return dst;
+  }
+  Flow.extend = extend;
+
+  /**
+   * Iterate each element of an object
+   * @function
+   * @param {Array|Object} obj object or an array to iterate
+   * @param {Function} callback first argument is a value and second is a key.
+   * @param {Object=} context Object to become context (`this`) for the iterator function.
+   */
+  function each(obj, callback, context) {
+    if (!obj) {
+      return ;
+    }
+    var key;
+    // Is Array?
+    if (typeof(obj.length) !== 'undefined') {
+      for (key = 0; key < obj.length; key++) {
+        if (callback.call(context, obj[key], key) === false) {
+          return ;
+        }
+      }
+    } else {
+      for (key in obj) {
+        if (obj.hasOwnProperty(key) && callback.call(context, obj[key], key) === false) {
+          return ;
+        }
+      }
+    }
+  }
+  Flow.each = each;
+
+  /**
+   * FlowFile constructor
+   * @type {FlowFile}
+   */
+  Flow.FlowFile = FlowFile;
+
+  /**
+   * FlowFile constructor
+   * @type {FlowChunk}
+   */
+  Flow.FlowChunk = FlowChunk;
+
+  /**
+   * Library version
+   * @type {string}
+   */
+  Flow.version = '2.9.0';
+
+  if ( typeof module === "object" && module && typeof module.exports === "object" ) {
+    // Expose Flow as module.exports in loaders that implement the Node
+    // module pattern (including browserify). Do not create the global, since
+    // the user will be storing it themselves locally, and globals are frowned
+    // upon in the Node module world.
+    module.exports = Flow;
+  } else {
+    // Otherwise expose Flow to the global object as usual
+    window.Flow = Flow;
+
+    // Register as a named AMD module, since Flow can be concatenated with other
+    // files that may use define, but not via a proper concatenation script that
+    // understands anonymous AMD modules. A named AMD is safest and most robust
+    // way to register. Lowercase flow is used because AMD module names are
+    // derived from file names, and Flow is normally delivered in a lowercase
+    // file name. Do this after creating the global so that if an AMD module wants
+    // to call noConflict to hide this version of Flow, it will work.
+    if ( typeof define === "function" && define.amd ) {
+      define( "flow", [], function () { return Flow; } );
+    }
+  }
+})(window, document);
+
+/**
+ * @description
+ * var app = angular.module('App', ['flow.provider'], function(flowFactoryProvider){
+ *    flowFactoryProvider.defaults = {target: '/'};
+ * });
+ * @name flowFactoryProvider
+ */
+angular.module('flow.provider', [])
+.provider('flowFactory', function() {
+  'use strict';
+  /**
+   * Define the default properties for flow.js
+   * @name flowFactoryProvider.defaults
+   * @type {Object}
+   */
+  this.defaults = {};
+
+  /**
+   * Flow, MaybeFlow or NotFlow
+   * @name flowFactoryProvider.factory
+   * @type {function}
+   * @return {Flow}
+   */
+  this.factory = function (options) {
+    return new Flow(options);
+  };
+
+  /**
+   * Define the default events
+   * @name flowFactoryProvider.events
+   * @type {Array}
+   * @private
+   */
+  this.events = [];
+
+  /**
+   * Add default events
+   * @name flowFactoryProvider.on
+   * @function
+   * @param {string} event
+   * @param {Function} callback
+   */
+  this.on = function (event, callback) {
+    this.events.push([event, callback]);
+  };
+
+  this.$get = function() {
+    var fn = this.factory;
+    var defaults = this.defaults;
+    var events = this.events;
+    return {
+      'create': function(opts) {
+        // combine default options with global options and options
+        var flow = fn(angular.extend({}, defaults, opts));
+        angular.forEach(events, function (event) {
+          flow.on(event[0], event[1]);
+        });
+        return flow;
+      }
+    };
+  };
+});
+angular.module('flow.init', ['flow.provider'])
+  .controller('flowCtrl', ['$scope', '$attrs', '$parse', 'flowFactory',
+  function ($scope, $attrs, $parse, flowFactory) {
+
+    var options = angular.extend({}, $scope.$eval($attrs.flowInit));
+
+    // use existing flow object or create a new one
+    var flow  = $scope.$eval($attrs.flowObject) || flowFactory.create(options);
+
+    flow.on('catchAll', function (eventName) {
+      var args = Array.prototype.slice.call(arguments);
+      args.shift();
+      var event = $scope.$broadcast.apply($scope, ['flow::' + eventName, flow].concat(args));
+      if ({
+        'progress':1, 'filesSubmitted':1, 'fileSuccess': 1, 'fileError': 1, 'complete': 1
+      }[eventName]) {
+        $scope.$apply();
+      }
+      if (event.defaultPrevented) {
+        return false;
+      }
+    });
+
+    $scope.$flow = flow;
+    if ($attrs.hasOwnProperty('flowName')) {
+      $parse($attrs.flowName).assign($scope, flow);
+      $scope.$on('$destroy', function () {
+        $parse($attrs.flowName).assign($scope);
+      });
+    }
+  }])
+  .directive('flowInit', [function() {
+    return {
+      scope: true,
+      controller: 'flowCtrl'
+    };
+  }]);
+angular.module('flow.btn', ['flow.init'])
+.directive('flowBtn', [function() {
+  return {
+    'restrict': 'EA',
+    'scope': false,
+    'require': '^flowInit',
+    'link': function(scope, element, attrs) {
+      var isDirectory = attrs.hasOwnProperty('flowDirectory');
+      var isSingleFile = attrs.hasOwnProperty('flowSingleFile');
+      var inputAttrs = attrs.hasOwnProperty('flowAttrs') && scope.$eval(attrs.flowAttrs);
+      scope.$flow.assignBrowse(element, isDirectory, isSingleFile, inputAttrs);
+    }
+  };
+}]);
+angular.module('flow.dragEvents', ['flow.init'])
+/**
+ * @name flowPreventDrop
+ * Prevent loading files then dropped on element
+ */
+  .directive('flowPreventDrop', function() {
+    return {
+      'scope': false,
+      'link': function(scope, element, attrs) {
+        element.bind('drop dragover', function (event) {
+          event.preventDefault();
+        });
+      }
+    };
+  })
+/**
+ * @name flowDragEnter
+ * executes `flowDragEnter` and `flowDragLeave` events
+ */
+  .directive('flowDragEnter', ['$timeout', function($timeout) {
+    return {
+      'scope': false,
+      'link': function(scope, element, attrs) {
+        var promise;
+        var enter = false;
+        element.bind('dragover', function (event) {
+          if (!isFileDrag(event)) {
+            return ;
+          }
+          if (!enter) {
+            scope.$apply(attrs.flowDragEnter);
+            enter = true;
+          }
+          $timeout.cancel(promise);
+          event.preventDefault();
+        });
+        element.bind('dragleave drop', function (event) {
+          $timeout.cancel(promise);
+          promise = $timeout(function () {
+            scope.$eval(attrs.flowDragLeave);
+            promise = null;
+            enter = false;
+          }, 100);
+        });
+        function isFileDrag(dragEvent) {
+          var fileDrag = false;
+          var dataTransfer = dragEvent.dataTransfer || dragEvent.originalEvent.dataTransfer;
+          angular.forEach(dataTransfer && dataTransfer.types, function(val) {
+            if (val === 'Files') {
+              fileDrag = true;
+            }
+          });
+          return fileDrag;
+        }
+      }
+    };
+  }]);
+
+angular.module('flow.drop', ['flow.init'])
+.directive('flowDrop', function() {
+  return {
+    'scope': false,
+    'require': '^flowInit',
+    'link': function(scope, element, attrs) {
+      if (attrs.flowDropEnabled) {
+        scope.$watch(attrs.flowDropEnabled, function (value) {
+          if (value) {
+            assignDrop();
+          } else {
+            unAssignDrop();
+          }
+        });
+      } else {
+        assignDrop();
+      }
+      function assignDrop() {
+        scope.$flow.assignDrop(element);
+      }
+      function unAssignDrop() {
+        scope.$flow.unAssignDrop(element);
+      }
+    }
+  };
+});
+
+!function (angular) {'use strict';
+  var module = angular.module('flow.events', ['flow.init']);
+  var events = {
+    fileSuccess: ['$file', '$message'],
+    fileProgress: ['$file'],
+    fileAdded: ['$file', '$event'],
+    filesAdded: ['$files', '$event'],
+    filesSubmitted: ['$files', '$event'],
+    fileRetry: ['$file'],
+    fileError: ['$file', '$message'],
+    uploadStart: [],
+    complete: [],
+    progress: [],
+    error: ['$message', '$file']
+  };
+
+  angular.forEach(events, function (eventArgs, eventName) {
+    var name = 'flow' + capitaliseFirstLetter(eventName);
+    if (name == 'flowUploadStart') {
+      name = 'flowUploadStarted';// event alias
+    }
+    module.directive(name, [function() {
+      return {
+        require: '^flowInit',
+        controller: ['$scope', '$attrs', function ($scope, $attrs) {
+          $scope.$on('flow::' + eventName, function () {
+            var funcArgs = Array.prototype.slice.call(arguments);
+            var event = funcArgs.shift();// remove angular event
+            // remove flow object and ignore event if it is from parent directive
+            if ($scope.$flow !== funcArgs.shift()) {
+              return ;
+            }
+            var args = {};
+            angular.forEach(eventArgs, function(value, key) {
+              args[value] = funcArgs[key];
+            });
+            if ($scope.$eval($attrs[name], args) === false) {
+              event.preventDefault();
+            }
+          });
+        }]
+      };
+    }]);
+  });
+
+  function capitaliseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+}(angular);
+angular.module('flow.img', ['flow.init'])
+.directive('flowImg', [function() {
+  return {
+    'scope': false,
+    'require': '^flowInit',
+    'link': function(scope, element, attrs) {
+      var file = attrs.flowImg;
+      scope.$watch(file, function (file) {
+        if (!file) {
+          return ;
+        }
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(file.file);
+        fileReader.onload = function (event) {
+          scope.$apply(function () {
+            attrs.$set('src', event.target.result);
+          });
+        };
+      });
+    }
+  };
+}]);
+angular.module('flow.transfers', ['flow.init'])
+.directive('flowTransfers', [function() {
+  return {
+    'scope': true,
+    'require': '^flowInit',
+    'link': function(scope) {
+      scope.transfers = scope.$flow.files;
+    }
+  };
+}]);
+angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
+  'flow.drop', 'flow.transfers', 'flow.img', 'flow.dragEvents']);
+/*global angular */
+/* =========================================
+   Wallet directive
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('account-directives', [])
+	.directive('editAccountModal', function () {
+
+	    return {
+	    	scope: true,
+	        restrict: 'E',
+	        template:
+	        	'<section ng-show="dash.modal_edit_account" class="modal ng-modal-dialog"> ' +
+
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' +
+
+					'<h1>Edit Watch Account</h1> ' +
+					'<form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" ' +
+						'<div class="modal_form" data-id="{{dash.acct_id}}"> ' +
+							'<div class="label_input_combo"> ' +
+								'<label for="to_input">Account Name</label> ' +
+								'<input id="to_input" ' +
+										'ng-model="dash.new_label" ' +
+										'class="form-input" ' +
+										'type="text" ' +
+										'placeholder="{{dash.acct_label}}"> ' +
+							'</div> ' +
+
+							'<div class="label_input_combo"> ' +
+								'<label for="amount_input" class="label_amount">Public Address</label> ' +
+								'<input id="amount_input" ' +
+										'ng-model="dash.new_address" ' +
+										'class="public_addy_input form-input" ' +
+										'type="text" ' +
+										'placeholder="{{dash.acct_address}}"> ' +
+							'</div> ' +
+
+							'<button type="submit" ' +
+									'class="btn btn_med btn_send_now"> ' +
+									'{{dash.save_btn_text}} ' +
+							'</button> ' +
+
+							'<button ng-click="dash.removeAccount(dash.acct_id)" ' +
+									'class="btn btn_med btn_remove"> ' +
+									'Remove' +
+							'</button> ' +
+						'</div> ' +
+					'</form>' +
+
+				'</section>'
+	    };
+	});
+
+})();
+
+/* -----------------------------------------------
+/* Configuration parameters could be modified in future releases.
+/* It is highly recommended to host the particles.js file on your own server.
+/* ----------------------------------------------- */
 
 /* -----------------------------------------------
 /* Author : Vincent Garreau  - vincentgarreau.com
@@ -5328,875 +6847,422 @@ window.particlesJS = function(tag_id, params){
   }
 
 };
+/*global angular*/
+/* =========================================
+--------------------------------------------
+
+	BITAGE.io Dashboard views app
+	"Keep watch over your Bitcoins"
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+
+--------------------------------------------
+============================================ */
+
+(function() { "use strict";
+
+	var app = angular.module('bitAge',
+		['ui.router',
+		 'app-wallet',
+		 'wallet-directives',
+		 'notification-directives',
+		 'app-accounts',
+		 'app-settings',
+		 'app-help'])
+
+	.config([
+		'$stateProvider',
+		'$urlRouterProvider',
+		function($stateProvider, $urlRouterProvider) {
+
+			$stateProvider
+				.state('wallet', {
+					url: '/wallet',
+					templateUrl: '_views/wallet.html'
+				})
+
+				.state('accounts', {
+					url: '/accounts',
+					templateUrl: '_views/accounts.html'
+					// controller: 'AcctCtrl'
+				})
+
+				.state('settings', {
+					url: '/settings',
+					templateUrl: '_views/settings.html',
+					controller: 'SettingsCtrl'
+				})
+
+				.state('help', {
+					url: '/help',
+					templateUrl: '_views/help.html',
+					controller: 'HelpCtrl'
+				});
+
+			$urlRouterProvider.otherwise('wallet');
+	}])
+
+	.controller('DashCtrl',
+		['$scope', '$state',
+		function($scope, $state) {
+
+		var vm = this;
+		vm.qr_code = 'http://placehold.it/200&text=Loading+QR+Code';
+
+		// Sidebar tab select:
+		vm.$state = $state;
+		vm.sidebarClick = function() {
+			return $state.includes($state.current.name);
+		};
+
+		// Avatar Menu open/close:
+		vm.avatarMenuBool = false;
+		vm.clickAvatar = function(val, $event) {
+			$event.stopPropagation();
+			vm.avatarMenuBool = !vm.avatarMenuBool;
+		};
+
+		// Detect click on body & close menu
+		vm.closeMenu = function () {
+			vm.avatarMenuBool = false;
+		};
+
+		// Stop the event from bubbling up any further
+		vm.menuClick = function ($event) {
+			$event.stopPropagation();
+		};
+
+		// Close all modals in the DashCtrl scope
+		vm.closeModal = function() {
+			vm.modal_edit_account = false;
+			vm.modal_receive = false;
+			vm.modal_send = false;
+			vm.modal = false;
+		};
+
+	}]);
+
+})();
+
 /*global angular */
 /* =========================================
-   REGISTER Module
+   HELP Module
    ========================================= */
 
 (function() {
 
-    var app = angular.module('app-register', [])
-    .controller('RegisterCtrl',
-        ['$http', '$location', 'registerService',
-        function($http, $location, registerService) {
+	var app = angular.module('app-help', ['notification-directives'])
 
-        var vm = this;
-        var location = $location;
+	.controller('HelpCtrl',
+	['$scope', '$http', '$timeout', 'helpService',
+	function($scope, $http, $timeout, helpService) {
 
-        // Sign up form submit
-        vm.submitForm = function(isValid) {
+		var vmt = this;
+		var vms = $scope;
 
-            // check to make sure form is valid
-            if (isValid) {
-                registerService.postSignUpForm(vm.formData, location);
-            } else {
-               swal({
-                   title: "Oops!",
-                   text: "Please check the form!",
-                   type: "error",
-                   confirmButtonText: "Ok",
-                   confirmButtonColor: "#024562" });
-            }
+		var timeoutMsg = function() {
+			vms.$parent.notification = false;
+		};
 
-        };
+		vms.$parent.closeMsg = function() {
+			vms.$parent.notification = false;
+		};
 
-    }])
+		// setup e-mail data with unicode symbols
+		// send user name, email and public address
+		var helpMessage = {
+		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+		    to: 'leon@bitage.io', // list of receivers
+		    subject: 'Bitage Help Request! ✔', // Subject line
+		    text: 'Hello world ✔', // plaintext body
+		    html: '<b>Hello world ✔</b>' // html body
+		};
 
-    .service('registerService', ['$http', function($http) {
+		// Quick form submit
+		this.submitHelpForm = function(isValid) {
 
-        this.postSignUpForm = function(fdata, location) {
+			// check to make sure form is valid
+			if (isValid) {
+				alert('our form is amazing');
+				var data = this.formData;
 
-            console.log(location);
+				// Post form in helpService
+				helpService.postHelpForm($http, data);
 
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(fdata),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
+				// Show success notification
+				vms.$parent.message = 'Thanks! We will get back to you soon.';
+				vms.$parent.notification = true;
+				$timeout(timeoutMsg, 4000);
 
-                });
-        };
-    }]);
+			} else {
+				// Show error notification
+				alert('Please correct the form');
+			}
+
+		};
+
+	}])
+
+	.service('helpService', [function() {
+
+		this.postHelpForm = function($http, data) {
+			console.log(data.message);
+
+			// process the form
+			// login data contains remember boolean
+			var request = $http({
+					method  : 'POST',
+					url     : '/help',
+					// data    : $.param(vm.formData),
+					data    : data.message,
+					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+				})
+				.success(function() {
+					// Show notification
+					// vms.$parent.message = 'Thanks! We will get back to you soon.';
+					// vms.$parent.notification = true;
+					// $timeout(timeoutMsg, 4000);
+				});
+		};
+
+	}]);
 
 })();
 
-// SweetAlert
-// 2014 (c) - Tristan Edwards
-// github.com/t4t5/sweetalert
-;(function(window, document, undefined) {
-
-  var modalClass   = '.sweet-alert',
-      overlayClass = '.sweet-overlay',
-      alertTypes   = ['error', 'warning', 'info', 'success'],
-      defaultParams = {
-        title: '',
-        text: '',
-        type: null,
-        allowOutsideClick: false,
-        showCancelButton: false,
-        closeOnConfirm: true,
-        closeOnCancel: true,
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#AEDEF4',
-        cancelButtonText: 'Cancel',
-        imageUrl: null,
-        imageSize: null,
-        timer: null,
-        customClass: '',
-        html: false,
-        animation: true,
-        allowEscapeKey: true
-      };
-
-
-  /*
-   * Manipulate DOM
-   */
-
-  var getModal = function() {
-      var $modal = document.querySelector(modalClass);
-
-      if (!$modal) {
-        sweetAlertInitialize();
-        $modal = getModal();
-      }
-
-      return $modal;
-    },
-    getOverlay = function() {
-      return document.querySelector(overlayClass);
-    },
-    hasClass = function(elem, className) {
-      return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
-    },
-    addClass = function(elem, className) {
-      if (!hasClass(elem, className)) {
-        elem.className += ' ' + className;
-      }
-    },
-    removeClass = function(elem, className) {
-      var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
-      if (hasClass(elem, className)) {
-        while (newClass.indexOf(' ' + className + ' ') >= 0) {
-          newClass = newClass.replace(' ' + className + ' ', ' ');
-        }
-        elem.className = newClass.replace(/^\s+|\s+$/g, '');
-      }
-    },
-    escapeHtml = function(str) {
-      var div = document.createElement('div');
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
-    },
-    _show = function(elem) {
-      elem.style.opacity = '';
-      elem.style.display = 'block';
-    },
-    show = function(elems) {
-      if (elems && !elems.length) {
-        return _show(elems);
-      }
-      for (var i = 0; i < elems.length; ++i) {
-        _show(elems[i]);
-      }
-    },
-    _hide = function(elem) {
-      elem.style.opacity = '';
-      elem.style.display = 'none';
-    },
-    hide = function(elems) {
-      if (elems && !elems.length) {
-        return _hide(elems);
-      }
-      for (var i = 0; i < elems.length; ++i) {
-        _hide(elems[i]);
-      }
-    },
-    isDescendant = function(parent, child) {
-      var node = child.parentNode;
-      while (node !== null) {
-        if (node === parent) {
-          return true;
-        }
-        node = node.parentNode;
-      }
-      return false;
-    },
-    getTopMargin = function(elem) {
-      elem.style.left = '-9999px';
-      elem.style.display = 'block';
-
-      var height = elem.clientHeight,
-          padding;
-      if (typeof getComputedStyle !== "undefined") { /* IE 8 */
-        padding = parseInt(getComputedStyle(elem).getPropertyValue('padding'), 10);
-      } else {
-        padding = parseInt(elem.currentStyle.padding);
-      }
-
-      elem.style.left = '';
-      elem.style.display = 'none';
-      return ('-' + parseInt(height / 2 + padding) + 'px');
-    },
-    fadeIn = function(elem, interval) {
-      if (+elem.style.opacity < 1) {
-        interval = interval || 16;
-        elem.style.opacity = 0;
-        elem.style.display = 'block';
-        var last = +new Date();
-        var tick = function() {
-          elem.style.opacity = +elem.style.opacity + (new Date() - last) / 100;
-          last = +new Date();
-
-          if (+elem.style.opacity < 1) {
-            setTimeout(tick, interval);
-          }
-        };
-        tick();
-      }
-      elem.style.display = 'block'; //fallback IE8
-    },
-    fadeOut = function(elem, interval) {
-      interval = interval || 16;
-      elem.style.opacity = 1;
-      var last = +new Date();
-      var tick = function() {
-        elem.style.opacity = +elem.style.opacity - (new Date() - last) / 100;
-        last = +new Date();
-
-        if (+elem.style.opacity > 0) {
-          setTimeout(tick, interval);
-        } else {
-          elem.style.display = 'none';
-        }
-      };
-      tick();
-    },
-    fireClick = function(node) {
-      // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
-      // Then fixed for today's Chrome browser.
-      if (typeof MouseEvent === 'function') {
-        // Up-to-date approach
-        var mevt = new MouseEvent('click', {
-          view: window,
-          bubbles: false,
-          cancelable: true
-        });
-        node.dispatchEvent(mevt);
-      } else if ( document.createEvent ) {
-        // Fallback
-        var evt = document.createEvent('MouseEvents');
-        evt.initEvent('click', false, false);
-        node.dispatchEvent(evt);
-      } else if( document.createEventObject ) {
-        node.fireEvent('onclick') ;
-      } else if (typeof node.onclick === 'function' ) {
-        node.onclick();
-      }
-    },
-    stopEventPropagation = function(e) {
-      // In particular, make sure the space bar doesn't scroll the main window.
-      if (typeof e.stopPropagation === 'function') {
-        e.stopPropagation();
-        e.preventDefault();
-      } else if (window.event && window.event.hasOwnProperty('cancelBubble')) {
-        window.event.cancelBubble = true;
-      }
-    };
-
-  // Remember state in cases where opening and handling a modal will fiddle with it.
-  var previousActiveElement,
-      previousDocumentClick,
-      previousWindowKeyDown,
-      lastFocusedButton;
-
-
-  /*
-   * Add modal + overlay to DOM
-   */
-
-  window.sweetAlertInitialize = function() {
-    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><p>Text</p><button class="cancel" tabIndex="2">Cancel</button><button class="confirm" tabIndex="1">OK</button></div>',
-        sweetWrap = document.createElement('div');
-
-    sweetWrap.innerHTML = sweetHTML;
-
-    // Append elements to body
-    while (sweetWrap.firstChild) {
-      document.body.appendChild(sweetWrap.firstChild);
-    }
-  };
-
-
-  /*
-   * Global sweetAlert function
-   */
-
-  window.sweetAlert = window.swal = function() {
-    // Copy arguments to the local args variable
-    var args = arguments;
-    if (getModal() !== null) {
-      // If getModal returns values then continue
-      modalDependant.apply(this, args);
-    } else {
-      // If getModal returns null i.e. no matches, then set up a interval event to check the return value until it is not null
-      var modalCheckInterval = setInterval(function() {
-        if (getModal() !== null) {
-          clearInterval(modalCheckInterval);
-          modalDependant.apply(this, args);
-        }
-      }, 100);
-    }
-  };
-
-  function modalDependant() {
-
-    var customizations = arguments[0];
-
-    /*
-     * Use argument if defined or default value from params object otherwise.
-     * Supports the case where a default value is boolean true and should be
-     * overridden by a corresponding explicit argument which is boolean false.
-     */
-    function argumentOrDefault(key) {
-      var args = customizations;
-
-      if (typeof args[key] !== 'undefined') {
-        return args[key];
-      } else {
-        return defaultParams[key];
-      }
-    }
-
-    if (arguments[0] === undefined) {
-      logStr('SweetAlert expects at least 1 attribute!');
-      return false;
-    }
-
-    var params = extend({}, defaultParams);
-
-    switch (typeof arguments[0]) {
-
-      // Ex: swal("Hello", "Just testing", "info");
-      case 'string':
-        params.title = arguments[0];
-        params.text  = arguments[1] || '';
-        params.type  = arguments[2] || '';
-
-        break;
-
-      // Ex: swal({title:"Hello", text: "Just testing", type: "info"});
-      case 'object':
-        if (arguments[0].title === undefined) {
-          logStr('Missing "title" argument!');
-          return false;
-        }
-
-        params.title = arguments[0].title;
-
-        var availableCustoms = [
-          'text',
-          'type',
-          'customClass',
-          'allowOutsideClick',
-          'showCancelButton',
-          'closeOnConfirm',
-          'closeOnCancel',
-          'timer',
-          'confirmButtonColor',
-          'cancelButtonText',
-          'imageUrl',
-          'imageSize',
-          'html',
-          'animation',
-          'allowEscapeKey'];
-
-        // It would be nice to just use .forEach here, but IE8... :(
-        var numCustoms = availableCustoms.length;
-        for (var customIndex = 0; customIndex < numCustoms; customIndex++) {
-          var customName = availableCustoms[customIndex];
-          params[customName] = argumentOrDefault(customName);
-        }
-
-        // Show "Confirm" instead of "OK" if cancel button is visible
-        params.confirmButtonText  = (params.showCancelButton) ? 'Confirm' : defaultParams.confirmButtonText;
-        params.confirmButtonText  = argumentOrDefault('confirmButtonText');
-
-        // Function to call when clicking on cancel/OK
-        params.doneFunction       = arguments[1] || null;
-
-        break;
-
-      default:
-        logStr('Unexpected type of argument! Expected "string" or "object", got ' + typeof arguments[0]);
-        return false;
-
-    }
-
-    setParameters(params);
-    fixVerticalPosition();
-    openModal();
-
-
-    // Modal interactions
-    var modal = getModal();
-
-    // Mouse interactions
-    var onButtonEvent = function(event) {
-      var e = event || window.event;
-      var target = e.target || e.srcElement,
-          targetedConfirm    = (target.className.indexOf("confirm") !== -1),
-          modalIsVisible     = hasClass(modal, 'visible'),
-          doneFunctionExists = (params.doneFunction && modal.getAttribute('data-has-done-function') === 'true');
-
-      switch (e.type) {
-        case ("mouseover"):
-          if (targetedConfirm) {
-            target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.04);
-          }
-          break;
-        case ("mouseout"):
-          if (targetedConfirm) {
-            target.style.backgroundColor = params.confirmButtonColor;
-          }
-          break;
-        case ("mousedown"):
-          if (targetedConfirm) {
-            target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.14);
-          }
-          break;
-        case ("mouseup"):
-          if (targetedConfirm) {
-            target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.04);
-          }
-          break;
-        case ("focus"):
-          var $confirmButton = modal.querySelector('button.confirm'),
-              $cancelButton  = modal.querySelector('button.cancel');
-
-          if (targetedConfirm) {
-            $cancelButton.style.boxShadow = 'none';
-          } else {
-            $confirmButton.style.boxShadow = 'none';
-          }
-          break;
-        case ("click"):
-          if (targetedConfirm && doneFunctionExists && modalIsVisible) { // Clicked "confirm"
-
-            params.doneFunction(true);
-
-            if (params.closeOnConfirm) {
-              window.sweetAlert.close();
-            }
-          } else if (doneFunctionExists && modalIsVisible) { // Clicked "cancel"
-
-            // Check if callback function expects a parameter (to track cancel actions)
-            var functionAsStr          = String(params.doneFunction).replace(/\s/g, '');
-            var functionHandlesCancel  = functionAsStr.substring(0, 9) === "function(" && functionAsStr.substring(9, 10) !== ")";
-
-            if (functionHandlesCancel) {
-              params.doneFunction(false);
-            }
-
-            if (params.closeOnCancel) {
-              window.sweetAlert.close();
-            }
-          } else {
-            window.sweetAlert.close();
-          }
-
-          break;
-      }
-    };
-
-    var $buttons = modal.querySelectorAll('button');
-    for (var i = 0; i < $buttons.length; i++) {
-      $buttons[i].onclick     = onButtonEvent;
-      $buttons[i].onmouseover = onButtonEvent;
-      $buttons[i].onmouseout  = onButtonEvent;
-      $buttons[i].onmousedown = onButtonEvent;
-      //$buttons[i].onmouseup   = onButtonEvent;
-      $buttons[i].onfocus     = onButtonEvent;
-    }
-
-    // Remember the current document.onclick event.
-    previousDocumentClick = document.onclick;
-    document.onclick = function(event) {
-      var e = event || window.event;
-      var target = e.target || e.srcElement;
-
-      var clickedOnModal = (modal === target),
-          clickedOnModalChild = isDescendant(modal, target),
-          modalIsVisible = hasClass(modal, 'visible'),
-          outsideClickIsAllowed = modal.getAttribute('data-allow-ouside-click') === 'true';
-
-      if (!clickedOnModal && !clickedOnModalChild && modalIsVisible && outsideClickIsAllowed) {
-        window.sweetAlert.close();
-      }
-    };
-
-
-    // Keyboard interactions
-    var $okButton = modal.querySelector('button.confirm'),
-        $cancelButton = modal.querySelector('button.cancel'),
-        $modalButtons = modal.querySelectorAll('button[tabindex]');
-
-
-    function handleKeyDown(event) {
-      var e = event || window.event;
-      var keyCode = e.keyCode || e.which;
-
-      if ([9,13,32,27].indexOf(keyCode) === -1) {
-        // Don't do work on keys we don't care about.
-        return;
-      }
-
-      var $targetElement = e.target || e.srcElement;
-
-      var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
-      for (var i = 0; i < $modalButtons.length; i++) {
-        if ($targetElement === $modalButtons[i]) {
-          btnIndex = i;
-          break;
-        }
-      }
-
-      if (keyCode === 9) {
-        // TAB
-        if (btnIndex === -1) {
-          // No button focused. Jump to the confirm button.
-          $targetElement = $okButton;
-        } else {
-          // Cycle to the next button
-          if (btnIndex === $modalButtons.length - 1) {
-            $targetElement = $modalButtons[0];
-          } else {
-            $targetElement = $modalButtons[btnIndex + 1];
-          }
-        }
-
-        stopEventPropagation(e);
-        $targetElement.focus();
-        setFocusStyle($targetElement, params.confirmButtonColor); // TODO
-
-      } else {
-        if (keyCode === 13 || keyCode === 32) {
-            if (btnIndex === -1) {
-              // ENTER/SPACE clicked outside of a button.
-              $targetElement = $okButton;
-            } else {
-              // Do nothing - let the browser handle it.
-              $targetElement = undefined;
-            }
-        } else if (keyCode === 27 && params.allowEscapeKey === true) {
-          $targetElement = $cancelButton;
-        } else {
-          // Fallback - let the browser handle it.
-          $targetElement = undefined;
-        }
-
-        if ($targetElement !== undefined) {
-          fireClick($targetElement, e);
-        }
-      }
-    }
-
-    previousWindowKeyDown = window.onkeydown;
-
-    window.onkeydown = handleKeyDown;
-
-    function handleOnBlur(event) {
-      var e = event || window.event;
-      var $targetElement = e.target || e.srcElement,
-          $focusElement = e.relatedTarget,
-          modalIsVisible = hasClass(modal, 'visible');
-
-      if (modalIsVisible) {
-        var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
-
-        if ($focusElement !== null) {
-          // If we picked something in the DOM to focus to, let's see if it was a button.
-          for (var i = 0; i < $modalButtons.length; i++) {
-            if ($focusElement === $modalButtons[i]) {
-              btnIndex = i;
-              break;
-            }
-          }
-
-          if (btnIndex === -1) {
-            // Something in the dom, but not a visible button. Focus back on the button.
-            $targetElement.focus();
-          }
-        } else {
-          // Exiting the DOM (e.g. clicked in the URL bar);
-          lastFocusedButton = $targetElement;
-        }
-      }
-    }
-
-    $okButton.onblur = handleOnBlur;
-    $cancelButton.onblur = handleOnBlur;
-
-    window.onfocus = function() {
-      // When the user has focused away and focused back from the whole window.
-      window.setTimeout(function() {
-        // Put in a timeout to jump out of the event sequence. Calling focus() in the event
-        // sequence confuses things.
-        if (lastFocusedButton !== undefined) {
-          lastFocusedButton.focus();
-          lastFocusedButton = undefined;
-        }
-      }, 0);
-    };
-  }
-
-
-  /*
-   * Set default params for each popup
-   * @param {Object} userParams
-   */
-  window.sweetAlert.setDefaults = window.swal.setDefaults = function(userParams) {
-    if (!userParams) {
-      throw new Error('userParams is required');
-    }
-    if (typeof userParams !== 'object') {
-      throw new Error('userParams has to be a object');
-    }
-
-    extend(defaultParams, userParams);
-  };
-
-
-  /*
-   * Set type, text and actions on modal
-   */
-
-  function setParameters(params) {
-    var modal = getModal();
-
-    var $title = modal.querySelector('h2'),
-        $text = modal.querySelector('p'),
-        $cancelBtn = modal.querySelector('button.cancel'),
-        $confirmBtn = modal.querySelector('button.confirm');
-
-    // Title
-    $title.innerHTML = (params.html) ? params.title : escapeHtml(params.title).split("\n").join("<br>");
-
-    // Text
-    $text.innerHTML = (params.html) ? params.text : escapeHtml(params.text || '').split("\n").join("<br>");
-
-    if (params.text) {
-      show($text);
-    }
-
-    //Custom Class
-    if (params.customClass) {
-      addClass(modal, params.customClass);
-      modal.setAttribute('data-custom-class', params.customClass);
-    } else {
-      // Find previously set classes and remove them
-      var customClass = modal.getAttribute('data-custom-class');
-      removeClass(modal, customClass);
-      modal.setAttribute('data-custom-class', "");
-    }
-
-    // Icon
-    hide(modal.querySelectorAll('.icon'));
-    if (params.type && !isIE8()) {
-      var validType = false;
-      for (var i = 0; i < alertTypes.length; i++) {
-        if (params.type === alertTypes[i]) {
-          validType = true;
-          break;
-        }
-      }
-      if (!validType) {
-        logStr('Unknown alert type: ' + params.type);
-        return false;
-      }
-      var $icon = modal.querySelector('.icon.' + params.type);
-      show($icon);
-
-      // Animate icon
-      switch (params.type) {
-        case "success":
-          addClass($icon, 'animate');
-          addClass($icon.querySelector('.tip'), 'animateSuccessTip');
-          addClass($icon.querySelector('.long'), 'animateSuccessLong');
-          break;
-        case "error":
-          addClass($icon, 'animateErrorIcon');
-          addClass($icon.querySelector('.x-mark'), 'animateXMark');
-          break;
-        case "warning":
-          addClass($icon, 'pulseWarning');
-          addClass($icon.querySelector('.body'), 'pulseWarningIns');
-          addClass($icon.querySelector('.dot'), 'pulseWarningIns');
-          break;
-      }
-    }
-
-    // Custom image
-    if (params.imageUrl) {
-      var $customIcon = modal.querySelector('.icon.custom');
-
-      $customIcon.style.backgroundImage = 'url(' + params.imageUrl + ')';
-      show($customIcon);
-
-      var _imgWidth  = 80,
-          _imgHeight = 80;
-
-      if (params.imageSize) {
-        var dimensions = params.imageSize.toString().split('x');
-        var imgWidth  = dimensions[0];
-        var imgHeight = dimensions[1];
-
-        if (!imgWidth || !imgHeight) {
-          logStr("Parameter imageSize expects value with format WIDTHxHEIGHT, got " + params.imageSize);
-        } else {
-          _imgWidth  = imgWidth;
-          _imgHeight = imgHeight;
-        }
-      }
-      $customIcon.setAttribute('style', $customIcon.getAttribute('style') + 'width:' + _imgWidth + 'px; height:' + _imgHeight + 'px');
-    }
-
-    // Cancel button
-    modal.setAttribute('data-has-cancel-button', params.showCancelButton);
-    if (params.showCancelButton) {
-      $cancelBtn.style.display = 'inline-block';
-    } else {
-      hide($cancelBtn);
-    }
-
-    // Edit text on cancel and confirm buttons
-    if (params.cancelButtonText) {
-      $cancelBtn.innerHTML = escapeHtml(params.cancelButtonText);
-    }
-    if (params.confirmButtonText) {
-      $confirmBtn.innerHTML = escapeHtml(params.confirmButtonText);
-    }
-
-    // Set confirm button to selected background color
-    $confirmBtn.style.backgroundColor = params.confirmButtonColor;
-
-    // Set box-shadow to default focused button
-    setFocusStyle($confirmBtn, params.confirmButtonColor);
-
-    // Allow outside click?
-    modal.setAttribute('data-allow-ouside-click', params.allowOutsideClick);
-
-    // Done-function
-    var hasDoneFunction = (params.doneFunction) ? true : false;
-    modal.setAttribute('data-has-done-function', hasDoneFunction);
-
-    // Prevent modal from animating
-    if (!params.animation){
-      modal.setAttribute('data-animation', 'none');
-    } else{
-      modal.setAttribute('data-animation', 'pop');
-    }
-
-    // Close timer
-    modal.setAttribute('data-timer', params.timer);
-  }
-
-
-  /*
-   * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
-   */
-
-  function colorLuminance(hex, lum) {
-    // Validate hex string
-    hex = String(hex).replace(/[^0-9a-f]/gi, '');
-    if (hex.length < 6) {
-      hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-    }
-    lum = lum || 0;
-
-    // Convert to decimal and change luminosity
-    var rgb = "#", c, i;
-    for (i = 0; i < 3; i++) {
-      c = parseInt(hex.substr(i*2,2), 16);
-      c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-      rgb += ("00"+c).substr(c.length);
-    }
-
-    return rgb;
-  }
-
-  function extend(a, b){
-    for (var key in b) {
-      if (b.hasOwnProperty(key)) {
-        a[key] = b[key];
-      }
-    }
-
-    return a;
-  }
-
-  function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? parseInt(result[1], 16) + ', ' + parseInt(result[2], 16) + ', ' + parseInt(result[3], 16) : null;
-  }
-
-  // Add box-shadow style to button (depending on its chosen bg-color)
-  function setFocusStyle($button, bgColor) {
-    var rgbColor = hexToRgb(bgColor);
-    $button.style.boxShadow = '0 0 2px rgba(' + rgbColor +', 0.8), inset 0 0 0 1px rgba(0, 0, 0, 0.05)';
-  }
-
-
-  // Animation when opening modal
-  function openModal() {
-    var modal = getModal();
-    fadeIn(getOverlay(), 10);
-    show(modal);
-    addClass(modal, 'showSweetAlert');
-    removeClass(modal, 'hideSweetAlert');
-
-    previousActiveElement = document.activeElement;
-    var $okButton = modal.querySelector('button.confirm');
-    $okButton.focus();
-
-    setTimeout(function() {
-      addClass(modal, 'visible');
-    }, 500);
-
-    var timer = modal.getAttribute('data-timer');
-
-    if (timer !== "null" && timer !== "") {
-      modal.timeout = setTimeout(function() {
-        window.sweetAlert.close();
-      }, timer);
-    }
-  }
-
-
-  // Aninmation when closing modal
-  window.sweetAlert.close = window.swal.close = function() {
-    var modal = getModal();
-    fadeOut(getOverlay(), 5);
-    fadeOut(modal, 5);
-    removeClass(modal, 'showSweetAlert');
-    addClass(modal, 'hideSweetAlert');
-    removeClass(modal, 'visible');
-
-
-    // Reset icon animations
-
-    var $successIcon = modal.querySelector('.icon.success');
-    removeClass($successIcon, 'animate');
-    removeClass($successIcon.querySelector('.tip'), 'animateSuccessTip');
-    removeClass($successIcon.querySelector('.long'), 'animateSuccessLong');
-
-    var $errorIcon = modal.querySelector('.icon.error');
-    removeClass($errorIcon, 'animateErrorIcon');
-    removeClass($errorIcon.querySelector('.x-mark'), 'animateXMark');
-
-    var $warningIcon = modal.querySelector('.icon.warning');
-    removeClass($warningIcon, 'pulseWarning');
-    removeClass($warningIcon.querySelector('.body'), 'pulseWarningIns');
-    removeClass($warningIcon.querySelector('.dot'), 'pulseWarningIns');
-
-
-    // Reset the page to its previous state
-    window.onkeydown = previousWindowKeyDown;
-    document.onclick = previousDocumentClick;
-    if (previousActiveElement) {
-      previousActiveElement.focus();
-    }
-    lastFocusedButton = undefined;
-    clearTimeout(modal.timeout);
-  };
-
-
-  /*
-   * Set "margin-top"-property on modal based on its computed height
-   */
-
-  function fixVerticalPosition() {
-    var modal = getModal();
-
-    modal.style.marginTop = getTopMargin(getModal());
-  }
-
-  // If browser is Internet Explorer 8
-  function isIE8() {
-    if (window.attachEvent && !window.addEventListener) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // Error messages for developers
-  function logStr(string) {
-    if (window.console) { // IE...
-      window.console.log("SweetAlert: " + string);
-    }
-  }
-
-})(window, document);
+/*global angular */
+/* =========================================
+   NOTIFICATION Directive
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('notification-directives', [])
+	.directive('notificationMsg', function () {
+
+	    return {
+	        restrict: 'E',
+	        template: 
+	        	'<section ng-show="dash.notification" ' +
+					'ng-click="dash.closeMsg()" ' +
+					'class="ng-notification"> ' +
+					'<p class="notify-msg">{{dash.message}}</p> ' +
+					'<div class="notify-bg success"></div> ' +
+				'</section>'
+	    };
+	});
+
+})();
+
+/*global angular */
+/* =========================================
+   SETTINGS Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
+	.controller('SettingsCtrl', ['$scope', function($scope) {
+
+		//http://flowjs.github.io/ng-flow/
+		//https://github.com/flowjs/ng-flow
+
+		$scope.settings = {};
+	    
+	}]);
+
+})();
+/*global angular */
+/* =========================================
+   WALLET Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-wallet',
+		['wallet-directives',
+		 'notification-directives'])
+
+	.controller('WalletCtrl',
+		['$scope', '$sce', '$timeout', 'walletModalService',
+		function($scope, $sce, $timeout, walletModalService) {
+
+		var vm 			     = $scope,
+			public_address   = '';
+			vm.dash.currency = 'USD';
+			vm.dash.modal 	 = false;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		// Express response listener here for incoming transaction:
+
+		// Open Receive or Send modals:
+		this.openModal = function(m) {
+
+			// Show overlay:
+			vm.dash.modal = m;
+
+			switch (m) {
+				case 'receive':
+					// API call to get user public address
+					// Code to generate QR code
+					// Update receive_obj
+					walletModalService.modalRecieve(vm.dash);
+					break;
+
+				case 'send':
+					// API call to check address
+					// Calculate Bitcoin / USD
+					// Complete transaction
+					walletModalService.modalSend(vm.dash, $timeout, timeoutMsg);
+					break;
+			}
+		};
+
+		// Transaction models
+		this.transactions = [
+			{
+				type: 'incoming',
+				status: 'Pending',
+				comment: 'Recieved from multiple addresses',
+				time: '10 minutes ago',
+				amount: 0.00498623
+			},
+			{
+				type: 'incoming',
+				status: 'Confirmed',
+				comment: 'Recieve from 1MgZLyz6d8djEqe68XoPpsjx9BFQyVAtXN',
+				time: '12 hours ago',
+				amount: 0.003
+			},
+			{
+				type: 'outgoing',
+				status: 'Confirmed',
+				comment: 'Sent to 17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH',
+				time: 'Jan 15th 2015',
+				amount: 0.01
+			},
+			{
+				type: 'incoming',
+				status: 'Confirmed',
+				comment: 'Recieved from multiple addresses',
+				time: 'Jan 14th 2015',
+				amount: 0.02874
+			},
+			{
+				type: 'outgoing',
+				status: 'Confirmed',
+				comment: 'Sent to 1GS9E86Y3mhK7Qwm1vqvgCmpE5u6MMxPML',
+				time: 'Jan 12th 2015',
+				amount: 0.064904
+			}
+		];
+	}])
+
+	.service('walletModalService', [function() {
+
+		// wire modal recieve
+	    this.modalRecieve = function(vm) {
+	        vm.modal_receive  = true;
+			vm.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+			vm.qr_code 	      = '_assets/img/qrcode.png';
+	    };
+
+	    // wire modal send
+	    this.modalSend = function(vm, $timeout, timeoutMsg) {
+	    	vm.modal_send = true;
+			vm.send_btn_text = 'Send';
+
+			// btn_usd in walletDirective html
+			vm.switchCurrency = function() {
+				if (vm.currency === 'USD') {
+					vm.currency = 'BTC';
+				} else if (vm.currency = 'BTC') {
+					vm.currency = 'USD';
+				}
+			};
+
+			vm.sendTransaction = function() {
+				console.log(vm);
+
+				// Make API call to check address
+				vm.send_btn_text = 'Sending...';
+
+				// Get response back and close modal
+				vm.modal_send = false;
+				vm.modal = false;
+
+				// Show notification
+				vm.message = 'Transaction sent!';
+				vm.notification = true;
+				$timeout(timeoutMsg, 4000);
+			};
+	    }
+	}]);
+
+})();
+
+/*global angular */
+/* =========================================
+   WALLET Directive
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('wallet-directives', [])
+	.directive('receiveModal', function () {
+
+	    return {
+	        restrict: 'E',
+	        template: 
+	        	'<section ng-show="dash.modal_receive" class="modal ng-modal-dialog"> ' + 
+
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' + 
+
+					'<h1>Your Public Address</h1> ' + 
+
+					'<div class="modal_qr"> ' + 
+						'<img src="{{dash.qr_code}}"/> ' + 
+					'</div> ' + 
+
+					'<p class="public_address">{{dash.public_address}}</p> ' + 
+				'</section>'
+	    };
+	})
+
+	.directive('sendModal', function () {
+
+	    return {
+	    	scope: true,
+	        restrict: 'E',
+	        template: 
+	        	'<section ng-show="dash.modal_send" class="modal ng-modal-dialog"> ' + 
+
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' + 
+
+					'<h1>Send Bitcoin</h1> ' + 
+
+					'<div class="modal_form"> ' + 
+						'<div class="label_input_combo"> ' + 
+							'<label for="to_input">Send to address</label> ' + 
+							'<input id="to_input" class="form-input" type="text" placeholder=""> ' + 
+						'</div> ' + 
+
+						'<div class="label_input_combo"> ' + 
+							'<div ng-click="dash.switchCurrency()" class="btn_usd noselect">{{dash.currency}}</div> ' + 
+							'<label for="amount_input" class="label_amount">Amount</label> ' + 
+							'<input id="amount_input" class="form-input" type="text" placeholder=""> ' + 
+						'</div> ' + 
+						
+						'<button ng-click="dash.sendTransaction()" class="btn btn_med btn_send_now">{{dash.send_btn_text}}</button> ' + 
+					'</div> ' + 
+
+				'</section>'
+	    };
+	});
+
+})();
