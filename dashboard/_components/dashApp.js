@@ -4,7 +4,6 @@
 
 	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
-
 	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
 --------------------------------------------
