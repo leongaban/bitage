@@ -62,9 +62,10 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 var dashboard = express.Router();
 app.use('/dashboard', dashboard);
 dashboard.get('/', function(req, res) {
+	console.log('returning dashboard index');
 	res.sendfile('dashboard/index.html');
 });
-	
+
 
 
 

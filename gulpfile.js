@@ -44,9 +44,9 @@ gulp.task('sass_site', function () {
 
 // Compile dashboard SASS
 gulp.task('sass_app', function () {
-    return sass('dashboard/_sources/sass/bitage.scss', { style: 'compressed' })
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('./maps'))
+    return sass('dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
+        // .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('dashboard/_assets/css'))
         .pipe(livereload());
 });
@@ -87,7 +87,7 @@ gulp.task('watch', function () {
     gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
     gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
     gulp.watch('public/_components/*.js', ['devsite']);
-    
+
 
     // Watch Dashboard (App) Pages | Styles | Scripts
     gulp.watch('dashboard/*.html').on('change', function(file) {
@@ -95,7 +95,7 @@ gulp.task('watch', function () {
         gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
+    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']).on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });

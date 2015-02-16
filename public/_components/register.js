@@ -7,18 +7,17 @@
 
     var app = angular.module('app-register', [])
     .controller('RegisterCtrl',
-        ['$http', '$location', 'registerService',
-        function($http, $location, registerService) {
+        ['$http', 'registerService',
+        function($http, registerService) {
 
         var vm = this;
-        var location = $location;
 
         // Sign up form submit
         vm.submitForm = function(isValid) {
 
             // check to make sure form is valid
             if (isValid) {
-                registerService.postSignUpForm(vm.formData, location);
+                registerService.postSignUpForm(vm.formData);
             } else {
                swal({
                    title: "Oops!",
@@ -34,9 +33,9 @@
 
     .service('registerService', ['$http', function($http) {
 
-        this.postSignUpForm = function(fdata, location) {
+        this.postSignUpForm = function(fdata) {
 
-            console.log(location);
+            // console.log(location);
 
             var request = $http({
                     method  : 'POST',

@@ -1,10 +1,8 @@
-/* PROFILE
+/* SETTINGS & PROFILE
 ====================================================
 ==================================================== */
 
-.profile_container {
-	padding: 20px;
-}
+.profile_container { padding: 20px; }
 
 .profile_avatar {
 	display: block;
@@ -26,9 +24,7 @@
 .image_upload_buttons {
 	margin: 10px 0 20px 0;
 
-	span {
-		float: left;
-	}
+	span { float: left; }
 
 	.btn {
 		margin-right: 10px;
@@ -49,7 +45,6 @@
 }
 
 .field_set {
-	float: left;
 	margin-bottom: 8px;
 	height: 40px;
 	line-height: 40px;
@@ -60,6 +55,4 @@
 	color: $buttonHover;
 }
 
-.profile_user_name {
-	margin-top: 40px;
-}
+.profile_user_name { margin-top: 40px; }
