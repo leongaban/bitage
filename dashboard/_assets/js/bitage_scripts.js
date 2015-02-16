@@ -6135,6 +6135,29 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 		var vm = this;
 		vm.qr_code = 'http://placehold.it/200&text=Loading+QR+Code';
 
+		vm.quotes = [
+			{
+				quote: "Money won’t create success, the freedom to make it will.",
+				author: "Nelson Mandela"
+			},
+			{
+				quote: "Too many people spend money they earned..to buy things they don’t want..to impress people that they don’t like.",
+				author: "Will Rogers"
+			},
+			{
+				quote: "Wealth consists not in having great possessions, but in having few wants.",
+				author: "Epictetus"
+			},
+			{
+				quote: "Frugality includes all the other virtues",
+				author: "Cicero"
+			},
+			{
+				quote: "An investment in knowledge pays the best interest.",
+				author: "Benjamin Franklin"
+			}
+		];
+
 		// Sidebar tab select:
 		vm.$state = $state;
 		vm.sidebarClick = function() {
