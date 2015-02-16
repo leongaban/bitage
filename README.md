@@ -23,7 +23,7 @@ Technologies (MEAN stack):
 Demos
 ------
 <img style="float: left" src="https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png">
-<p>http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/</p>
+<p style="float: left">http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/</p>
 
 Sprint tracking
 ------
