@@ -2,7 +2,7 @@
 		 ng-controller="LoginCtrl as login">
 
 	<form name="loginForm" ng-submit="login.submitLoginForm(loginForm.$valid)" novalidate>
-		<h2>Login to your account</h2>
+		<h2>Sign in to your account</h2>
 
 		<span class="form-group">
 			<input ng-model="login.formData.email" name="email" required
@@ -30,7 +30,7 @@
 		</span>
 
 		<span class="login_forgot_password">
-			<a ui-sref="#">Forgot password?</a> | <a ui-sref="register">Sign Up</a>
+			<a ui-sref="#">Forgot password?</a> | <a ui-sref="register">Create Account</a>
 		</span>
 	</form>
 
