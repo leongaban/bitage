@@ -7,7 +7,7 @@
 
     <div class="widget-container profile_container">
         
-		<!-- <section flow-init="{target: '/upload'}"
+		<section flow-init="{target: '/upload'}"
             flow-files-submitted="$flow.upload()"
             flow-file-success="$file.msg = $message"
             class="profile_avatar">
@@ -30,7 +30,7 @@
                     <p>PNG, GIF, JPG, JPEG files only.</p>
                 </div>
             </div>
-		</section> -->
+		</section>
         <form name="profileForm" ng-submit="settings.saveProfile(profileForm.$valid)" novalidate>
 
             <section class="profile_details">
@@ -38,8 +38,8 @@
                     <label for="full_name">My Name</label>
                     <input ng-model="settings.formData.full_name"
                            id="full_name"
-                           type="text"
                            class="form-input"
+                           type="text"
                            placeholder="Leon Gaban"></input>
                 </div>
 
@@ -47,8 +47,8 @@
                     <label for="user_email">Email</label>
                     <input ng-model="settings.formData.email"
                            id="user_email"
-                           type="text"
                            class="form-input"
+                           type="text"
                            placeholder="leon@bitage.io"></input>
 
                     <p ng-show="profileForm.email.$invalid && !profileForm.email.$pristine"

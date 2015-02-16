@@ -3508,7 +3508,7 @@
 		"outputAbbreviatedPath": "\/dashboard\/_assets\/js\/bitage_scripts.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 1,
+		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
 	"\/dashboard\/_components\/dashApp.js": {
@@ -4167,17 +4167,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
-		},
-	"\/public\/_components\/min\/register-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_components\/min\/register-min.js",
-		"outputAbbreviatedPath": "\/public\/_components\/min\/min\/register-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
 		},
 	"\/public\/_components\/publicApp.js": {
 		"fileType": 64,
