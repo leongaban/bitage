@@ -1,4 +1,6 @@
-// server.js
+/* =========================================
+   SERVER
+   ========================================= */
 
 // set up ======================================================================
 // get all the tools we need
@@ -11,26 +13,23 @@ var flash    	 = require('connect-flash');
 var hbs 	 	 = require('handlebars');
 var cons 	 	 = require('consolidate');
 var bitcoin  	 = require('bitcoinjs-lib');
-var moment = require('moment');
-
+var moment 		 = require('moment');
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-
 var configDB 	 = require('./config/database.js');
 
 // Express router
 var router 		 = express.Router();
 
 // configuration ===============================================================
-mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox'); // connect to our database
+mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox');
 
 
 // loading static and bower components ===================
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -49,14 +48,13 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
-
 // The Angular App itself below
 app.use(express.static(__dirname + '/dashboard'));
 
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport);
+// load our routes and pass in our app and fully configured passport
 
 //dashboard api
 var dashboard = express.Router();
@@ -65,8 +63,6 @@ dashboard.get('/', function(req, res) {
 	console.log('returning dashboard index');
 	res.sendfile('dashboard/index.html');
 });
-
-
 
 
 // launch ======================================================================
