@@ -31,26 +31,40 @@
                 </div>
             </div>
 		</section> -->
+        <form name="profileForm" ng-submit="settings.saveProfile(profileForm.$valid)" novalidate>
 
-        <section class="profile_details">
-            <div class="field_set">
-                <label for="full_name">My Name</label>
-                <input id="full_name" type="text" class="form-input" placeholder="Leon Gaban" ng-model="label"></input>
-            </div>
+            <section class="profile_details">
+                <div class="field_set">
+                    <label for="full_name">My Name</label>
+                    <input ng-model="settings.formData.full_name"
+                           id="full_name"
+                           type="text"
+                           class="form-input"
+                           placeholder="Leon Gaban"></input>
+                </div>
 
-            <div class="field_set">
-                <label for="user_email">Email</label>
-                <input id="user_email" type="text" class="form-input" placeholder="leon@bitage.io" ng-model="label"></input>
-            </div>
+                <div class="field_set">
+                    <label for="user_email">Email</label>
+                    <input ng-model="settings.formData.email"
+                           id="user_email"
+                           type="text"
+                           class="form-input"
+                           placeholder="leon@bitage.io"></input>
 
-            <div class="field_set">
-                <label for="user_password">Password</label>
-                <a href="#" class="change_password">Change Password</a>
-            </div>
+                    <p ng-show="profileForm.email.$invalid && !profileForm.email.$pristine"
+                       class="help-block">Enter a valid email.</p>
+                </div>
 
-            <button ng-click="settings.saveProfile('saving...')" 
-                    class="btn btn_med">Save Profile</button>
-        </section>
+                <div class="field_set">
+                    <label for="user_password">Password</label>
+                    <a href="#" class="change_password">Change Password</a>
+                </div>
+
+                <button ng-click="settings.saveProfile('saving...')" 
+                        class="btn btn_med">Save Profile</button>
+            </section>
+
+        </form>
 
     </div>
 </div>

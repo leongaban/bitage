@@ -98,7 +98,7 @@
 	    this.modalRecieve = function(dash) {
 	        dash.modal_receive  = true;
 			dash.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			dash.qr_code 	      = '_assets/img/qrcode.png';
+			dash.qr_code 	    = '_assets/img/qrcode.png';
 	    };
 
 	    // wire modal send
@@ -116,7 +116,6 @@
 			};
 
 			dash.sendTransaction = function() {
-				console.log(dash);
 
 				// Make API call to check address
 				dash.send_btn_text = 'Sending...';
@@ -127,6 +126,11 @@
 
 				// Show notification
 				dash.message = 'Transaction sent!';
+
+				// success or error
+				dash.notification_type = 'success';
+
+				// show notifcation and settimeout
 				dash.notification = true;
 				$timeout(timeoutMsg, 4000);
 			};

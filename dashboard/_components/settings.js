@@ -1,6 +1,6 @@
 /*global angular */
 /* =========================================
-   SETTINGS Module
+   Settings module
    ========================================= */
 
 (function() {
@@ -10,6 +10,7 @@
 		['$scope', '$timeout', 'settingsService', 
 		function($scope, $timeout, settingsService) {
 
+		// Angular File upload:
 		//http://flowjs.github.io/ng-flow/
 		//https://github.com/flowjs/ng-flow
 
@@ -23,8 +24,26 @@
 			vm.dash.notification = false;
 		};
 
-		this.saveProfile = function(msg) {
-			settingsService.postProfile(vm.dash, $timeout, timeoutMsg);
+		this.saveProfile = function(isValid) {
+
+			// check to make sure form is valid
+            if (isValid) {
+                settingsService.postProfile(
+                	this.formData,
+					vm.dash,
+					$timeout,
+					timeoutMsg
+				);
+            } else {
+            	alert('Please check the form!');
+               // swal({
+               //     title: "Oops!",
+               //     text: "Please check the form!",
+               //     type: "error",
+               //     confirmButtonText: "Ok",
+               //     confirmButtonColor: "#024562" });
+            }
+
 		};
 	    
 	}])
@@ -32,7 +51,9 @@
 	.service('settingsService', [function() {
 
 	    // send updated profile to server
-		this.postProfile = function (dash, $timeout, timeoutMsg) {
+		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
+
+			console.log(fdata);
 
 			// Show notification
 			dash.message = 'Profile updated!';

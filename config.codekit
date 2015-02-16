@@ -3599,17 +3599,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dashboard\/_sources\/js\/plugins\/particles.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/particles.js",
-		"outputAbbreviatedPath": "\/dashboard\/_sources\/js\/plugins\/min\/particles-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/dashboard\/_sources\/sass\/bitage_app.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -4179,27 +4168,38 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/public\/_components\/publicApp.js": {
+	"\/public\/_components\/min\/register-min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/_components\/publicApp.js",
-		"outputAbbreviatedPath": "\/public\/_components\/min\/publicApp-min.js",
+		"inputAbbreviatedPath": "\/public\/_components\/min\/register-min.js",
+		"outputAbbreviatedPath": "\/public\/_components\/min\/min\/register-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/public\/_components\/publicApp.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/public\/_components\/publicApp.js",
+		"outputAbbreviatedPath": "\/public\/_components\/min\/publicApp-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/public\/_components\/register.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/public\/_components\/register.js",
 		"outputAbbreviatedPath": "\/public\/_components\/min\/register-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/_sources\/img\/bitage.png": {
 		"fileType": 32768,

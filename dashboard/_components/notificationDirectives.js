@@ -15,7 +15,7 @@
 					'ng-click="dash.closeMsg()" ' +
 					'class="ng-notification"> ' +
 					'<p class="notify-msg">{{dash.message}}</p> ' +
-					'<div class="notify-bg success"></div> ' +
+					'<div class="notify-bg {{dash.notification_type}}"></div> ' +
 				'</section>'
 	    };
 	});
