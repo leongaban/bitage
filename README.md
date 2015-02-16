@@ -24,8 +24,14 @@ Demos
 ------
 <table>
     <tr>
-        <td>![Bitage](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png)</td>
-        <td>http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/</td>
+        <td>
+
+            ![Bitage](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png)
+
+        </td>
+        <td>
+            http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
+        </td>
     </tr>
 </table>
 
