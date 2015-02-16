@@ -4,7 +4,6783 @@
  * @link http://angular-ui.github.com/
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
-"undefined"!=typeof module&&"undefined"!=typeof exports&&module.exports===exports&&(module.exports="ui.router"),function(e,t,n){"use strict";function r(e,t){return B(new(B(function(){},{prototype:e})),t)}function i(e){return T(arguments,function(t){t!==e&&T(t,function(t,n){e.hasOwnProperty(n)||(e[n]=t)})}),e}function o(e,t){var n=[];for(var r in e.path){if(e.path[r]!==t.path[r])break;n.push(e.path[r])}return n}function a(e){if(Object.keys)return Object.keys(e);var n=[];return t.forEach(e,function(e,t){n.push(t)}),n}function s(e,t){if(Array.prototype.indexOf)return e.indexOf(t,Number(arguments[2])||0);var n=e.length>>>0,r=Number(arguments[2])||0;for(r=0>r?Math.ceil(r):Math.floor(r),0>r&&(r+=n);n>r;r++)if(r in e&&e[r]===t)return r;return-1}function u(e,t,n,r){var i=o(n,r),u,l={},c=[];for(var f in i)if(i[f].params&&(u=a(i[f].params),u.length))for(var h in u)s(c,u[h])>=0||(c.push(u[h]),l[u[h]]=e[u[h]]);return B({},l,t)}function l(e,t,n){if(!n){n=[];for(var r in e)n.push(r)}for(var i=0;i<n.length;i++){var o=n[i];if(e[o]!=t[o])return!1}return!0}function c(e,t){var n={};return T(e,function(e){n[e]=t[e]}),n}function f(e,t){var n={};return T(e,function(e){n[e[t]]=e}),n}function h(e){var t={},n=Array.prototype.concat.apply(Array.prototype,Array.prototype.slice.call(arguments,1));return T(n,function(n){n in e&&(t[n]=e[n])}),t}function d(e){var t={},n=Array.prototype.concat.apply(Array.prototype,Array.prototype.slice.call(arguments,1));for(var r in e)-1==s(n,r)&&(t[r]=e[r]);return t}function p(e,t){var n=N(e)?[]:{};return T(e,function(e,r){n[r]=z(t)?t(e):e[t]}),n}function v(e,t){var n=N(e),r=n?[]:{};return T(e,function(e,i){t(e,i)&&(r[n?r.length:i]=e)}),r}function m(e,t){var n=N(e)?[]:{};return T(e,function(e,r){n[r]=t(e,r)}),n}function g(e,t){var r=1,o=2,u={},l=[],c=u,f=B(e.when(u),{$$promises:u,$$values:u});this.study=function(u){function h(e,n){if(w[n]!==o){if(g.push(n),w[n]===r)throw g.splice(0,s(g,n)),new Error("Cyclic dependency: "+g.join(" -> "));if(w[n]=r,D(e))m.push(n,[function(){return t.get(e)}],l);else{var i=t.annotate(e);T(i,function(e){e!==n&&u.hasOwnProperty(e)&&h(u[e],e)}),m.push(n,e,i)}g.pop(),w[n]=o}}function p(e){return U(e)&&e.then&&e.$$promises}if(!U(u))throw new Error("'invocables' must be an object");var v=a(u||{}),m=[],g=[],w={};return T(u,h),u=g=w=null,function(r,o,a){function s(){--y||(S||i(b,o.$$values),g.$$values=b,g.$$promises=g.$$promises||!0,delete g.$$inheritedValues,h.resolve(b))}function u(e){g.$$failure=e,h.reject(e)}function l(n,i,o){function l(e){f.reject(e),u(e)}function c(){if(!R(g.$$failure))try{f.resolve(t.invoke(i,a,b)),f.promise.then(function(e){b[n]=e,s()},l)}catch(e){l(e)}}var f=e.defer(),h=0;T(o,function(e){w.hasOwnProperty(e)&&!r.hasOwnProperty(e)&&(h++,w[e].then(function(t){b[e]=t,--h||c()},l))}),h||c(),w[n]=f.promise}if(p(r)&&a===n&&(a=o,o=r,r=null),r){if(!U(r))throw new Error("'locals' must be an object")}else r=c;if(o){if(!p(o))throw new Error("'parent' must be a promise returned by $resolve.resolve()")}else o=f;var h=e.defer(),g=h.promise,w=g.$$promises={},b=B({},r),y=1+m.length/3,S=!1;if(R(o.$$failure))return u(o.$$failure),g;o.$$inheritedValues&&i(b,d(o.$$inheritedValues,v)),B(w,o.$$promises),o.$$values?(S=i(b,d(o.$$values,v)),g.$$inheritedValues=d(o.$$values,v),s()):(o.$$inheritedValues&&(g.$$inheritedValues=d(o.$$inheritedValues,v)),o.then(s,u));for(var k=0,P=m.length;P>k;k+=3)r.hasOwnProperty(m[k])?s():l(m[k],m[k+1],m[k+2]);return g}},this.resolve=function(e,t,n,r){return this.study(e)(t,n,r)}}function w(e,t,n){this.fromConfig=function(e,t,n){return R(e.template)?this.fromString(e.template,t):R(e.templateUrl)?this.fromUrl(e.templateUrl,t):R(e.templateProvider)?this.fromProvider(e.templateProvider,t,n):null},this.fromString=function(e,t){return z(e)?e(t):e},this.fromUrl=function(n,r){return z(n)&&(n=n(r)),null==n?null:e.get(n,{cache:t,headers:{Accept:"text/html"}}).then(function(e){return e.data})},this.fromProvider=function(e,t,r){return n.invoke(e,null,r||{params:t})}}function b(e,t,i){function o(t,n,r,i){if(m.push(t),p[t])return p[t];if(!/^\w+(-+\w+)*(?:\[\])?$/.test(t))throw new Error("Invalid parameter name '"+t+"' in pattern '"+e+"'");if(v[t])throw new Error("Duplicate parameter name '"+t+"' in pattern '"+e+"'");return v[t]=new V.Param(t,n,r,i),v[t]}function a(e,t,n){var r=["",""],i=e.replace(/[\\\[\]\^$*+?.()|{}]/g,"\\$&");if(!t)return i;switch(n){case!1:r=["(",")"];break;case!0:r=["?(",")?"];break;default:r=["("+n+"|",")?"]}return i+r[0]+t+r[1]}function s(n,i){var o,a,s,u,l,c;return o=n[2]||n[3],l=t.params[o],s=e.substring(f,n.index),a=i?n[4]:n[4]||("*"==n[1]?".*":null),u=V.type(a||"string")||r(V.type("string"),{pattern:new RegExp(a)}),{id:o,regexp:a,segment:s,type:u,cfg:l}}t=B({params:{}},U(t)?t:{});var u=/([:*])([\w\[\]]+)|\{([\w\[\]]+)(?:\:((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,l=/([:]?)([\w\[\]-]+)|\{([\w\[\]-]+)(?:\:((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,c="^",f=0,h,d=this.segments=[],p=i?i.params:{},v=this.params=i?i.params.$$new():new V.ParamSet,m=[];this.source=e;for(var g,w,b;(h=u.exec(e))&&(g=s(h,!1),!(g.segment.indexOf("?")>=0));)w=o(g.id,g.type,g.cfg,"path"),c+=a(g.segment,w.type.pattern.source,w.squash),d.push(g.segment),f=u.lastIndex;b=e.substring(f);var y=b.indexOf("?");if(y>=0){var S=this.sourceSearch=b.substring(y);if(b=b.substring(0,y),this.sourcePath=e.substring(0,f+y),S.length>0)for(f=0;h=l.exec(S);)g=s(h,!0),w=o(g.id,g.type,g.cfg,"search"),f=u.lastIndex}else this.sourcePath=e,this.sourceSearch="";c+=a(b)+(t.strict===!1?"/?":"")+"$",d.push(b),this.regexp=new RegExp(c,t.caseInsensitive?"i":n),this.prefix=d[0],this.$$paramNames=m}function y(e){B(this,e)}function S(){function e(e){return null!=e?e.toString().replace(/\//g,"%2F"):e}function i(e){return null!=e?e.toString().replace(/%2F/g,"/"):e}function o(e){return this.pattern.test(e)}function u(){return{strict:d,caseInsensitive:h}}function l(e){return z(e)||N(e)&&z(e[e.length-1])}function c(){for(;k.length;){var e=k.shift();if(e.pattern)throw new Error("You cannot override a type's .pattern at runtime.");t.extend(g[e.name],P.invoke(e.def))}}function f(e){B(this,e||{})}V=this;var h=!1,d=!0,p=!1,g={},w=!0,k=[],P,E={string:{encode:e,decode:i,is:o,pattern:/[^/]*/},"int":{encode:e,decode:function(e){return parseInt(e,10)},is:function(e){return R(e)&&this.decode(e.toString())===e},pattern:/\d+/},bool:{encode:function(e){return e?1:0},decode:function(e){return 0!==parseInt(e,10)},is:function(e){return e===!0||e===!1},pattern:/0|1/},date:{encode:function(e){return this.is(e)?[e.getFullYear(),("0"+(e.getMonth()+1)).slice(-2),("0"+e.getDate()).slice(-2)].join("-"):n},decode:function(e){if(this.is(e))return e;var t=this.capture.exec(e);return t?new Date(t[1],t[2]-1,t[3]):n},is:function(e){return e instanceof Date&&!isNaN(e.valueOf())},equals:function(e,t){return this.is(e)&&this.is(t)&&e.toISOString()===t.toISOString()},pattern:/[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,capture:/([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/},json:{encode:t.toJson,decode:t.fromJson,is:t.isObject,equals:t.equals,pattern:/[^/]*/},any:{encode:t.identity,decode:t.identity,is:t.identity,equals:t.equals,pattern:/.*/}};S.$$getDefaultValue=function(e){if(!l(e.value))return e.value;if(!P)throw new Error("Injectable functions cannot be called at configuration time");return P.invoke(e.value)},this.caseInsensitive=function(e){return R(e)&&(h=e),h},this.strictMode=function(e){return R(e)&&(d=e),d},this.defaultSquashPolicy=function(e){if(!R(e))return p;if(e!==!0&&e!==!1&&!D(e))throw new Error("Invalid squash policy: "+e+". Valid policies: false, true, arbitrary-string");return p=e,e},this.compile=function(e,t){return new b(e,B(u(),t))},this.isMatcher=function(e){if(!U(e))return!1;var t=!0;return T(b.prototype,function(n,r){z(n)&&(t=t&&R(e[r])&&z(e[r]))}),t},this.type=function(e,t,n){if(!R(t))return g[e];if(g.hasOwnProperty(e))throw new Error("A type named '"+e+"' has already been defined.");return g[e]=new y(B({name:e},t)),n&&(k.push({name:e,def:n}),w||c()),this},T(E,function(e,t){g[t]=new y(B({name:t},e))}),g=r(g,{}),this.$get=["$injector",function(e){return P=e,w=!1,c(),T(E,function(e,t){g[t]||(g[t]=new y(e))}),this}],this.Param=function x(e,t,r,i){function o(e){var t=U(e)?a(e):[],n=-1===s(t,"value")&&-1===s(t,"type")&&-1===s(t,"squash")&&-1===s(t,"array");return n&&(e={value:e}),e.$$fn=l(e.value)?e.value:function(){return e.value},e}function u(t,n,r){if(t.type&&n)throw new Error("Param '"+e+"' has two type configurations.");return n?n:t.type?t.type instanceof y?t.type:new y(t.type):"config"===r?g.any:g.string}function c(){var t={array:"search"===i?"auto":!1},n=e.match(/\[\]$/)?{array:!0}:{};return B(t,n,r).array}function f(e,t){var n=e.squash;if(!t||n===!1)return!1;if(!R(n)||null==n)return p;if(n===!0||D(n))return n;throw new Error("Invalid squash policy: '"+n+"'. Valid policies: false, true, or arbitrary string")}function h(e,t,r,i){var o,a,u=[{from:"",to:r||t?n:""},{from:null,to:r||t?n:""}];return o=N(e.replace)?e.replace:[],D(i)&&o.push({from:i,to:n}),a=m(o,function(e){return e.from}),v(u,function(e){return-1===s(a,e.from)}).concat(o)}function d(){if(!P)throw new Error("Injectable functions cannot be called at configuration time");return P.invoke(r.$$fn)}function w(e){function t(e){return function(t){return t.from===e}}function n(e){var n=m(v(S.replace,t(e)),function(e){return e.to});return n.length?n[0]:e}return e=n(e),R(e)?S.type.decode(e):d()}function b(){return"{Param:"+e+" "+t+" squash: '"+x+"' optional: "+E+"}"}var S=this;r=o(r),t=u(r,t,i);var k=c();t=k?t.$asArray(k,"search"===i):t,"string"!==t.name||k||"path"!==i||r.value!==n||(r.value="");var E=r.value!==n,x=f(r,E),j=h(r,k,E,x);B(this,{id:e,type:t,location:i,array:k,squash:x,replace:j,isOptional:E,value:w,dynamic:n,config:r,toString:b})},f.prototype={$$new:function(){return r(this,B(new f,{$$parent:this}))},$$keys:function(){for(var e=[],t=[],n=this,r=a(f.prototype);n;)t.push(n),n=n.$$parent;return t.reverse(),T(t,function(t){T(a(t),function(t){-1===s(e,t)&&-1===s(r,t)&&e.push(t)})}),e},$$values:function(e){var t={},n=this;return T(n.$$keys(),function(r){t[r]=n[r].value(e&&e[r])}),t},$$equals:function(e,t){var n=!0,r=this;return T(r.$$keys(),function(i){var o=e&&e[i],a=t&&t[i];r[i].type.equals(o,a)||(n=!1)}),n},$$validates:function j(e){var t=!0,n,r,i,o=this;return T(this.$$keys(),function(a){i=o[a],r=e[a],n=!r&&i.isOptional,t=t&&(n||!!i.type.is(r))}),t},$$parent:n},this.ParamSet=f}function k(e,r){function i(e){var t=/^\^((?:\\[^a-zA-Z0-9]|[^\\\[\]\^$*+?.()|{}]+)*)/.exec(e.source);return null!=t?t[1].replace(/\\(.)/g,"$1"):""}function o(e,t){return e.replace(/\$(\$|\d{1,2})/,function(e,n){return t["$"===n?0:Number(n)]})}function a(e,t,n){if(!n)return!1;var r=e.invoke(t,t,{$match:n});return R(r)?r:!0}function s(r,i,o,a){function s(e,t,n){return"/"===p?e:t?p.slice(0,-1)+e:n?p.slice(1)+e:e}function h(e){function t(e){var t=e(o,r);return t?(D(t)&&r.replace().url(t),!0):!1}if(!e||!e.defaultPrevented){var i=m&&r.url()===m;if(m=n,i)return!0;var a=u.length,s;for(s=0;a>s;s++)if(t(u[s]))return;l&&t(l)}}function d(){return f=f||i.$on("$locationChangeSuccess",h)}var p=a.baseHref(),v=r.url(),m;return c||d(),{sync:function(){h()},listen:function(){return d()},update:function(e){return e?void(v=r.url()):void(r.url()!==v&&(r.url(v),r.replace()))},push:function(e,t,i){r.url(e.format(t||{})),m=i&&i.$$avoidResync?r.url():n,i&&i.replace&&r.replace()},href:function(n,i,o){if(!n.validates(i))return null;var a=e.html5Mode();t.isObject(a)&&(a=a.enabled);var u=n.format(i);if(o=o||{},a||null===u||(u="#"+e.hashPrefix()+u),u=s(u,a,o.absolute),!o.absolute||!u)return u;var l=!a&&u?"/":"",c=r.port();return c=80===c||443===c?"":":"+c,[r.protocol(),"://",r.host(),c,l,u].join("")}}}var u=[],l=null,c=!1,f;this.rule=function(e){if(!z(e))throw new Error("'rule' must be a function");return u.push(e),this},this.otherwise=function(e){if(D(e)){var t=e;e=function(){return t}}else if(!z(e))throw new Error("'rule' must be a function");return l=e,this},this.when=function(e,t){var n,s=D(t);if(D(e)&&(e=r.compile(e)),!s&&!z(t)&&!N(t))throw new Error("invalid 'handler' in when()");var u={matcher:function(e,t){return s&&(n=r.compile(t),t=["$match",function(e){return n.format(e)}]),B(function(n,r){return a(n,t,e.exec(r.path(),r.search()))},{prefix:D(e.prefix)?e.prefix:""})},regex:function(e,t){if(e.global||e.sticky)throw new Error("when() RegExp must not be global or sticky");return s&&(n=t,t=["$match",function(e){return o(n,e)}]),B(function(n,r){return a(n,t,e.exec(r.path()))},{prefix:i(e)})}},l={matcher:r.isMatcher(e),regex:e instanceof RegExp};for(var c in l)if(l[c])return this.rule(u[c](e,t));throw new Error("invalid 'what' in when()")},this.deferIntercept=function(e){e===n&&(e=!0),c=e},this.$get=s,s.$inject=["$location","$rootScope","$injector","$browser"]}function P(e,i){function o(e){return 0===e.indexOf(".")||0===e.indexOf("^")}function f(e,t){if(!e)return n;var r=D(e),i=r?e:e.name,a=o(i);if(a){if(!t)throw new Error("No reference point given for path '"+i+"'");t=f(t);for(var s=i.split("."),u=0,l=s.length,c=t;l>u;u++)if(""!==s[u]||0!==u){if("^"!==s[u])break;if(!c.parent)throw new Error("Path '"+i+"' not valid for state '"+t.name+"'");c=c.parent}else c=t;s=s.slice(u).join("."),i=c.name+(c.name&&s?".":"")+s}var h=P[i];return!h||!r&&(r||h!==e&&h.self!==e)?n:h}function h(e,t){x[e]||(x[e]=[]),x[e].push(t)}function d(e){for(var t=x[e]||[];t.length;)p(t.shift())}function p(t){t=r(t,{self:t,resolve:t.resolve||{},toString:function(){return this.name}});var n=t.name;if(!D(n)||n.indexOf("@")>=0)throw new Error("State must have a valid name");if(P.hasOwnProperty(n))throw new Error("State '"+n+"'' is already defined");var i=-1!==n.indexOf(".")?n.substring(0,n.lastIndexOf(".")):D(t.parent)?t.parent:U(t.parent)&&D(t.parent.name)?t.parent.name:"";if(i&&!P[i])return h(i,t.self);for(var o in _)z(_[o])&&(t[o]=_[o](t,_.$delegates[o]));return P[n]=t,!t[j]&&t.url&&e.when(t.url,["$match","$stateParams",function(e,n){E.$current.navigable==t&&l(e,n)||E.transitionTo(t,e,{inherit:!0,location:!1})}]),d(n),t}function v(e){return e.indexOf("*")>-1}function g(e){var t=e.split("."),n=E.$current.name.split(".");if("**"===t[0]&&(n=n.slice(s(n,t[1])),n.unshift("**")),"**"===t[t.length-1]&&(n.splice(s(n,t[t.length-2])+1,Number.MAX_VALUE),n.push("**")),t.length!=n.length)return!1;for(var r=0,i=t.length;i>r;r++)"*"===t[r]&&(n[r]="*");return n.join("")===t.join("")}function w(e,t){return D(e)&&!R(t)?_[e]:z(t)&&D(e)?(_[e]&&!_.$delegates[e]&&(_.$delegates[e]=_[e]),_[e]=t,this):this}function b(e,t){return U(e)?t=e:t.name=e,p(t),this}function y(e,i,o,s,h,d,p,w,b){function y(t,n,r,o){var a=e.$broadcast("$stateNotFound",t,n,r);if(a.defaultPrevented)return p.update(),C;if(!a.retry)return null;if(o.$retry)return p.update(),A;var s=E.transition=i.when(a.retry);return s.then(function(){return s!==E.transition?_:(t.options.$retry=!0,E.transitionTo(t.to,t.toParams,t.options))},function(){return C}),p.update(),s}function x(e,n,r,a,u,l){var f=r?n:c(e.params.$$keys(),n),d={$stateParams:f};u.resolve=h.resolve(e.resolve,d,u.resolve,e);var p=[u.resolve.then(function(e){u.globals=e})];return a&&p.push(a),T(e.views,function(n,r){var i=n.resolve&&n.resolve!==e.resolve?n.resolve:{};i.$template=[function(){return o.load(r,{view:n,locals:d,params:f,notify:l.notify})||""}],p.push(h.resolve(i,d,u.resolve,e).then(function(o){if(z(n.controllerProvider)||N(n.controllerProvider)){var a=t.extend({},i,d);o.$$controller=s.invoke(n.controllerProvider,null,a)}else o.$$controller=n.controller;o.$$state=e,o.$$controllerAs=n.controllerAs,u[r]=o}))}),i.all(p).then(function(e){return u})}var _=i.reject(new Error("transition superseded")),O=i.reject(new Error("transition prevented")),C=i.reject(new Error("transition aborted")),A=i.reject(new Error("transition failed"));return k.locals={resolve:null,globals:{$stateParams:{}}},E={params:{},current:k.self,$current:k,transition:null},E.reload=function q(){return E.transitionTo(E.current,d,{reload:!0,inherit:!1,notify:!0})},E.go=function I(e,t,n){return E.transitionTo(e,t,B({inherit:!0,relative:E.$current},n))},E.transitionTo=function F(t,n,o){n=n||{},o=B({location:!0,inherit:!1,relative:null,notify:!0,reload:!1,$retry:!1},o||{});var a=E.$current,l=E.params,h=a.path,v,m=f(t,o.relative);if(!R(m)){var g={to:t,toParams:n,options:o},w=y(g,a.self,l,o);if(w)return w;if(t=g.to,n=g.toParams,o=g.options,m=f(t,o.relative),!R(m)){if(!o.relative)throw new Error("No such state '"+t+"'");throw new Error("Could not resolve '"+t+"' from state '"+o.relative+"'")}}if(m[j])throw new Error("Cannot transition to abstract state '"+t+"'");if(o.inherit&&(n=u(d,n||{},E.$current,m)),!m.params.$$validates(n))return A;n=m.params.$$values(n),t=m;var b=t.path,P=0,C=b[P],q=k.locals,I=[];if(!o.reload)for(;C&&C===h[P]&&C.ownParams.$$equals(n,l);)q=I[P]=C.locals,P++,C=b[P];if(S(t,a,q,o))return t.self.reloadOnSearch!==!1&&p.update(),E.transition=null,i.when(E.current);if(n=c(t.params.$$keys(),n||{}),o.notify&&e.$broadcast("$stateChangeStart",t.self,n,a.self,l).defaultPrevented)return p.update(),O;for(var F=i.when(q),M=P;M<b.length;M++,C=b[M])q=I[M]=r(q),F=x(C,n,C===t,F,q,o);var z=E.transition=F.then(function(){var r,i,u;if(E.transition!==z)return _;for(r=h.length-1;r>=P;r--)u=h[r],u.self.onExit&&s.invoke(u.self.onExit,u.self,u.locals.globals),u.locals=null;for(r=P;r<b.length;r++)i=b[r],i.locals=I[r],i.self.onEnter&&s.invoke(i.self.onEnter,i.self,i.locals.globals);return E.transition!==z?_:(E.$current=t,E.current=t.self,E.params=n,L(E.params,d),E.transition=null,o.location&&t.navigable&&p.push(t.navigable.url,t.navigable.locals.globals.$stateParams,{$$avoidResync:!0,replace:"replace"===o.location}),o.notify&&e.$broadcast("$stateChangeSuccess",t.self,n,a.self,l),p.update(!0),E.current)},function(r){return E.transition!==z?_:(E.transition=null,v=e.$broadcast("$stateChangeError",t.self,n,a.self,l,r),v.defaultPrevented||p.update(),i.reject(r))});return z},E.is=function M(e,t,r){r=B({relative:E.$current},r||{});var i=f(e,r.relative);return R(i)?E.$current!==i?!1:t?l(i.params.$$values(t),d):!0:n},E.includes=function U(e,t,r){if(r=B({relative:E.$current},r||{}),D(e)&&v(e)){if(!g(e))return!1;e=E.$current.name}var i=f(e,r.relative);return R(i)?R(E.$current.includes[i.name])?t?l(i.params.$$values(t),d,a(t)):!0:!1:n},E.href=function V(e,t,r){r=B({lossy:!0,inherit:!0,absolute:!1,relative:E.$current},r||{});var i=f(e,r.relative);if(!R(i))return null;r.inherit&&(t=u(d,t||{},E.$current,i));var o=i&&r.lossy?i.navigable:i;return o&&o.url!==n&&null!==o.url?p.href(o.url,c(i.params.$$keys(),t||{}),{absolute:r.absolute}):null},E.get=function(e,t){if(0===arguments.length)return m(a(P),function(e){return P[e].self});var n=f(e,t||E.$current);return n&&n.self?n.self:null},E}function S(e,t,n,r){return e!==t||(n!==t.locals||r.reload)&&e.self.reloadOnSearch!==!1?void 0:!0}var k,P={},E,x={},j="abstract",_={parent:function(e){if(R(e.parent)&&e.parent)return f(e.parent);var t=/^(.+)\.[^.]+$/.exec(e.name);return t?f(t[1]):k},data:function(e){return e.parent&&e.parent.data&&(e.data=e.self.data=B({},e.parent.data,e.data)),e.data},url:function(e){var t=e.url,n={params:e.params||{}};if(D(t))return"^"==t.charAt(0)?i.compile(t.substring(1),n):(e.parent.navigable||k).url.concat(t,n);if(!t||i.isMatcher(t))return t;throw new Error("Invalid url '"+t+"' in state '"+e+"'")},navigable:function(e){return e.url?e:e.parent?e.parent.navigable:null},ownParams:function(e){var t=e.url&&e.url.params||new V.ParamSet;return T(e.params||{},function(e,n){t[n]||(t[n]=new V.Param(n,null,e,"config"))}),t},params:function(e){return e.parent&&e.parent.params?B(e.parent.params.$$new(),e.ownParams):new V.ParamSet},views:function(e){var t={};return T(R(e.views)?e.views:{"":e},function(n,r){r.indexOf("@")<0&&(r+="@"+e.parent.name),t[r]=n}),t},path:function(e){return e.parent?e.parent.path.concat(e):[]},includes:function(e){var t=e.parent?B({},e.parent.includes):{};return t[e.name]=!0,t},$delegates:{}};k=p({name:"",url:"^",views:null,"abstract":!0}),k.navigable=null,this.decorator=w,this.state=b,this.$get=y,y.$inject=["$rootScope","$q","$view","$injector","$resolve","$stateParams","$urlRouter","$location","$urlMatcherFactory"]}function E(){function e(e,t){return{load:function n(r,i){var o,a={template:null,controller:null,view:null,locals:null,notify:!0,async:!0,params:{}};return i=B(a,i),i.view&&(o=t.fromConfig(i.view,i.params,i.locals)),o&&i.notify&&e.$broadcast("$viewContentLoading",i),o}}}this.$get=e,e.$inject=["$rootScope","$templateFactory"]}function x(){var e=!1;this.useAnchorScroll=function(){e=!0},this.$get=["$anchorScroll","$timeout",function(t,n){return e?t:function(e){n(function(){e[0].scrollIntoView()},0,!1)}}]}function j(e,n,r,i){function o(){return n.has?function(e){return n.has(e)?n.get(e):null}:function(e){try{return n.get(e)}catch(t){return null}}}function a(e,t){var n=function(){return{enter:function(e,t,n){t.after(e),n()},leave:function(e,t){e.remove(),t()}}};if(l)return{enter:function(e,t,n){var r=l.enter(e,null,t,n);r&&r.then&&r.then(n)},leave:function(e,t){var n=l.leave(e,t);n&&n.then&&n.then(t)}};if(u){var r=u&&u(t,e);return{enter:function(e,t,n){r.enter(e,null,t),n()},leave:function(e,t){r.leave(e),t()}}}return n()}var s=o(),u=s("$animator"),l=s("$animate"),c={restrict:"ECA",terminal:!0,priority:400,transclude:"element",compile:function(n,o,s){return function(n,o,u){function l(){f&&(f.remove(),f=null),d&&(d.$destroy(),d=null),h&&(g.leave(h,function(){f=null}),f=h,h=null)}function c(a){var c,f=O(n,u,o,i),w=f&&e.$current&&e.$current.locals[f];if(a||w!==p){c=n.$new(),p=e.$current.locals[f];var b=s(c,function(e){g.enter(e,o,function i(){d&&d.$emit("$viewContentAnimationEnded"),(t.isDefined(m)&&!m||n.$eval(m))&&r(e)}),l()});h=b,d=c,d.$emit("$viewContentLoaded"),d.$eval(v)}}var f,h,d,p,v=u.onload||"",m=u.autoscroll,g=a(u,n);n.$on("$stateChangeSuccess",function(){c(!1)}),n.$on("$viewContentLoading",function(){c(!1)}),c(!0)}}};return c}function _(e,t,n,r){return{restrict:"ECA",priority:-400,compile:function(i){var o=i.html();return function(i,a,s){var u=n.$current,l=O(i,s,a,r),c=u&&u.locals[l];if(c){a.data("$uiView",{name:l,state:c.$$state}),a.html(c.$template?c.$template:o);var f=e(a.contents());if(c.$$controller){c.$scope=i;var h=t(c.$$controller,c);c.$$controllerAs&&(i[c.$$controllerAs]=h),a.data("$ngControllerController",h),a.children().data("$ngControllerController",h)}f(i)}}}}}function O(e,t,n,r){var i=r(t.uiView||t.name||"")(e),o=n.inheritedData("$uiView");return i.indexOf("@")>=0?i:i+"@"+(o?o.state.name:"")}function C(e,t){var n=e.match(/^\s*({[^}]*})\s*$/),r;if(n&&(e=t+"("+n[1]+")"),r=e.replace(/\n/g," ").match(/^([^(]+?)\s*(\((.*)\))?$/),!r||4!==r.length)throw new Error("Invalid state ref '"+e+"'");return{state:r[1],paramExpr:r[3]||null}}function A(e){var t=e.parent().inheritedData("$uiView");return t&&t.state&&t.state.name?t.state:void 0}function q(e,n){var r=["location","inherit","reload"];return{restrict:"A",require:["?^uiSrefActive","?^uiSrefActiveEq"],link:function(i,o,a,s){var u=C(a.uiSref,e.current.name),l=null,c=null,f=A(o)||e.$current,h=null,d="A"===o.prop("tagName"),p="FORM"===o[0].nodeName,v=p?"action":"href",m=!0,g={relative:f,inherit:!0},w=i.$eval(a.uiSrefOpts)||{};t.forEach(r,function(e){e in w&&(g[e]=w[e])});var b=function(n){if(n&&(l=t.copy(n)),m){h=e.href(u.state,l,g);var r=s[1]||s[0];return r&&r.$$setStateInfo(u.state,l),null===h?(m=!1,!1):void a.$set(v,h)}};u.paramExpr&&(i.$watch(u.paramExpr,function(e,t){e!==l&&b(e)},!0),l=t.copy(i.$eval(u.paramExpr))),b(),p||o.bind("click",function(t){var r=t.which||t.button;if(!(r>1||t.ctrlKey||t.metaKey||t.shiftKey||o.attr("target"))){var i=n(function(){e.go(u.state,l,g)});t.preventDefault();var a=d&&!h?1:0;t.preventDefault=function(){a--<=0&&n.cancel(i)}}})}}}function I(e,t,n){return{restrict:"A",controller:["$scope","$element","$attrs",function(t,r,i){function o(){a()?r.addClass(l):r.removeClass(l)}function a(){return"undefined"!=typeof i.uiSrefActiveEq?s&&e.is(s.name,u):s&&e.includes(s.name,u)}var s,u,l;l=n(i.uiSrefActiveEq||i.uiSrefActive||"",!1)(t),this.$$setStateInfo=function(t,n){s=e.get(t,A(r)),u=n,o()},t.$on("$stateChangeSuccess",o)}]}}function F(e){var t=function(t){return e.is(t)};return t.$stateful=!0,t}function M(e){var t=function(t){return e.includes(t)};return t.$stateful=!0,t}var R=t.isDefined,z=t.isFunction,D=t.isString,U=t.isObject,N=t.isArray,T=t.forEach,B=t.extend,L=t.copy;t.module("ui.router.util",["ng"]),t.module("ui.router.router",["ui.router.util"]),t.module("ui.router.state",["ui.router.router","ui.router.util"]),t.module("ui.router",["ui.router.state"]),t.module("ui.router.compat",["ui.router"]),g.$inject=["$q","$injector"],t.module("ui.router.util").service("$resolve",g),w.$inject=["$http","$templateCache","$injector"],t.module("ui.router.util").service("$templateFactory",w);var V;b.prototype.concat=function(e,t){var n={caseInsensitive:V.caseInsensitive(),strict:V.strictMode(),squash:V.defaultSquashPolicy()};return new b(this.sourcePath+e+this.sourceSearch,B(n,t),this)},b.prototype.toString=function(){return this.source},b.prototype.exec=function(e,t){function n(e){function t(e){return e.split("").reverse().join("")}function n(e){return e.replace(/\\-/,"-")}var r=t(e).split(/-(?!\\)/),i=m(r,t);return m(i,n).reverse()}var r=this.regexp.exec(e);if(!r)return null;t=t||{};var i=this.parameters(),o=i.length,a=this.segments.length-1,s={},u,l,c,f;if(a!==r.length-1)throw new Error("Unbalanced capture group in route '"+this.source+"'");for(u=0;a>u;u++){f=i[u];var h=this.params[f],d=r[u+1];for(l=0;l<h.replace;l++)h.replace[l].from===d&&(d=h.replace[l].to);d&&h.array===!0&&(d=n(d)),s[f]=h.value(d)}for(;o>u;u++)f=i[u],s[f]=this.params[f].value(t[f]);return s},b.prototype.parameters=function(e){return R(e)?this.params[e]||null:this.$$paramNames},b.prototype.validates=function(e){return this.params.$$validates(e)},b.prototype.format=function(e){function t(e){return encodeURIComponent(e).replace(/-/g,function(e){return"%5C%"+e.charCodeAt(0).toString(16).toUpperCase()})}e=e||{};var n=this.segments,r=this.parameters(),i=this.params;if(!this.validates(e))return null;var o,a=!1,s=n.length-1,u=r.length,l=n[0];for(o=0;u>o;o++){var c=s>o,f=r[o],h=i[f],d=h.value(e[f]),p=h.isOptional&&h.type.equals(h.value(),d),v=p?h.squash:!1,g=h.type.encode(d);if(c){var w=n[o+1];if(v===!1)null!=g&&(l+=N(g)?m(g,t).join("-"):encodeURIComponent(g)),l+=w;else if(v===!0){var b=l.match(/\/$/)?/\/?(.*)/:/(.*)/;l+=w.match(b)[1]}else D(v)&&(l+=v+w)}else{if(null==g||p&&v!==!1)continue;N(g)||(g=[g]),g=m(g,encodeURIComponent).join("&"+f+"="),l+=(a?"&":"?")+(f+"="+g),a=!0}}return l},y.prototype.is=function(e,t){return!0},y.prototype.encode=function(e,t){return e},y.prototype.decode=function(e,t){return e},y.prototype.equals=function(e,t){return e==t},y.prototype.$subPattern=function(){var e=this.pattern.toString();return e.substr(1,e.length-2)},y.prototype.pattern=/.*/,y.prototype.toString=function(){return"{Type:"+this.name+"}"},y.prototype.$asArray=function(e,t){function r(e,t){function r(e,t){return function(){return e[t].apply(e,arguments)}}function i(e){return N(e)?e:R(e)?[e]:[]}function o(e){switch(e.length){case 0:return n;case 1:return"auto"===t?e[0]:e;default:return e}}function a(e){return!e}function s(e,t){return function n(r){r=i(r);var s=m(r,e);return t===!0?0===v(s,a).length:o(s)}}function u(e){return function t(n,r){var o=i(n),a=i(r);if(o.length!==a.length)return!1;for(var s=0;s<o.length;s++)if(!e(o[s],a[s]))return!1;return!0}}this.encode=s(r(e,"encode")),this.decode=s(r(e,"decode")),this.is=s(r(e,"is"),!0),this.equals=u(r(e,"equals")),this.pattern=e.pattern,this.$arrayMode=t}if(!e)return this;if("auto"===e&&!t)throw new Error("'auto' array mode is for query parameters only");return new r(this,e)},t.module("ui.router.util").provider("$urlMatcherFactory",S),t.module("ui.router.util").run(["$urlMatcherFactory",function(e){}]),k.$inject=["$locationProvider","$urlMatcherFactoryProvider"],t.module("ui.router.router").provider("$urlRouter",k),P.$inject=["$urlRouterProvider","$urlMatcherFactoryProvider"],t.module("ui.router.state").value("$stateParams",{}).provider("$state",P),E.$inject=[],t.module("ui.router.state").provider("$view",E),t.module("ui.router.state").provider("$uiViewScroll",x),j.$inject=["$state","$injector","$uiViewScroll","$interpolate"],_.$inject=["$compile","$controller","$state","$interpolate"],t.module("ui.router.state").directive("uiView",j),t.module("ui.router.state").directive("uiView",_),q.$inject=["$state","$timeout"],I.$inject=["$state","$stateParams","$interpolate"],t.module("ui.router.state").directive("uiSref",q).directive("uiSrefActive",I).directive("uiSrefActiveEq",I),F.$inject=["$state"],M.$inject=["$state"],t.module("ui.router.state").filter("isState",F).filter("includedByState",M)}(window,window.angular),/**
+
+/* commonjs package manager support (eg componentjs) */
+if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
+  module.exports = 'ui.router';
+}
+
+(function (window, angular, undefined) {
+/*jshint globalstrict:true*/
+/*global angular:false*/
+'use strict';
+
+var isDefined = angular.isDefined,
+    isFunction = angular.isFunction,
+    isString = angular.isString,
+    isObject = angular.isObject,
+    isArray = angular.isArray,
+    forEach = angular.forEach,
+    extend = angular.extend,
+    copy = angular.copy;
+
+function inherit(parent, extra) {
+  return extend(new (extend(function() {}, { prototype: parent }))(), extra);
+}
+
+function merge(dst) {
+  forEach(arguments, function(obj) {
+    if (obj !== dst) {
+      forEach(obj, function(value, key) {
+        if (!dst.hasOwnProperty(key)) dst[key] = value;
+      });
+    }
+  });
+  return dst;
+}
+
+/**
+ * Finds the common ancestor path between two states.
+ *
+ * @param {Object} first The first state.
+ * @param {Object} second The second state.
+ * @return {Array} Returns an array of state names in descending order, not including the root.
+ */
+function ancestors(first, second) {
+  var path = [];
+
+  for (var n in first.path) {
+    if (first.path[n] !== second.path[n]) break;
+    path.push(first.path[n]);
+  }
+  return path;
+}
+
+/**
+ * IE8-safe wrapper for `Object.keys()`.
+ *
+ * @param {Object} object A JavaScript object.
+ * @return {Array} Returns the keys of the object as an array.
+ */
+function objectKeys(object) {
+  if (Object.keys) {
+    return Object.keys(object);
+  }
+  var result = [];
+
+  angular.forEach(object, function(val, key) {
+    result.push(key);
+  });
+  return result;
+}
+
+/**
+ * IE8-safe wrapper for `Array.prototype.indexOf()`.
+ *
+ * @param {Array} array A JavaScript array.
+ * @param {*} value A value to search the array for.
+ * @return {Number} Returns the array index value of `value`, or `-1` if not present.
+ */
+function indexOf(array, value) {
+  if (Array.prototype.indexOf) {
+    return array.indexOf(value, Number(arguments[2]) || 0);
+  }
+  var len = array.length >>> 0, from = Number(arguments[2]) || 0;
+  from = (from < 0) ? Math.ceil(from) : Math.floor(from);
+
+  if (from < 0) from += len;
+
+  for (; from < len; from++) {
+    if (from in array && array[from] === value) return from;
+  }
+  return -1;
+}
+
+/**
+ * Merges a set of parameters with all parameters inherited between the common parents of the
+ * current state and a given destination state.
+ *
+ * @param {Object} currentParams The value of the current state parameters ($stateParams).
+ * @param {Object} newParams The set of parameters which will be composited with inherited params.
+ * @param {Object} $current Internal definition of object representing the current state.
+ * @param {Object} $to Internal definition of object representing state to transition to.
+ */
+function inheritParams(currentParams, newParams, $current, $to) {
+  var parents = ancestors($current, $to), parentParams, inherited = {}, inheritList = [];
+
+  for (var i in parents) {
+    if (!parents[i].params) continue;
+    parentParams = objectKeys(parents[i].params);
+    if (!parentParams.length) continue;
+
+    for (var j in parentParams) {
+      if (indexOf(inheritList, parentParams[j]) >= 0) continue;
+      inheritList.push(parentParams[j]);
+      inherited[parentParams[j]] = currentParams[parentParams[j]];
+    }
+  }
+  return extend({}, inherited, newParams);
+}
+
+/**
+ * Performs a non-strict comparison of the subset of two objects, defined by a list of keys.
+ *
+ * @param {Object} a The first object.
+ * @param {Object} b The second object.
+ * @param {Array} keys The list of keys within each object to compare. If the list is empty or not specified,
+ *                     it defaults to the list of keys in `a`.
+ * @return {Boolean} Returns `true` if the keys match, otherwise `false`.
+ */
+function equalForKeys(a, b, keys) {
+  if (!keys) {
+    keys = [];
+    for (var n in a) keys.push(n); // Used instead of Object.keys() for IE8 compatibility
+  }
+
+  for (var i=0; i<keys.length; i++) {
+    var k = keys[i];
+    if (a[k] != b[k]) return false; // Not '===', values aren't necessarily normalized
+  }
+  return true;
+}
+
+/**
+ * Returns the subset of an object, based on a list of keys.
+ *
+ * @param {Array} keys
+ * @param {Object} values
+ * @return {Boolean} Returns a subset of `values`.
+ */
+function filterByKeys(keys, values) {
+  var filtered = {};
+
+  forEach(keys, function (name) {
+    filtered[name] = values[name];
+  });
+  return filtered;
+}
+
+// like _.indexBy
+// when you know that your index values will be unique, or you want last-one-in to win
+function indexBy(array, propName) {
+  var result = {};
+  forEach(array, function(item) {
+    result[item[propName]] = item;
+  });
+  return result;
+}
+
+// extracted from underscore.js
+// Return a copy of the object only containing the whitelisted properties.
+function pick(obj) {
+  var copy = {};
+  var keys = Array.prototype.concat.apply(Array.prototype, Array.prototype.slice.call(arguments, 1));
+  forEach(keys, function(key) {
+    if (key in obj) copy[key] = obj[key];
+  });
+  return copy;
+}
+
+// extracted from underscore.js
+// Return a copy of the object omitting the blacklisted properties.
+function omit(obj) {
+  var copy = {};
+  var keys = Array.prototype.concat.apply(Array.prototype, Array.prototype.slice.call(arguments, 1));
+  for (var key in obj) {
+    if (indexOf(keys, key) == -1) copy[key] = obj[key];
+  }
+  return copy;
+}
+
+function pluck(collection, key) {
+  var result = isArray(collection) ? [] : {};
+
+  forEach(collection, function(val, i) {
+    result[i] = isFunction(key) ? key(val) : val[key];
+  });
+  return result;
+}
+
+function filter(collection, callback) {
+  var array = isArray(collection);
+  var result = array ? [] : {};
+  forEach(collection, function(val, i) {
+    if (callback(val, i)) {
+      result[array ? result.length : i] = val;
+    }
+  });
+  return result;
+}
+
+function map(collection, callback) {
+  var result = isArray(collection) ? [] : {};
+
+  forEach(collection, function(val, i) {
+    result[i] = callback(val, i);
+  });
+  return result;
+}
+
+/**
+ * @ngdoc overview
+ * @name ui.router.util
+ *
+ * @description
+ * # ui.router.util sub-module
+ *
+ * This module is a dependency of other sub-modules. Do not include this module as a dependency
+ * in your angular app (use {@link ui.router} module instead).
+ *
+ */
+angular.module('ui.router.util', ['ng']);
+
+/**
+ * @ngdoc overview
+ * @name ui.router.router
+ *
+ * @requires ui.router.util
+ *
+ * @description
+ * # ui.router.router sub-module
+ *
+ * This module is a dependency of other sub-modules. Do not include this module as a dependency
+ * in your angular app (use {@link ui.router} module instead).
+ */
+angular.module('ui.router.router', ['ui.router.util']);
+
+/**
+ * @ngdoc overview
+ * @name ui.router.state
+ *
+ * @requires ui.router.router
+ * @requires ui.router.util
+ *
+ * @description
+ * # ui.router.state sub-module
+ *
+ * This module is a dependency of the main ui.router module. Do not include this module as a dependency
+ * in your angular app (use {@link ui.router} module instead).
+ *
+ */
+angular.module('ui.router.state', ['ui.router.router', 'ui.router.util']);
+
+/**
+ * @ngdoc overview
+ * @name ui.router
+ *
+ * @requires ui.router.state
+ *
+ * @description
+ * # ui.router
+ *
+ * ## The main module for ui.router
+ * There are several sub-modules included with the ui.router module, however only this module is needed
+ * as a dependency within your angular app. The other modules are for organization purposes.
+ *
+ * The modules are:
+ * * ui.router - the main "umbrella" module
+ * * ui.router.router -
+ *
+ * *You'll need to include **only** this module as the dependency within your angular app.*
+ *
+ * <pre>
+ * <!doctype html>
+ * <html ng-app="myApp">
+ * <head>
+ *   <script src="js/angular.js"></script>
+ *   <!-- Include the ui-router script -->
+ *   <script src="js/angular-ui-router.min.js"></script>
+ *   <script>
+ *     // ...and add 'ui.router' as a dependency
+ *     var myApp = angular.module('myApp', ['ui.router']);
+ *   </script>
+ * </head>
+ * <body>
+ * </body>
+ * </html>
+ * </pre>
+ */
+angular.module('ui.router', ['ui.router.state']);
+
+angular.module('ui.router.compat', ['ui.router']);
+
+/**
+ * @ngdoc object
+ * @name ui.router.util.$resolve
+ *
+ * @requires $q
+ * @requires $injector
+ *
+ * @description
+ * Manages resolution of (acyclic) graphs of promises.
+ */
+$Resolve.$inject = ['$q', '$injector'];
+function $Resolve(  $q,    $injector) {
+
+  var VISIT_IN_PROGRESS = 1,
+      VISIT_DONE = 2,
+      NOTHING = {},
+      NO_DEPENDENCIES = [],
+      NO_LOCALS = NOTHING,
+      NO_PARENT = extend($q.when(NOTHING), { $$promises: NOTHING, $$values: NOTHING });
+
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$resolve#study
+   * @methodOf ui.router.util.$resolve
+   *
+   * @description
+   * Studies a set of invocables that are likely to be used multiple times.
+   * <pre>
+   * $resolve.study(invocables)(locals, parent, self)
+   * </pre>
+   * is equivalent to
+   * <pre>
+   * $resolve.resolve(invocables, locals, parent, self)
+   * </pre>
+   * but the former is more efficient (in fact `resolve` just calls `study`
+   * internally).
+   *
+   * @param {object} invocables Invocable objects
+   * @return {function} a function to pass in locals, parent and self
+   */
+  this.study = function (invocables) {
+    if (!isObject(invocables)) throw new Error("'invocables' must be an object");
+    var invocableKeys = objectKeys(invocables || {});
+
+    // Perform a topological sort of invocables to build an ordered plan
+    var plan = [], cycle = [], visited = {};
+    function visit(value, key) {
+      if (visited[key] === VISIT_DONE) return;
+
+      cycle.push(key);
+      if (visited[key] === VISIT_IN_PROGRESS) {
+        cycle.splice(0, indexOf(cycle, key));
+        throw new Error("Cyclic dependency: " + cycle.join(" -> "));
+      }
+      visited[key] = VISIT_IN_PROGRESS;
+
+      if (isString(value)) {
+        plan.push(key, [ function() { return $injector.get(value); }], NO_DEPENDENCIES);
+      } else {
+        var params = $injector.annotate(value);
+        forEach(params, function (param) {
+          if (param !== key && invocables.hasOwnProperty(param)) visit(invocables[param], param);
+        });
+        plan.push(key, value, params);
+      }
+
+      cycle.pop();
+      visited[key] = VISIT_DONE;
+    }
+    forEach(invocables, visit);
+    invocables = cycle = visited = null; // plan is all that's required
+
+    function isResolve(value) {
+      return isObject(value) && value.then && value.$$promises;
+    }
+
+    return function (locals, parent, self) {
+      if (isResolve(locals) && self === undefined) {
+        self = parent; parent = locals; locals = null;
+      }
+      if (!locals) locals = NO_LOCALS;
+      else if (!isObject(locals)) {
+        throw new Error("'locals' must be an object");
+      }
+      if (!parent) parent = NO_PARENT;
+      else if (!isResolve(parent)) {
+        throw new Error("'parent' must be a promise returned by $resolve.resolve()");
+      }
+
+      // To complete the overall resolution, we have to wait for the parent
+      // promise and for the promise for each invokable in our plan.
+      var resolution = $q.defer(),
+          result = resolution.promise,
+          promises = result.$$promises = {},
+          values = extend({}, locals),
+          wait = 1 + plan.length/3,
+          merged = false;
+
+      function done() {
+        // Merge parent values we haven't got yet and publish our own $$values
+        if (!--wait) {
+          if (!merged) merge(values, parent.$$values);
+          result.$$values = values;
+          result.$$promises = result.$$promises || true; // keep for isResolve()
+          delete result.$$inheritedValues;
+          resolution.resolve(values);
+        }
+      }
+
+      function fail(reason) {
+        result.$$failure = reason;
+        resolution.reject(reason);
+      }
+
+      // Short-circuit if parent has already failed
+      if (isDefined(parent.$$failure)) {
+        fail(parent.$$failure);
+        return result;
+      }
+
+      if (parent.$$inheritedValues) {
+        merge(values, omit(parent.$$inheritedValues, invocableKeys));
+      }
+
+      // Merge parent values if the parent has already resolved, or merge
+      // parent promises and wait if the parent resolve is still in progress.
+      extend(promises, parent.$$promises);
+      if (parent.$$values) {
+        merged = merge(values, omit(parent.$$values, invocableKeys));
+        result.$$inheritedValues = omit(parent.$$values, invocableKeys);
+        done();
+      } else {
+        if (parent.$$inheritedValues) {
+          result.$$inheritedValues = omit(parent.$$inheritedValues, invocableKeys);
+        }
+        parent.then(done, fail);
+      }
+
+      // Process each invocable in the plan, but ignore any where a local of the same name exists.
+      for (var i=0, ii=plan.length; i<ii; i+=3) {
+        if (locals.hasOwnProperty(plan[i])) done();
+        else invoke(plan[i], plan[i+1], plan[i+2]);
+      }
+
+      function invoke(key, invocable, params) {
+        // Create a deferred for this invocation. Failures will propagate to the resolution as well.
+        var invocation = $q.defer(), waitParams = 0;
+        function onfailure(reason) {
+          invocation.reject(reason);
+          fail(reason);
+        }
+        // Wait for any parameter that we have a promise for (either from parent or from this
+        // resolve; in that case study() will have made sure it's ordered before us in the plan).
+        forEach(params, function (dep) {
+          if (promises.hasOwnProperty(dep) && !locals.hasOwnProperty(dep)) {
+            waitParams++;
+            promises[dep].then(function (result) {
+              values[dep] = result;
+              if (!(--waitParams)) proceed();
+            }, onfailure);
+          }
+        });
+        if (!waitParams) proceed();
+        function proceed() {
+          if (isDefined(result.$$failure)) return;
+          try {
+            invocation.resolve($injector.invoke(invocable, self, values));
+            invocation.promise.then(function (result) {
+              values[key] = result;
+              done();
+            }, onfailure);
+          } catch (e) {
+            onfailure(e);
+          }
+        }
+        // Publish promise synchronously; invocations further down in the plan may depend on it.
+        promises[key] = invocation.promise;
+      }
+
+      return result;
+    };
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$resolve#resolve
+   * @methodOf ui.router.util.$resolve
+   *
+   * @description
+   * Resolves a set of invocables. An invocable is a function to be invoked via
+   * `$injector.invoke()`, and can have an arbitrary number of dependencies.
+   * An invocable can either return a value directly,
+   * or a `$q` promise. If a promise is returned it will be resolved and the
+   * resulting value will be used instead. Dependencies of invocables are resolved
+   * (in this order of precedence)
+   *
+   * - from the specified `locals`
+   * - from another invocable that is part of this `$resolve` call
+   * - from an invocable that is inherited from a `parent` call to `$resolve`
+   *   (or recursively
+   * - from any ancestor `$resolve` of that parent).
+   *
+   * The return value of `$resolve` is a promise for an object that contains
+   * (in this order of precedence)
+   *
+   * - any `locals` (if specified)
+   * - the resolved return values of all injectables
+   * - any values inherited from a `parent` call to `$resolve` (if specified)
+   *
+   * The promise will resolve after the `parent` promise (if any) and all promises
+   * returned by injectables have been resolved. If any invocable
+   * (or `$injector.invoke`) throws an exception, or if a promise returned by an
+   * invocable is rejected, the `$resolve` promise is immediately rejected with the
+   * same error. A rejection of a `parent` promise (if specified) will likewise be
+   * propagated immediately. Once the `$resolve` promise has been rejected, no
+   * further invocables will be called.
+   *
+   * Cyclic dependencies between invocables are not permitted and will caues `$resolve`
+   * to throw an error. As a special case, an injectable can depend on a parameter
+   * with the same name as the injectable, which will be fulfilled from the `parent`
+   * injectable of the same name. This allows inherited values to be decorated.
+   * Note that in this case any other injectable in the same `$resolve` with the same
+   * dependency would see the decorated value, not the inherited value.
+   *
+   * Note that missing dependencies -- unlike cyclic dependencies -- will cause an
+   * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous)
+   * exception.
+   *
+   * Invocables are invoked eagerly as soon as all dependencies are available.
+   * This is true even for dependencies inherited from a `parent` call to `$resolve`.
+   *
+   * As a special case, an invocable can be a string, in which case it is taken to
+   * be a service name to be passed to `$injector.get()`. This is supported primarily
+   * for backwards-compatibility with the `resolve` property of `$routeProvider`
+   * routes.
+   *
+   * @param {object} invocables functions to invoke or
+   * `$injector` services to fetch.
+   * @param {object} locals  values to make available to the injectables
+   * @param {object} parent  a promise returned by another call to `$resolve`.
+   * @param {object} self  the `this` for the invoked methods
+   * @return {object} Promise for an object that contains the resolved return value
+   * of all invocables, as well as any inherited and local values.
+   */
+  this.resolve = function (invocables, locals, parent, self) {
+    return this.study(invocables)(locals, parent, self);
+  };
+}
+
+angular.module('ui.router.util').service('$resolve', $Resolve);
+
+
+/**
+ * @ngdoc object
+ * @name ui.router.util.$templateFactory
+ *
+ * @requires $http
+ * @requires $templateCache
+ * @requires $injector
+ *
+ * @description
+ * Service. Manages loading of templates.
+ */
+$TemplateFactory.$inject = ['$http', '$templateCache', '$injector'];
+function $TemplateFactory(  $http,   $templateCache,   $injector) {
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$templateFactory#fromConfig
+   * @methodOf ui.router.util.$templateFactory
+   *
+   * @description
+   * Creates a template from a configuration object.
+   *
+   * @param {object} config Configuration object for which to load a template.
+   * The following properties are search in the specified order, and the first one
+   * that is defined is used to create the template:
+   *
+   * @param {string|object} config.template html string template or function to
+   * load via {@link ui.router.util.$templateFactory#fromString fromString}.
+   * @param {string|object} config.templateUrl url to load or a function returning
+   * the url to load via {@link ui.router.util.$templateFactory#fromUrl fromUrl}.
+   * @param {Function} config.templateProvider function to invoke via
+   * {@link ui.router.util.$templateFactory#fromProvider fromProvider}.
+   * @param {object} params  Parameters to pass to the template function.
+   * @param {object} locals Locals to pass to `invoke` if the template is loaded
+   * via a `templateProvider`. Defaults to `{ params: params }`.
+   *
+   * @return {string|object}  The template html as a string, or a promise for
+   * that string,or `null` if no template is configured.
+   */
+  this.fromConfig = function (config, params, locals) {
+    return (
+      isDefined(config.template) ? this.fromString(config.template, params) :
+      isDefined(config.templateUrl) ? this.fromUrl(config.templateUrl, params) :
+      isDefined(config.templateProvider) ? this.fromProvider(config.templateProvider, params, locals) :
+      null
+    );
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$templateFactory#fromString
+   * @methodOf ui.router.util.$templateFactory
+   *
+   * @description
+   * Creates a template from a string or a function returning a string.
+   *
+   * @param {string|object} template html template as a string or function that
+   * returns an html template as a string.
+   * @param {object} params Parameters to pass to the template function.
+   *
+   * @return {string|object} The template html as a string, or a promise for that
+   * string.
+   */
+  this.fromString = function (template, params) {
+    return isFunction(template) ? template(params) : template;
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$templateFactory#fromUrl
+   * @methodOf ui.router.util.$templateFactory
+   *
+   * @description
+   * Loads a template from the a URL via `$http` and `$templateCache`.
+   *
+   * @param {string|Function} url url of the template to load, or a function
+   * that returns a url.
+   * @param {Object} params Parameters to pass to the url function.
+   * @return {string|Promise.<string>} The template html as a string, or a promise
+   * for that string.
+   */
+  this.fromUrl = function (url, params) {
+    if (isFunction(url)) url = url(params);
+    if (url == null) return null;
+    else return $http
+        .get(url, { cache: $templateCache, headers: { Accept: 'text/html' }})
+        .then(function(response) { return response.data; });
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$templateFactory#fromProvider
+   * @methodOf ui.router.util.$templateFactory
+   *
+   * @description
+   * Creates a template by invoking an injectable provider function.
+   *
+   * @param {Function} provider Function to invoke via `$injector.invoke`
+   * @param {Object} params Parameters for the template.
+   * @param {Object} locals Locals to pass to `invoke`. Defaults to
+   * `{ params: params }`.
+   * @return {string|Promise.<string>} The template html as a string, or a promise
+   * for that string.
+   */
+  this.fromProvider = function (provider, params, locals) {
+    return $injector.invoke(provider, null, locals || { params: params });
+  };
+}
+
+angular.module('ui.router.util').service('$templateFactory', $TemplateFactory);
+
+var $$UMFP; // reference to $UrlMatcherFactoryProvider
+
+/**
+ * @ngdoc object
+ * @name ui.router.util.type:UrlMatcher
+ *
+ * @description
+ * Matches URLs against patterns and extracts named parameters from the path or the search
+ * part of the URL. A URL pattern consists of a path pattern, optionally followed by '?' and a list
+ * of search parameters. Multiple search parameter names are separated by '&'. Search parameters
+ * do not influence whether or not a URL is matched, but their values are passed through into
+ * the matched parameters returned by {@link ui.router.util.type:UrlMatcher#methods_exec exec}.
+ *
+ * Path parameter placeholders can be specified using simple colon/catch-all syntax or curly brace
+ * syntax, which optionally allows a regular expression for the parameter to be specified:
+ *
+ * * `':'` name - colon placeholder
+ * * `'*'` name - catch-all placeholder
+ * * `'{' name '}'` - curly placeholder
+ * * `'{' name ':' regexp|type '}'` - curly placeholder with regexp or type name. Should the
+ *   regexp itself contain curly braces, they must be in matched pairs or escaped with a backslash.
+ *
+ * Parameter names may contain only word characters (latin letters, digits, and underscore) and
+ * must be unique within the pattern (across both path and search parameters). For colon
+ * placeholders or curly placeholders without an explicit regexp, a path parameter matches any
+ * number of characters other than '/'. For catch-all placeholders the path parameter matches
+ * any number of characters.
+ *
+ * Examples:
+ *
+ * * `'/hello/'` - Matches only if the path is exactly '/hello/'. There is no special treatment for
+ *   trailing slashes, and patterns have to match the entire path, not just a prefix.
+ * * `'/user/:id'` - Matches '/user/bob' or '/user/1234!!!' or even '/user/' but not '/user' or
+ *   '/user/bob/details'. The second path segment will be captured as the parameter 'id'.
+ * * `'/user/{id}'` - Same as the previous example, but using curly brace syntax.
+ * * `'/user/{id:[^/]*}'` - Same as the previous example.
+ * * `'/user/{id:[0-9a-fA-F]{1,8}}'` - Similar to the previous example, but only matches if the id
+ *   parameter consists of 1 to 8 hex digits.
+ * * `'/files/{path:.*}'` - Matches any URL starting with '/files/' and captures the rest of the
+ *   path into the parameter 'path'.
+ * * `'/files/*path'` - ditto.
+ * * `'/calendar/{start:date}'` - Matches "/calendar/2014-11-12" (because the pattern defined
+ *   in the built-in  `date` Type matches `2014-11-12`) and provides a Date object in $stateParams.start
+ *
+ * @param {string} pattern  The pattern to compile into a matcher.
+ * @param {Object} config  A configuration object hash:
+ * @param {Object=} parentMatcher Used to concatenate the pattern/config onto
+ *   an existing UrlMatcher
+ *
+ * * `caseInsensitive` - `true` if URL matching should be case insensitive, otherwise `false`, the default value (for backward compatibility) is `false`.
+ * * `strict` - `false` if matching against a URL with a trailing slash should be treated as equivalent to a URL without a trailing slash, the default value is `true`.
+ *
+ * @property {string} prefix  A static prefix of this pattern. The matcher guarantees that any
+ *   URL matching this matcher (i.e. any string for which {@link ui.router.util.type:UrlMatcher#methods_exec exec()} returns
+ *   non-null) will start with this prefix.
+ *
+ * @property {string} source  The pattern that was passed into the constructor
+ *
+ * @property {string} sourcePath  The path portion of the source property
+ *
+ * @property {string} sourceSearch  The search portion of the source property
+ *
+ * @property {string} regex  The constructed regex that will be used to match against the url when
+ *   it is time to determine which url will match.
+ *
+ * @returns {Object}  New `UrlMatcher` object
+ */
+function UrlMatcher(pattern, config, parentMatcher) {
+  config = extend({ params: {} }, isObject(config) ? config : {});
+
+  // Find all placeholders and create a compiled pattern, using either classic or curly syntax:
+  //   '*' name
+  //   ':' name
+  //   '{' name '}'
+  //   '{' name ':' regexp '}'
+  // The regular expression is somewhat complicated due to the need to allow curly braces
+  // inside the regular expression. The placeholder regexp breaks down as follows:
+  //    ([:*])([\w\[\]]+)              - classic placeholder ($1 / $2) (search version has - for snake-case)
+  //    \{([\w\[\]]+)(?:\:( ... ))?\}  - curly brace placeholder ($3) with optional regexp/type ... ($4) (search version has - for snake-case
+  //    (?: ... | ... | ... )+         - the regexp consists of any number of atoms, an atom being either
+  //    [^{}\\]+                       - anything other than curly braces or backslash
+  //    \\.                            - a backslash escape
+  //    \{(?:[^{}\\]+|\\.)*\}          - a matched set of curly braces containing other atoms
+  var placeholder       = /([:*])([\w\[\]]+)|\{([\w\[\]]+)(?:\:((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,
+      searchPlaceholder = /([:]?)([\w\[\]-]+)|\{([\w\[\]-]+)(?:\:((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,
+      compiled = '^', last = 0, m,
+      segments = this.segments = [],
+      parentParams = parentMatcher ? parentMatcher.params : {},
+      params = this.params = parentMatcher ? parentMatcher.params.$$new() : new $$UMFP.ParamSet(),
+      paramNames = [];
+
+  function addParameter(id, type, config, location) {
+    paramNames.push(id);
+    if (parentParams[id]) return parentParams[id];
+    if (!/^\w+(-+\w+)*(?:\[\])?$/.test(id)) throw new Error("Invalid parameter name '" + id + "' in pattern '" + pattern + "'");
+    if (params[id]) throw new Error("Duplicate parameter name '" + id + "' in pattern '" + pattern + "'");
+    params[id] = new $$UMFP.Param(id, type, config, location);
+    return params[id];
+  }
+
+  function quoteRegExp(string, pattern, squash) {
+    var surroundPattern = ['',''], result = string.replace(/[\\\[\]\^$*+?.()|{}]/g, "\\$&");
+    if (!pattern) return result;
+    switch(squash) {
+      case false: surroundPattern = ['(', ')'];   break;
+      case true:  surroundPattern = ['?(', ')?']; break;
+      default:    surroundPattern = ['(' + squash + "|", ')?'];  break;
+    }
+    return result + surroundPattern[0] + pattern + surroundPattern[1];
+  }
+
+  this.source = pattern;
+
+  // Split into static segments separated by path parameter placeholders.
+  // The number of segments is always 1 more than the number of parameters.
+  function matchDetails(m, isSearch) {
+    var id, regexp, segment, type, cfg, arrayMode;
+    id          = m[2] || m[3]; // IE[78] returns '' for unmatched groups instead of null
+    cfg         = config.params[id];
+    segment     = pattern.substring(last, m.index);
+    regexp      = isSearch ? m[4] : m[4] || (m[1] == '*' ? '.*' : null);
+    type        = $$UMFP.type(regexp || "string") || inherit($$UMFP.type("string"), { pattern: new RegExp(regexp) });
+    return {
+      id: id, regexp: regexp, segment: segment, type: type, cfg: cfg
+    };
+  }
+
+  var p, param, segment;
+  while ((m = placeholder.exec(pattern))) {
+    p = matchDetails(m, false);
+    if (p.segment.indexOf('?') >= 0) break; // we're into the search part
+
+    param = addParameter(p.id, p.type, p.cfg, "path");
+    compiled += quoteRegExp(p.segment, param.type.pattern.source, param.squash);
+    segments.push(p.segment);
+    last = placeholder.lastIndex;
+  }
+  segment = pattern.substring(last);
+
+  // Find any search parameter names and remove them from the last segment
+  var i = segment.indexOf('?');
+
+  if (i >= 0) {
+    var search = this.sourceSearch = segment.substring(i);
+    segment = segment.substring(0, i);
+    this.sourcePath = pattern.substring(0, last + i);
+
+    if (search.length > 0) {
+      last = 0;
+      while ((m = searchPlaceholder.exec(search))) {
+        p = matchDetails(m, true);
+        param = addParameter(p.id, p.type, p.cfg, "search");
+        last = placeholder.lastIndex;
+        // check if ?&
+      }
+    }
+  } else {
+    this.sourcePath = pattern;
+    this.sourceSearch = '';
+  }
+
+  compiled += quoteRegExp(segment) + (config.strict === false ? '\/?' : '') + '$';
+  segments.push(segment);
+
+  this.regexp = new RegExp(compiled, config.caseInsensitive ? 'i' : undefined);
+  this.prefix = segments[0];
+  this.$$paramNames = paramNames;
+}
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:UrlMatcher#concat
+ * @methodOf ui.router.util.type:UrlMatcher
+ *
+ * @description
+ * Returns a new matcher for a pattern constructed by appending the path part and adding the
+ * search parameters of the specified pattern to this pattern. The current pattern is not
+ * modified. This can be understood as creating a pattern for URLs that are relative to (or
+ * suffixes of) the current pattern.
+ *
+ * @example
+ * The following two matchers are equivalent:
+ * <pre>
+ * new UrlMatcher('/user/{id}?q').concat('/details?date');
+ * new UrlMatcher('/user/{id}/details?q&date');
+ * </pre>
+ *
+ * @param {string} pattern  The pattern to append.
+ * @param {Object} config  An object hash of the configuration for the matcher.
+ * @returns {UrlMatcher}  A matcher for the concatenated pattern.
+ */
+UrlMatcher.prototype.concat = function (pattern, config) {
+  // Because order of search parameters is irrelevant, we can add our own search
+  // parameters to the end of the new pattern. Parse the new pattern by itself
+  // and then join the bits together, but it's much easier to do this on a string level.
+  var defaultConfig = {
+    caseInsensitive: $$UMFP.caseInsensitive(),
+    strict: $$UMFP.strictMode(),
+    squash: $$UMFP.defaultSquashPolicy()
+  };
+  return new UrlMatcher(this.sourcePath + pattern + this.sourceSearch, extend(defaultConfig, config), this);
+};
+
+UrlMatcher.prototype.toString = function () {
+  return this.source;
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:UrlMatcher#exec
+ * @methodOf ui.router.util.type:UrlMatcher
+ *
+ * @description
+ * Tests the specified path against this matcher, and returns an object containing the captured
+ * parameter values, or null if the path does not match. The returned object contains the values
+ * of any search parameters that are mentioned in the pattern, but their value may be null if
+ * they are not present in `searchParams`. This means that search parameters are always treated
+ * as optional.
+ *
+ * @example
+ * <pre>
+ * new UrlMatcher('/user/{id}?q&r').exec('/user/bob', {
+ *   x: '1', q: 'hello'
+ * });
+ * // returns { id: 'bob', q: 'hello', r: null }
+ * </pre>
+ *
+ * @param {string} path  The URL path to match, e.g. `$location.path()`.
+ * @param {Object} searchParams  URL search parameters, e.g. `$location.search()`.
+ * @returns {Object}  The captured parameter values.
+ */
+UrlMatcher.prototype.exec = function (path, searchParams) {
+  var m = this.regexp.exec(path);
+  if (!m) return null;
+  searchParams = searchParams || {};
+
+  var paramNames = this.parameters(), nTotal = paramNames.length,
+    nPath = this.segments.length - 1,
+    values = {}, i, j, cfg, paramName;
+
+  if (nPath !== m.length - 1) throw new Error("Unbalanced capture group in route '" + this.source + "'");
+
+  function decodePathArray(string) {
+    function reverseString(str) { return str.split("").reverse().join(""); }
+    function unquoteDashes(str) { return str.replace(/\\-/, "-"); }
+
+    var split = reverseString(string).split(/-(?!\\)/);
+    var allReversed = map(split, reverseString);
+    return map(allReversed, unquoteDashes).reverse();
+  }
+
+  for (i = 0; i < nPath; i++) {
+    paramName = paramNames[i];
+    var param = this.params[paramName];
+    var paramVal = m[i+1];
+    // if the param value matches a pre-replace pair, replace the value before decoding.
+    for (j = 0; j < param.replace; j++) {
+      if (param.replace[j].from === paramVal) paramVal = param.replace[j].to;
+    }
+    if (paramVal && param.array === true) paramVal = decodePathArray(paramVal);
+    values[paramName] = param.value(paramVal);
+  }
+  for (/**/; i < nTotal; i++) {
+    paramName = paramNames[i];
+    values[paramName] = this.params[paramName].value(searchParams[paramName]);
+  }
+
+  return values;
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:UrlMatcher#parameters
+ * @methodOf ui.router.util.type:UrlMatcher
+ *
+ * @description
+ * Returns the names of all path and search parameters of this pattern in an unspecified order.
+ *
+ * @returns {Array.<string>}  An array of parameter names. Must be treated as read-only. If the
+ *    pattern has no parameters, an empty array is returned.
+ */
+UrlMatcher.prototype.parameters = function (param) {
+  if (!isDefined(param)) return this.$$paramNames;
+  return this.params[param] || null;
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:UrlMatcher#validate
+ * @methodOf ui.router.util.type:UrlMatcher
+ *
+ * @description
+ * Checks an object hash of parameters to validate their correctness according to the parameter
+ * types of this `UrlMatcher`.
+ *
+ * @param {Object} params The object hash of parameters to validate.
+ * @returns {boolean} Returns `true` if `params` validates, otherwise `false`.
+ */
+UrlMatcher.prototype.validates = function (params) {
+  return this.params.$$validates(params);
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:UrlMatcher#format
+ * @methodOf ui.router.util.type:UrlMatcher
+ *
+ * @description
+ * Creates a URL that matches this pattern by substituting the specified values
+ * for the path and search parameters. Null values for path parameters are
+ * treated as empty strings.
+ *
+ * @example
+ * <pre>
+ * new UrlMatcher('/user/{id}?q').format({ id:'bob', q:'yes' });
+ * // returns '/user/bob?q=yes'
+ * </pre>
+ *
+ * @param {Object} values  the values to substitute for the parameters in this pattern.
+ * @returns {string}  the formatted URL (path and optionally search part).
+ */
+UrlMatcher.prototype.format = function (values) {
+  values = values || {};
+  var segments = this.segments, params = this.parameters(), paramset = this.params;
+  if (!this.validates(values)) return null;
+
+  var i, search = false, nPath = segments.length - 1, nTotal = params.length, result = segments[0];
+
+  function encodeDashes(str) { // Replace dashes with encoded "\-"
+    return encodeURIComponent(str).replace(/-/g, function(c) { return '%5C%' + c.charCodeAt(0).toString(16).toUpperCase(); });
+  }
+
+  for (i = 0; i < nTotal; i++) {
+    var isPathParam = i < nPath;
+    var name = params[i], param = paramset[name], value = param.value(values[name]);
+    var isDefaultValue = param.isOptional && param.type.equals(param.value(), value);
+    var squash = isDefaultValue ? param.squash : false;
+    var encoded = param.type.encode(value);
+
+    if (isPathParam) {
+      var nextSegment = segments[i + 1];
+      if (squash === false) {
+        if (encoded != null) {
+          if (isArray(encoded)) {
+            result += map(encoded, encodeDashes).join("-");
+          } else {
+            result += encodeURIComponent(encoded);
+          }
+        }
+        result += nextSegment;
+      } else if (squash === true) {
+        var capture = result.match(/\/$/) ? /\/?(.*)/ : /(.*)/;
+        result += nextSegment.match(capture)[1];
+      } else if (isString(squash)) {
+        result += squash + nextSegment;
+      }
+    } else {
+      if (encoded == null || (isDefaultValue && squash !== false)) continue;
+      if (!isArray(encoded)) encoded = [ encoded ];
+      encoded = map(encoded, encodeURIComponent).join('&' + name + '=');
+      result += (search ? '&' : '?') + (name + '=' + encoded);
+      search = true;
+    }
+  }
+
+  return result;
+};
+
+/**
+ * @ngdoc object
+ * @name ui.router.util.type:Type
+ *
+ * @description
+ * Implements an interface to define custom parameter types that can be decoded from and encoded to
+ * string parameters matched in a URL. Used by {@link ui.router.util.type:UrlMatcher `UrlMatcher`}
+ * objects when matching or formatting URLs, or comparing or validating parameter values.
+ *
+ * See {@link ui.router.util.$urlMatcherFactory#methods_type `$urlMatcherFactory#type()`} for more
+ * information on registering custom types.
+ *
+ * @param {Object} config  A configuration object which contains the custom type definition.  The object's
+ *        properties will override the default methods and/or pattern in `Type`'s public interface.
+ * @example
+ * <pre>
+ * {
+ *   decode: function(val) { return parseInt(val, 10); },
+ *   encode: function(val) { return val && val.toString(); },
+ *   equals: function(a, b) { return this.is(a) && a === b; },
+ *   is: function(val) { return angular.isNumber(val) isFinite(val) && val % 1 === 0; },
+ *   pattern: /\d+/
+ * }
+ * </pre>
+ *
+ * @property {RegExp} pattern The regular expression pattern used to match values of this type when
+ *           coming from a substring of a URL.
+ *
+ * @returns {Object}  Returns a new `Type` object.
+ */
+function Type(config) {
+  extend(this, config);
+}
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:Type#is
+ * @methodOf ui.router.util.type:Type
+ *
+ * @description
+ * Detects whether a value is of a particular type. Accepts a native (decoded) value
+ * and determines whether it matches the current `Type` object.
+ *
+ * @param {*} val  The value to check.
+ * @param {string} key  Optional. If the type check is happening in the context of a specific
+ *        {@link ui.router.util.type:UrlMatcher `UrlMatcher`} object, this is the name of the
+ *        parameter in which `val` is stored. Can be used for meta-programming of `Type` objects.
+ * @returns {Boolean}  Returns `true` if the value matches the type, otherwise `false`.
+ */
+Type.prototype.is = function(val, key) {
+  return true;
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:Type#encode
+ * @methodOf ui.router.util.type:Type
+ *
+ * @description
+ * Encodes a custom/native type value to a string that can be embedded in a URL. Note that the
+ * return value does *not* need to be URL-safe (i.e. passed through `encodeURIComponent()`), it
+ * only needs to be a representation of `val` that has been coerced to a string.
+ *
+ * @param {*} val  The value to encode.
+ * @param {string} key  The name of the parameter in which `val` is stored. Can be used for
+ *        meta-programming of `Type` objects.
+ * @returns {string}  Returns a string representation of `val` that can be encoded in a URL.
+ */
+Type.prototype.encode = function(val, key) {
+  return val;
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:Type#decode
+ * @methodOf ui.router.util.type:Type
+ *
+ * @description
+ * Converts a parameter value (from URL string or transition param) to a custom/native value.
+ *
+ * @param {string} val  The URL parameter value to decode.
+ * @param {string} key  The name of the parameter in which `val` is stored. Can be used for
+ *        meta-programming of `Type` objects.
+ * @returns {*}  Returns a custom representation of the URL parameter value.
+ */
+Type.prototype.decode = function(val, key) {
+  return val;
+};
+
+/**
+ * @ngdoc function
+ * @name ui.router.util.type:Type#equals
+ * @methodOf ui.router.util.type:Type
+ *
+ * @description
+ * Determines whether two decoded values are equivalent.
+ *
+ * @param {*} a  A value to compare against.
+ * @param {*} b  A value to compare against.
+ * @returns {Boolean}  Returns `true` if the values are equivalent/equal, otherwise `false`.
+ */
+Type.prototype.equals = function(a, b) {
+  return a == b;
+};
+
+Type.prototype.$subPattern = function() {
+  var sub = this.pattern.toString();
+  return sub.substr(1, sub.length - 2);
+};
+
+Type.prototype.pattern = /.*/;
+
+Type.prototype.toString = function() { return "{Type:" + this.name + "}"; };
+
+/*
+ * Wraps an existing custom Type as an array of Type, depending on 'mode'.
+ * e.g.:
+ * - urlmatcher pattern "/path?{queryParam[]:int}"
+ * - url: "/path?queryParam=1&queryParam=2
+ * - $stateParams.queryParam will be [1, 2]
+ * if `mode` is "auto", then
+ * - url: "/path?queryParam=1 will create $stateParams.queryParam: 1
+ * - url: "/path?queryParam=1&queryParam=2 will create $stateParams.queryParam: [1, 2]
+ */
+Type.prototype.$asArray = function(mode, isSearch) {
+  if (!mode) return this;
+  if (mode === "auto" && !isSearch) throw new Error("'auto' array mode is for query parameters only");
+  return new ArrayType(this, mode);
+
+  function ArrayType(type, mode) {
+    function bindTo(type, callbackName) {
+      return function() {
+        return type[callbackName].apply(type, arguments);
+      };
+    }
+
+    // Wrap non-array value as array
+    function arrayWrap(val) { return isArray(val) ? val : (isDefined(val) ? [ val ] : []); }
+    // Unwrap array value for "auto" mode. Return undefined for empty array.
+    function arrayUnwrap(val) {
+      switch(val.length) {
+        case 0: return undefined;
+        case 1: return mode === "auto" ? val[0] : val;
+        default: return val;
+      }
+    }
+    function falsey(val) { return !val; }
+
+    // Wraps type (.is/.encode/.decode) functions to operate on each value of an array
+    function arrayHandler(callback, allTruthyMode) {
+      return function handleArray(val) {
+        val = arrayWrap(val);
+        var result = map(val, callback);
+        if (allTruthyMode === true)
+          return filter(result, falsey).length === 0;
+        return arrayUnwrap(result);
+      };
+    }
+
+    // Wraps type (.equals) functions to operate on each value of an array
+    function arrayEqualsHandler(callback) {
+      return function handleArray(val1, val2) {
+        var left = arrayWrap(val1), right = arrayWrap(val2);
+        if (left.length !== right.length) return false;
+        for (var i = 0; i < left.length; i++) {
+          if (!callback(left[i], right[i])) return false;
+        }
+        return true;
+      };
+    }
+
+    this.encode = arrayHandler(bindTo(type, 'encode'));
+    this.decode = arrayHandler(bindTo(type, 'decode'));
+    this.is     = arrayHandler(bindTo(type, 'is'), true);
+    this.equals = arrayEqualsHandler(bindTo(type, 'equals'));
+    this.pattern = type.pattern;
+    this.$arrayMode = mode;
+  }
+};
+
+
+
+/**
+ * @ngdoc object
+ * @name ui.router.util.$urlMatcherFactory
+ *
+ * @description
+ * Factory for {@link ui.router.util.type:UrlMatcher `UrlMatcher`} instances. The factory
+ * is also available to providers under the name `$urlMatcherFactoryProvider`.
+ */
+function $UrlMatcherFactory() {
+  $$UMFP = this;
+
+  var isCaseInsensitive = false, isStrictMode = true, defaultSquashPolicy = false;
+
+  function valToString(val) { return val != null ? val.toString().replace(/\//g, "%2F") : val; }
+  function valFromString(val) { return val != null ? val.toString().replace(/%2F/g, "/") : val; }
+//  TODO: in 1.0, make string .is() return false if value is undefined by default.
+//  function regexpMatches(val) { /*jshint validthis:true */ return isDefined(val) && this.pattern.test(val); }
+  function regexpMatches(val) { /*jshint validthis:true */ return this.pattern.test(val); }
+
+  var $types = {}, enqueue = true, typeQueue = [], injector, defaultTypes = {
+    string: {
+      encode: valToString,
+      decode: valFromString,
+      is: regexpMatches,
+      pattern: /[^/]*/
+    },
+    int: {
+      encode: valToString,
+      decode: function(val) { return parseInt(val, 10); },
+      is: function(val) { return isDefined(val) && this.decode(val.toString()) === val; },
+      pattern: /\d+/
+    },
+    bool: {
+      encode: function(val) { return val ? 1 : 0; },
+      decode: function(val) { return parseInt(val, 10) !== 0; },
+      is: function(val) { return val === true || val === false; },
+      pattern: /0|1/
+    },
+    date: {
+      encode: function (val) {
+        if (!this.is(val))
+          return undefined;
+        return [ val.getFullYear(),
+          ('0' + (val.getMonth() + 1)).slice(-2),
+          ('0' + val.getDate()).slice(-2)
+        ].join("-");
+      },
+      decode: function (val) {
+        if (this.is(val)) return val;
+        var match = this.capture.exec(val);
+        return match ? new Date(match[1], match[2] - 1, match[3]) : undefined;
+      },
+      is: function(val) { return val instanceof Date && !isNaN(val.valueOf()); },
+      equals: function (a, b) { return this.is(a) && this.is(b) && a.toISOString() === b.toISOString(); },
+      pattern: /[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,
+      capture: /([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/
+    },
+    json: {
+      encode: angular.toJson,
+      decode: angular.fromJson,
+      is: angular.isObject,
+      equals: angular.equals,
+      pattern: /[^/]*/
+    },
+    any: { // does not encode/decode
+      encode: angular.identity,
+      decode: angular.identity,
+      is: angular.identity,
+      equals: angular.equals,
+      pattern: /.*/
+    }
+  };
+
+  function getDefaultConfig() {
+    return {
+      strict: isStrictMode,
+      caseInsensitive: isCaseInsensitive
+    };
+  }
+
+  function isInjectable(value) {
+    return (isFunction(value) || (isArray(value) && isFunction(value[value.length - 1])));
+  }
+
+  /**
+   * [Internal] Get the default value of a parameter, which may be an injectable function.
+   */
+  $UrlMatcherFactory.$$getDefaultValue = function(config) {
+    if (!isInjectable(config.value)) return config.value;
+    if (!injector) throw new Error("Injectable functions cannot be called at configuration time");
+    return injector.invoke(config.value);
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$urlMatcherFactory#caseInsensitive
+   * @methodOf ui.router.util.$urlMatcherFactory
+   *
+   * @description
+   * Defines whether URL matching should be case sensitive (the default behavior), or not.
+   *
+   * @param {boolean} value `false` to match URL in a case sensitive manner; otherwise `true`;
+   * @returns {boolean} the current value of caseInsensitive
+   */
+  this.caseInsensitive = function(value) {
+    if (isDefined(value))
+      isCaseInsensitive = value;
+    return isCaseInsensitive;
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$urlMatcherFactory#strictMode
+   * @methodOf ui.router.util.$urlMatcherFactory
+   *
+   * @description
+   * Defines whether URLs should match trailing slashes, or not (the default behavior).
+   *
+   * @param {boolean=} value `false` to match trailing slashes in URLs, otherwise `true`.
+   * @returns {boolean} the current value of strictMode
+   */
+  this.strictMode = function(value) {
+    if (isDefined(value))
+      isStrictMode = value;
+    return isStrictMode;
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$urlMatcherFactory#defaultSquashPolicy
+   * @methodOf ui.router.util.$urlMatcherFactory
+   *
+   * @description
+   * Sets the default behavior when generating or matching URLs with default parameter values.
+   *
+   * @param {string} value A string that defines the default parameter URL squashing behavior.
+   *    `nosquash`: When generating an href with a default parameter value, do not squash the parameter value from the URL
+   *    `slash`: When generating an href with a default parameter value, squash (remove) the parameter value, and, if the
+   *             parameter is surrounded by slashes, squash (remove) one slash from the URL
+   *    any other string, e.g. "~": When generating an href with a default parameter value, squash (remove)
+   *             the parameter value from the URL and replace it with this string.
+   */
+  this.defaultSquashPolicy = function(value) {
+    if (!isDefined(value)) return defaultSquashPolicy;
+    if (value !== true && value !== false && !isString(value))
+      throw new Error("Invalid squash policy: " + value + ". Valid policies: false, true, arbitrary-string");
+    defaultSquashPolicy = value;
+    return value;
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$urlMatcherFactory#compile
+   * @methodOf ui.router.util.$urlMatcherFactory
+   *
+   * @description
+   * Creates a {@link ui.router.util.type:UrlMatcher `UrlMatcher`} for the specified pattern.
+   *
+   * @param {string} pattern  The URL pattern.
+   * @param {Object} config  The config object hash.
+   * @returns {UrlMatcher}  The UrlMatcher.
+   */
+  this.compile = function (pattern, config) {
+    return new UrlMatcher(pattern, extend(getDefaultConfig(), config));
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$urlMatcherFactory#isMatcher
+   * @methodOf ui.router.util.$urlMatcherFactory
+   *
+   * @description
+   * Returns true if the specified object is a `UrlMatcher`, or false otherwise.
+   *
+   * @param {Object} object  The object to perform the type check against.
+   * @returns {Boolean}  Returns `true` if the object matches the `UrlMatcher` interface, by
+   *          implementing all the same methods.
+   */
+  this.isMatcher = function (o) {
+    if (!isObject(o)) return false;
+    var result = true;
+
+    forEach(UrlMatcher.prototype, function(val, name) {
+      if (isFunction(val)) {
+        result = result && (isDefined(o[name]) && isFunction(o[name]));
+      }
+    });
+    return result;
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.util.$urlMatcherFactory#type
+   * @methodOf ui.router.util.$urlMatcherFactory
+   *
+   * @description
+   * Registers a custom {@link ui.router.util.type:Type `Type`} object that can be used to
+   * generate URLs with typed parameters.
+   *
+   * @param {string} name  The type name.
+   * @param {Object|Function} definition   The type definition. See
+   *        {@link ui.router.util.type:Type `Type`} for information on the values accepted.
+   * @param {Object|Function} definitionFn (optional) A function that is injected before the app
+   *        runtime starts.  The result of this function is merged into the existing `definition`.
+   *        See {@link ui.router.util.type:Type `Type`} for information on the values accepted.
+   *
+   * @returns {Object}  Returns `$urlMatcherFactoryProvider`.
+   *
+   * @example
+   * This is a simple example of a custom type that encodes and decodes items from an
+   * array, using the array index as the URL-encoded value:
+   *
+   * <pre>
+   * var list = ['John', 'Paul', 'George', 'Ringo'];
+   *
+   * $urlMatcherFactoryProvider.type('listItem', {
+   *   encode: function(item) {
+   *     // Represent the list item in the URL using its corresponding index
+   *     return list.indexOf(item);
+   *   },
+   *   decode: function(item) {
+   *     // Look up the list item by index
+   *     return list[parseInt(item, 10)];
+   *   },
+   *   is: function(item) {
+   *     // Ensure the item is valid by checking to see that it appears
+   *     // in the list
+   *     return list.indexOf(item) > -1;
+   *   }
+   * });
+   *
+   * $stateProvider.state('list', {
+   *   url: "/list/{item:listItem}",
+   *   controller: function($scope, $stateParams) {
+   *     console.log($stateParams.item);
+   *   }
+   * });
+   *
+   * // ...
+   *
+   * // Changes URL to '/list/3', logs "Ringo" to the console
+   * $state.go('list', { item: "Ringo" });
+   * </pre>
+   *
+   * This is a more complex example of a type that relies on dependency injection to
+   * interact with services, and uses the parameter name from the URL to infer how to
+   * handle encoding and decoding parameter values:
+   *
+   * <pre>
+   * // Defines a custom type that gets a value from a service,
+   * // where each service gets different types of values from
+   * // a backend API:
+   * $urlMatcherFactoryProvider.type('dbObject', {}, function(Users, Posts) {
+   *
+   *   // Matches up services to URL parameter names
+   *   var services = {
+   *     user: Users,
+   *     post: Posts
+   *   };
+   *
+   *   return {
+   *     encode: function(object) {
+   *       // Represent the object in the URL using its unique ID
+   *       return object.id;
+   *     },
+   *     decode: function(value, key) {
+   *       // Look up the object by ID, using the parameter
+   *       // name (key) to call the correct service
+   *       return services[key].findById(value);
+   *     },
+   *     is: function(object, key) {
+   *       // Check that object is a valid dbObject
+   *       return angular.isObject(object) && object.id && services[key];
+   *     }
+   *     equals: function(a, b) {
+   *       // Check the equality of decoded objects by comparing
+   *       // their unique IDs
+   *       return a.id === b.id;
+   *     }
+   *   };
+   * });
+   *
+   * // In a config() block, you can then attach URLs with
+   * // type-annotated parameters:
+   * $stateProvider.state('users', {
+   *   url: "/users",
+   *   // ...
+   * }).state('users.item', {
+   *   url: "/{user:dbObject}",
+   *   controller: function($scope, $stateParams) {
+   *     // $stateParams.user will now be an object returned from
+   *     // the Users service
+   *   },
+   *   // ...
+   * });
+   * </pre>
+   */
+  this.type = function (name, definition, definitionFn) {
+    if (!isDefined(definition)) return $types[name];
+    if ($types.hasOwnProperty(name)) throw new Error("A type named '" + name + "' has already been defined.");
+
+    $types[name] = new Type(extend({ name: name }, definition));
+    if (definitionFn) {
+      typeQueue.push({ name: name, def: definitionFn });
+      if (!enqueue) flushTypeQueue();
+    }
+    return this;
+  };
+
+  // `flushTypeQueue()` waits until `$urlMatcherFactory` is injected before invoking the queued `definitionFn`s
+  function flushTypeQueue() {
+    while(typeQueue.length) {
+      var type = typeQueue.shift();
+      if (type.pattern) throw new Error("You cannot override a type's .pattern at runtime.");
+      angular.extend($types[type.name], injector.invoke(type.def));
+    }
+  }
+
+  // Register default types. Store them in the prototype of $types.
+  forEach(defaultTypes, function(type, name) { $types[name] = new Type(extend({name: name}, type)); });
+  $types = inherit($types, {});
+
+  /* No need to document $get, since it returns this */
+  this.$get = ['$injector', function ($injector) {
+    injector = $injector;
+    enqueue = false;
+    flushTypeQueue();
+
+    forEach(defaultTypes, function(type, name) {
+      if (!$types[name]) $types[name] = new Type(type);
+    });
+    return this;
+  }];
+
+  this.Param = function Param(id, type, config, location) {
+    var self = this;
+    config = unwrapShorthand(config);
+    type = getType(config, type, location);
+    var arrayMode = getArrayMode();
+    type = arrayMode ? type.$asArray(arrayMode, location === "search") : type;
+    if (type.name === "string" && !arrayMode && location === "path" && config.value === undefined)
+      config.value = ""; // for 0.2.x; in 0.3.0+ do not automatically default to ""
+    var isOptional = config.value !== undefined;
+    var squash = getSquashPolicy(config, isOptional);
+    var replace = getReplace(config, arrayMode, isOptional, squash);
+
+    function unwrapShorthand(config) {
+      var keys = isObject(config) ? objectKeys(config) : [];
+      var isShorthand = indexOf(keys, "value") === -1 && indexOf(keys, "type") === -1 &&
+                        indexOf(keys, "squash") === -1 && indexOf(keys, "array") === -1;
+      if (isShorthand) config = { value: config };
+      config.$$fn = isInjectable(config.value) ? config.value : function () { return config.value; };
+      return config;
+    }
+
+    function getType(config, urlType, location) {
+      if (config.type && urlType) throw new Error("Param '"+id+"' has two type configurations.");
+      if (urlType) return urlType;
+      if (!config.type) return (location === "config" ? $types.any : $types.string);
+      return config.type instanceof Type ? config.type : new Type(config.type);
+    }
+
+    // array config: param name (param[]) overrides default settings.  explicit config overrides param name.
+    function getArrayMode() {
+      var arrayDefaults = { array: (location === "search" ? "auto" : false) };
+      var arrayParamNomenclature = id.match(/\[\]$/) ? { array: true } : {};
+      return extend(arrayDefaults, arrayParamNomenclature, config).array;
+    }
+
+    /**
+     * returns false, true, or the squash value to indicate the "default parameter url squash policy".
+     */
+    function getSquashPolicy(config, isOptional) {
+      var squash = config.squash;
+      if (!isOptional || squash === false) return false;
+      if (!isDefined(squash) || squash == null) return defaultSquashPolicy;
+      if (squash === true || isString(squash)) return squash;
+      throw new Error("Invalid squash policy: '" + squash + "'. Valid policies: false, true, or arbitrary string");
+    }
+
+    function getReplace(config, arrayMode, isOptional, squash) {
+      var replace, configuredKeys, defaultPolicy = [
+        { from: "",   to: (isOptional || arrayMode ? undefined : "") },
+        { from: null, to: (isOptional || arrayMode ? undefined : "") }
+      ];
+      replace = isArray(config.replace) ? config.replace : [];
+      if (isString(squash))
+        replace.push({ from: squash, to: undefined });
+      configuredKeys = map(replace, function(item) { return item.from; } );
+      return filter(defaultPolicy, function(item) { return indexOf(configuredKeys, item.from) === -1; }).concat(replace);
+    }
+
+    /**
+     * [Internal] Get the default value of a parameter, which may be an injectable function.
+     */
+    function $$getDefaultValue() {
+      if (!injector) throw new Error("Injectable functions cannot be called at configuration time");
+      return injector.invoke(config.$$fn);
+    }
+
+    /**
+     * [Internal] Gets the decoded representation of a value if the value is defined, otherwise, returns the
+     * default value, which may be the result of an injectable function.
+     */
+    function $value(value) {
+      function hasReplaceVal(val) { return function(obj) { return obj.from === val; }; }
+      function $replace(value) {
+        var replacement = map(filter(self.replace, hasReplaceVal(value)), function(obj) { return obj.to; });
+        return replacement.length ? replacement[0] : value;
+      }
+      value = $replace(value);
+      return isDefined(value) ? self.type.decode(value) : $$getDefaultValue();
+    }
+
+    function toString() { return "{Param:" + id + " " + type + " squash: '" + squash + "' optional: " + isOptional + "}"; }
+
+    extend(this, {
+      id: id,
+      type: type,
+      location: location,
+      array: arrayMode,
+      squash: squash,
+      replace: replace,
+      isOptional: isOptional,
+      value: $value,
+      dynamic: undefined,
+      config: config,
+      toString: toString
+    });
+  };
+
+  function ParamSet(params) {
+    extend(this, params || {});
+  }
+
+  ParamSet.prototype = {
+    $$new: function() {
+      return inherit(this, extend(new ParamSet(), { $$parent: this}));
+    },
+    $$keys: function () {
+      var keys = [], chain = [], parent = this,
+        ignore = objectKeys(ParamSet.prototype);
+      while (parent) { chain.push(parent); parent = parent.$$parent; }
+      chain.reverse();
+      forEach(chain, function(paramset) {
+        forEach(objectKeys(paramset), function(key) {
+            if (indexOf(keys, key) === -1 && indexOf(ignore, key) === -1) keys.push(key);
+        });
+      });
+      return keys;
+    },
+    $$values: function(paramValues) {
+      var values = {}, self = this;
+      forEach(self.$$keys(), function(key) {
+        values[key] = self[key].value(paramValues && paramValues[key]);
+      });
+      return values;
+    },
+    $$equals: function(paramValues1, paramValues2) {
+      var equal = true, self = this;
+      forEach(self.$$keys(), function(key) {
+        var left = paramValues1 && paramValues1[key], right = paramValues2 && paramValues2[key];
+        if (!self[key].type.equals(left, right)) equal = false;
+      });
+      return equal;
+    },
+    $$validates: function $$validate(paramValues) {
+      var result = true, isOptional, val, param, self = this;
+
+      forEach(this.$$keys(), function(key) {
+        param = self[key];
+        val = paramValues[key];
+        isOptional = !val && param.isOptional;
+        result = result && (isOptional || !!param.type.is(val));
+      });
+      return result;
+    },
+    $$parent: undefined
+  };
+
+  this.ParamSet = ParamSet;
+}
+
+// Register as a provider so it's available to other providers
+angular.module('ui.router.util').provider('$urlMatcherFactory', $UrlMatcherFactory);
+angular.module('ui.router.util').run(['$urlMatcherFactory', function($urlMatcherFactory) { }]);
+
+/**
+ * @ngdoc object
+ * @name ui.router.router.$urlRouterProvider
+ *
+ * @requires ui.router.util.$urlMatcherFactoryProvider
+ * @requires $locationProvider
+ *
+ * @description
+ * `$urlRouterProvider` has the responsibility of watching `$location`.
+ * When `$location` changes it runs through a list of rules one by one until a
+ * match is found. `$urlRouterProvider` is used behind the scenes anytime you specify
+ * a url in a state configuration. All urls are compiled into a UrlMatcher object.
+ *
+ * There are several methods on `$urlRouterProvider` that make it useful to use directly
+ * in your module config.
+ */
+$UrlRouterProvider.$inject = ['$locationProvider', '$urlMatcherFactoryProvider'];
+function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
+  var rules = [], otherwise = null, interceptDeferred = false, listener;
+
+  // Returns a string that is a prefix of all strings matching the RegExp
+  function regExpPrefix(re) {
+    var prefix = /^\^((?:\\[^a-zA-Z0-9]|[^\\\[\]\^$*+?.()|{}]+)*)/.exec(re.source);
+    return (prefix != null) ? prefix[1].replace(/\\(.)/g, "$1") : '';
+  }
+
+  // Interpolates matched values into a String.replace()-style pattern
+  function interpolate(pattern, match) {
+    return pattern.replace(/\$(\$|\d{1,2})/, function (m, what) {
+      return match[what === '$' ? 0 : Number(what)];
+    });
+  }
+
+  /**
+   * @ngdoc function
+   * @name ui.router.router.$urlRouterProvider#rule
+   * @methodOf ui.router.router.$urlRouterProvider
+   *
+   * @description
+   * Defines rules that are used by `$urlRouterProvider` to find matches for
+   * specific URLs.
+   *
+   * @example
+   * <pre>
+   * var app = angular.module('app', ['ui.router.router']);
+   *
+   * app.config(function ($urlRouterProvider) {
+   *   // Here's an example of how you might allow case insensitive urls
+   *   $urlRouterProvider.rule(function ($injector, $location) {
+   *     var path = $location.path(),
+   *         normalized = path.toLowerCase();
+   *
+   *     if (path !== normalized) {
+   *       return normalized;
+   *     }
+   *   });
+   * });
+   * </pre>
+   *
+   * @param {object} rule Handler function that takes `$injector` and `$location`
+   * services as arguments. You can use them to return a valid path as a string.
+   *
+   * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
+   */
+  this.rule = function (rule) {
+    if (!isFunction(rule)) throw new Error("'rule' must be a function");
+    rules.push(rule);
+    return this;
+  };
+
+  /**
+   * @ngdoc object
+   * @name ui.router.router.$urlRouterProvider#otherwise
+   * @methodOf ui.router.router.$urlRouterProvider
+   *
+   * @description
+   * Defines a path that is used when an invalid route is requested.
+   *
+   * @example
+   * <pre>
+   * var app = angular.module('app', ['ui.router.router']);
+   *
+   * app.config(function ($urlRouterProvider) {
+   *   // if the path doesn't match any of the urls you configured
+   *   // otherwise will take care of routing the user to the
+   *   // specified url
+   *   $urlRouterProvider.otherwise('/index');
+   *
+   *   // Example of using function rule as param
+   *   $urlRouterProvider.otherwise(function ($injector, $location) {
+   *     return '/a/valid/url';
+   *   });
+   * });
+   * </pre>
+   *
+   * @param {string|object} rule The url path you want to redirect to or a function
+   * rule that returns the url path. The function version is passed two params:
+   * `$injector` and `$location` services, and must return a url string.
+   *
+   * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
+   */
+  this.otherwise = function (rule) {
+    if (isString(rule)) {
+      var redirect = rule;
+      rule = function () { return redirect; };
+    }
+    else if (!isFunction(rule)) throw new Error("'rule' must be a function");
+    otherwise = rule;
+    return this;
+  };
+
+
+  function handleIfMatch($injector, handler, match) {
+    if (!match) return false;
+    var result = $injector.invoke(handler, handler, { $match: match });
+    return isDefined(result) ? result : true;
+  }
+
+  /**
+   * @ngdoc function
+   * @name ui.router.router.$urlRouterProvider#when
+   * @methodOf ui.router.router.$urlRouterProvider
+   *
+   * @description
+   * Registers a handler for a given url matching. if handle is a string, it is
+   * treated as a redirect, and is interpolated according to the syntax of match
+   * (i.e. like `String.replace()` for `RegExp`, or like a `UrlMatcher` pattern otherwise).
+   *
+   * If the handler is a function, it is injectable. It gets invoked if `$location`
+   * matches. You have the option of inject the match object as `$match`.
+   *
+   * The handler can return
+   *
+   * - **falsy** to indicate that the rule didn't match after all, then `$urlRouter`
+   *   will continue trying to find another one that matches.
+   * - **string** which is treated as a redirect and passed to `$location.url()`
+   * - **void** or any **truthy** value tells `$urlRouter` that the url was handled.
+   *
+   * @example
+   * <pre>
+   * var app = angular.module('app', ['ui.router.router']);
+   *
+   * app.config(function ($urlRouterProvider) {
+   *   $urlRouterProvider.when($state.url, function ($match, $stateParams) {
+   *     if ($state.$current.navigable !== state ||
+   *         !equalForKeys($match, $stateParams) {
+   *      $state.transitionTo(state, $match, false);
+   *     }
+   *   });
+   * });
+   * </pre>
+   *
+   * @param {string|object} what The incoming path that you want to redirect.
+   * @param {string|object} handler The path you want to redirect your user to.
+   */
+  this.when = function (what, handler) {
+    var redirect, handlerIsString = isString(handler);
+    if (isString(what)) what = $urlMatcherFactory.compile(what);
+
+    if (!handlerIsString && !isFunction(handler) && !isArray(handler))
+      throw new Error("invalid 'handler' in when()");
+
+    var strategies = {
+      matcher: function (what, handler) {
+        if (handlerIsString) {
+          redirect = $urlMatcherFactory.compile(handler);
+          handler = ['$match', function ($match) { return redirect.format($match); }];
+        }
+        return extend(function ($injector, $location) {
+          return handleIfMatch($injector, handler, what.exec($location.path(), $location.search()));
+        }, {
+          prefix: isString(what.prefix) ? what.prefix : ''
+        });
+      },
+      regex: function (what, handler) {
+        if (what.global || what.sticky) throw new Error("when() RegExp must not be global or sticky");
+
+        if (handlerIsString) {
+          redirect = handler;
+          handler = ['$match', function ($match) { return interpolate(redirect, $match); }];
+        }
+        return extend(function ($injector, $location) {
+          return handleIfMatch($injector, handler, what.exec($location.path()));
+        }, {
+          prefix: regExpPrefix(what)
+        });
+      }
+    };
+
+    var check = { matcher: $urlMatcherFactory.isMatcher(what), regex: what instanceof RegExp };
+
+    for (var n in check) {
+      if (check[n]) return this.rule(strategies[n](what, handler));
+    }
+
+    throw new Error("invalid 'what' in when()");
+  };
+
+  /**
+   * @ngdoc function
+   * @name ui.router.router.$urlRouterProvider#deferIntercept
+   * @methodOf ui.router.router.$urlRouterProvider
+   *
+   * @description
+   * Disables (or enables) deferring location change interception.
+   *
+   * If you wish to customize the behavior of syncing the URL (for example, if you wish to
+   * defer a transition but maintain the current URL), call this method at configuration time.
+   * Then, at run time, call `$urlRouter.listen()` after you have configured your own
+   * `$locationChangeSuccess` event handler.
+   *
+   * @example
+   * <pre>
+   * var app = angular.module('app', ['ui.router.router']);
+   *
+   * app.config(function ($urlRouterProvider) {
+   *
+   *   // Prevent $urlRouter from automatically intercepting URL changes;
+   *   // this allows you to configure custom behavior in between
+   *   // location changes and route synchronization:
+   *   $urlRouterProvider.deferIntercept();
+   *
+   * }).run(function ($rootScope, $urlRouter, UserService) {
+   *
+   *   $rootScope.$on('$locationChangeSuccess', function(e) {
+   *     // UserService is an example service for managing user state
+   *     if (UserService.isLoggedIn()) return;
+   *
+   *     // Prevent $urlRouter's default handler from firing
+   *     e.preventDefault();
+   *
+   *     UserService.handleLogin().then(function() {
+   *       // Once the user has logged in, sync the current URL
+   *       // to the router:
+   *       $urlRouter.sync();
+   *     });
+   *   });
+   *
+   *   // Configures $urlRouter's listener *after* your custom listener
+   *   $urlRouter.listen();
+   * });
+   * </pre>
+   *
+   * @param {boolean} defer Indicates whether to defer location change interception. Passing
+            no parameter is equivalent to `true`.
+   */
+  this.deferIntercept = function (defer) {
+    if (defer === undefined) defer = true;
+    interceptDeferred = defer;
+  };
+
+  /**
+   * @ngdoc object
+   * @name ui.router.router.$urlRouter
+   *
+   * @requires $location
+   * @requires $rootScope
+   * @requires $injector
+   * @requires $browser
+   *
+   * @description
+   *
+   */
+  this.$get = $get;
+  $get.$inject = ['$location', '$rootScope', '$injector', '$browser'];
+  function $get(   $location,   $rootScope,   $injector,   $browser) {
+
+    var baseHref = $browser.baseHref(), location = $location.url(), lastPushedUrl;
+
+    function appendBasePath(url, isHtml5, absolute) {
+      if (baseHref === '/') return url;
+      if (isHtml5) return baseHref.slice(0, -1) + url;
+      if (absolute) return baseHref.slice(1) + url;
+      return url;
+    }
+
+    // TODO: Optimize groups of rules with non-empty prefix into some sort of decision tree
+    function update(evt) {
+      if (evt && evt.defaultPrevented) return;
+      var ignoreUpdate = lastPushedUrl && $location.url() === lastPushedUrl;
+      lastPushedUrl = undefined;
+      if (ignoreUpdate) return true;
+
+      function check(rule) {
+        var handled = rule($injector, $location);
+
+        if (!handled) return false;
+        if (isString(handled)) $location.replace().url(handled);
+        return true;
+      }
+      var n = rules.length, i;
+
+      for (i = 0; i < n; i++) {
+        if (check(rules[i])) return;
+      }
+      // always check otherwise last to allow dynamic updates to the set of rules
+      if (otherwise) check(otherwise);
+    }
+
+    function listen() {
+      listener = listener || $rootScope.$on('$locationChangeSuccess', update);
+      return listener;
+    }
+
+    if (!interceptDeferred) listen();
+
+    return {
+      /**
+       * @ngdoc function
+       * @name ui.router.router.$urlRouter#sync
+       * @methodOf ui.router.router.$urlRouter
+       *
+       * @description
+       * Triggers an update; the same update that happens when the address bar url changes, aka `$locationChangeSuccess`.
+       * This method is useful when you need to use `preventDefault()` on the `$locationChangeSuccess` event,
+       * perform some custom logic (route protection, auth, config, redirection, etc) and then finally proceed
+       * with the transition by calling `$urlRouter.sync()`.
+       *
+       * @example
+       * <pre>
+       * angular.module('app', ['ui.router'])
+       *   .run(function($rootScope, $urlRouter) {
+       *     $rootScope.$on('$locationChangeSuccess', function(evt) {
+       *       // Halt state change from even starting
+       *       evt.preventDefault();
+       *       // Perform custom logic
+       *       var meetsRequirement = ...
+       *       // Continue with the update and state transition if logic allows
+       *       if (meetsRequirement) $urlRouter.sync();
+       *     });
+       * });
+       * </pre>
+       */
+      sync: function() {
+        update();
+      },
+
+      listen: function() {
+        return listen();
+      },
+
+      update: function(read) {
+        if (read) {
+          location = $location.url();
+          return;
+        }
+        if ($location.url() === location) return;
+
+        $location.url(location);
+        $location.replace();
+      },
+
+      push: function(urlMatcher, params, options) {
+        $location.url(urlMatcher.format(params || {}));
+        lastPushedUrl = options && options.$$avoidResync ? $location.url() : undefined;
+        if (options && options.replace) $location.replace();
+      },
+
+      /**
+       * @ngdoc function
+       * @name ui.router.router.$urlRouter#href
+       * @methodOf ui.router.router.$urlRouter
+       *
+       * @description
+       * A URL generation method that returns the compiled URL for a given
+       * {@link ui.router.util.type:UrlMatcher `UrlMatcher`}, populated with the provided parameters.
+       *
+       * @example
+       * <pre>
+       * $bob = $urlRouter.href(new UrlMatcher("/about/:person"), {
+       *   person: "bob"
+       * });
+       * // $bob == "/about/bob";
+       * </pre>
+       *
+       * @param {UrlMatcher} urlMatcher The `UrlMatcher` object which is used as the template of the URL to generate.
+       * @param {object=} params An object of parameter values to fill the matcher's required parameters.
+       * @param {object=} options Options object. The options are:
+       *
+       * - **`absolute`** - {boolean=false},  If true will generate an absolute url, e.g. "http://www.example.com/fullurl".
+       *
+       * @returns {string} Returns the fully compiled URL, or `null` if `params` fail validation against `urlMatcher`
+       */
+      href: function(urlMatcher, params, options) {
+        if (!urlMatcher.validates(params)) return null;
+
+        var isHtml5 = $locationProvider.html5Mode();
+        if (angular.isObject(isHtml5)) {
+          isHtml5 = isHtml5.enabled;
+        }
+
+        var url = urlMatcher.format(params);
+        options = options || {};
+
+        if (!isHtml5 && url !== null) {
+          url = "#" + $locationProvider.hashPrefix() + url;
+        }
+        url = appendBasePath(url, isHtml5, options.absolute);
+
+        if (!options.absolute || !url) {
+          return url;
+        }
+
+        var slash = (!isHtml5 && url ? '/' : ''), port = $location.port();
+        port = (port === 80 || port === 443 ? '' : ':' + port);
+
+        return [$location.protocol(), '://', $location.host(), port, slash, url].join('');
+      }
+    };
+  }
+}
+
+angular.module('ui.router.router').provider('$urlRouter', $UrlRouterProvider);
+
+/**
+ * @ngdoc object
+ * @name ui.router.state.$stateProvider
+ *
+ * @requires ui.router.router.$urlRouterProvider
+ * @requires ui.router.util.$urlMatcherFactoryProvider
+ *
+ * @description
+ * The new `$stateProvider` works similar to Angular's v1 router, but it focuses purely
+ * on state.
+ *
+ * A state corresponds to a "place" in the application in terms of the overall UI and
+ * navigation. A state describes (via the controller / template / view properties) what
+ * the UI looks like and does at that place.
+ *
+ * States often have things in common, and the primary way of factoring out these
+ * commonalities in this model is via the state hierarchy, i.e. parent/child states aka
+ * nested states.
+ *
+ * The `$stateProvider` provides interfaces to declare these states for your app.
+ */
+$StateProvider.$inject = ['$urlRouterProvider', '$urlMatcherFactoryProvider'];
+function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
+
+  var root, states = {}, $state, queue = {}, abstractKey = 'abstract';
+
+  // Builds state properties from definition passed to registerState()
+  var stateBuilder = {
+
+    // Derive parent state from a hierarchical name only if 'parent' is not explicitly defined.
+    // state.children = [];
+    // if (parent) parent.children.push(state);
+    parent: function(state) {
+      if (isDefined(state.parent) && state.parent) return findState(state.parent);
+      // regex matches any valid composite state name
+      // would match "contact.list" but not "contacts"
+      var compositeName = /^(.+)\.[^.]+$/.exec(state.name);
+      return compositeName ? findState(compositeName[1]) : root;
+    },
+
+    // inherit 'data' from parent and override by own values (if any)
+    data: function(state) {
+      if (state.parent && state.parent.data) {
+        state.data = state.self.data = extend({}, state.parent.data, state.data);
+      }
+      return state.data;
+    },
+
+    // Build a URLMatcher if necessary, either via a relative or absolute URL
+    url: function(state) {
+      var url = state.url, config = { params: state.params || {} };
+
+      if (isString(url)) {
+        if (url.charAt(0) == '^') return $urlMatcherFactory.compile(url.substring(1), config);
+        return (state.parent.navigable || root).url.concat(url, config);
+      }
+
+      if (!url || $urlMatcherFactory.isMatcher(url)) return url;
+      throw new Error("Invalid url '" + url + "' in state '" + state + "'");
+    },
+
+    // Keep track of the closest ancestor state that has a URL (i.e. is navigable)
+    navigable: function(state) {
+      return state.url ? state : (state.parent ? state.parent.navigable : null);
+    },
+
+    // Own parameters for this state. state.url.params is already built at this point. Create and add non-url params
+    ownParams: function(state) {
+      var params = state.url && state.url.params || new $$UMFP.ParamSet();
+      forEach(state.params || {}, function(config, id) {
+        if (!params[id]) params[id] = new $$UMFP.Param(id, null, config, "config");
+      });
+      return params;
+    },
+
+    // Derive parameters for this state and ensure they're a super-set of parent's parameters
+    params: function(state) {
+      return state.parent && state.parent.params ? extend(state.parent.params.$$new(), state.ownParams) : new $$UMFP.ParamSet();
+    },
+
+    // If there is no explicit multi-view configuration, make one up so we don't have
+    // to handle both cases in the view directive later. Note that having an explicit
+    // 'views' property will mean the default unnamed view properties are ignored. This
+    // is also a good time to resolve view names to absolute names, so everything is a
+    // straight lookup at link time.
+    views: function(state) {
+      var views = {};
+
+      forEach(isDefined(state.views) ? state.views : { '': state }, function (view, name) {
+        if (name.indexOf('@') < 0) name += '@' + state.parent.name;
+        views[name] = view;
+      });
+      return views;
+    },
+
+    // Keep a full path from the root down to this state as this is needed for state activation.
+    path: function(state) {
+      return state.parent ? state.parent.path.concat(state) : []; // exclude root from path
+    },
+
+    // Speed up $state.contains() as it's used a lot
+    includes: function(state) {
+      var includes = state.parent ? extend({}, state.parent.includes) : {};
+      includes[state.name] = true;
+      return includes;
+    },
+
+    $delegates: {}
+  };
+
+  function isRelative(stateName) {
+    return stateName.indexOf(".") === 0 || stateName.indexOf("^") === 0;
+  }
+
+  function findState(stateOrName, base) {
+    if (!stateOrName) return undefined;
+
+    var isStr = isString(stateOrName),
+        name  = isStr ? stateOrName : stateOrName.name,
+        path  = isRelative(name);
+
+    if (path) {
+      if (!base) throw new Error("No reference point given for path '"  + name + "'");
+      base = findState(base);
+
+      var rel = name.split("."), i = 0, pathLength = rel.length, current = base;
+
+      for (; i < pathLength; i++) {
+        if (rel[i] === "" && i === 0) {
+          current = base;
+          continue;
+        }
+        if (rel[i] === "^") {
+          if (!current.parent) throw new Error("Path '" + name + "' not valid for state '" + base.name + "'");
+          current = current.parent;
+          continue;
+        }
+        break;
+      }
+      rel = rel.slice(i).join(".");
+      name = current.name + (current.name && rel ? "." : "") + rel;
+    }
+    var state = states[name];
+
+    if (state && (isStr || (!isStr && (state === stateOrName || state.self === stateOrName)))) {
+      return state;
+    }
+    return undefined;
+  }
+
+  function queueState(parentName, state) {
+    if (!queue[parentName]) {
+      queue[parentName] = [];
+    }
+    queue[parentName].push(state);
+  }
+
+  function flushQueuedChildren(parentName) {
+    var queued = queue[parentName] || [];
+    while(queued.length) {
+      registerState(queued.shift());
+    }
+  }
+
+  function registerState(state) {
+    // Wrap a new object around the state so we can store our private details easily.
+    state = inherit(state, {
+      self: state,
+      resolve: state.resolve || {},
+      toString: function() { return this.name; }
+    });
+
+    var name = state.name;
+    if (!isString(name) || name.indexOf('@') >= 0) throw new Error("State must have a valid name");
+    if (states.hasOwnProperty(name)) throw new Error("State '" + name + "'' is already defined");
+
+    // Get parent name
+    var parentName = (name.indexOf('.') !== -1) ? name.substring(0, name.lastIndexOf('.'))
+        : (isString(state.parent)) ? state.parent
+        : (isObject(state.parent) && isString(state.parent.name)) ? state.parent.name
+        : '';
+
+    // If parent is not registered yet, add state to queue and register later
+    if (parentName && !states[parentName]) {
+      return queueState(parentName, state.self);
+    }
+
+    for (var key in stateBuilder) {
+      if (isFunction(stateBuilder[key])) state[key] = stateBuilder[key](state, stateBuilder.$delegates[key]);
+    }
+    states[name] = state;
+
+    // Register the state in the global state list and with $urlRouter if necessary.
+    if (!state[abstractKey] && state.url) {
+      $urlRouterProvider.when(state.url, ['$match', '$stateParams', function ($match, $stateParams) {
+        if ($state.$current.navigable != state || !equalForKeys($match, $stateParams)) {
+          $state.transitionTo(state, $match, { inherit: true, location: false });
+        }
+      }]);
+    }
+
+    // Register any queued children
+    flushQueuedChildren(name);
+
+    return state;
+  }
+
+  // Checks text to see if it looks like a glob.
+  function isGlob (text) {
+    return text.indexOf('*') > -1;
+  }
+
+  // Returns true if glob matches current $state name.
+  function doesStateMatchGlob (glob) {
+    var globSegments = glob.split('.'),
+        segments = $state.$current.name.split('.');
+
+    //match greedy starts
+    if (globSegments[0] === '**') {
+       segments = segments.slice(indexOf(segments, globSegments[1]));
+       segments.unshift('**');
+    }
+    //match greedy ends
+    if (globSegments[globSegments.length - 1] === '**') {
+       segments.splice(indexOf(segments, globSegments[globSegments.length - 2]) + 1, Number.MAX_VALUE);
+       segments.push('**');
+    }
+
+    if (globSegments.length != segments.length) {
+      return false;
+    }
+
+    //match single stars
+    for (var i = 0, l = globSegments.length; i < l; i++) {
+      if (globSegments[i] === '*') {
+        segments[i] = '*';
+      }
+    }
+
+    return segments.join('') === globSegments.join('');
+  }
+
+
+  // Implicit root state that is always active
+  root = registerState({
+    name: '',
+    url: '^',
+    views: null,
+    'abstract': true
+  });
+  root.navigable = null;
+
+
+  /**
+   * @ngdoc function
+   * @name ui.router.state.$stateProvider#decorator
+   * @methodOf ui.router.state.$stateProvider
+   *
+   * @description
+   * Allows you to extend (carefully) or override (at your own peril) the
+   * `stateBuilder` object used internally by `$stateProvider`. This can be used
+   * to add custom functionality to ui-router, for example inferring templateUrl
+   * based on the state name.
+   *
+   * When passing only a name, it returns the current (original or decorated) builder
+   * function that matches `name`.
+   *
+   * The builder functions that can be decorated are listed below. Though not all
+   * necessarily have a good use case for decoration, that is up to you to decide.
+   *
+   * In addition, users can attach custom decorators, which will generate new
+   * properties within the state's internal definition. There is currently no clear
+   * use-case for this beyond accessing internal states (i.e. $state.$current),
+   * however, expect this to become increasingly relevant as we introduce additional
+   * meta-programming features.
+   *
+   * **Warning**: Decorators should not be interdependent because the order of
+   * execution of the builder functions in non-deterministic. Builder functions
+   * should only be dependent on the state definition object and super function.
+   *
+   *
+   * Existing builder functions and current return values:
+   *
+   * - **parent** `{object}` - returns the parent state object.
+   * - **data** `{object}` - returns state data, including any inherited data that is not
+   *   overridden by own values (if any).
+   * - **url** `{object}` - returns a {@link ui.router.util.type:UrlMatcher UrlMatcher}
+   *   or `null`.
+   * - **navigable** `{object}` - returns closest ancestor state that has a URL (aka is
+   *   navigable).
+   * - **params** `{object}` - returns an array of state params that are ensured to
+   *   be a super-set of parent's params.
+   * - **views** `{object}` - returns a views object where each key is an absolute view
+   *   name (i.e. "viewName@stateName") and each value is the config object
+   *   (template, controller) for the view. Even when you don't use the views object
+   *   explicitly on a state config, one is still created for you internally.
+   *   So by decorating this builder function you have access to decorating template
+   *   and controller properties.
+   * - **ownParams** `{object}` - returns an array of params that belong to the state,
+   *   not including any params defined by ancestor states.
+   * - **path** `{string}` - returns the full path from the root down to this state.
+   *   Needed for state activation.
+   * - **includes** `{object}` - returns an object that includes every state that
+   *   would pass a `$state.includes()` test.
+   *
+   * @example
+   * <pre>
+   * // Override the internal 'views' builder with a function that takes the state
+   * // definition, and a reference to the internal function being overridden:
+   * $stateProvider.decorator('views', function (state, parent) {
+   *   var result = {},
+   *       views = parent(state);
+   *
+   *   angular.forEach(views, function (config, name) {
+   *     var autoName = (state.name + '.' + name).replace('.', '/');
+   *     config.templateUrl = config.templateUrl || '/partials/' + autoName + '.html';
+   *     result[name] = config;
+   *   });
+   *   return result;
+   * });
+   *
+   * $stateProvider.state('home', {
+   *   views: {
+   *     'contact.list': { controller: 'ListController' },
+   *     'contact.item': { controller: 'ItemController' }
+   *   }
+   * });
+   *
+   * // ...
+   *
+   * $state.go('home');
+   * // Auto-populates list and item views with /partials/home/contact/list.html,
+   * // and /partials/home/contact/item.html, respectively.
+   * </pre>
+   *
+   * @param {string} name The name of the builder function to decorate.
+   * @param {object} func A function that is responsible for decorating the original
+   * builder function. The function receives two parameters:
+   *
+   *   - `{object}` - state - The state config object.
+   *   - `{object}` - super - The original builder function.
+   *
+   * @return {object} $stateProvider - $stateProvider instance
+   */
+  this.decorator = decorator;
+  function decorator(name, func) {
+    /*jshint validthis: true */
+    if (isString(name) && !isDefined(func)) {
+      return stateBuilder[name];
+    }
+    if (!isFunction(func) || !isString(name)) {
+      return this;
+    }
+    if (stateBuilder[name] && !stateBuilder.$delegates[name]) {
+      stateBuilder.$delegates[name] = stateBuilder[name];
+    }
+    stateBuilder[name] = func;
+    return this;
+  }
+
+  /**
+   * @ngdoc function
+   * @name ui.router.state.$stateProvider#state
+   * @methodOf ui.router.state.$stateProvider
+   *
+   * @description
+   * Registers a state configuration under a given state name. The stateConfig object
+   * has the following acceptable properties.
+   *
+   * @param {string} name A unique state name, e.g. "home", "about", "contacts".
+   * To create a parent/child state use a dot, e.g. "about.sales", "home.newest".
+   * @param {object} stateConfig State configuration object.
+   * @param {string|function=} stateConfig.template
+   * <a id='template'></a>
+   *   html template as a string or a function that returns
+   *   an html template as a string which should be used by the uiView directives. This property
+   *   takes precedence over templateUrl.
+   *
+   *   If `template` is a function, it will be called with the following parameters:
+   *
+   *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by
+   *     applying the current state
+   *
+   * <pre>template:
+   *   "<h1>inline template definition</h1>" +
+   *   "<div ui-view></div>"</pre>
+   * <pre>template: function(params) {
+   *       return "<h1>generated template</h1>"; }</pre>
+   * </div>
+   *
+   * @param {string|function=} stateConfig.templateUrl
+   * <a id='templateUrl'></a>
+   *
+   *   path or function that returns a path to an html
+   *   template that should be used by uiView.
+   *
+   *   If `templateUrl` is a function, it will be called with the following parameters:
+   *
+   *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by
+   *     applying the current state
+   *
+   * <pre>templateUrl: "home.html"</pre>
+   * <pre>templateUrl: function(params) {
+   *     return myTemplates[params.pageId]; }</pre>
+   *
+   * @param {function=} stateConfig.templateProvider
+   * <a id='templateProvider'></a>
+   *    Provider function that returns HTML content string.
+   * <pre> templateProvider:
+   *       function(MyTemplateService, params) {
+   *         return MyTemplateService.getTemplate(params.pageId);
+   *       }</pre>
+   *
+   * @param {string|function=} stateConfig.controller
+   * <a id='controller'></a>
+   *
+   *  Controller fn that should be associated with newly
+   *   related scope or the name of a registered controller if passed as a string.
+   *   Optionally, the ControllerAs may be declared here.
+   * <pre>controller: "MyRegisteredController"</pre>
+   * <pre>controller:
+   *     "MyRegisteredController as fooCtrl"}</pre>
+   * <pre>controller: function($scope, MyService) {
+   *     $scope.data = MyService.getData(); }</pre>
+   *
+   * @param {function=} stateConfig.controllerProvider
+   * <a id='controllerProvider'></a>
+   *
+   * Injectable provider function that returns the actual controller or string.
+   * <pre>controllerProvider:
+   *   function(MyResolveData) {
+   *     if (MyResolveData.foo)
+   *       return "FooCtrl"
+   *     else if (MyResolveData.bar)
+   *       return "BarCtrl";
+   *     else return function($scope) {
+   *       $scope.baz = "Qux";
+   *     }
+   *   }</pre>
+   *
+   * @param {string=} stateConfig.controllerAs
+   * <a id='controllerAs'></a>
+   *
+   * A controller alias name. If present the controller will be
+   *   published to scope under the controllerAs name.
+   * <pre>controllerAs: "myCtrl"</pre>
+   *
+   * @param {object=} stateConfig.resolve
+   * <a id='resolve'></a>
+   *
+   * An optional map&lt;string, function&gt; of dependencies which
+   *   should be injected into the controller. If any of these dependencies are promises,
+   *   the router will wait for them all to be resolved before the controller is instantiated.
+   *   If all the promises are resolved successfully, the $stateChangeSuccess event is fired
+   *   and the values of the resolved promises are injected into any controllers that reference them.
+   *   If any  of the promises are rejected the $stateChangeError event is fired.
+   *
+   *   The map object is:
+   *
+   *   - key - {string}: name of dependency to be injected into controller
+   *   - factory - {string|function}: If string then it is alias for service. Otherwise if function,
+   *     it is injected and return value it treated as dependency. If result is a promise, it is
+   *     resolved before its value is injected into controller.
+   *
+   * <pre>resolve: {
+   *     myResolve1:
+   *       function($http, $stateParams) {
+   *         return $http.get("/api/foos/"+stateParams.fooID);
+   *       }
+   *     }</pre>
+   *
+   * @param {string=} stateConfig.url
+   * <a id='url'></a>
+   *
+   *   A url fragment with optional parameters. When a state is navigated or
+   *   transitioned to, the `$stateParams` service will be populated with any
+   *   parameters that were passed.
+   *
+   * examples:
+   * <pre>url: "/home"
+   * url: "/users/:userid"
+   * url: "/books/{bookid:[a-zA-Z_-]}"
+   * url: "/books/{categoryid:int}"
+   * url: "/books/{publishername:string}/{categoryid:int}"
+   * url: "/messages?before&after"
+   * url: "/messages?{before:date}&{after:date}"</pre>
+   * url: "/messages/:mailboxid?{before:date}&{after:date}"
+   *
+   * @param {object=} stateConfig.views
+   * <a id='views'></a>
+   * an optional map&lt;string, object&gt; which defined multiple views, or targets views
+   * manually/explicitly.
+   *
+   * Examples:
+   *
+   * Targets three named `ui-view`s in the parent state's template
+   * <pre>views: {
+   *     header: {
+   *       controller: "headerCtrl",
+   *       templateUrl: "header.html"
+   *     }, body: {
+   *       controller: "bodyCtrl",
+   *       templateUrl: "body.html"
+   *     }, footer: {
+   *       controller: "footCtrl",
+   *       templateUrl: "footer.html"
+   *     }
+   *   }</pre>
+   *
+   * Targets named `ui-view="header"` from grandparent state 'top''s template, and named `ui-view="body" from parent state's template.
+   * <pre>views: {
+   *     'header@top': {
+   *       controller: "msgHeaderCtrl",
+   *       templateUrl: "msgHeader.html"
+   *     }, 'body': {
+   *       controller: "messagesCtrl",
+   *       templateUrl: "messages.html"
+   *     }
+   *   }</pre>
+   *
+   * @param {boolean=} [stateConfig.abstract=false]
+   * <a id='abstract'></a>
+   * An abstract state will never be directly activated,
+   *   but can provide inherited properties to its common children states.
+   * <pre>abstract: true</pre>
+   *
+   * @param {function=} stateConfig.onEnter
+   * <a id='onEnter'></a>
+   *
+   * Callback function for when a state is entered. Good way
+   *   to trigger an action or dispatch an event, such as opening a dialog.
+   * If minifying your scripts, make sure to explictly annotate this function,
+   * because it won't be automatically annotated by your build tools.
+   *
+   * <pre>onEnter: function(MyService, $stateParams) {
+   *     MyService.foo($stateParams.myParam);
+   * }</pre>
+   *
+   * @param {function=} stateConfig.onExit
+   * <a id='onExit'></a>
+   *
+   * Callback function for when a state is exited. Good way to
+   *   trigger an action or dispatch an event, such as opening a dialog.
+   * If minifying your scripts, make sure to explictly annotate this function,
+   * because it won't be automatically annotated by your build tools.
+   *
+   * <pre>onExit: function(MyService, $stateParams) {
+   *     MyService.cleanup($stateParams.myParam);
+   * }</pre>
+   *
+   * @param {boolean=} [stateConfig.reloadOnSearch=true]
+   * <a id='reloadOnSearch'></a>
+   *
+   * If `false`, will not retrigger the same state
+   *   just because a search/query parameter has changed (via $location.search() or $location.hash()).
+   *   Useful for when you'd like to modify $location.search() without triggering a reload.
+   * <pre>reloadOnSearch: false</pre>
+   *
+   * @param {object=} stateConfig.data
+   * <a id='data'></a>
+   *
+   * Arbitrary data object, useful for custom configuration.  The parent state's `data` is
+   *   prototypally inherited.  In other words, adding a data property to a state adds it to
+   *   the entire subtree via prototypal inheritance.
+   *
+   * <pre>data: {
+   *     requiredRole: 'foo'
+   * } </pre>
+   *
+   * @param {object=} stateConfig.params
+   * <a id='params'></a>
+   *
+   * A map which optionally configures parameters declared in the `url`, or
+   *   defines additional non-url parameters.  For each parameter being
+   *   configured, add a configuration object keyed to the name of the parameter.
+   *
+   *   Each parameter configuration object may contain the following properties:
+   *
+   *   - ** value ** - {object|function=}: specifies the default value for this
+   *     parameter.  This implicitly sets this parameter as optional.
+   *
+   *     When UI-Router routes to a state and no value is
+   *     specified for this parameter in the URL or transition, the
+   *     default value will be used instead.  If `value` is a function,
+   *     it will be injected and invoked, and the return value used.
+   *
+   *     *Note*: `undefined` is treated as "no default value" while `null`
+   *     is treated as "the default value is `null`".
+   *
+   *     *Shorthand*: If you only need to configure the default value of the
+   *     parameter, you may use a shorthand syntax.   In the **`params`**
+   *     map, instead mapping the param name to a full parameter configuration
+   *     object, simply set map it to the default parameter value, e.g.:
+   *
+   * <pre>// define a parameter's default value
+   * params: {
+   *     param1: { value: "defaultValue" }
+   * }
+   * // shorthand default values
+   * params: {
+   *     param1: "defaultValue",
+   *     param2: "param2Default"
+   * }</pre>
+   *
+   *   - ** array ** - {boolean=}: *(default: false)* If true, the param value will be
+   *     treated as an array of values.  If you specified a Type, the value will be
+   *     treated as an array of the specified Type.  Note: query parameter values
+   *     default to a special `"auto"` mode.
+   *
+   *     For query parameters in `"auto"` mode, if multiple  values for a single parameter
+   *     are present in the URL (e.g.: `/foo?bar=1&bar=2&bar=3`) then the values
+   *     are mapped to an array (e.g.: `{ foo: [ '1', '2', '3' ] }`).  However, if
+   *     only one value is present (e.g.: `/foo?bar=1`) then the value is treated as single
+   *     value (e.g.: `{ foo: '1' }`).
+   *
+   * <pre>params: {
+   *     param1: { array: true }
+   * }</pre>
+   *
+   *   - ** squash ** - {bool|string=}: `squash` configures how a default parameter value is represented in the URL when
+   *     the current parameter value is the same as the default value. If `squash` is not set, it uses the
+   *     configured default squash policy.
+   *     (See {@link ui.router.util.$urlMatcherFactory#methods_defaultSquashPolicy `defaultSquashPolicy()`})
+   *
+   *   There are three squash settings:
+   *
+   *     - false: The parameter's default value is not squashed.  It is encoded and included in the URL
+   *     - true: The parameter's default value is omitted from the URL.  If the parameter is preceeded and followed
+   *       by slashes in the state's `url` declaration, then one of those slashes are omitted.
+   *       This can allow for cleaner looking URLs.
+   *     - `"<arbitrary string>"`: The parameter's default value is replaced with an arbitrary placeholder of  your choice.
+   *
+   * <pre>params: {
+   *     param1: {
+   *       value: "defaultId",
+   *       squash: true
+   * } }
+   * // squash "defaultValue" to "~"
+   * params: {
+   *     param1: {
+   *       value: "defaultValue",
+   *       squash: "~"
+   * } }
+   * </pre>
+   *
+   *
+   * @example
+   * <pre>
+   * // Some state name examples
+   *
+   * // stateName can be a single top-level name (must be unique).
+   * $stateProvider.state("home", {});
+   *
+   * // Or it can be a nested state name. This state is a child of the
+   * // above "home" state.
+   * $stateProvider.state("home.newest", {});
+   *
+   * // Nest states as deeply as needed.
+   * $stateProvider.state("home.newest.abc.xyz.inception", {});
+   *
+   * // state() returns $stateProvider, so you can chain state declarations.
+   * $stateProvider
+   *   .state("home", {})
+   *   .state("about", {})
+   *   .state("contacts", {});
+   * </pre>
+   *
+   */
+  this.state = state;
+  function state(name, definition) {
+    /*jshint validthis: true */
+    if (isObject(name)) definition = name;
+    else definition.name = name;
+    registerState(definition);
+    return this;
+  }
+
+  /**
+   * @ngdoc object
+   * @name ui.router.state.$state
+   *
+   * @requires $rootScope
+   * @requires $q
+   * @requires ui.router.state.$view
+   * @requires $injector
+   * @requires ui.router.util.$resolve
+   * @requires ui.router.state.$stateParams
+   * @requires ui.router.router.$urlRouter
+   *
+   * @property {object} params A param object, e.g. {sectionId: section.id)}, that
+   * you'd like to test against the current active state.
+   * @property {object} current A reference to the state's config object. However
+   * you passed it in. Useful for accessing custom data.
+   * @property {object} transition Currently pending transition. A promise that'll
+   * resolve or reject.
+   *
+   * @description
+   * `$state` service is responsible for representing states as well as transitioning
+   * between them. It also provides interfaces to ask for current state or even states
+   * you're coming from.
+   */
+  this.$get = $get;
+  $get.$inject = ['$rootScope', '$q', '$view', '$injector', '$resolve', '$stateParams', '$urlRouter', '$location', '$urlMatcherFactory'];
+  function $get(   $rootScope,   $q,   $view,   $injector,   $resolve,   $stateParams,   $urlRouter,   $location,   $urlMatcherFactory) {
+
+    var TransitionSuperseded = $q.reject(new Error('transition superseded'));
+    var TransitionPrevented = $q.reject(new Error('transition prevented'));
+    var TransitionAborted = $q.reject(new Error('transition aborted'));
+    var TransitionFailed = $q.reject(new Error('transition failed'));
+
+    // Handles the case where a state which is the target of a transition is not found, and the user
+    // can optionally retry or defer the transition
+    function handleRedirect(redirect, state, params, options) {
+      /**
+       * @ngdoc event
+       * @name ui.router.state.$state#$stateNotFound
+       * @eventOf ui.router.state.$state
+       * @eventType broadcast on root scope
+       * @description
+       * Fired when a requested state **cannot be found** using the provided state name during transition.
+       * The event is broadcast allowing any handlers a single chance to deal with the error (usually by
+       * lazy-loading the unfound state). A special `unfoundState` object is passed to the listener handler,
+       * you can see its three properties in the example. You can use `event.preventDefault()` to abort the
+       * transition and the promise returned from `go` will be rejected with a `'transition aborted'` value.
+       *
+       * @param {Object} event Event object.
+       * @param {Object} unfoundState Unfound State information. Contains: `to, toParams, options` properties.
+       * @param {State} fromState Current state object.
+       * @param {Object} fromParams Current state params.
+       *
+       * @example
+       *
+       * <pre>
+       * // somewhere, assume lazy.state has not been defined
+       * $state.go("lazy.state", {a:1, b:2}, {inherit:false});
+       *
+       * // somewhere else
+       * $scope.$on('$stateNotFound',
+       * function(event, unfoundState, fromState, fromParams){
+       *     console.log(unfoundState.to); // "lazy.state"
+       *     console.log(unfoundState.toParams); // {a:1, b:2}
+       *     console.log(unfoundState.options); // {inherit:false} + default options
+       * })
+       * </pre>
+       */
+      var evt = $rootScope.$broadcast('$stateNotFound', redirect, state, params);
+
+      if (evt.defaultPrevented) {
+        $urlRouter.update();
+        return TransitionAborted;
+      }
+
+      if (!evt.retry) {
+        return null;
+      }
+
+      // Allow the handler to return a promise to defer state lookup retry
+      if (options.$retry) {
+        $urlRouter.update();
+        return TransitionFailed;
+      }
+      var retryTransition = $state.transition = $q.when(evt.retry);
+
+      retryTransition.then(function() {
+        if (retryTransition !== $state.transition) return TransitionSuperseded;
+        redirect.options.$retry = true;
+        return $state.transitionTo(redirect.to, redirect.toParams, redirect.options);
+      }, function() {
+        return TransitionAborted;
+      });
+      $urlRouter.update();
+
+      return retryTransition;
+    }
+
+    root.locals = { resolve: null, globals: { $stateParams: {} } };
+
+    $state = {
+      params: {},
+      current: root.self,
+      $current: root,
+      transition: null
+    };
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#reload
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * A method that force reloads the current state. All resolves are re-resolved, events are not re-fired,
+     * and controllers reinstantiated (bug with controllers reinstantiating right now, fixing soon).
+     *
+     * @example
+     * <pre>
+     * var app angular.module('app', ['ui.router']);
+     *
+     * app.controller('ctrl', function ($scope, $state) {
+     *   $scope.reload = function(){
+     *     $state.reload();
+     *   }
+     * });
+     * </pre>
+     *
+     * `reload()` is just an alias for:
+     * <pre>
+     * $state.transitionTo($state.current, $stateParams, {
+     *   reload: true, inherit: false, notify: true
+     * });
+     * </pre>
+     *
+     * @returns {promise} A promise representing the state of the new transition. See
+     * {@link ui.router.state.$state#methods_go $state.go}.
+     */
+    $state.reload = function reload() {
+      return $state.transitionTo($state.current, $stateParams, { reload: true, inherit: false, notify: true });
+    };
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#go
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * Convenience method for transitioning to a new state. `$state.go` calls
+     * `$state.transitionTo` internally but automatically sets options to
+     * `{ location: true, inherit: true, relative: $state.$current, notify: true }`.
+     * This allows you to easily use an absolute or relative to path and specify
+     * only the parameters you'd like to update (while letting unspecified parameters
+     * inherit from the currently active ancestor states).
+     *
+     * @example
+     * <pre>
+     * var app = angular.module('app', ['ui.router']);
+     *
+     * app.controller('ctrl', function ($scope, $state) {
+     *   $scope.changeState = function () {
+     *     $state.go('contact.detail');
+     *   };
+     * });
+     * </pre>
+     * <img src='../ngdoc_assets/StateGoExamples.png'/>
+     *
+     * @param {string} to Absolute state name or relative state path. Some examples:
+     *
+     * - `$state.go('contact.detail')` - will go to the `contact.detail` state
+     * - `$state.go('^')` - will go to a parent state
+     * - `$state.go('^.sibling')` - will go to a sibling state
+     * - `$state.go('.child.grandchild')` - will go to grandchild state
+     *
+     * @param {object=} params A map of the parameters that will be sent to the state,
+     * will populate $stateParams. Any parameters that are not specified will be inherited from currently
+     * defined parameters. This allows, for example, going to a sibling state that shares parameters
+     * specified in a parent state. Parameter inheritance only works between common ancestor states, I.e.
+     * transitioning to a sibling will get you the parameters for all parents, transitioning to a child
+     * will get you all current parameters, etc.
+     * @param {object=} options Options object. The options are:
+     *
+     * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
+     *    will not. If string, must be `"replace"`, which will update url and also replace last history record.
+     * - **`inherit`** - {boolean=true}, If `true` will inherit url parameters from current url.
+     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'),
+     *    defines which state to be relative from.
+     * - **`notify`** - {boolean=true}, If `true` will broadcast $stateChangeStart and $stateChangeSuccess events.
+     * - **`reload`** (v0.2.5) - {boolean=false}, If `true` will force transition even if the state or params
+     *    have not changed, aka a reload of the same state. It differs from reloadOnSearch because you'd
+     *    use this when you want to force a reload when *everything* is the same, including search params.
+     *
+     * @returns {promise} A promise representing the state of the new transition.
+     *
+     * Possible success values:
+     *
+     * - $state.current
+     *
+     * <br/>Possible rejection values:
+     *
+     * - 'transition superseded' - when a newer transition has been started after this one
+     * - 'transition prevented' - when `event.preventDefault()` has been called in a `$stateChangeStart` listener
+     * - 'transition aborted' - when `event.preventDefault()` has been called in a `$stateNotFound` listener or
+     *   when a `$stateNotFound` `event.retry` promise errors.
+     * - 'transition failed' - when a state has been unsuccessfully found after 2 tries.
+     * - *resolve error* - when an error has occurred with a `resolve`
+     *
+     */
+    $state.go = function go(to, params, options) {
+      return $state.transitionTo(to, params, extend({ inherit: true, relative: $state.$current }, options));
+    };
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#transitionTo
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * Low-level method for transitioning to a new state. {@link ui.router.state.$state#methods_go $state.go}
+     * uses `transitionTo` internally. `$state.go` is recommended in most situations.
+     *
+     * @example
+     * <pre>
+     * var app = angular.module('app', ['ui.router']);
+     *
+     * app.controller('ctrl', function ($scope, $state) {
+     *   $scope.changeState = function () {
+     *     $state.transitionTo('contact.detail');
+     *   };
+     * });
+     * </pre>
+     *
+     * @param {string} to State name.
+     * @param {object=} toParams A map of the parameters that will be sent to the state,
+     * will populate $stateParams.
+     * @param {object=} options Options object. The options are:
+     *
+     * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
+     *    will not. If string, must be `"replace"`, which will update url and also replace last history record.
+     * - **`inherit`** - {boolean=false}, If `true` will inherit url parameters from current url.
+     * - **`relative`** - {object=}, When transitioning with relative path (e.g '^'),
+     *    defines which state to be relative from.
+     * - **`notify`** - {boolean=true}, If `true` will broadcast $stateChangeStart and $stateChangeSuccess events.
+     * - **`reload`** (v0.2.5) - {boolean=false}, If `true` will force transition even if the state or params
+     *    have not changed, aka a reload of the same state. It differs from reloadOnSearch because you'd
+     *    use this when you want to force a reload when *everything* is the same, including search params.
+     *
+     * @returns {promise} A promise representing the state of the new transition. See
+     * {@link ui.router.state.$state#methods_go $state.go}.
+     */
+    $state.transitionTo = function transitionTo(to, toParams, options) {
+      toParams = toParams || {};
+      options = extend({
+        location: true, inherit: false, relative: null, notify: true, reload: false, $retry: false
+      }, options || {});
+
+      var from = $state.$current, fromParams = $state.params, fromPath = from.path;
+      var evt, toState = findState(to, options.relative);
+
+      if (!isDefined(toState)) {
+        var redirect = { to: to, toParams: toParams, options: options };
+        var redirectResult = handleRedirect(redirect, from.self, fromParams, options);
+
+        if (redirectResult) {
+          return redirectResult;
+        }
+
+        // Always retry once if the $stateNotFound was not prevented
+        // (handles either redirect changed or state lazy-definition)
+        to = redirect.to;
+        toParams = redirect.toParams;
+        options = redirect.options;
+        toState = findState(to, options.relative);
+
+        if (!isDefined(toState)) {
+          if (!options.relative) throw new Error("No such state '" + to + "'");
+          throw new Error("Could not resolve '" + to + "' from state '" + options.relative + "'");
+        }
+      }
+      if (toState[abstractKey]) throw new Error("Cannot transition to abstract state '" + to + "'");
+      if (options.inherit) toParams = inheritParams($stateParams, toParams || {}, $state.$current, toState);
+      if (!toState.params.$$validates(toParams)) return TransitionFailed;
+
+      toParams = toState.params.$$values(toParams);
+      to = toState;
+
+      var toPath = to.path;
+
+      // Starting from the root of the path, keep all levels that haven't changed
+      var keep = 0, state = toPath[keep], locals = root.locals, toLocals = [];
+
+      if (!options.reload) {
+        while (state && state === fromPath[keep] && state.ownParams.$$equals(toParams, fromParams)) {
+          locals = toLocals[keep] = state.locals;
+          keep++;
+          state = toPath[keep];
+        }
+      }
+
+      // If we're going to the same state and all locals are kept, we've got nothing to do.
+      // But clear 'transition', as we still want to cancel any other pending transitions.
+      // TODO: We may not want to bump 'transition' if we're called from a location change
+      // that we've initiated ourselves, because we might accidentally abort a legitimate
+      // transition initiated from code?
+      if (shouldTriggerReload(to, from, locals, options)) {
+        if (to.self.reloadOnSearch !== false) $urlRouter.update();
+        $state.transition = null;
+        return $q.when($state.current);
+      }
+
+      // Filter parameters before we pass them to event handlers etc.
+      toParams = filterByKeys(to.params.$$keys(), toParams || {});
+
+      // Broadcast start event and cancel the transition if requested
+      if (options.notify) {
+        /**
+         * @ngdoc event
+         * @name ui.router.state.$state#$stateChangeStart
+         * @eventOf ui.router.state.$state
+         * @eventType broadcast on root scope
+         * @description
+         * Fired when the state transition **begins**. You can use `event.preventDefault()`
+         * to prevent the transition from happening and then the transition promise will be
+         * rejected with a `'transition prevented'` value.
+         *
+         * @param {Object} event Event object.
+         * @param {State} toState The state being transitioned to.
+         * @param {Object} toParams The params supplied to the `toState`.
+         * @param {State} fromState The current state, pre-transition.
+         * @param {Object} fromParams The params supplied to the `fromState`.
+         *
+         * @example
+         *
+         * <pre>
+         * $rootScope.$on('$stateChangeStart',
+         * function(event, toState, toParams, fromState, fromParams){
+         *     event.preventDefault();
+         *     // transitionTo() promise will be rejected with
+         *     // a 'transition prevented' error
+         * })
+         * </pre>
+         */
+        if ($rootScope.$broadcast('$stateChangeStart', to.self, toParams, from.self, fromParams).defaultPrevented) {
+          $urlRouter.update();
+          return TransitionPrevented;
+        }
+      }
+
+      // Resolve locals for the remaining states, but don't update any global state just
+      // yet -- if anything fails to resolve the current state needs to remain untouched.
+      // We also set up an inheritance chain for the locals here. This allows the view directive
+      // to quickly look up the correct definition for each view in the current state. Even
+      // though we create the locals object itself outside resolveState(), it is initially
+      // empty and gets filled asynchronously. We need to keep track of the promise for the
+      // (fully resolved) current locals, and pass this down the chain.
+      var resolved = $q.when(locals);
+
+      for (var l = keep; l < toPath.length; l++, state = toPath[l]) {
+        locals = toLocals[l] = inherit(locals);
+        resolved = resolveState(state, toParams, state === to, resolved, locals, options);
+      }
+
+      // Once everything is resolved, we are ready to perform the actual transition
+      // and return a promise for the new state. We also keep track of what the
+      // current promise is, so that we can detect overlapping transitions and
+      // keep only the outcome of the last transition.
+      var transition = $state.transition = resolved.then(function () {
+        var l, entering, exiting;
+
+        if ($state.transition !== transition) return TransitionSuperseded;
+
+        // Exit 'from' states not kept
+        for (l = fromPath.length - 1; l >= keep; l--) {
+          exiting = fromPath[l];
+          if (exiting.self.onExit) {
+            $injector.invoke(exiting.self.onExit, exiting.self, exiting.locals.globals);
+          }
+          exiting.locals = null;
+        }
+
+        // Enter 'to' states not kept
+        for (l = keep; l < toPath.length; l++) {
+          entering = toPath[l];
+          entering.locals = toLocals[l];
+          if (entering.self.onEnter) {
+            $injector.invoke(entering.self.onEnter, entering.self, entering.locals.globals);
+          }
+        }
+
+        // Run it again, to catch any transitions in callbacks
+        if ($state.transition !== transition) return TransitionSuperseded;
+
+        // Update globals in $state
+        $state.$current = to;
+        $state.current = to.self;
+        $state.params = toParams;
+        copy($state.params, $stateParams);
+        $state.transition = null;
+
+        if (options.location && to.navigable) {
+          $urlRouter.push(to.navigable.url, to.navigable.locals.globals.$stateParams, {
+            $$avoidResync: true, replace: options.location === 'replace'
+          });
+        }
+
+        if (options.notify) {
+        /**
+         * @ngdoc event
+         * @name ui.router.state.$state#$stateChangeSuccess
+         * @eventOf ui.router.state.$state
+         * @eventType broadcast on root scope
+         * @description
+         * Fired once the state transition is **complete**.
+         *
+         * @param {Object} event Event object.
+         * @param {State} toState The state being transitioned to.
+         * @param {Object} toParams The params supplied to the `toState`.
+         * @param {State} fromState The current state, pre-transition.
+         * @param {Object} fromParams The params supplied to the `fromState`.
+         */
+          $rootScope.$broadcast('$stateChangeSuccess', to.self, toParams, from.self, fromParams);
+        }
+        $urlRouter.update(true);
+
+        return $state.current;
+      }, function (error) {
+        if ($state.transition !== transition) return TransitionSuperseded;
+
+        $state.transition = null;
+        /**
+         * @ngdoc event
+         * @name ui.router.state.$state#$stateChangeError
+         * @eventOf ui.router.state.$state
+         * @eventType broadcast on root scope
+         * @description
+         * Fired when an **error occurs** during transition. It's important to note that if you
+         * have any errors in your resolve functions (javascript errors, non-existent services, etc)
+         * they will not throw traditionally. You must listen for this $stateChangeError event to
+         * catch **ALL** errors.
+         *
+         * @param {Object} event Event object.
+         * @param {State} toState The state being transitioned to.
+         * @param {Object} toParams The params supplied to the `toState`.
+         * @param {State} fromState The current state, pre-transition.
+         * @param {Object} fromParams The params supplied to the `fromState`.
+         * @param {Error} error The resolve error object.
+         */
+        evt = $rootScope.$broadcast('$stateChangeError', to.self, toParams, from.self, fromParams, error);
+
+        if (!evt.defaultPrevented) {
+            $urlRouter.update();
+        }
+
+        return $q.reject(error);
+      });
+
+      return transition;
+    };
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#is
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * Similar to {@link ui.router.state.$state#methods_includes $state.includes},
+     * but only checks for the full state name. If params is supplied then it will be
+     * tested for strict equality against the current active params object, so all params
+     * must match with none missing and no extras.
+     *
+     * @example
+     * <pre>
+     * $state.$current.name = 'contacts.details.item';
+     *
+     * // absolute name
+     * $state.is('contact.details.item'); // returns true
+     * $state.is(contactDetailItemStateObject); // returns true
+     *
+     * // relative name (. and ^), typically from a template
+     * // E.g. from the 'contacts.details' template
+     * <div ng-class="{highlighted: $state.is('.item')}">Item</div>
+     * </pre>
+     *
+     * @param {string|object} stateOrName The state name (absolute or relative) or state object you'd like to check.
+     * @param {object=} params A param object, e.g. `{sectionId: section.id}`, that you'd like
+     * to test against the current active state.
+     * @param {object=} options An options object.  The options are:
+     *
+     * - **`relative`** - {string|object} -  If `stateOrName` is a relative state name and `options.relative` is set, .is will
+     * test relative to `options.relative` state (or name).
+     *
+     * @returns {boolean} Returns true if it is the state.
+     */
+    $state.is = function is(stateOrName, params, options) {
+      options = extend({ relative: $state.$current }, options || {});
+      var state = findState(stateOrName, options.relative);
+
+      if (!isDefined(state)) { return undefined; }
+      if ($state.$current !== state) { return false; }
+      return params ? equalForKeys(state.params.$$values(params), $stateParams) : true;
+    };
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#includes
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * A method to determine if the current active state is equal to or is the child of the
+     * state stateName. If any params are passed then they will be tested for a match as well.
+     * Not all the parameters need to be passed, just the ones you'd like to test for equality.
+     *
+     * @example
+     * Partial and relative names
+     * <pre>
+     * $state.$current.name = 'contacts.details.item';
+     *
+     * // Using partial names
+     * $state.includes("contacts"); // returns true
+     * $state.includes("contacts.details"); // returns true
+     * $state.includes("contacts.details.item"); // returns true
+     * $state.includes("contacts.list"); // returns false
+     * $state.includes("about"); // returns false
+     *
+     * // Using relative names (. and ^), typically from a template
+     * // E.g. from the 'contacts.details' template
+     * <div ng-class="{highlighted: $state.includes('.item')}">Item</div>
+     * </pre>
+     *
+     * Basic globbing patterns
+     * <pre>
+     * $state.$current.name = 'contacts.details.item.url';
+     *
+     * $state.includes("*.details.*.*"); // returns true
+     * $state.includes("*.details.**"); // returns true
+     * $state.includes("**.item.**"); // returns true
+     * $state.includes("*.details.item.url"); // returns true
+     * $state.includes("*.details.*.url"); // returns true
+     * $state.includes("*.details.*"); // returns false
+     * $state.includes("item.**"); // returns false
+     * </pre>
+     *
+     * @param {string} stateOrName A partial name, relative name, or glob pattern
+     * to be searched for within the current state name.
+     * @param {object=} params A param object, e.g. `{sectionId: section.id}`,
+     * that you'd like to test against the current active state.
+     * @param {object=} options An options object.  The options are:
+     *
+     * - **`relative`** - {string|object=} -  If `stateOrName` is a relative state reference and `options.relative` is set,
+     * .includes will test relative to `options.relative` state (or name).
+     *
+     * @returns {boolean} Returns true if it does include the state
+     */
+    $state.includes = function includes(stateOrName, params, options) {
+      options = extend({ relative: $state.$current }, options || {});
+      if (isString(stateOrName) && isGlob(stateOrName)) {
+        if (!doesStateMatchGlob(stateOrName)) {
+          return false;
+        }
+        stateOrName = $state.$current.name;
+      }
+
+      var state = findState(stateOrName, options.relative);
+      if (!isDefined(state)) { return undefined; }
+      if (!isDefined($state.$current.includes[state.name])) { return false; }
+      return params ? equalForKeys(state.params.$$values(params), $stateParams, objectKeys(params)) : true;
+    };
+
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#href
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * A url generation method that returns the compiled url for the given state populated with the given params.
+     *
+     * @example
+     * <pre>
+     * expect($state.href("about.person", { person: "bob" })).toEqual("/about/bob");
+     * </pre>
+     *
+     * @param {string|object} stateOrName The state name or state object you'd like to generate a url from.
+     * @param {object=} params An object of parameter values to fill the state's required parameters.
+     * @param {object=} options Options object. The options are:
+     *
+     * - **`lossy`** - {boolean=true} -  If true, and if there is no url associated with the state provided in the
+     *    first parameter, then the constructed href url will be built from the first navigable ancestor (aka
+     *    ancestor with a valid url).
+     * - **`inherit`** - {boolean=true}, If `true` will inherit url parameters from current url.
+     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'),
+     *    defines which state to be relative from.
+     * - **`absolute`** - {boolean=false},  If true will generate an absolute url, e.g. "http://www.example.com/fullurl".
+     *
+     * @returns {string} compiled state url
+     */
+    $state.href = function href(stateOrName, params, options) {
+      options = extend({
+        lossy:    true,
+        inherit:  true,
+        absolute: false,
+        relative: $state.$current
+      }, options || {});
+
+      var state = findState(stateOrName, options.relative);
+
+      if (!isDefined(state)) return null;
+      if (options.inherit) params = inheritParams($stateParams, params || {}, $state.$current, state);
+
+      var nav = (state && options.lossy) ? state.navigable : state;
+
+      if (!nav || nav.url === undefined || nav.url === null) {
+        return null;
+      }
+      return $urlRouter.href(nav.url, filterByKeys(state.params.$$keys(), params || {}), {
+        absolute: options.absolute
+      });
+    };
+
+    /**
+     * @ngdoc function
+     * @name ui.router.state.$state#get
+     * @methodOf ui.router.state.$state
+     *
+     * @description
+     * Returns the state configuration object for any specific state or all states.
+     *
+     * @param {string|object=} stateOrName (absolute or relative) If provided, will only get the config for
+     * the requested state. If not provided, returns an array of ALL state configs.
+     * @param {string|object=} context When stateOrName is a relative state reference, the state will be retrieved relative to context.
+     * @returns {Object|Array} State configuration object or array of all objects.
+     */
+    $state.get = function (stateOrName, context) {
+      if (arguments.length === 0) return map(objectKeys(states), function(name) { return states[name].self; });
+      var state = findState(stateOrName, context || $state.$current);
+      return (state && state.self) ? state.self : null;
+    };
+
+    function resolveState(state, params, paramsAreFiltered, inherited, dst, options) {
+      // Make a restricted $stateParams with only the parameters that apply to this state if
+      // necessary. In addition to being available to the controller and onEnter/onExit callbacks,
+      // we also need $stateParams to be available for any $injector calls we make during the
+      // dependency resolution process.
+      var $stateParams = (paramsAreFiltered) ? params : filterByKeys(state.params.$$keys(), params);
+      var locals = { $stateParams: $stateParams };
+
+      // Resolve 'global' dependencies for the state, i.e. those not specific to a view.
+      // We're also including $stateParams in this; that way the parameters are restricted
+      // to the set that should be visible to the state, and are independent of when we update
+      // the global $state and $stateParams values.
+      dst.resolve = $resolve.resolve(state.resolve, locals, dst.resolve, state);
+      var promises = [dst.resolve.then(function (globals) {
+        dst.globals = globals;
+      })];
+      if (inherited) promises.push(inherited);
+
+      // Resolve template and dependencies for all views.
+      forEach(state.views, function (view, name) {
+        var injectables = (view.resolve && view.resolve !== state.resolve ? view.resolve : {});
+        injectables.$template = [ function () {
+          return $view.load(name, { view: view, locals: locals, params: $stateParams, notify: options.notify }) || '';
+        }];
+
+        promises.push($resolve.resolve(injectables, locals, dst.resolve, state).then(function (result) {
+          // References to the controller (only instantiated at link time)
+          if (isFunction(view.controllerProvider) || isArray(view.controllerProvider)) {
+            var injectLocals = angular.extend({}, injectables, locals);
+            result.$$controller = $injector.invoke(view.controllerProvider, null, injectLocals);
+          } else {
+            result.$$controller = view.controller;
+          }
+          // Provide access to the state itself for internal use
+          result.$$state = state;
+          result.$$controllerAs = view.controllerAs;
+          dst[name] = result;
+        }));
+      });
+
+      // Wait for all the promises and then return the activation object
+      return $q.all(promises).then(function (values) {
+        return dst;
+      });
+    }
+
+    return $state;
+  }
+
+  function shouldTriggerReload(to, from, locals, options) {
+    if (to === from && ((locals === from.locals && !options.reload) || (to.self.reloadOnSearch === false))) {
+      return true;
+    }
+  }
+}
+
+angular.module('ui.router.state')
+  .value('$stateParams', {})
+  .provider('$state', $StateProvider);
+
+
+$ViewProvider.$inject = [];
+function $ViewProvider() {
+
+  this.$get = $get;
+  /**
+   * @ngdoc object
+   * @name ui.router.state.$view
+   *
+   * @requires ui.router.util.$templateFactory
+   * @requires $rootScope
+   *
+   * @description
+   *
+   */
+  $get.$inject = ['$rootScope', '$templateFactory'];
+  function $get(   $rootScope,   $templateFactory) {
+    return {
+      // $view.load('full.viewName', { template: ..., controller: ..., resolve: ..., async: false, params: ... })
+      /**
+       * @ngdoc function
+       * @name ui.router.state.$view#load
+       * @methodOf ui.router.state.$view
+       *
+       * @description
+       *
+       * @param {string} name name
+       * @param {object} options option object.
+       */
+      load: function load(name, options) {
+        var result, defaults = {
+          template: null, controller: null, view: null, locals: null, notify: true, async: true, params: {}
+        };
+        options = extend(defaults, options);
+
+        if (options.view) {
+          result = $templateFactory.fromConfig(options.view, options.params, options.locals);
+        }
+        if (result && options.notify) {
+        /**
+         * @ngdoc event
+         * @name ui.router.state.$state#$viewContentLoading
+         * @eventOf ui.router.state.$view
+         * @eventType broadcast on root scope
+         * @description
+         *
+         * Fired once the view **begins loading**, *before* the DOM is rendered.
+         *
+         * @param {Object} event Event object.
+         * @param {Object} viewConfig The view config properties (template, controller, etc).
+         *
+         * @example
+         *
+         * <pre>
+         * $scope.$on('$viewContentLoading',
+         * function(event, viewConfig){
+         *     // Access to all the view config properties.
+         *     // and one special property 'targetView'
+         *     // viewConfig.targetView
+         * });
+         * </pre>
+         */
+          $rootScope.$broadcast('$viewContentLoading', options);
+        }
+        return result;
+      }
+    };
+  }
+}
+
+angular.module('ui.router.state').provider('$view', $ViewProvider);
+
+/**
+ * @ngdoc object
+ * @name ui.router.state.$uiViewScrollProvider
+ *
+ * @description
+ * Provider that returns the {@link ui.router.state.$uiViewScroll} service function.
+ */
+function $ViewScrollProvider() {
+
+  var useAnchorScroll = false;
+
+  /**
+   * @ngdoc function
+   * @name ui.router.state.$uiViewScrollProvider#useAnchorScroll
+   * @methodOf ui.router.state.$uiViewScrollProvider
+   *
+   * @description
+   * Reverts back to using the core [`$anchorScroll`](http://docs.angularjs.org/api/ng.$anchorScroll) service for
+   * scrolling based on the url anchor.
+   */
+  this.useAnchorScroll = function () {
+    useAnchorScroll = true;
+  };
+
+  /**
+   * @ngdoc object
+   * @name ui.router.state.$uiViewScroll
+   *
+   * @requires $anchorScroll
+   * @requires $timeout
+   *
+   * @description
+   * When called with a jqLite element, it scrolls the element into view (after a
+   * `$timeout` so the DOM has time to refresh).
+   *
+   * If you prefer to rely on `$anchorScroll` to scroll the view to the anchor,
+   * this can be enabled by calling {@link ui.router.state.$uiViewScrollProvider#methods_useAnchorScroll `$uiViewScrollProvider.useAnchorScroll()`}.
+   */
+  this.$get = ['$anchorScroll', '$timeout', function ($anchorScroll, $timeout) {
+    if (useAnchorScroll) {
+      return $anchorScroll;
+    }
+
+    return function ($element) {
+      $timeout(function () {
+        $element[0].scrollIntoView();
+      }, 0, false);
+    };
+  }];
+}
+
+angular.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProvider);
+
+/**
+ * @ngdoc directive
+ * @name ui.router.state.directive:ui-view
+ *
+ * @requires ui.router.state.$state
+ * @requires $compile
+ * @requires $controller
+ * @requires $injector
+ * @requires ui.router.state.$uiViewScroll
+ * @requires $document
+ *
+ * @restrict ECA
+ *
+ * @description
+ * The ui-view directive tells $state where to place your templates.
+ *
+ * @param {string=} name A view name. The name should be unique amongst the other views in the
+ * same state. You can have views of the same name that live in different states.
+ *
+ * @param {string=} autoscroll It allows you to set the scroll behavior of the browser window
+ * when a view is populated. By default, $anchorScroll is overridden by ui-router's custom scroll
+ * service, {@link ui.router.state.$uiViewScroll}. This custom service let's you
+ * scroll ui-view elements into view when they are populated during a state activation.
+ *
+ * *Note: To revert back to old [`$anchorScroll`](http://docs.angularjs.org/api/ng.$anchorScroll)
+ * functionality, call `$uiViewScrollProvider.useAnchorScroll()`.*
+ *
+ * @param {string=} onload Expression to evaluate whenever the view updates.
+ *
+ * @example
+ * A view can be unnamed or named.
+ * <pre>
+ * <!-- Unnamed -->
+ * <div ui-view></div>
+ *
+ * <!-- Named -->
+ * <div ui-view="viewName"></div>
+ * </pre>
+ *
+ * You can only have one unnamed view within any template (or root html). If you are only using a
+ * single view and it is unnamed then you can populate it like so:
+ * <pre>
+ * <div ui-view></div>
+ * $stateProvider.state("home", {
+ *   template: "<h1>HELLO!</h1>"
+ * })
+ * </pre>
+ *
+ * The above is a convenient shortcut equivalent to specifying your view explicitly with the {@link ui.router.state.$stateProvider#views `views`}
+ * config property, by name, in this case an empty name:
+ * <pre>
+ * $stateProvider.state("home", {
+ *   views: {
+ *     "": {
+ *       template: "<h1>HELLO!</h1>"
+ *     }
+ *   }
+ * })
+ * </pre>
+ *
+ * But typically you'll only use the views property if you name your view or have more than one view
+ * in the same template. There's not really a compelling reason to name a view if its the only one,
+ * but you could if you wanted, like so:
+ * <pre>
+ * <div ui-view="main"></div>
+ * </pre>
+ * <pre>
+ * $stateProvider.state("home", {
+ *   views: {
+ *     "main": {
+ *       template: "<h1>HELLO!</h1>"
+ *     }
+ *   }
+ * })
+ * </pre>
+ *
+ * Really though, you'll use views to set up multiple views:
+ * <pre>
+ * <div ui-view></div>
+ * <div ui-view="chart"></div>
+ * <div ui-view="data"></div>
+ * </pre>
+ *
+ * <pre>
+ * $stateProvider.state("home", {
+ *   views: {
+ *     "": {
+ *       template: "<h1>HELLO!</h1>"
+ *     },
+ *     "chart": {
+ *       template: "<chart_thing/>"
+ *     },
+ *     "data": {
+ *       template: "<data_thing/>"
+ *     }
+ *   }
+ * })
+ * </pre>
+ *
+ * Examples for `autoscroll`:
+ *
+ * <pre>
+ * <!-- If autoscroll present with no expression,
+ *      then scroll ui-view into view -->
+ * <ui-view autoscroll/>
+ *
+ * <!-- If autoscroll present with valid expression,
+ *      then scroll ui-view into view if expression evaluates to true -->
+ * <ui-view autoscroll='true'/>
+ * <ui-view autoscroll='false'/>
+ * <ui-view autoscroll='scopeVariable'/>
+ * </pre>
+ */
+$ViewDirective.$inject = ['$state', '$injector', '$uiViewScroll', '$interpolate'];
+function $ViewDirective(   $state,   $injector,   $uiViewScroll,   $interpolate) {
+
+  function getService() {
+    return ($injector.has) ? function(service) {
+      return $injector.has(service) ? $injector.get(service) : null;
+    } : function(service) {
+      try {
+        return $injector.get(service);
+      } catch (e) {
+        return null;
+      }
+    };
+  }
+
+  var service = getService(),
+      $animator = service('$animator'),
+      $animate = service('$animate');
+
+  // Returns a set of DOM manipulation functions based on which Angular version
+  // it should use
+  function getRenderer(attrs, scope) {
+    var statics = function() {
+      return {
+        enter: function (element, target, cb) { target.after(element); cb(); },
+        leave: function (element, cb) { element.remove(); cb(); }
+      };
+    };
+
+    if ($animate) {
+      return {
+        enter: function(element, target, cb) {
+          var promise = $animate.enter(element, null, target, cb);
+          if (promise && promise.then) promise.then(cb);
+        },
+        leave: function(element, cb) {
+          var promise = $animate.leave(element, cb);
+          if (promise && promise.then) promise.then(cb);
+        }
+      };
+    }
+
+    if ($animator) {
+      var animate = $animator && $animator(scope, attrs);
+
+      return {
+        enter: function(element, target, cb) {animate.enter(element, null, target); cb(); },
+        leave: function(element, cb) { animate.leave(element); cb(); }
+      };
+    }
+
+    return statics();
+  }
+
+  var directive = {
+    restrict: 'ECA',
+    terminal: true,
+    priority: 400,
+    transclude: 'element',
+    compile: function (tElement, tAttrs, $transclude) {
+      return function (scope, $element, attrs) {
+        var previousEl, currentEl, currentScope, latestLocals,
+            onloadExp     = attrs.onload || '',
+            autoScrollExp = attrs.autoscroll,
+            renderer      = getRenderer(attrs, scope);
+
+        scope.$on('$stateChangeSuccess', function() {
+          updateView(false);
+        });
+        scope.$on('$viewContentLoading', function() {
+          updateView(false);
+        });
+
+        updateView(true);
+
+        function cleanupLastView() {
+          if (previousEl) {
+            previousEl.remove();
+            previousEl = null;
+          }
+
+          if (currentScope) {
+            currentScope.$destroy();
+            currentScope = null;
+          }
+
+          if (currentEl) {
+            renderer.leave(currentEl, function() {
+              previousEl = null;
+            });
+
+            previousEl = currentEl;
+            currentEl = null;
+          }
+        }
+
+        function updateView(firstTime) {
+          var newScope,
+              name            = getUiViewName(scope, attrs, $element, $interpolate),
+              previousLocals  = name && $state.$current && $state.$current.locals[name];
+
+          if (!firstTime && previousLocals === latestLocals) return; // nothing to do
+          newScope = scope.$new();
+          latestLocals = $state.$current.locals[name];
+
+          var clone = $transclude(newScope, function(clone) {
+            renderer.enter(clone, $element, function onUiViewEnter() {
+              if(currentScope) {
+                currentScope.$emit('$viewContentAnimationEnded');
+              }
+
+              if (angular.isDefined(autoScrollExp) && !autoScrollExp || scope.$eval(autoScrollExp)) {
+                $uiViewScroll(clone);
+              }
+            });
+            cleanupLastView();
+          });
+
+          currentEl = clone;
+          currentScope = newScope;
+          /**
+           * @ngdoc event
+           * @name ui.router.state.directive:ui-view#$viewContentLoaded
+           * @eventOf ui.router.state.directive:ui-view
+           * @eventType emits on ui-view directive scope
+           * @description           *
+           * Fired once the view is **loaded**, *after* the DOM is rendered.
+           *
+           * @param {Object} event Event object.
+           */
+          currentScope.$emit('$viewContentLoaded');
+          currentScope.$eval(onloadExp);
+        }
+      };
+    }
+  };
+
+  return directive;
+}
+
+$ViewDirectiveFill.$inject = ['$compile', '$controller', '$state', '$interpolate'];
+function $ViewDirectiveFill (  $compile,   $controller,   $state,   $interpolate) {
+  return {
+    restrict: 'ECA',
+    priority: -400,
+    compile: function (tElement) {
+      var initial = tElement.html();
+      return function (scope, $element, attrs) {
+        var current = $state.$current,
+            name = getUiViewName(scope, attrs, $element, $interpolate),
+            locals  = current && current.locals[name];
+
+        if (! locals) {
+          return;
+        }
+
+        $element.data('$uiView', { name: name, state: locals.$$state });
+        $element.html(locals.$template ? locals.$template : initial);
+
+        var link = $compile($element.contents());
+
+        if (locals.$$controller) {
+          locals.$scope = scope;
+          var controller = $controller(locals.$$controller, locals);
+          if (locals.$$controllerAs) {
+            scope[locals.$$controllerAs] = controller;
+          }
+          $element.data('$ngControllerController', controller);
+          $element.children().data('$ngControllerController', controller);
+        }
+
+        link(scope);
+      };
+    }
+  };
+}
+
+/**
+ * Shared ui-view code for both directives:
+ * Given scope, element, and its attributes, return the view's name
+ */
+function getUiViewName(scope, attrs, element, $interpolate) {
+  var name = $interpolate(attrs.uiView || attrs.name || '')(scope);
+  var inherited = element.inheritedData('$uiView');
+  return name.indexOf('@') >= 0 ?  name :  (name + '@' + (inherited ? inherited.state.name : ''));
+}
+
+angular.module('ui.router.state').directive('uiView', $ViewDirective);
+angular.module('ui.router.state').directive('uiView', $ViewDirectiveFill);
+
+function parseStateRef(ref, current) {
+  var preparsed = ref.match(/^\s*({[^}]*})\s*$/), parsed;
+  if (preparsed) ref = current + '(' + preparsed[1] + ')';
+  parsed = ref.replace(/\n/g, " ").match(/^([^(]+?)\s*(\((.*)\))?$/);
+  if (!parsed || parsed.length !== 4) throw new Error("Invalid state ref '" + ref + "'");
+  return { state: parsed[1], paramExpr: parsed[3] || null };
+}
+
+function stateContext(el) {
+  var stateData = el.parent().inheritedData('$uiView');
+
+  if (stateData && stateData.state && stateData.state.name) {
+    return stateData.state;
+  }
+}
+
+/**
+ * @ngdoc directive
+ * @name ui.router.state.directive:ui-sref
+ *
+ * @requires ui.router.state.$state
+ * @requires $timeout
+ *
+ * @restrict A
+ *
+ * @description
+ * A directive that binds a link (`<a>` tag) to a state. If the state has an associated
+ * URL, the directive will automatically generate & update the `href` attribute via
+ * the {@link ui.router.state.$state#methods_href $state.href()} method. Clicking
+ * the link will trigger a state transition with optional parameters.
+ *
+ * Also middle-clicking, right-clicking, and ctrl-clicking on the link will be
+ * handled natively by the browser.
+ *
+ * You can also use relative state paths within ui-sref, just like the relative
+ * paths passed to `$state.go()`. You just need to be aware that the path is relative
+ * to the state that the link lives in, in other words the state that loaded the
+ * template containing the link.
+ *
+ * You can specify options to pass to {@link ui.router.state.$state#go $state.go()}
+ * using the `ui-sref-opts` attribute. Options are restricted to `location`, `inherit`,
+ * and `reload`.
+ *
+ * @example
+ * Here's an example of how you'd use ui-sref and how it would compile. If you have the
+ * following template:
+ * <pre>
+ * <a ui-sref="home">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
+ *
+ * <ul>
+ *     <li ng-repeat="contact in contacts">
+ *         <a ui-sref="contacts.detail({ id: contact.id })">{{ contact.name }}</a>
+ *     </li>
+ * </ul>
+ * </pre>
+ *
+ * Then the compiled html would be (assuming Html5Mode is off and current state is contacts):
+ * <pre>
+ * <a href="#/home" ui-sref="home">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
+ *
+ * <ul>
+ *     <li ng-repeat="contact in contacts">
+ *         <a href="#/contacts/1" ui-sref="contacts.detail({ id: contact.id })">Joe</a>
+ *     </li>
+ *     <li ng-repeat="contact in contacts">
+ *         <a href="#/contacts/2" ui-sref="contacts.detail({ id: contact.id })">Alice</a>
+ *     </li>
+ *     <li ng-repeat="contact in contacts">
+ *         <a href="#/contacts/3" ui-sref="contacts.detail({ id: contact.id })">Bob</a>
+ *     </li>
+ * </ul>
+ *
+ * <a ui-sref="home" ui-sref-opts="{reload: true}">Home</a>
+ * </pre>
+ *
+ * @param {string} ui-sref 'stateName' can be any valid absolute or relative state
+ * @param {Object} ui-sref-opts options to pass to {@link ui.router.state.$state#go $state.go()}
+ */
+$StateRefDirective.$inject = ['$state', '$timeout'];
+function $StateRefDirective($state, $timeout) {
+  var allowedOptions = ['location', 'inherit', 'reload'];
+
+  return {
+    restrict: 'A',
+    require: ['?^uiSrefActive', '?^uiSrefActiveEq'],
+    link: function(scope, element, attrs, uiSrefActive) {
+      var ref = parseStateRef(attrs.uiSref, $state.current.name);
+      var params = null, url = null, base = stateContext(element) || $state.$current;
+      var newHref = null, isAnchor = element.prop("tagName") === "A";
+      var isForm = element[0].nodeName === "FORM";
+      var attr = isForm ? "action" : "href", nav = true;
+
+      var options = { relative: base, inherit: true };
+      var optionsOverride = scope.$eval(attrs.uiSrefOpts) || {};
+
+      angular.forEach(allowedOptions, function(option) {
+        if (option in optionsOverride) {
+          options[option] = optionsOverride[option];
+        }
+      });
+
+      var update = function(newVal) {
+        if (newVal) params = angular.copy(newVal);
+        if (!nav) return;
+
+        newHref = $state.href(ref.state, params, options);
+
+        var activeDirective = uiSrefActive[1] || uiSrefActive[0];
+        if (activeDirective) {
+          activeDirective.$$setStateInfo(ref.state, params);
+        }
+        if (newHref === null) {
+          nav = false;
+          return false;
+        }
+        attrs.$set(attr, newHref);
+      };
+
+      if (ref.paramExpr) {
+        scope.$watch(ref.paramExpr, function(newVal, oldVal) {
+          if (newVal !== params) update(newVal);
+        }, true);
+        params = angular.copy(scope.$eval(ref.paramExpr));
+      }
+      update();
+
+      if (isForm) return;
+
+      element.bind("click", function(e) {
+        var button = e.which || e.button;
+        if ( !(button > 1 || e.ctrlKey || e.metaKey || e.shiftKey || element.attr('target')) ) {
+          // HACK: This is to allow ng-clicks to be processed before the transition is initiated:
+          var transition = $timeout(function() {
+            $state.go(ref.state, params, options);
+          });
+          e.preventDefault();
+
+          // if the state has no URL, ignore one preventDefault from the <a> directive.
+          var ignorePreventDefaultCount = isAnchor && !newHref ? 1: 0;
+          e.preventDefault = function() {
+            if (ignorePreventDefaultCount-- <= 0)
+              $timeout.cancel(transition);
+          };
+        }
+      });
+    }
+  };
+}
+
+/**
+ * @ngdoc directive
+ * @name ui.router.state.directive:ui-sref-active
+ *
+ * @requires ui.router.state.$state
+ * @requires ui.router.state.$stateParams
+ * @requires $interpolate
+ *
+ * @restrict A
+ *
+ * @description
+ * A directive working alongside ui-sref to add classes to an element when the
+ * related ui-sref directive's state is active, and removing them when it is inactive.
+ * The primary use-case is to simplify the special appearance of navigation menus
+ * relying on `ui-sref`, by having the "active" state's menu button appear different,
+ * distinguishing it from the inactive menu items.
+ *
+ * ui-sref-active can live on the same element as ui-sref or on a parent element. The first
+ * ui-sref-active found at the same level or above the ui-sref will be used.
+ *
+ * Will activate when the ui-sref's target state or any child state is active. If you
+ * need to activate only when the ui-sref target state is active and *not* any of
+ * it's children, then you will use
+ * {@link ui.router.state.directive:ui-sref-active-eq ui-sref-active-eq}
+ *
+ * @example
+ * Given the following template:
+ * <pre>
+ * <ul>
+ *   <li ui-sref-active="active" class="item">
+ *     <a href ui-sref="app.user({user: 'bilbobaggins'})">@bilbobaggins</a>
+ *   </li>
+ * </ul>
+ * </pre>
+ *
+ *
+ * When the app state is "app.user" (or any children states), and contains the state parameter "user" with value "bilbobaggins",
+ * the resulting HTML will appear as (note the 'active' class):
+ * <pre>
+ * <ul>
+ *   <li ui-sref-active="active" class="item active">
+ *     <a ui-sref="app.user({user: 'bilbobaggins'})" href="/users/bilbobaggins">@bilbobaggins</a>
+ *   </li>
+ * </ul>
+ * </pre>
+ *
+ * The class name is interpolated **once** during the directives link time (any further changes to the
+ * interpolated value are ignored).
+ *
+ * Multiple classes may be specified in a space-separated format:
+ * <pre>
+ * <ul>
+ *   <li ui-sref-active='class1 class2 class3'>
+ *     <a ui-sref="app.user">link</a>
+ *   </li>
+ * </ul>
+ * </pre>
+ */
+
+/**
+ * @ngdoc directive
+ * @name ui.router.state.directive:ui-sref-active-eq
+ *
+ * @requires ui.router.state.$state
+ * @requires ui.router.state.$stateParams
+ * @requires $interpolate
+ *
+ * @restrict A
+ *
+ * @description
+ * The same as {@link ui.router.state.directive:ui-sref-active ui-sref-active} but will only activate
+ * when the exact target state used in the `ui-sref` is active; no child states.
+ *
+ */
+$StateRefActiveDirective.$inject = ['$state', '$stateParams', '$interpolate'];
+function $StateRefActiveDirective($state, $stateParams, $interpolate) {
+  return  {
+    restrict: "A",
+    controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+      var state, params, activeClass;
+
+      // There probably isn't much point in $observing this
+      // uiSrefActive and uiSrefActiveEq share the same directive object with some
+      // slight difference in logic routing
+      activeClass = $interpolate($attrs.uiSrefActiveEq || $attrs.uiSrefActive || '', false)($scope);
+
+      // Allow uiSref to communicate with uiSrefActive[Equals]
+      this.$$setStateInfo = function (newState, newParams) {
+        state = $state.get(newState, stateContext($element));
+        params = newParams;
+        update();
+      };
+
+      $scope.$on('$stateChangeSuccess', update);
+
+      // Update route state
+      function update() {
+        if (isMatch()) {
+          $element.addClass(activeClass);
+        } else {
+          $element.removeClass(activeClass);
+        }
+      }
+
+      function isMatch() {
+        if (typeof $attrs.uiSrefActiveEq !== 'undefined') {
+          return state && $state.is(state.name, params);
+        } else {
+          return state && $state.includes(state.name, params);
+        }
+      }
+    }]
+  };
+}
+
+angular.module('ui.router.state')
+  .directive('uiSref', $StateRefDirective)
+  .directive('uiSrefActive', $StateRefActiveDirective)
+  .directive('uiSrefActiveEq', $StateRefActiveDirective);
+
+/**
+ * @ngdoc filter
+ * @name ui.router.state.filter:isState
+ *
+ * @requires ui.router.state.$state
+ *
+ * @description
+ * Translates to {@link ui.router.state.$state#methods_is $state.is("stateName")}.
+ */
+$IsStateFilter.$inject = ['$state'];
+function $IsStateFilter($state) {
+  var isFilter = function (state) {
+    return $state.is(state);
+  };
+  isFilter.$stateful = true;
+  return isFilter;
+}
+
+/**
+ * @ngdoc filter
+ * @name ui.router.state.filter:includedByState
+ *
+ * @requires ui.router.state.$state
+ *
+ * @description
+ * Translates to {@link ui.router.state.$state#methods_includes $state.includes('fullOrPartialStateName')}.
+ */
+$IncludedByStateFilter.$inject = ['$state'];
+function $IncludedByStateFilter($state) {
+  var includesFilter = function (state) {
+    return $state.includes(state);
+  };
+  includesFilter.$stateful = true;
+  return  includesFilter;
+}
+
+angular.module('ui.router.state')
+  .filter('isState', $IsStateFilter)
+  .filter('includedByState', $IncludedByStateFilter);
+})(window, window.angular);
+
+
+/**
  * @license MIT
  */
-function(e,t,n){"use strict";function r(t){if(this.support=!("undefined"==typeof File||"undefined"==typeof Blob||"undefined"==typeof FileList||!Blob.prototype.slice&&!Blob.prototype.webkitSlice&&!Blob.prototype.mozSlice),this.support){this.supportDirectory=/WebKit/.test(e.navigator.userAgent),this.files=[],this.defaults={chunkSize:1048576,forceChunkSize:!1,simultaneousUploads:3,singleFile:!1,fileParameterName:"file",progressCallbacksInterval:500,speedSmoothingFactor:.1,query:{},headers:{},withCredentials:!1,preprocess:null,method:"multipart",testMethod:"GET",uploadMethod:"POST",prioritizeFirstAndLastChunk:!1,target:"/",testChunks:!0,generateUniqueIdentifier:null,maxChunkRetries:0,chunkRetryInterval:null,permanentErrors:[404,415,500,501],successStatuses:[200,201,202],onDropStopPropagation:!1},this.opts={},this.events={};var $=this;this.onDrop=function(e){$.opts.onDropStopPropagation&&e.stopPropagation(),e.preventDefault();var t=e.dataTransfer;t.items&&t.items[0]&&t.items[0].webkitGetAsEntry?$.webkitReadDataTransfer(e):$.addFiles(t.files,e)},this.preventEvent=function(e){e.preventDefault()},this.opts=r.extend({},this.defaults,t||{})}}function i(e,t){this.flowObj=e,this.file=t,this.name=t.fileName||t.name,this.size=t.size,this.relativePath=t.relativePath||t.webkitRelativePath||this.name,this.uniqueIdentifier=e.generateUniqueIdentifier(t),this.chunks=[],this.paused=!1,this.error=!1,this.averageSpeed=0,this.currentSpeed=0,this._lastProgressCallback=Date.now(),this._prevUploadedSize=0,this._prevProgress=0,this.bootstrap()}function o(e,t,n){this.flowObj=e,this.fileObj=t,this.fileObjSize=t.size,this.offset=n,this.tested=!1,this.retries=0,this.pendingRetry=!1,this.preprocessState=0,this.loaded=0,this.total=0;var r=this.flowObj.opts.chunkSize;this.startByte=this.offset*r,this.endByte=Math.min(this.fileObjSize,(this.offset+1)*r),this.xhr=null,this.fileObjSize-this.endByte<r&&!this.flowObj.opts.forceChunkSize&&(this.endByte=this.fileObjSize);var $=this;this.event=function(e,t){t=Array.prototype.slice.call(arguments),t.unshift($),$.fileObj.chunkEvent.apply($.fileObj,t)},this.progressHandler=function(e){e.lengthComputable&&($.loaded=e.loaded,$.total=e.total),$.event("progress",e)},this.testHandler=function(e){var t=$.status(!0);"error"===t?($.event(t,$.message()),$.flowObj.uploadNextChunk()):"success"===t?($.tested=!0,$.event(t,$.message()),$.flowObj.uploadNextChunk()):$.fileObj.paused||($.tested=!0,$.send())},this.doneHandler=function(e){var t=$.status();if("success"===t||"error"===t)$.event(t,$.message()),$.flowObj.uploadNextChunk();else{$.event("retry",$.message()),$.pendingRetry=!0,$.abort(),$.retries++;var n=$.flowObj.opts.chunkRetryInterval;null!==n?setTimeout(function(){$.send()},n):$.send()}}}function a(e,t){var n=e.indexOf(t);n>-1&&e.splice(n,1)}function s(e,t){return"function"==typeof e&&(t=Array.prototype.slice.call(arguments),e=e.apply(null,t.slice(1))),e}function u(e,t){setTimeout(e.bind(t),0)}function l(e,t){return c(arguments,function(t){t!==e&&c(t,function(t,n){e[n]=t})}),e}function c(e,t,n){if(e){var r;if("undefined"!=typeof e.length){for(r=0;r<e.length;r++)if(t.call(n,e[r],r)===!1)return}else for(r in e)if(e.hasOwnProperty(r)&&t.call(n,e[r],r)===!1)return}}var f=e.navigator.msPointerEnabled;r.prototype={on:function(e,t){e=e.toLowerCase(),this.events.hasOwnProperty(e)||(this.events[e]=[]),this.events[e].push(t)},off:function(e,t){e!==n?(e=e.toLowerCase(),t!==n?this.events.hasOwnProperty(e)&&a(this.events[e],t):delete this.events[e]):this.events={}},fire:function(e,t){t=Array.prototype.slice.call(arguments),e=e.toLowerCase();var n=!1;return this.events.hasOwnProperty(e)&&c(this.events[e],function(e){n=e.apply(this,t.slice(1))===!1||n},this),"catchall"!=e&&(t.unshift("catchAll"),n=this.fire.apply(this,t)===!1||n),!n},webkitReadDataTransfer:function(e){function t(e){o+=e.length,c(e,function(e){if(e.isFile){var i=e.fullPath;e.file(function(e){n(e,i)},r)}else e.isDirectory&&e.createReader().readEntries(t,r)}),i()}function n(e,t){e.relativePath=t.substring(1),a.push(e),i()}function r(e){throw e}function i(){0==--o&&$.addFiles(a,e)}var $=this,o=e.dataTransfer.items.length,a=[];c(e.dataTransfer.items,function(e){var o=e.webkitGetAsEntry();return o?void(o.isFile?n(e.getAsFile(),o.fullPath):o.createReader().readEntries(t,r)):void i()})},generateUniqueIdentifier:function(e){var t=this.opts.generateUniqueIdentifier;if("function"==typeof t)return t(e);var n=e.relativePath||e.webkitRelativePath||e.fileName||e.name;return e.size+"-"+n.replace(/[^0-9a-zA-Z_-]/gim,"")},uploadNextChunk:function(e){var t=!1;if(this.opts.prioritizeFirstAndLastChunk&&(c(this.files,function(e){return!e.paused&&e.chunks.length&&"pending"===e.chunks[0].status()&&0===e.chunks[0].preprocessState?(e.chunks[0].send(),t=!0,!1):!e.paused&&e.chunks.length>1&&"pending"===e.chunks[e.chunks.length-1].status()&&0===e.chunks[0].preprocessState?(e.chunks[e.chunks.length-1].send(),t=!0,!1):void 0}),t))return t;if(c(this.files,function(e){return e.paused||c(e.chunks,function(e){return"pending"===e.status()&&0===e.preprocessState?(e.send(),t=!0,!1):void 0}),t?!1:void 0}),t)return!0;var n=!1;return c(this.files,function(e){return e.isComplete()?void 0:(n=!0,!1)}),n||e||u(function(){this.fire("complete")},this),!1},assignBrowse:function(e,n,r,i){"undefined"==typeof e.length&&(e=[e]),c(e,function(e){var o;"INPUT"===e.tagName&&"file"===e.type?o=e:(o=t.createElement("input"),o.setAttribute("type","file"),l(o.style,{visibility:"hidden",position:"absolute"}),e.appendChild(o),e.addEventListener("click",function(){o.click()},!1)),this.opts.singleFile||r||o.setAttribute("multiple","multiple"),n&&o.setAttribute("webkitdirectory","webkitdirectory"),c(i,function(e,t){o.setAttribute(t,e)});var $=this;o.addEventListener("change",function(e){$.addFiles(e.target.files,e),e.target.value=""},!1)},this)},assignDrop:function(e){"undefined"==typeof e.length&&(e=[e]),c(e,function(e){e.addEventListener("dragover",this.preventEvent,!1),e.addEventListener("dragenter",this.preventEvent,!1),e.addEventListener("drop",this.onDrop,!1)},this)},unAssignDrop:function(e){"undefined"==typeof e.length&&(e=[e]),c(e,function(e){e.removeEventListener("dragover",this.preventEvent),e.removeEventListener("dragenter",this.preventEvent),e.removeEventListener("drop",this.onDrop)},this)},isUploading:function(){var e=!1;return c(this.files,function(t){return t.isUploading()?(e=!0,!1):void 0}),e},_shouldUploadNext:function(){var e=0,t=!0,n=this.opts.simultaneousUploads;return c(this.files,function(r){c(r.chunks,function(r){return"uploading"===r.status()&&(e++,e>=n)?(t=!1,!1):void 0})}),t&&e},upload:function(){var e=this._shouldUploadNext();if(e!==!1){this.fire("uploadStart");for(var t=!1,n=1;n<=this.opts.simultaneousUploads-e;n++)t=this.uploadNextChunk(!0)||t;t||u(function(){this.fire("complete")},this)}},resume:function(){c(this.files,function(e){e.resume()})},pause:function(){c(this.files,function(e){e.pause()})},cancel:function(){for(var e=this.files.length-1;e>=0;e--)this.files[e].cancel()},progress:function(){var e=0,t=0;return c(this.files,function(n){e+=n.progress()*n.size,t+=n.size}),t>0?e/t:0},addFile:function(e,t){this.addFiles([e],t)},addFiles:function(e,t){var n=[];c(e,function(e){if((!f||f&&e.size>0)&&(e.size%4096!==0||"."!==e.name&&"."!==e.fileName)&&!this.getFromUniqueIdentifier(this.generateUniqueIdentifier(e))){var r=new i(this,e);this.fire("fileAdded",r,t)&&n.push(r)}},this),this.fire("filesAdded",n,t)&&c(n,function(e){this.opts.singleFile&&this.files.length>0&&this.removeFile(this.files[0]),this.files.push(e)},this),this.fire("filesSubmitted",n,t)},removeFile:function(e){for(var t=this.files.length-1;t>=0;t--)this.files[t]===e&&(this.files.splice(t,1),e.abort())},getFromUniqueIdentifier:function(e){var t=!1;return c(this.files,function(n){n.uniqueIdentifier===e&&(t=n)}),t},getSize:function(){var e=0;return c(this.files,function(t){e+=t.size}),e},sizeUploaded:function(){var e=0;return c(this.files,function(t){e+=t.sizeUploaded()}),e},timeRemaining:function(){var e=0,t=0;return c(this.files,function(n){n.paused||n.error||(e+=n.size-n.sizeUploaded(),t+=n.averageSpeed)}),e&&!t?Number.POSITIVE_INFINITY:e||t?Math.floor(e/t):0}},i.prototype={measureSpeed:function(){var e=Date.now()-this._lastProgressCallback;if(e){var t=this.flowObj.opts.speedSmoothingFactor,n=this.sizeUploaded();this.currentSpeed=Math.max((n-this._prevUploadedSize)/e*1e3,0),this.averageSpeed=t*this.currentSpeed+(1-t)*this.averageSpeed,this._prevUploadedSize=n}},chunkEvent:function(e,t,n){switch(t){case"progress":if(Date.now()-this._lastProgressCallback<this.flowObj.opts.progressCallbacksInterval)break;this.measureSpeed(),this.flowObj.fire("fileProgress",this,e),this.flowObj.fire("progress"),this._lastProgressCallback=Date.now();break;case"error":this.error=!0,this.abort(!0),this.flowObj.fire("fileError",this,n,e),this.flowObj.fire("error",n,this,e);break;case"success":if(this.error)return;this.measureSpeed(),this.flowObj.fire("fileProgress",this,e),this.flowObj.fire("progress"),this._lastProgressCallback=Date.now(),this.isComplete()&&(this.currentSpeed=0,this.averageSpeed=0,this.flowObj.fire("fileSuccess",this,n,e));break;case"retry":this.flowObj.fire("fileRetry",this,e)}},pause:function(){this.paused=!0,this.abort()},resume:function(){this.paused=!1,this.flowObj.upload()},abort:function(e){this.currentSpeed=0,this.averageSpeed=0;var t=this.chunks;e&&(this.chunks=[]),c(t,function(e){"uploading"===e.status()&&(e.abort(),this.flowObj.uploadNextChunk())},this)},cancel:function(){this.flowObj.removeFile(this)},retry:function(){this.bootstrap(),this.flowObj.upload()},bootstrap:function(){this.abort(!0),this.error=!1,this._prevProgress=0;for(var e=this.flowObj.opts.forceChunkSize?Math.ceil:Math.floor,t=Math.max(e(this.file.size/this.flowObj.opts.chunkSize),1),n=0;t>n;n++)this.chunks.push(new o(this.flowObj,this,n))},progress:function(){if(this.error)return 1;if(1===this.chunks.length)return this._prevProgress=Math.max(this._prevProgress,this.chunks[0].progress()),this._prevProgress;var e=0;c(this.chunks,function(t){e+=t.progress()*(t.endByte-t.startByte)});var t=e/this.size;return this._prevProgress=Math.max(this._prevProgress,t>.9999?1:t),this._prevProgress},isUploading:function(){var e=!1;return c(this.chunks,function(t){return"uploading"===t.status()?(e=!0,!1):void 0}),e},isComplete:function(){var e=!1;return c(this.chunks,function(t){var n=t.status();return"pending"===n||"uploading"===n||1===t.preprocessState?(e=!0,!1):void 0}),!e},sizeUploaded:function(){var e=0;return c(this.chunks,function(t){e+=t.sizeUploaded()}),e},timeRemaining:function(){if(this.paused||this.error)return 0;var e=this.size-this.sizeUploaded();return e&&!this.averageSpeed?Number.POSITIVE_INFINITY:e||this.averageSpeed?Math.floor(e/this.averageSpeed):0},getType:function(){return this.file.type&&this.file.type.split("/")[1]},getExtension:function(){return this.name.substr((~-this.name.lastIndexOf(".")>>>0)+2).toLowerCase()}},o.prototype={getParams:function(){return{flowChunkNumber:this.offset+1,flowChunkSize:this.flowObj.opts.chunkSize,flowCurrentChunkSize:this.endByte-this.startByte,flowTotalSize:this.fileObjSize,flowIdentifier:this.fileObj.uniqueIdentifier,flowFilename:this.fileObj.name,flowRelativePath:this.fileObj.relativePath,flowTotalChunks:this.fileObj.chunks.length}},getTarget:function(e,t){return e+=e.indexOf("?")<0?"?":"&",e+t.join("&")},test:function(){this.xhr=new XMLHttpRequest,this.xhr.addEventListener("load",this.testHandler,!1),this.xhr.addEventListener("error",this.testHandler,!1);var e=s(this.flowObj.opts.testMethod,this.fileObj,this),t=this.prepareXhrRequest(e,!0);this.xhr.send(t)},preprocessFinished:function(){this.preprocessState=2,this.send()},send:function(){var e=this.flowObj.opts.preprocess;if("function"==typeof e)switch(this.preprocessState){case 0:return this.preprocessState=1,void e(this);case 1:return}if(this.flowObj.opts.testChunks&&!this.tested)return void this.test();this.loaded=0,this.total=0,this.pendingRetry=!1;var t=this.fileObj.file.slice?"slice":this.fileObj.file.mozSlice?"mozSlice":this.fileObj.file.webkitSlice?"webkitSlice":"slice",n=this.fileObj.file[t](this.startByte,this.endByte,this.fileObj.file.type);this.xhr=new XMLHttpRequest,this.xhr.upload.addEventListener("progress",this.progressHandler,!1),this.xhr.addEventListener("load",this.doneHandler,!1),this.xhr.addEventListener("error",this.doneHandler,!1);var r=s(this.flowObj.opts.uploadMethod,this.fileObj,this),i=this.prepareXhrRequest(r,!1,this.flowObj.opts.method,n);this.xhr.send(i)},abort:function(){var e=this.xhr;this.xhr=null,e&&e.abort()},status:function(e){return this.pendingRetry||1===this.preprocessState?"uploading":this.xhr?this.xhr.readyState<4?"uploading":this.flowObj.opts.successStatuses.indexOf(this.xhr.status)>-1?"success":this.flowObj.opts.permanentErrors.indexOf(this.xhr.status)>-1||!e&&this.retries>=this.flowObj.opts.maxChunkRetries?"error":(this.abort(),"pending"):"pending"},message:function(){return this.xhr?this.xhr.responseText:""},progress:function(){if(this.pendingRetry)return 0;var e=this.status();return"success"===e||"error"===e?1:"pending"===e?0:this.total>0?this.loaded/this.total:0},sizeUploaded:function(){var e=this.endByte-this.startByte;return"success"!==this.status()&&(e=this.progress()*e),e},prepareXhrRequest:function(e,t,n,r){var i=s(this.flowObj.opts.query,this.fileObj,this,t);i=l(this.getParams(),i);var o=s(this.flowObj.opts.target,this.fileObj,this,t),a=null;if("GET"===e||"octet"===n){var u=[];c(i,function(e,t){u.push([encodeURIComponent(t),encodeURIComponent(e)].join("="))}),o=this.getTarget(o,u),a=r||null}else a=new FormData,c(i,function(e,t){a.append(t,e)}),a.append(this.flowObj.opts.fileParameterName,r,this.fileObj.file.name);return this.xhr.open(e,o,!0),this.xhr.withCredentials=this.flowObj.opts.withCredentials,c(s(this.flowObj.opts.headers,this.fileObj,this,t),function(e,t){this.xhr.setRequestHeader(t,e)},this),a}},r.evalOpts=s,r.extend=l,r.each=c,r.FlowFile=i,r.FlowChunk=o,r.version="2.9.0","object"==typeof module&&module&&"object"==typeof module.exports?module.exports=r:(e.Flow=r,"function"==typeof define&&define.amd&&define("flow",[],function(){return r}))}(window,document),angular.module("flow.provider",[]).provider("flowFactory",function(){"use strict";this.defaults={},this.factory=function(e){return new Flow(e)},this.events=[],this.on=function(e,t){this.events.push([e,t])},this.$get=function(){var e=this.factory,t=this.defaults,n=this.events;return{create:function(r){var i=e(angular.extend({},t,r));return angular.forEach(n,function(e){i.on(e[0],e[1])}),i}}}}),angular.module("flow.init",["flow.provider"]).controller("flowCtrl",["$scope","$attrs","$parse","flowFactory",function(e,t,n,r){var i=angular.extend({},e.$eval(t.flowInit)),o=e.$eval(t.flowObject)||r.create(i);o.on("catchAll",function(t){var n=Array.prototype.slice.call(arguments);n.shift();var r=e.$broadcast.apply(e,["flow::"+t,o].concat(n));return{progress:1,filesSubmitted:1,fileSuccess:1,fileError:1,complete:1}[t]&&e.$apply(),r.defaultPrevented?!1:void 0}),e.$flow=o,t.hasOwnProperty("flowName")&&(n(t.flowName).assign(e,o),e.$on("$destroy",function(){n(t.flowName).assign(e)}))}]).directive("flowInit",[function(){return{scope:!0,controller:"flowCtrl"}}]),angular.module("flow.btn",["flow.init"]).directive("flowBtn",[function(){return{restrict:"EA",scope:!1,require:"^flowInit",link:function(e,t,n){var r=n.hasOwnProperty("flowDirectory"),i=n.hasOwnProperty("flowSingleFile"),o=n.hasOwnProperty("flowAttrs")&&e.$eval(n.flowAttrs);e.$flow.assignBrowse(t,r,i,o)}}}]),angular.module("flow.dragEvents",["flow.init"]).directive("flowPreventDrop",function(){return{scope:!1,link:function(e,t,n){t.bind("drop dragover",function(e){e.preventDefault()})}}}).directive("flowDragEnter",["$timeout",function(e){return{scope:!1,link:function(t,n,r){function i(e){var t=!1,n=e.dataTransfer||e.originalEvent.dataTransfer;return angular.forEach(n&&n.types,function(e){"Files"===e&&(t=!0)}),t}var o,a=!1;n.bind("dragover",function(n){i(n)&&(a||(t.$apply(r.flowDragEnter),a=!0),e.cancel(o),n.preventDefault())}),n.bind("dragleave drop",function(n){e.cancel(o),o=e(function(){t.$eval(r.flowDragLeave),o=null,a=!1},100)})}}}]),angular.module("flow.drop",["flow.init"]).directive("flowDrop",function(){return{scope:!1,require:"^flowInit",link:function(e,t,n){function r(){e.$flow.assignDrop(t)}function i(){e.$flow.unAssignDrop(t)}n.flowDropEnabled?e.$watch(n.flowDropEnabled,function(e){e?r():i()}):r()}}}),!function(e){"use strict";function t(e){return e.charAt(0).toUpperCase()+e.slice(1)}var n=e.module("flow.events",["flow.init"]),r={fileSuccess:["$file","$message"],fileProgress:["$file"],fileAdded:["$file","$event"],filesAdded:["$files","$event"],filesSubmitted:["$files","$event"],fileRetry:["$file"],fileError:["$file","$message"],uploadStart:[],complete:[],progress:[],error:["$message","$file"]};e.forEach(r,function(r,i){var o="flow"+t(i);"flowUploadStart"==o&&(o="flowUploadStarted"),n.directive(o,[function(){return{require:"^flowInit",controller:["$scope","$attrs",function(t,n){t.$on("flow::"+i,function(){var i=Array.prototype.slice.call(arguments),a=i.shift();if(t.$flow===i.shift()){var s={};e.forEach(r,function(e,t){s[e]=i[t]}),t.$eval(n[o],s)===!1&&a.preventDefault()}})}]}}])})}(angular),angular.module("flow.img",["flow.init"]).directive("flowImg",[function(){return{scope:!1,require:"^flowInit",link:function(e,t,n){var r=n.flowImg;e.$watch(r,function(t){if(t){var r=new FileReader;r.readAsDataURL(t.file),r.onload=function(t){e.$apply(function(){n.$set("src",t.target.result)})}}})}}}]),angular.module("flow.transfers",["flow.init"]).directive("flowTransfers",[function(){return{scope:!0,require:"^flowInit",link:function(e){e.transfers=e.$flow.files}}}]),angular.module("flow",["flow.provider","flow.init","flow.events","flow.btn","flow.drop","flow.transfers","flow.img","flow.dragEvents"]),function(){"use strict";var e=angular.module("bitAge",["ui.router","app-wallet","wallet-directives","notification-directives","app-accounts","app-settings","app-help"]).config(["$stateProvider","$urlRouterProvider",function(e,t){e.state("wallet",{url:"/wallet",templateUrl:"_views/wallet.html"}).state("accounts",{url:"/accounts",templateUrl:"_views/accounts.html"}).state("settings",{url:"/settings",templateUrl:"_views/settings.html"}).state("help",{url:"/help",templateUrl:"_views/help.html",controller:"HelpCtrl"}),t.otherwise("wallet")}]).controller("DashCtrl",["$scope","$state",function(e,t){var n=this;n.qr_code="http://placehold.it/200&text=Loading+QR+Code",n.$state=t,n.sidebarClick=function(){return t.includes(t.current.name)},n.avatarMenuBool=!1,n.clickAvatar=function(e,t){t.stopPropagation(),n.avatarMenuBool=!n.avatarMenuBool},n.closeMenu=function(){n.avatarMenuBool=!1},n.menuClick=function(e){e.stopPropagation()},n.closeModal=function(){n.modal_edit_account=!1,n.modal_receive=!1,n.modal_send=!1,n.modal=!1}}])}(),function(){var e=angular.module("notification-directives",[]).directive("notificationMsg",function(){return{restrict:"E",template:'<section ng-show="dash.notification" ng-click="dash.closeMsg()" class="ng-notification"> <p class="notify-msg">{{dash.message}}</p> <div class="notify-bg {{dash.notification_type}}"></div> </section>'}})}(),function(){var e=angular.module("app-wallet",["wallet-directives","notification-directives"]).controller("WalletCtrl",["$scope","$sce","$timeout","walletModalService",function(e,t,n,r){var i=e,o="";i.dash.currency="USD",i.dash.modal=!1;var a=function(){i.dash.notification=!1};i.dash.closeMsg=function(){i.dash.notification=!1},this.openModal=function(e){switch(i.dash.modal=e,e){case"receive":r.modalRecieve(i.dash);break;case"send":r.modalSend(i.dash,n,a)}},this.transactions=[{type:"incoming",status:"Pending",comment:"Recieved from multiple addresses",time:"10 minutes ago",amount:.00498623},{type:"incoming",status:"Confirmed",comment:"Recieve from 1MgZLyz6d8djEqe68XoPpsjx9BFQyVAtXN",time:"12 hours ago",amount:.003},{type:"outgoing",status:"Confirmed",comment:"Sent to 17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH",time:"Jan 15th 2015",amount:.01},{type:"incoming",status:"Confirmed",comment:"Recieved from multiple addresses",time:"Jan 14th 2015",amount:.02874},{type:"outgoing",status:"Confirmed",comment:"Sent to 1GS9E86Y3mhK7Qwm1vqvgCmpE5u6MMxPML",time:"Jan 12th 2015",amount:.064904}]}]).service("walletModalService",[function(){this.modalRecieve=function(e){e.modal_receive=!0,e.public_address="17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH",e.qr_code="_assets/img/qrcode.png"},this.modalSend=function(e,t,n){e.modal_send=!0,e.send_btn_text="Send",e.switchCurrency=function(){"USD"===e.currency?e.currency="BTC":(e.currency="BTC")&&(e.currency="USD")},e.sendTransaction=function(){e.send_btn_text="Sending...",e.modal_send=!1,e.modal=!1,e.message="Transaction sent!",e.notification_type="success",e.notification=!0,t(n,4e3)}}}])}(),function(){var e=angular.module("wallet-directives",[]).directive("receiveModal",function(){return{restrict:"E",template:'<section ng-show="dash.modal_receive" class="modal ng-modal-dialog"> <div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> <h1>Your Public Address</h1> <div class="modal_qr"> <img src="{{dash.qr_code}}"/> </div> <p class="public_address">{{dash.public_address}}</p> </section>'}}).directive("sendModal",function(){return{scope:!0,restrict:"E",template:'<section ng-show="dash.modal_send" class="modal ng-modal-dialog"> <div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> <h1>Send Bitcoin</h1> <div class="modal_form"> <div class="label_input_combo"> <label for="to_input">Send to address</label> <input id="to_input" class="form-input" type="text" placeholder=""> </div> <div class="label_input_combo"> <div ng-click="dash.switchCurrency()" class="btn_usd noselect">{{dash.currency}}</div> <label for="amount_input" class="label_amount">Amount</label> <input id="amount_input" class="form-input" type="text" placeholder=""> </div> <button ng-click="dash.sendTransaction()" class="btn btn_med btn_send_now">{{dash.send_btn_text}}</button> </div> </section>'}})}(),function(){var e=angular.module("app-accounts",["ngAnimate","account-directives"]).controller("AcctCtrl",["$scope","accountsService",function(e,t){function n(e){var t=document.getElementById(e),n=document.createRange(),r=window.getSelection();n.selectNodeContents(t),r.removeAllRanges(),r.addRange(n)}var r=e;r.$parent.modal=!1,this.accounts=[],this.accounts=[{id:"acct-1",type:"Savings",label:"Bitage",balance:"1.001",address:"16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq"},{id:"acct-2",type:"Savings",label:"Blockchain.info",balance:"3.001",address:"17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH"},{id:"acct-3",type:"Savings",label:"Coinbase wallet",balance:"0.562",address:"14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W"},{id:"acct-4",type:"Savings",label:"Xapo wallet",balance:"0.003",address:"13sizB7zFU9wrxotFAVniG6cJBA9fXzhea"}],this.addAccount=function(){var e="acct-"+(r.acct.accounts.length+1);""!==this.label&&void 0!==this.label&&void 0!==this.address&&(this.accounts.push({id:e,label:this.label,balance:0,address:this.address}),this.label="",this.address="")},this.editAccount=function(e,n,i){r.dash.modal=!0,t.modalEditAccount(r.dash,e,n,i)},r.dash.updateAccount=function(e){function t(e,t,n){for(var i in r.acct.accounts)if(r.acct.accounts[i].id==e){r.acct.accounts[i].label=t,r.acct.accounts[i].address=n;break}}if(""!==this.new_label&&void 0!==this.new_label&&void 0!==this.new_address){t(e,this.new_label,this.new_address),r.dash.modal_edit_account=!1,r.dash.modal=!1,this.new_label="",this.new_address="";var n=angular.element(document.querySelector("#acct-"+e));n.addClass("ping-row")}},r.dash.removeAccount=function(e){for(var t=0;t<r.acct.accounts.length;t++){var n=r.acct.accounts[t];-1!==e.indexOf(n.id)&&r.acct.accounts.splice(t,1)}r.dash.modal_edit_account=!1,r.dash.modal=!1,this.new_label="",this.new_address=""},r.pubAddress={},r.pubAddress.getClick=function(e){n(e)}}]).service("accountsService",[function(){this.modalEditAccount=function(e,t,n,r){e.modal_edit_account=!0,e.acct_id=t,e.acct_label=n,e.acct_address=r,e.save_btn_text="save"}}])}(),function(){var e=angular.module("account-directives",[]).directive("editAccountModal",function(){return{scope:!0,restrict:"E",template:'<section ng-show="dash.modal_edit_account" class="modal ng-modal-dialog"> <div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> <h1>Edit Watch Account</h1> <form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" <div class="modal_form" data-id="{{dash.acct_id}}"> <div class="label_input_combo"> <label for="to_input">Account Name</label> <input id="to_input" ng-model="dash.new_label" class="form-input" type="text" placeholder="{{dash.acct_label}}"> </div> <div class="label_input_combo"> <label for="amount_input" class="label_amount">Public Address</label> <input id="amount_input" ng-model="dash.new_address" class="public_addy_input form-input" type="text" placeholder="{{dash.acct_address}}"> </div> <button type="submit" class="btn btn_med btn_send_now"> {{dash.save_btn_text}} </button> <button ng-click="dash.removeAccount(dash.acct_id)" class="btn btn_med btn_remove"> Remove</button> </div> </form></section>'}})}(),function(){var e=angular.module("app-settings",["ngAnimate","flow"]).controller("SettingsCtrl",["$scope","$timeout","settingsService",function(e,t,n){var r=e,i=function(){r.dash.notification=!1};r.dash.closeMsg=function(){r.dash.notification=!1},this.saveProfile=function(e){e?n.postProfile(this.formData,r.dash,t,i):alert("Please check the form!")}}]).service("settingsService",[function(){this.postProfile=function(e,t,n,r){console.log(e),t.message="Profile updated!",t.notification=!0,n(r,4e3)}}])}(),function(){var e=angular.module("app-help",["notification-directives"]).controller("HelpCtrl",["$scope","$http","$timeout","helpService",function(e,t,n,r){var i=this,o=e,a=function(){o.$parent.notification=!1};o.$parent.closeMsg=function(){o.$parent.notification=!1};var s={from:"Fred Foo ✔ <foo@blurdybloop.com>",to:"leon@bitage.io",subject:"Bitage Help Request! ✔",text:"Hello world ✔",html:"<b>Hello world ✔</b>"};this.submitHelpForm=function(e){if(e){alert("our form is amazing");var i=this.formData;r.postHelpForm(t,i),o.$parent.message="Thanks! We will get back to you soon.",o.$parent.notification=!0,n(a,4e3)}else alert("Please correct the form")}}]).service("helpService",[function(){this.postHelpForm=function(e,t){console.log(t.message);var n=e({method:"POST",url:"/help",data:t.message,headers:{"Content-Type":"application/x-www-form-urlencoded"}}).success(function(){})}}])}();
+(function(window, document, undefined) {'use strict';
+  // ie10+
+  var ie10plus = window.navigator.msPointerEnabled;
+  /**
+   * Flow.js is a library providing multiple simultaneous, stable and
+   * resumable uploads via the HTML5 File API.
+   * @param [opts]
+   * @param {number} [opts.chunkSize]
+   * @param {bool} [opts.forceChunkSize]
+   * @param {number} [opts.simultaneousUploads]
+   * @param {bool} [opts.singleFile]
+   * @param {string} [opts.fileParameterName]
+   * @param {number} [opts.progressCallbacksInterval]
+   * @param {number} [opts.speedSmoothingFactor]
+   * @param {Object|Function} [opts.query]
+   * @param {Object|Function} [opts.headers]
+   * @param {bool} [opts.withCredentials]
+   * @param {Function} [opts.preprocess]
+   * @param {string} [opts.method]
+   * @param {string|Function} [opts.testMethod]
+   * @param {string|Function} [opts.uploadMethod]
+   * @param {bool} [opts.prioritizeFirstAndLastChunk]
+   * @param {string|Function} [opts.target]
+   * @param {number} [opts.maxChunkRetries]
+   * @param {number} [opts.chunkRetryInterval]
+   * @param {Array.<number>} [opts.permanentErrors]
+   * @param {Array.<number>} [opts.successStatuses]
+   * @param {Function} [opts.generateUniqueIdentifier]
+   * @constructor
+   */
+  function Flow(opts) {
+    /**
+     * Supported by browser?
+     * @type {boolean}
+     */
+    this.support = (
+        typeof File !== 'undefined' &&
+        typeof Blob !== 'undefined' &&
+        typeof FileList !== 'undefined' &&
+        (
+          !!Blob.prototype.slice || !!Blob.prototype.webkitSlice || !!Blob.prototype.mozSlice ||
+          false
+        ) // slicing files support
+    );
+
+    if (!this.support) {
+      return ;
+    }
+
+    /**
+     * Check if directory upload is supported
+     * @type {boolean}
+     */
+    this.supportDirectory = /WebKit/.test(window.navigator.userAgent);
+
+    /**
+     * List of FlowFile objects
+     * @type {Array.<FlowFile>}
+     */
+    this.files = [];
+
+    /**
+     * Default options for flow.js
+     * @type {Object}
+     */
+    this.defaults = {
+      chunkSize: 1024 * 1024,
+      forceChunkSize: false,
+      simultaneousUploads: 3,
+      singleFile: false,
+      fileParameterName: 'file',
+      progressCallbacksInterval: 500,
+      speedSmoothingFactor: 0.1,
+      query: {},
+      headers: {},
+      withCredentials: false,
+      preprocess: null,
+      method: 'multipart',
+      testMethod: 'GET',
+      uploadMethod: 'POST',
+      prioritizeFirstAndLastChunk: false,
+      target: '/',
+      testChunks: true,
+      generateUniqueIdentifier: null,
+      maxChunkRetries: 0,
+      chunkRetryInterval: null,
+      permanentErrors: [404, 415, 500, 501],
+      successStatuses: [200, 201, 202],
+      onDropStopPropagation: false
+    };
+
+    /**
+     * Current options
+     * @type {Object}
+     */
+    this.opts = {};
+
+    /**
+     * List of events:
+     *  key stands for event name
+     *  value array list of callbacks
+     * @type {}
+     */
+    this.events = {};
+
+    var $ = this;
+
+    /**
+     * On drop event
+     * @function
+     * @param {MouseEvent} event
+     */
+    this.onDrop = function (event) {
+      if ($.opts.onDropStopPropagation) {
+        event.stopPropagation();
+      }
+      event.preventDefault();
+      var dataTransfer = event.dataTransfer;
+      if (dataTransfer.items && dataTransfer.items[0] &&
+        dataTransfer.items[0].webkitGetAsEntry) {
+        $.webkitReadDataTransfer(event);
+      } else {
+        $.addFiles(dataTransfer.files, event);
+      }
+    };
+
+    /**
+     * Prevent default
+     * @function
+     * @param {MouseEvent} event
+     */
+    this.preventEvent = function (event) {
+      event.preventDefault();
+    };
+
+
+    /**
+     * Current options
+     * @type {Object}
+     */
+    this.opts = Flow.extend({}, this.defaults, opts || {});
+  }
+
+  Flow.prototype = {
+    /**
+     * Set a callback for an event, possible events:
+     * fileSuccess(file), fileProgress(file), fileAdded(file, event),
+     * fileRetry(file), fileError(file, message), complete(),
+     * progress(), error(message, file), pause()
+     * @function
+     * @param {string} event
+     * @param {Function} callback
+     */
+    on: function (event, callback) {
+      event = event.toLowerCase();
+      if (!this.events.hasOwnProperty(event)) {
+        this.events[event] = [];
+      }
+      this.events[event].push(callback);
+    },
+
+    /**
+     * Remove event callback
+     * @function
+     * @param {string} [event] removes all events if not specified
+     * @param {Function} [fn] removes all callbacks of event if not specified
+     */
+    off: function (event, fn) {
+      if (event !== undefined) {
+        event = event.toLowerCase();
+        if (fn !== undefined) {
+          if (this.events.hasOwnProperty(event)) {
+            arrayRemove(this.events[event], fn);
+          }
+        } else {
+          delete this.events[event];
+        }
+      } else {
+        this.events = {};
+      }
+    },
+
+    /**
+     * Fire an event
+     * @function
+     * @param {string} event event name
+     * @param {...} args arguments of a callback
+     * @return {bool} value is false if at least one of the event handlers which handled this event
+     * returned false. Otherwise it returns true.
+     */
+    fire: function (event, args) {
+      // `arguments` is an object, not array, in FF, so:
+      args = Array.prototype.slice.call(arguments);
+      event = event.toLowerCase();
+      var preventDefault = false;
+      if (this.events.hasOwnProperty(event)) {
+        each(this.events[event], function (callback) {
+          preventDefault = callback.apply(this, args.slice(1)) === false || preventDefault;
+        }, this);
+      }
+      if (event != 'catchall') {
+        args.unshift('catchAll');
+        preventDefault = this.fire.apply(this, args) === false || preventDefault;
+      }
+      return !preventDefault;
+    },
+
+    /**
+     * Read webkit dataTransfer object
+     * @param event
+     */
+    webkitReadDataTransfer: function (event) {
+      var $ = this;
+      var queue = event.dataTransfer.items.length;
+      var files = [];
+      each(event.dataTransfer.items, function (item) {
+        var entry = item.webkitGetAsEntry();
+        if (!entry) {
+          decrement();
+          return ;
+        }
+        if (entry.isFile) {
+          // due to a bug in Chrome's File System API impl - #149735
+          fileReadSuccess(item.getAsFile(), entry.fullPath);
+        } else {
+          entry.createReader().readEntries(readSuccess, readError);
+        }
+      });
+      function readSuccess(entries) {
+        queue += entries.length;
+        each(entries, function(entry) {
+          if (entry.isFile) {
+            var fullPath = entry.fullPath;
+            entry.file(function (file) {
+              fileReadSuccess(file, fullPath);
+            }, readError);
+          } else if (entry.isDirectory) {
+            entry.createReader().readEntries(readSuccess, readError);
+          }
+        });
+        decrement();
+      }
+      function fileReadSuccess(file, fullPath) {
+        // relative path should not start with "/"
+        file.relativePath = fullPath.substring(1);
+        files.push(file);
+        decrement();
+      }
+      function readError(fileError) {
+        throw fileError;
+      }
+      function decrement() {
+        if (--queue == 0) {
+          $.addFiles(files, event);
+        }
+      }
+    },
+
+    /**
+     * Generate unique identifier for a file
+     * @function
+     * @param {FlowFile} file
+     * @returns {string}
+     */
+    generateUniqueIdentifier: function (file) {
+      var custom = this.opts.generateUniqueIdentifier;
+      if (typeof custom === 'function') {
+        return custom(file);
+      }
+      // Some confusion in different versions of Firefox
+      var relativePath = file.relativePath || file.webkitRelativePath || file.fileName || file.name;
+      return file.size + '-' + relativePath.replace(/[^0-9a-zA-Z_-]/img, '');
+    },
+
+    /**
+     * Upload next chunk from the queue
+     * @function
+     * @returns {boolean}
+     * @private
+     */
+    uploadNextChunk: function (preventEvents) {
+      // In some cases (such as videos) it's really handy to upload the first
+      // and last chunk of a file quickly; this let's the server check the file's
+      // metadata and determine if there's even a point in continuing.
+      var found = false;
+      if (this.opts.prioritizeFirstAndLastChunk) {
+        each(this.files, function (file) {
+          if (!file.paused && file.chunks.length &&
+            file.chunks[0].status() === 'pending' &&
+            file.chunks[0].preprocessState === 0) {
+            file.chunks[0].send();
+            found = true;
+            return false;
+          }
+          if (!file.paused && file.chunks.length > 1 &&
+            file.chunks[file.chunks.length - 1].status() === 'pending' &&
+            file.chunks[0].preprocessState === 0) {
+            file.chunks[file.chunks.length - 1].send();
+            found = true;
+            return false;
+          }
+        });
+        if (found) {
+          return found;
+        }
+      }
+
+      // Now, simply look for the next, best thing to upload
+      each(this.files, function (file) {
+        if (!file.paused) {
+          each(file.chunks, function (chunk) {
+            if (chunk.status() === 'pending' && chunk.preprocessState === 0) {
+              chunk.send();
+              found = true;
+              return false;
+            }
+          });
+        }
+        if (found) {
+          return false;
+        }
+      });
+      if (found) {
+        return true;
+      }
+
+      // The are no more outstanding chunks to upload, check is everything is done
+      var outstanding = false;
+      each(this.files, function (file) {
+        if (!file.isComplete()) {
+          outstanding = true;
+          return false;
+        }
+      });
+      if (!outstanding && !preventEvents) {
+        // All chunks have been uploaded, complete
+        async(function () {
+          this.fire('complete');
+        }, this);
+      }
+      return false;
+    },
+
+
+    /**
+     * Assign a browse action to one or more DOM nodes.
+     * @function
+     * @param {Element|Array.<Element>} domNodes
+     * @param {boolean} isDirectory Pass in true to allow directories to
+     * @param {boolean} singleFile prevent multi file upload
+     * @param {Object} attributes set custom attributes:
+     *  http://www.w3.org/TR/html-markup/input.file.html#input.file-attributes
+     *  eg: accept: 'image/*'
+     * be selected (Chrome only).
+     */
+    assignBrowse: function (domNodes, isDirectory, singleFile, attributes) {
+      if (typeof domNodes.length === 'undefined') {
+        domNodes = [domNodes];
+      }
+
+      each(domNodes, function (domNode) {
+        var input;
+        if (domNode.tagName === 'INPUT' && domNode.type === 'file') {
+          input = domNode;
+        } else {
+          input = document.createElement('input');
+          input.setAttribute('type', 'file');
+          // display:none - not working in opera 12
+          extend(input.style, {
+            visibility: 'hidden',
+            position: 'absolute'
+          });
+          // for opera 12 browser, input must be assigned to a document
+          domNode.appendChild(input);
+          // https://developer.mozilla.org/en/using_files_from_web_applications)
+          // event listener is executed two times
+          // first one - original mouse click event
+          // second - input.click(), input is inside domNode
+          domNode.addEventListener('click', function() {
+            input.click();
+          }, false);
+        }
+        if (!this.opts.singleFile && !singleFile) {
+          input.setAttribute('multiple', 'multiple');
+        }
+        if (isDirectory) {
+          input.setAttribute('webkitdirectory', 'webkitdirectory');
+        }
+        each(attributes, function (value, key) {
+          input.setAttribute(key, value);
+        });
+        // When new files are added, simply append them to the overall list
+        var $ = this;
+        input.addEventListener('change', function (e) {
+          $.addFiles(e.target.files, e);
+          e.target.value = '';
+        }, false);
+      }, this);
+    },
+
+    /**
+     * Assign one or more DOM nodes as a drop target.
+     * @function
+     * @param {Element|Array.<Element>} domNodes
+     */
+    assignDrop: function (domNodes) {
+      if (typeof domNodes.length === 'undefined') {
+        domNodes = [domNodes];
+      }
+      each(domNodes, function (domNode) {
+        domNode.addEventListener('dragover', this.preventEvent, false);
+        domNode.addEventListener('dragenter', this.preventEvent, false);
+        domNode.addEventListener('drop', this.onDrop, false);
+      }, this);
+    },
+
+    /**
+     * Un-assign drop event from DOM nodes
+     * @function
+     * @param domNodes
+     */
+    unAssignDrop: function (domNodes) {
+      if (typeof domNodes.length === 'undefined') {
+        domNodes = [domNodes];
+      }
+      each(domNodes, function (domNode) {
+        domNode.removeEventListener('dragover', this.preventEvent);
+        domNode.removeEventListener('dragenter', this.preventEvent);
+        domNode.removeEventListener('drop', this.onDrop);
+      }, this);
+    },
+
+    /**
+     * Returns a boolean indicating whether or not the instance is currently
+     * uploading anything.
+     * @function
+     * @returns {boolean}
+     */
+    isUploading: function () {
+      var uploading = false;
+      each(this.files, function (file) {
+        if (file.isUploading()) {
+          uploading = true;
+          return false;
+        }
+      });
+      return uploading;
+    },
+
+    /**
+     * should upload next chunk
+     * @function
+     * @returns {boolean|number}
+     */
+    _shouldUploadNext: function () {
+      var num = 0;
+      var should = true;
+      var simultaneousUploads = this.opts.simultaneousUploads;
+      each(this.files, function (file) {
+        each(file.chunks, function(chunk) {
+          if (chunk.status() === 'uploading') {
+            num++;
+            if (num >= simultaneousUploads) {
+              should = false;
+              return false;
+            }
+          }
+        });
+      });
+      // if should is true then return uploading chunks's length
+      return should && num;
+    },
+
+    /**
+     * Start or resume uploading.
+     * @function
+     */
+    upload: function () {
+      // Make sure we don't start too many uploads at once
+      var ret = this._shouldUploadNext();
+      if (ret === false) {
+        return;
+      }
+      // Kick off the queue
+      this.fire('uploadStart');
+      var started = false;
+      for (var num = 1; num <= this.opts.simultaneousUploads - ret; num++) {
+        started = this.uploadNextChunk(true) || started;
+      }
+      if (!started) {
+        async(function () {
+          this.fire('complete');
+        }, this);
+      }
+    },
+
+    /**
+     * Resume uploading.
+     * @function
+     */
+    resume: function () {
+      each(this.files, function (file) {
+        file.resume();
+      });
+    },
+
+    /**
+     * Pause uploading.
+     * @function
+     */
+    pause: function () {
+      each(this.files, function (file) {
+        file.pause();
+      });
+    },
+
+    /**
+     * Cancel upload of all FlowFile objects and remove them from the list.
+     * @function
+     */
+    cancel: function () {
+      for (var i = this.files.length - 1; i >= 0; i--) {
+        this.files[i].cancel();
+      }
+    },
+
+    /**
+     * Returns a number between 0 and 1 indicating the current upload progress
+     * of all files.
+     * @function
+     * @returns {number}
+     */
+    progress: function () {
+      var totalDone = 0;
+      var totalSize = 0;
+      // Resume all chunks currently being uploaded
+      each(this.files, function (file) {
+        totalDone += file.progress() * file.size;
+        totalSize += file.size;
+      });
+      return totalSize > 0 ? totalDone / totalSize : 0;
+    },
+
+    /**
+     * Add a HTML5 File object to the list of files.
+     * @function
+     * @param {File} file
+     * @param {Event} [event] event is optional
+     */
+    addFile: function (file, event) {
+      this.addFiles([file], event);
+    },
+
+    /**
+     * Add a HTML5 File object to the list of files.
+     * @function
+     * @param {FileList|Array} fileList
+     * @param {Event} [event] event is optional
+     */
+    addFiles: function (fileList, event) {
+      var files = [];
+      each(fileList, function (file) {
+        // Uploading empty file IE10/IE11 hangs indefinitely
+        // see https://connect.microsoft.com/IE/feedback/details/813443/uploading-empty-file-ie10-ie11-hangs-indefinitely
+        // Directories have size `0` and name `.`
+        // Ignore already added files
+        if ((!ie10plus || ie10plus && file.size > 0) && !(file.size % 4096 === 0 && (file.name === '.' || file.fileName === '.')) &&
+          !this.getFromUniqueIdentifier(this.generateUniqueIdentifier(file))) {
+          var f = new FlowFile(this, file);
+          if (this.fire('fileAdded', f, event)) {
+            files.push(f);
+          }
+        }
+      }, this);
+      if (this.fire('filesAdded', files, event)) {
+        each(files, function (file) {
+          if (this.opts.singleFile && this.files.length > 0) {
+            this.removeFile(this.files[0]);
+          }
+          this.files.push(file);
+        }, this);
+      }
+      this.fire('filesSubmitted', files, event);
+    },
+
+
+    /**
+     * Cancel upload of a specific FlowFile object from the list.
+     * @function
+     * @param {FlowFile} file
+     */
+    removeFile: function (file) {
+      for (var i = this.files.length - 1; i >= 0; i--) {
+        if (this.files[i] === file) {
+          this.files.splice(i, 1);
+          file.abort();
+        }
+      }
+    },
+
+    /**
+     * Look up a FlowFile object by its unique identifier.
+     * @function
+     * @param {string} uniqueIdentifier
+     * @returns {boolean|FlowFile} false if file was not found
+     */
+    getFromUniqueIdentifier: function (uniqueIdentifier) {
+      var ret = false;
+      each(this.files, function (file) {
+        if (file.uniqueIdentifier === uniqueIdentifier) {
+          ret = file;
+        }
+      });
+      return ret;
+    },
+
+    /**
+     * Returns the total size of all files in bytes.
+     * @function
+     * @returns {number}
+     */
+    getSize: function () {
+      var totalSize = 0;
+      each(this.files, function (file) {
+        totalSize += file.size;
+      });
+      return totalSize;
+    },
+
+    /**
+     * Returns the total size uploaded of all files in bytes.
+     * @function
+     * @returns {number}
+     */
+    sizeUploaded: function () {
+      var size = 0;
+      each(this.files, function (file) {
+        size += file.sizeUploaded();
+      });
+      return size;
+    },
+
+    /**
+     * Returns remaining time to upload all files in seconds. Accuracy is based on average speed.
+     * If speed is zero, time remaining will be equal to positive infinity `Number.POSITIVE_INFINITY`
+     * @function
+     * @returns {number}
+     */
+    timeRemaining: function () {
+      var sizeDelta = 0;
+      var averageSpeed = 0;
+      each(this.files, function (file) {
+        if (!file.paused && !file.error) {
+          sizeDelta += file.size - file.sizeUploaded();
+          averageSpeed += file.averageSpeed;
+        }
+      });
+      if (sizeDelta && !averageSpeed) {
+        return Number.POSITIVE_INFINITY;
+      }
+      if (!sizeDelta && !averageSpeed) {
+        return 0;
+      }
+      return Math.floor(sizeDelta / averageSpeed);
+    }
+  };
+
+
+
+
+
+
+  /**
+   * FlowFile class
+   * @name FlowFile
+   * @param {Flow} flowObj
+   * @param {File} file
+   * @constructor
+   */
+  function FlowFile(flowObj, file) {
+
+    /**
+     * Reference to parent Flow instance
+     * @type {Flow}
+     */
+    this.flowObj = flowObj;
+
+    /**
+     * Reference to file
+     * @type {File}
+     */
+    this.file = file;
+
+    /**
+     * File name. Some confusion in different versions of Firefox
+     * @type {string}
+     */
+    this.name = file.fileName || file.name;
+
+    /**
+     * File size
+     * @type {number}
+     */
+    this.size = file.size;
+
+    /**
+     * Relative file path
+     * @type {string}
+     */
+    this.relativePath = file.relativePath || file.webkitRelativePath || this.name;
+
+    /**
+     * File unique identifier
+     * @type {string}
+     */
+    this.uniqueIdentifier = flowObj.generateUniqueIdentifier(file);
+
+    /**
+     * List of chunks
+     * @type {Array.<FlowChunk>}
+     */
+    this.chunks = [];
+
+    /**
+     * Indicated if file is paused
+     * @type {boolean}
+     */
+    this.paused = false;
+
+    /**
+     * Indicated if file has encountered an error
+     * @type {boolean}
+     */
+    this.error = false;
+
+    /**
+     * Average upload speed
+     * @type {number}
+     */
+    this.averageSpeed = 0;
+
+    /**
+     * Current upload speed
+     * @type {number}
+     */
+    this.currentSpeed = 0;
+
+    /**
+     * Date then progress was called last time
+     * @type {number}
+     * @private
+     */
+    this._lastProgressCallback = Date.now();
+
+    /**
+     * Previously uploaded file size
+     * @type {number}
+     * @private
+     */
+    this._prevUploadedSize = 0;
+
+    /**
+     * Holds previous progress
+     * @type {number}
+     * @private
+     */
+    this._prevProgress = 0;
+
+    this.bootstrap();
+  }
+
+  FlowFile.prototype = {
+    /**
+     * Update speed parameters
+     * @link http://stackoverflow.com/questions/2779600/how-to-estimate-download-time-remaining-accurately
+     * @function
+     */
+    measureSpeed: function () {
+      var timeSpan = Date.now() - this._lastProgressCallback;
+      if (!timeSpan) {
+        return ;
+      }
+      var smoothingFactor = this.flowObj.opts.speedSmoothingFactor;
+      var uploaded = this.sizeUploaded();
+      // Prevent negative upload speed after file upload resume
+      this.currentSpeed = Math.max((uploaded - this._prevUploadedSize) / timeSpan * 1000, 0);
+      this.averageSpeed = smoothingFactor * this.currentSpeed + (1 - smoothingFactor) * this.averageSpeed;
+      this._prevUploadedSize = uploaded;
+    },
+
+    /**
+     * For internal usage only.
+     * Callback when something happens within the chunk.
+     * @function
+     * @param {FlowChunk} chunk
+     * @param {string} event can be 'progress', 'success', 'error' or 'retry'
+     * @param {string} [message]
+     */
+    chunkEvent: function (chunk, event, message) {
+      switch (event) {
+        case 'progress':
+          if (Date.now() - this._lastProgressCallback <
+            this.flowObj.opts.progressCallbacksInterval) {
+            break;
+          }
+          this.measureSpeed();
+          this.flowObj.fire('fileProgress', this, chunk);
+          this.flowObj.fire('progress');
+          this._lastProgressCallback = Date.now();
+          break;
+        case 'error':
+          this.error = true;
+          this.abort(true);
+          this.flowObj.fire('fileError', this, message, chunk);
+          this.flowObj.fire('error', message, this, chunk);
+          break;
+        case 'success':
+          if (this.error) {
+            return;
+          }
+          this.measureSpeed();
+          this.flowObj.fire('fileProgress', this, chunk);
+          this.flowObj.fire('progress');
+          this._lastProgressCallback = Date.now();
+          if (this.isComplete()) {
+            this.currentSpeed = 0;
+            this.averageSpeed = 0;
+            this.flowObj.fire('fileSuccess', this, message, chunk);
+          }
+          break;
+        case 'retry':
+          this.flowObj.fire('fileRetry', this, chunk);
+          break;
+      }
+    },
+
+    /**
+     * Pause file upload
+     * @function
+     */
+    pause: function() {
+      this.paused = true;
+      this.abort();
+    },
+
+    /**
+     * Resume file upload
+     * @function
+     */
+    resume: function() {
+      this.paused = false;
+      this.flowObj.upload();
+    },
+
+    /**
+     * Abort current upload
+     * @function
+     */
+    abort: function (reset) {
+      this.currentSpeed = 0;
+      this.averageSpeed = 0;
+      var chunks = this.chunks;
+      if (reset) {
+        this.chunks = [];
+      }
+      each(chunks, function (c) {
+        if (c.status() === 'uploading') {
+          c.abort();
+          this.flowObj.uploadNextChunk();
+        }
+      }, this);
+    },
+
+    /**
+     * Cancel current upload and remove from a list
+     * @function
+     */
+    cancel: function () {
+      this.flowObj.removeFile(this);
+    },
+
+    /**
+     * Retry aborted file upload
+     * @function
+     */
+    retry: function () {
+      this.bootstrap();
+      this.flowObj.upload();
+    },
+
+    /**
+     * Clear current chunks and slice file again
+     * @function
+     */
+    bootstrap: function () {
+      this.abort(true);
+      this.error = false;
+      // Rebuild stack of chunks from file
+      this._prevProgress = 0;
+      var round = this.flowObj.opts.forceChunkSize ? Math.ceil : Math.floor;
+      var chunks = Math.max(
+        round(this.file.size / this.flowObj.opts.chunkSize), 1
+      );
+      for (var offset = 0; offset < chunks; offset++) {
+        this.chunks.push(
+          new FlowChunk(this.flowObj, this, offset)
+        );
+      }
+    },
+
+    /**
+     * Get current upload progress status
+     * @function
+     * @returns {number} from 0 to 1
+     */
+    progress: function () {
+      if (this.error) {
+        return 1;
+      }
+      if (this.chunks.length === 1) {
+        this._prevProgress = Math.max(this._prevProgress, this.chunks[0].progress());
+        return this._prevProgress;
+      }
+      // Sum up progress across everything
+      var bytesLoaded = 0;
+      each(this.chunks, function (c) {
+        // get chunk progress relative to entire file
+        bytesLoaded += c.progress() * (c.endByte - c.startByte);
+      });
+      var percent = bytesLoaded / this.size;
+      // We don't want to lose percentages when an upload is paused
+      this._prevProgress = Math.max(this._prevProgress, percent > 0.9999 ? 1 : percent);
+      return this._prevProgress;
+    },
+
+    /**
+     * Indicates if file is being uploaded at the moment
+     * @function
+     * @returns {boolean}
+     */
+    isUploading: function () {
+      var uploading = false;
+      each(this.chunks, function (chunk) {
+        if (chunk.status() === 'uploading') {
+          uploading = true;
+          return false;
+        }
+      });
+      return uploading;
+    },
+
+    /**
+     * Indicates if file is has finished uploading and received a response
+     * @function
+     * @returns {boolean}
+     */
+    isComplete: function () {
+      var outstanding = false;
+      each(this.chunks, function (chunk) {
+        var status = chunk.status();
+        if (status === 'pending' || status === 'uploading' || chunk.preprocessState === 1) {
+          outstanding = true;
+          return false;
+        }
+      });
+      return !outstanding;
+    },
+
+    /**
+     * Count total size uploaded
+     * @function
+     * @returns {number}
+     */
+    sizeUploaded: function () {
+      var size = 0;
+      each(this.chunks, function (chunk) {
+        size += chunk.sizeUploaded();
+      });
+      return size;
+    },
+
+    /**
+     * Returns remaining time to finish upload file in seconds. Accuracy is based on average speed.
+     * If speed is zero, time remaining will be equal to positive infinity `Number.POSITIVE_INFINITY`
+     * @function
+     * @returns {number}
+     */
+    timeRemaining: function () {
+      if (this.paused || this.error) {
+        return 0;
+      }
+      var delta = this.size - this.sizeUploaded();
+      if (delta && !this.averageSpeed) {
+        return Number.POSITIVE_INFINITY;
+      }
+      if (!delta && !this.averageSpeed) {
+        return 0;
+      }
+      return Math.floor(delta / this.averageSpeed);
+    },
+
+    /**
+     * Get file type
+     * @function
+     * @returns {string}
+     */
+    getType: function () {
+      return this.file.type && this.file.type.split('/')[1];
+    },
+
+    /**
+     * Get file extension
+     * @function
+     * @returns {string}
+     */
+    getExtension: function () {
+      return this.name.substr((~-this.name.lastIndexOf(".") >>> 0) + 2).toLowerCase();
+    }
+  };
+
+
+
+
+
+
+
+
+  /**
+   * Class for storing a single chunk
+   * @name FlowChunk
+   * @param {Flow} flowObj
+   * @param {FlowFile} fileObj
+   * @param {number} offset
+   * @constructor
+   */
+  function FlowChunk(flowObj, fileObj, offset) {
+
+    /**
+     * Reference to parent flow object
+     * @type {Flow}
+     */
+    this.flowObj = flowObj;
+
+    /**
+     * Reference to parent FlowFile object
+     * @type {FlowFile}
+     */
+    this.fileObj = fileObj;
+
+    /**
+     * File size
+     * @type {number}
+     */
+    this.fileObjSize = fileObj.size;
+
+    /**
+     * File offset
+     * @type {number}
+     */
+    this.offset = offset;
+
+    /**
+     * Indicates if chunk existence was checked on the server
+     * @type {boolean}
+     */
+    this.tested = false;
+
+    /**
+     * Number of retries performed
+     * @type {number}
+     */
+    this.retries = 0;
+
+    /**
+     * Pending retry
+     * @type {boolean}
+     */
+    this.pendingRetry = false;
+
+    /**
+     * Preprocess state
+     * @type {number} 0 = unprocessed, 1 = processing, 2 = finished
+     */
+    this.preprocessState = 0;
+
+    /**
+     * Bytes transferred from total request size
+     * @type {number}
+     */
+    this.loaded = 0;
+
+    /**
+     * Total request size
+     * @type {number}
+     */
+    this.total = 0;
+
+    /**
+     * Size of a chunk
+     * @type {number}
+     */
+    var chunkSize = this.flowObj.opts.chunkSize;
+
+    /**
+     * Chunk start byte in a file
+     * @type {number}
+     */
+    this.startByte = this.offset * chunkSize;
+
+    /**
+     * Chunk end byte in a file
+     * @type {number}
+     */
+    this.endByte = Math.min(this.fileObjSize, (this.offset + 1) * chunkSize);
+
+    /**
+     * XMLHttpRequest
+     * @type {XMLHttpRequest}
+     */
+    this.xhr = null;
+
+    if (this.fileObjSize - this.endByte < chunkSize &&
+        !this.flowObj.opts.forceChunkSize) {
+      // The last chunk will be bigger than the chunk size,
+      // but less than 2*chunkSize
+      this.endByte = this.fileObjSize;
+    }
+
+    var $ = this;
+
+
+    /**
+     * Send chunk event
+     * @param event
+     * @param {...} args arguments of a callback
+     */
+    this.event = function (event, args) {
+      args = Array.prototype.slice.call(arguments);
+      args.unshift($);
+      $.fileObj.chunkEvent.apply($.fileObj, args);
+    };
+    /**
+     * Catch progress event
+     * @param {ProgressEvent} event
+     */
+    this.progressHandler = function(event) {
+      if (event.lengthComputable) {
+        $.loaded = event.loaded ;
+        $.total = event.total;
+      }
+      $.event('progress', event);
+    };
+
+    /**
+     * Catch test event
+     * @param {Event} event
+     */
+    this.testHandler = function(event) {
+      var status = $.status(true);
+      if (status === 'error') {
+        $.event(status, $.message());
+        $.flowObj.uploadNextChunk();
+      } else if (status === 'success') {
+        $.tested = true;
+        $.event(status, $.message());
+        $.flowObj.uploadNextChunk();
+      } else if (!$.fileObj.paused) {
+        // Error might be caused by file pause method
+        // Chunks does not exist on the server side
+        $.tested = true;
+        $.send();
+      }
+    };
+
+    /**
+     * Upload has stopped
+     * @param {Event} event
+     */
+    this.doneHandler = function(event) {
+      var status = $.status();
+      if (status === 'success' || status === 'error') {
+        $.event(status, $.message());
+        $.flowObj.uploadNextChunk();
+      } else {
+        $.event('retry', $.message());
+        $.pendingRetry = true;
+        $.abort();
+        $.retries++;
+        var retryInterval = $.flowObj.opts.chunkRetryInterval;
+        if (retryInterval !== null) {
+          setTimeout(function () {
+            $.send();
+          }, retryInterval);
+        } else {
+          $.send();
+        }
+      }
+    };
+  }
+
+  FlowChunk.prototype = {
+    /**
+     * Get params for a request
+     * @function
+     */
+    getParams: function () {
+      return {
+        flowChunkNumber: this.offset + 1,
+        flowChunkSize: this.flowObj.opts.chunkSize,
+        flowCurrentChunkSize: this.endByte - this.startByte,
+        flowTotalSize: this.fileObjSize,
+        flowIdentifier: this.fileObj.uniqueIdentifier,
+        flowFilename: this.fileObj.name,
+        flowRelativePath: this.fileObj.relativePath,
+        flowTotalChunks: this.fileObj.chunks.length
+      };
+    },
+
+    /**
+     * Get target option with query params
+     * @function
+     * @param params
+     * @returns {string}
+     */
+    getTarget: function(target, params){
+      if(target.indexOf('?') < 0) {
+        target += '?';
+      } else {
+        target += '&';
+      }
+      return target + params.join('&');
+    },
+
+    /**
+     * Makes a GET request without any data to see if the chunk has already
+     * been uploaded in a previous session
+     * @function
+     */
+    test: function () {
+      // Set up request and listen for event
+      this.xhr = new XMLHttpRequest();
+      this.xhr.addEventListener("load", this.testHandler, false);
+      this.xhr.addEventListener("error", this.testHandler, false);
+      var testMethod = evalOpts(this.flowObj.opts.testMethod, this.fileObj, this);
+      var data = this.prepareXhrRequest(testMethod, true);
+      this.xhr.send(data);
+    },
+
+    /**
+     * Finish preprocess state
+     * @function
+     */
+    preprocessFinished: function () {
+      this.preprocessState = 2;
+      this.send();
+    },
+
+    /**
+     * Uploads the actual data in a POST call
+     * @function
+     */
+    send: function () {
+      var preprocess = this.flowObj.opts.preprocess;
+      if (typeof preprocess === 'function') {
+        switch (this.preprocessState) {
+          case 0:
+            this.preprocessState = 1;
+            preprocess(this);
+            return;
+          case 1:
+            return;
+        }
+      }
+      if (this.flowObj.opts.testChunks && !this.tested) {
+        this.test();
+        return;
+      }
+
+      this.loaded = 0;
+      this.total = 0;
+      this.pendingRetry = false;
+
+      var func = (this.fileObj.file.slice ? 'slice' :
+        (this.fileObj.file.mozSlice ? 'mozSlice' :
+          (this.fileObj.file.webkitSlice ? 'webkitSlice' :
+            'slice')));
+      var bytes = this.fileObj.file[func](this.startByte, this.endByte, this.fileObj.file.type);
+
+      // Set up request and listen for event
+      this.xhr = new XMLHttpRequest();
+      this.xhr.upload.addEventListener('progress', this.progressHandler, false);
+      this.xhr.addEventListener("load", this.doneHandler, false);
+      this.xhr.addEventListener("error", this.doneHandler, false);
+
+      var uploadMethod = evalOpts(this.flowObj.opts.uploadMethod, this.fileObj, this);
+      var data = this.prepareXhrRequest(uploadMethod, false, this.flowObj.opts.method, bytes);
+      this.xhr.send(data);
+    },
+
+    /**
+     * Abort current xhr request
+     * @function
+     */
+    abort: function () {
+      // Abort and reset
+      var xhr = this.xhr;
+      this.xhr = null;
+      if (xhr) {
+        xhr.abort();
+      }
+    },
+
+    /**
+     * Retrieve current chunk upload status
+     * @function
+     * @returns {string} 'pending', 'uploading', 'success', 'error'
+     */
+    status: function (isTest) {
+      if (this.pendingRetry || this.preprocessState === 1) {
+        // if pending retry then that's effectively the same as actively uploading,
+        // there might just be a slight delay before the retry starts
+        return 'uploading';
+      } else if (!this.xhr) {
+        return 'pending';
+      } else if (this.xhr.readyState < 4) {
+        // Status is really 'OPENED', 'HEADERS_RECEIVED'
+        // or 'LOADING' - meaning that stuff is happening
+        return 'uploading';
+      } else {
+        if (this.flowObj.opts.successStatuses.indexOf(this.xhr.status) > -1) {
+          // HTTP 200, perfect
+		      // HTTP 202 Accepted - The request has been accepted for processing, but the processing has not been completed.
+          return 'success';
+        } else if (this.flowObj.opts.permanentErrors.indexOf(this.xhr.status) > -1 ||
+            !isTest && this.retries >= this.flowObj.opts.maxChunkRetries) {
+          // HTTP 415/500/501, permanent error
+          return 'error';
+        } else {
+          // this should never happen, but we'll reset and queue a retry
+          // a likely case for this would be 503 service unavailable
+          this.abort();
+          return 'pending';
+        }
+      }
+    },
+
+    /**
+     * Get response from xhr request
+     * @function
+     * @returns {String}
+     */
+    message: function () {
+      return this.xhr ? this.xhr.responseText : '';
+    },
+
+    /**
+     * Get upload progress
+     * @function
+     * @returns {number}
+     */
+    progress: function () {
+      if (this.pendingRetry) {
+        return 0;
+      }
+      var s = this.status();
+      if (s === 'success' || s === 'error') {
+        return 1;
+      } else if (s === 'pending') {
+        return 0;
+      } else {
+        return this.total > 0 ? this.loaded / this.total : 0;
+      }
+    },
+
+    /**
+     * Count total size uploaded
+     * @function
+     * @returns {number}
+     */
+    sizeUploaded: function () {
+      var size = this.endByte - this.startByte;
+      // can't return only chunk.loaded value, because it is bigger than chunk size
+      if (this.status() !== 'success') {
+        size = this.progress() * size;
+      }
+      return size;
+    },
+
+    /**
+     * Prepare Xhr request. Set query, headers and data
+     * @param {string} method GET or POST
+     * @param {bool} isTest is this a test request
+     * @param {string} [paramsMethod] octet or form
+     * @param {Blob} [blob] to send
+     * @returns {FormData|Blob|Null} data to send
+     */
+    prepareXhrRequest: function(method, isTest, paramsMethod, blob) {
+      // Add data from the query options
+      var query = evalOpts(this.flowObj.opts.query, this.fileObj, this, isTest);
+      query = extend(this.getParams(), query);
+
+      var target = evalOpts(this.flowObj.opts.target, this.fileObj, this, isTest);
+      var data = null;
+      if (method === 'GET' || paramsMethod === 'octet') {
+        // Add data from the query options
+        var params = [];
+        each(query, function (v, k) {
+          params.push([encodeURIComponent(k), encodeURIComponent(v)].join('='));
+        });
+        target = this.getTarget(target, params);
+        data = blob || null;
+      } else {
+        // Add data from the query options
+        data = new FormData();
+        each(query, function (v, k) {
+          data.append(k, v);
+        });
+        data.append(this.flowObj.opts.fileParameterName, blob, this.fileObj.file.name);
+      }
+
+      this.xhr.open(method, target, true);
+      this.xhr.withCredentials = this.flowObj.opts.withCredentials;
+
+      // Add data from header options
+      each(evalOpts(this.flowObj.opts.headers, this.fileObj, this, isTest), function (v, k) {
+        this.xhr.setRequestHeader(k, v);
+      }, this);
+
+      return data;
+    }
+  };
+
+  /**
+   * Remove value from array
+   * @param array
+   * @param value
+   */
+  function arrayRemove(array, value) {
+    var index = array.indexOf(value);
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+  }
+
+  /**
+   * If option is a function, evaluate it with given params
+   * @param {*} data
+   * @param {...} args arguments of a callback
+   * @returns {*}
+   */
+  function evalOpts(data, args) {
+    if (typeof data === "function") {
+      // `arguments` is an object, not array, in FF, so:
+      args = Array.prototype.slice.call(arguments);
+      data = data.apply(null, args.slice(1));
+    }
+    return data;
+  }
+  Flow.evalOpts = evalOpts;
+
+  /**
+   * Execute function asynchronously
+   * @param fn
+   * @param context
+   */
+  function async(fn, context) {
+    setTimeout(fn.bind(context), 0);
+  }
+
+  /**
+   * Extends the destination object `dst` by copying all of the properties from
+   * the `src` object(s) to `dst`. You can specify multiple `src` objects.
+   * @function
+   * @param {Object} dst Destination object.
+   * @param {...Object} src Source object(s).
+   * @returns {Object} Reference to `dst`.
+   */
+  function extend(dst, src) {
+    each(arguments, function(obj) {
+      if (obj !== dst) {
+        each(obj, function(value, key){
+          dst[key] = value;
+        });
+      }
+    });
+    return dst;
+  }
+  Flow.extend = extend;
+
+  /**
+   * Iterate each element of an object
+   * @function
+   * @param {Array|Object} obj object or an array to iterate
+   * @param {Function} callback first argument is a value and second is a key.
+   * @param {Object=} context Object to become context (`this`) for the iterator function.
+   */
+  function each(obj, callback, context) {
+    if (!obj) {
+      return ;
+    }
+    var key;
+    // Is Array?
+    if (typeof(obj.length) !== 'undefined') {
+      for (key = 0; key < obj.length; key++) {
+        if (callback.call(context, obj[key], key) === false) {
+          return ;
+        }
+      }
+    } else {
+      for (key in obj) {
+        if (obj.hasOwnProperty(key) && callback.call(context, obj[key], key) === false) {
+          return ;
+        }
+      }
+    }
+  }
+  Flow.each = each;
+
+  /**
+   * FlowFile constructor
+   * @type {FlowFile}
+   */
+  Flow.FlowFile = FlowFile;
+
+  /**
+   * FlowFile constructor
+   * @type {FlowChunk}
+   */
+  Flow.FlowChunk = FlowChunk;
+
+  /**
+   * Library version
+   * @type {string}
+   */
+  Flow.version = '2.9.0';
+
+  if ( typeof module === "object" && module && typeof module.exports === "object" ) {
+    // Expose Flow as module.exports in loaders that implement the Node
+    // module pattern (including browserify). Do not create the global, since
+    // the user will be storing it themselves locally, and globals are frowned
+    // upon in the Node module world.
+    module.exports = Flow;
+  } else {
+    // Otherwise expose Flow to the global object as usual
+    window.Flow = Flow;
+
+    // Register as a named AMD module, since Flow can be concatenated with other
+    // files that may use define, but not via a proper concatenation script that
+    // understands anonymous AMD modules. A named AMD is safest and most robust
+    // way to register. Lowercase flow is used because AMD module names are
+    // derived from file names, and Flow is normally delivered in a lowercase
+    // file name. Do this after creating the global so that if an AMD module wants
+    // to call noConflict to hide this version of Flow, it will work.
+    if ( typeof define === "function" && define.amd ) {
+      define( "flow", [], function () { return Flow; } );
+    }
+  }
+})(window, document);
+
+/**
+ * @description
+ * var app = angular.module('App', ['flow.provider'], function(flowFactoryProvider){
+ *    flowFactoryProvider.defaults = {target: '/'};
+ * });
+ * @name flowFactoryProvider
+ */
+angular.module('flow.provider', [])
+.provider('flowFactory', function() {
+  'use strict';
+  /**
+   * Define the default properties for flow.js
+   * @name flowFactoryProvider.defaults
+   * @type {Object}
+   */
+  this.defaults = {};
+
+  /**
+   * Flow, MaybeFlow or NotFlow
+   * @name flowFactoryProvider.factory
+   * @type {function}
+   * @return {Flow}
+   */
+  this.factory = function (options) {
+    return new Flow(options);
+  };
+
+  /**
+   * Define the default events
+   * @name flowFactoryProvider.events
+   * @type {Array}
+   * @private
+   */
+  this.events = [];
+
+  /**
+   * Add default events
+   * @name flowFactoryProvider.on
+   * @function
+   * @param {string} event
+   * @param {Function} callback
+   */
+  this.on = function (event, callback) {
+    this.events.push([event, callback]);
+  };
+
+  this.$get = function() {
+    var fn = this.factory;
+    var defaults = this.defaults;
+    var events = this.events;
+    return {
+      'create': function(opts) {
+        // combine default options with global options and options
+        var flow = fn(angular.extend({}, defaults, opts));
+        angular.forEach(events, function (event) {
+          flow.on(event[0], event[1]);
+        });
+        return flow;
+      }
+    };
+  };
+});
+angular.module('flow.init', ['flow.provider'])
+  .controller('flowCtrl', ['$scope', '$attrs', '$parse', 'flowFactory',
+  function ($scope, $attrs, $parse, flowFactory) {
+
+    var options = angular.extend({}, $scope.$eval($attrs.flowInit));
+
+    // use existing flow object or create a new one
+    var flow  = $scope.$eval($attrs.flowObject) || flowFactory.create(options);
+
+    flow.on('catchAll', function (eventName) {
+      var args = Array.prototype.slice.call(arguments);
+      args.shift();
+      var event = $scope.$broadcast.apply($scope, ['flow::' + eventName, flow].concat(args));
+      if ({
+        'progress':1, 'filesSubmitted':1, 'fileSuccess': 1, 'fileError': 1, 'complete': 1
+      }[eventName]) {
+        $scope.$apply();
+      }
+      if (event.defaultPrevented) {
+        return false;
+      }
+    });
+
+    $scope.$flow = flow;
+    if ($attrs.hasOwnProperty('flowName')) {
+      $parse($attrs.flowName).assign($scope, flow);
+      $scope.$on('$destroy', function () {
+        $parse($attrs.flowName).assign($scope);
+      });
+    }
+  }])
+  .directive('flowInit', [function() {
+    return {
+      scope: true,
+      controller: 'flowCtrl'
+    };
+  }]);
+angular.module('flow.btn', ['flow.init'])
+.directive('flowBtn', [function() {
+  return {
+    'restrict': 'EA',
+    'scope': false,
+    'require': '^flowInit',
+    'link': function(scope, element, attrs) {
+      var isDirectory = attrs.hasOwnProperty('flowDirectory');
+      var isSingleFile = attrs.hasOwnProperty('flowSingleFile');
+      var inputAttrs = attrs.hasOwnProperty('flowAttrs') && scope.$eval(attrs.flowAttrs);
+      scope.$flow.assignBrowse(element, isDirectory, isSingleFile, inputAttrs);
+    }
+  };
+}]);
+angular.module('flow.dragEvents', ['flow.init'])
+/**
+ * @name flowPreventDrop
+ * Prevent loading files then dropped on element
+ */
+  .directive('flowPreventDrop', function() {
+    return {
+      'scope': false,
+      'link': function(scope, element, attrs) {
+        element.bind('drop dragover', function (event) {
+          event.preventDefault();
+        });
+      }
+    };
+  })
+/**
+ * @name flowDragEnter
+ * executes `flowDragEnter` and `flowDragLeave` events
+ */
+  .directive('flowDragEnter', ['$timeout', function($timeout) {
+    return {
+      'scope': false,
+      'link': function(scope, element, attrs) {
+        var promise;
+        var enter = false;
+        element.bind('dragover', function (event) {
+          if (!isFileDrag(event)) {
+            return ;
+          }
+          if (!enter) {
+            scope.$apply(attrs.flowDragEnter);
+            enter = true;
+          }
+          $timeout.cancel(promise);
+          event.preventDefault();
+        });
+        element.bind('dragleave drop', function (event) {
+          $timeout.cancel(promise);
+          promise = $timeout(function () {
+            scope.$eval(attrs.flowDragLeave);
+            promise = null;
+            enter = false;
+          }, 100);
+        });
+        function isFileDrag(dragEvent) {
+          var fileDrag = false;
+          var dataTransfer = dragEvent.dataTransfer || dragEvent.originalEvent.dataTransfer;
+          angular.forEach(dataTransfer && dataTransfer.types, function(val) {
+            if (val === 'Files') {
+              fileDrag = true;
+            }
+          });
+          return fileDrag;
+        }
+      }
+    };
+  }]);
+
+angular.module('flow.drop', ['flow.init'])
+.directive('flowDrop', function() {
+  return {
+    'scope': false,
+    'require': '^flowInit',
+    'link': function(scope, element, attrs) {
+      if (attrs.flowDropEnabled) {
+        scope.$watch(attrs.flowDropEnabled, function (value) {
+          if (value) {
+            assignDrop();
+          } else {
+            unAssignDrop();
+          }
+        });
+      } else {
+        assignDrop();
+      }
+      function assignDrop() {
+        scope.$flow.assignDrop(element);
+      }
+      function unAssignDrop() {
+        scope.$flow.unAssignDrop(element);
+      }
+    }
+  };
+});
+
+!function (angular) {'use strict';
+  var module = angular.module('flow.events', ['flow.init']);
+  var events = {
+    fileSuccess: ['$file', '$message'],
+    fileProgress: ['$file'],
+    fileAdded: ['$file', '$event'],
+    filesAdded: ['$files', '$event'],
+    filesSubmitted: ['$files', '$event'],
+    fileRetry: ['$file'],
+    fileError: ['$file', '$message'],
+    uploadStart: [],
+    complete: [],
+    progress: [],
+    error: ['$message', '$file']
+  };
+
+  angular.forEach(events, function (eventArgs, eventName) {
+    var name = 'flow' + capitaliseFirstLetter(eventName);
+    if (name == 'flowUploadStart') {
+      name = 'flowUploadStarted';// event alias
+    }
+    module.directive(name, [function() {
+      return {
+        require: '^flowInit',
+        controller: ['$scope', '$attrs', function ($scope, $attrs) {
+          $scope.$on('flow::' + eventName, function () {
+            var funcArgs = Array.prototype.slice.call(arguments);
+            var event = funcArgs.shift();// remove angular event
+            // remove flow object and ignore event if it is from parent directive
+            if ($scope.$flow !== funcArgs.shift()) {
+              return ;
+            }
+            var args = {};
+            angular.forEach(eventArgs, function(value, key) {
+              args[value] = funcArgs[key];
+            });
+            if ($scope.$eval($attrs[name], args) === false) {
+              event.preventDefault();
+            }
+          });
+        }]
+      };
+    }]);
+  });
+
+  function capitaliseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+}(angular);
+angular.module('flow.img', ['flow.init'])
+.directive('flowImg', [function() {
+  return {
+    'scope': false,
+    'require': '^flowInit',
+    'link': function(scope, element, attrs) {
+      var file = attrs.flowImg;
+      scope.$watch(file, function (file) {
+        if (!file) {
+          return ;
+        }
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(file.file);
+        fileReader.onload = function (event) {
+          scope.$apply(function () {
+            attrs.$set('src', event.target.result);
+          });
+        };
+      });
+    }
+  };
+}]);
+angular.module('flow.transfers', ['flow.init'])
+.directive('flowTransfers', [function() {
+  return {
+    'scope': true,
+    'require': '^flowInit',
+    'link': function(scope) {
+      scope.transfers = scope.$flow.files;
+    }
+  };
+}]);
+angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
+  'flow.drop', 'flow.transfers', 'flow.img', 'flow.dragEvents']);
+
+/*global angular*/
+/* =========================================
+--------------------------------------------
+
+	BITAGE.io Dashboard views app
+	"Keep watch over your Bitcoins"
+	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
+
+--------------------------------------------
+============================================ */
+
+(function() { "use strict";
+
+	var app = angular.module('bitAge',
+		['ui.router',
+		 'app-wallet',
+		 'wallet-directives',
+		 'notification-directives',
+		 'app-accounts',
+		 'app-settings',
+		 'app-help'])
+
+	.config([
+		'$stateProvider',
+		'$urlRouterProvider',
+		function($stateProvider, $urlRouterProvider) {
+
+			$stateProvider
+				.state('wallet', {
+					url: '/wallet',
+					templateUrl: '_views/wallet.html'
+				})
+
+				.state('accounts', {
+					url: '/accounts',
+					templateUrl: '_views/accounts.html'
+				})
+
+				.state('settings', {
+					url: '/settings',
+					templateUrl: '_views/settings.html'
+				})
+
+				.state('help', {
+					url: '/help',
+					templateUrl: '_views/help.html',
+					controller: 'HelpCtrl'
+				});
+
+			$urlRouterProvider.otherwise('wallet');
+	}])
+
+	.controller('DashCtrl',
+		['$scope', '$state',
+		function($scope, $state) {
+
+		var vm = this;
+		vm.qr_code = 'http://placehold.it/200&text=Loading+QR+Code';
+
+		// Sidebar tab select:
+		vm.$state = $state;
+		vm.sidebarClick = function() {
+			return $state.includes($state.current.name);
+		};
+
+		// Avatar Menu open/close:
+		vm.avatarMenuBool = false;
+		vm.clickAvatar = function(val, $event) {
+			$event.stopPropagation();
+			vm.avatarMenuBool = !vm.avatarMenuBool;
+		};
+
+		// Detect click on body & close menu
+		vm.closeMenu = function () {
+			vm.avatarMenuBool = false;
+		};
+
+		// Stop the event from bubbling up any further
+		vm.menuClick = function ($event) {
+			$event.stopPropagation();
+		};
+
+		// Close all modals in the DashCtrl scope
+		vm.closeModal = function() {
+			vm.modal_edit_account = false;
+			vm.modal_receive = false;
+			vm.modal_send = false;
+			vm.modal = false;
+		};
+
+	}]);
+
+})();
+
+
+/*global angular */
+/* =========================================
+   NOTIFICATION Directive
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('notification-directives', [])
+	.directive('notificationMsg', function () {
+
+	    return {
+	        restrict: 'E',
+	        template: 
+	        	'<section ng-show="dash.notification" ' +
+					'ng-click="dash.closeMsg()" ' +
+					'class="ng-notification"> ' +
+					'<p class="notify-msg">{{dash.message}}</p> ' +
+					'<div class="notify-bg {{dash.notification_type}}"></div> ' +
+				'</section>'
+	    };
+	});
+	
+})();
+
+
+/*global angular */
+/* =========================================
+   WALLET Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-wallet',
+		['wallet-directives',
+		 'notification-directives'])
+
+	.controller('WalletCtrl',
+		['$scope', '$sce', '$timeout', 'walletModalService',
+		function($scope, $sce, $timeout, walletModalService) {
+
+		var vm 			     = $scope,
+			public_address   = '';
+			vm.dash.currency = 'USD';
+			vm.dash.modal 	 = false;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		// Express response listener here for incoming transaction:
+
+		// Open Receive or Send modals:
+		this.openModal = function(m) {
+			// console.log(m);
+
+			// Show overlay:
+			vm.dash.modal = m;
+
+			switch (m) {
+				case 'receive':
+					// API call to get user public address
+					// Code to generate QR code
+					// Update receive_obj
+					walletModalService.modalRecieve(vm.dash);
+					break;
+
+				case 'send':
+					// API call to check address
+					// Calculate Bitcoin / USD
+					// Complete transaction
+					walletModalService.modalSend(vm.dash, $timeout, timeoutMsg);
+					break;
+			}
+		};
+
+		// Transaction models
+		this.transactions = [
+			{
+				type: 'incoming',
+				status: 'Pending',
+				comment: 'Recieved from multiple addresses',
+				time: '10 minutes ago',
+				amount: 0.00498623
+			},
+			{
+				type: 'incoming',
+				status: 'Confirmed',
+				comment: 'Recieve from 1MgZLyz6d8djEqe68XoPpsjx9BFQyVAtXN',
+				time: '12 hours ago',
+				amount: 0.003
+			},
+			{
+				type: 'outgoing',
+				status: 'Confirmed',
+				comment: 'Sent to 17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH',
+				time: 'Jan 15th 2015',
+				amount: 0.01
+			},
+			{
+				type: 'incoming',
+				status: 'Confirmed',
+				comment: 'Recieved from multiple addresses',
+				time: 'Jan 14th 2015',
+				amount: 0.02874
+			},
+			{
+				type: 'outgoing',
+				status: 'Confirmed',
+				comment: 'Sent to 1GS9E86Y3mhK7Qwm1vqvgCmpE5u6MMxPML',
+				time: 'Jan 12th 2015',
+				amount: 0.064904
+			}
+		];
+	}])
+
+	.service('walletModalService', [function() {
+
+		// wire modal recieve
+	    this.modalRecieve = function(dash) {
+	        dash.modal_receive  = true;
+			dash.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+			dash.qr_code 	    = '_assets/img/qrcode.png';
+	    };
+
+	    // wire modal send
+	    this.modalSend = function(dash, $timeout, timeoutMsg) {
+	    	dash.modal_send = true;
+			dash.send_btn_text = 'Send';
+
+			// btn_usd in walletDirective html
+			dash.switchCurrency = function() {
+				if (dash.currency === 'USD') {
+					dash.currency = 'BTC';
+				} else if (dash.currency = 'BTC') {
+					dash.currency = 'USD';
+				}
+			};
+
+			dash.sendTransaction = function() {
+
+				// Make API call to check address
+				dash.send_btn_text = 'Sending...';
+
+				// Get response back and close modal
+				dash.modal_send = false;
+				dash.modal = false;
+
+				// Show notification
+				dash.message = 'Transaction sent!';
+
+				// success or error
+				dash.notification_type = 'success';
+
+				// show notifcation and settimeout
+				dash.notification = true;
+				$timeout(timeoutMsg, 4000);
+			};
+	    }
+	}]);
+
+})();
+
+
+/*global angular */
+/* =========================================
+   WALLET Directive
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('wallet-directives', [])
+	.directive('receiveModal', function () {
+
+	    return {
+	        restrict: 'E',
+	        template: 
+	        	'<section ng-show="dash.modal_receive" class="modal ng-modal-dialog"> ' + 
+
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' + 
+
+					'<h1>Your Public Address</h1> ' + 
+
+					'<div class="modal_qr"> ' + 
+						'<img src="{{dash.qr_code}}"/> ' + 
+					'</div> ' + 
+
+					'<p class="public_address">{{dash.public_address}}</p> ' + 
+				'</section>'
+	    };
+	})
+
+	.directive('sendModal', function () {
+
+	    return {
+	    	scope: true,
+	        restrict: 'E',
+	        template: 
+	        	'<section ng-show="dash.modal_send" class="modal ng-modal-dialog"> ' + 
+
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' + 
+
+					'<h1>Send Bitcoin</h1> ' + 
+
+					'<div class="modal_form"> ' + 
+						'<div class="label_input_combo"> ' + 
+							'<label for="to_input">Send to address</label> ' + 
+							'<input id="to_input" class="form-input" type="text" placeholder=""> ' + 
+						'</div> ' + 
+
+						'<div class="label_input_combo"> ' + 
+							'<div ng-click="dash.switchCurrency()" class="btn_usd noselect">{{dash.currency}}</div> ' + 
+							'<label for="amount_input" class="label_amount">Amount</label> ' + 
+							'<input id="amount_input" class="form-input" type="text" placeholder=""> ' + 
+						'</div> ' + 
+						
+						'<button ng-click="dash.sendTransaction()" class="btn btn_med btn_send_now">{{dash.send_btn_text}}</button> ' + 
+					'</div> ' + 
+
+				'</section>'
+	    };
+	});
+
+})();
+
+/*global angular */
+/* =========================================
+   Accounts module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-accounts',
+		['ngAnimate', 'account-directives'])
+
+	.controller('AcctCtrl',
+		['$scope', 'accountsService',
+		function($scope, accountsService) {
+
+		var vm = $scope;
+			vm.$parent.modal = false;
+			
+
+		// Setup accounts model
+		this.accounts = [];
+		this.accounts = [
+			{
+				id: 'acct-1',
+				type: 'Savings',
+				label: 'Bitage',
+				balance: '1.001',
+				address: '16mCDhpziD6kBwPNnh1gSEHhdGFjAYYZdq'
+			},
+			{
+				id: 'acct-2',
+				type: 'Savings',
+				label: 'Blockchain.info',
+				balance: '3.001',
+				address: '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH'
+			},
+			{
+				id: 'acct-3',
+				type: 'Savings',
+				label: 'Coinbase wallet',
+				balance: '0.562',
+				address: '14TKW5r2EDhGPHsrsbPrbZq9ZXm96SP68W'
+			},
+			{
+				id: 'acct-4',
+				type: 'Savings',
+				label: 'Xapo wallet',
+				balance: '0.003',
+				address: '13sizB7zFU9wrxotFAVniG6cJBA9fXzhea'
+			}
+		];
+
+		this.addAccount = function() {
+
+			// Create next account id
+			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
+
+			// Don't add account if blank
+		    if (this.label === '' ||
+		    	this.label === undefined ||
+		    	this.address === undefined) { return; }
+
+		    // Add new account to accounts array
+		    this.accounts.push({
+				id: nextId,
+				label: this.label,
+				balance: 0,
+				address: this.address
+		    });
+
+		    // Reset inputs
+		    this.label = '';
+		    this.address = '';
+		};
+
+		// Open edit account modal:
+		this.editAccount = function(id, label, address) {
+			// console.log(id);
+			vm.dash.modal = true;
+			accountsService.modalEditAccount(vm.dash, id, label, address);
+		};
+
+		vm.dash.updateAccount = function(i) {
+
+			// Don't add account if blank
+		    if (this.new_label === '' ||
+		    	this.new_label === undefined ||
+		    	this.new_address === undefined) { return; }
+
+			// find account by id and update it's obj values
+			function changeAccountValues( id, new_label, new_address ) {
+				for (var i in vm.acct.accounts) {
+					if (vm.acct.accounts[i].id == id) {
+						vm.acct.accounts[i].label = new_label;
+						vm.acct.accounts[i].address = new_address;
+						break;
+					}
+				}
+			}
+
+			changeAccountValues (i, this.new_label, this.new_address);
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
+
+			// Briefly highlight row
+			var theRow = angular.element( document.querySelector('#acct-'+i));
+			theRow.addClass('ping-row');
+		}
+
+		vm.dash.removeAccount = function(acct_id) {
+
+			// Find object by id and remove from array
+			for (var i = 0; i < vm.acct.accounts.length; i++) {
+			    var obj = vm.acct.accounts[i];
+
+			    if (acct_id.indexOf(obj.id) !== -1) {
+			        vm.acct.accounts.splice(i, 1);
+			    }
+			}
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label = '';
+		    this.new_address = '';
+		};
+
+		// Select public addresses on click
+		function selectAddress(element) {
+			var text = document.getElementById(element),
+				range = document.createRange(),
+				selection = window.getSelection();
+				range.selectNodeContents(text);
+				selection.removeAllRanges();
+			    selection.addRange(range);
+		};
+
+		// Select entire address on click
+		vm.pubAddress = {};
+		vm.pubAddress.getClick = function(the_id) {
+			selectAddress(the_id);
+		};
+
+	}])
+
+	.service('accountsService', [function() {
+
+		// Wire up edit account modal
+	    this.modalEditAccount = function(vm, id, label, address) {
+	        vm.modal_edit_account = true;
+	        vm.acct_id = id;
+	        vm.acct_label = label;
+	        vm.acct_address = address;
+			vm.save_btn_text = 'save';
+	    };
+
+	}]);
+
+})();
+
+
+/*global angular */
+/* =========================================
+   Wallet directive
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('account-directives', [])
+	.directive('editAccountModal', function () {
+
+	    return {
+	    	scope: true,
+	        restrict: 'E',
+	        template:
+	        	'<section ng-show="dash.modal_edit_account" class="modal ng-modal-dialog"> ' +
+
+					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' +
+
+					'<h1>Edit Watch Account</h1> ' +
+					'<form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" ' +
+						'<div class="modal_form" data-id="{{dash.acct_id}}"> ' +
+							'<div class="label_input_combo"> ' +
+								'<label for="to_input">Account Name</label> ' +
+								'<input id="to_input" ' +
+										'ng-model="dash.new_label" ' +
+										'class="form-input" ' +
+										'type="text" ' +
+										'placeholder="{{dash.acct_label}}"> ' +
+							'</div> ' +
+
+							'<div class="label_input_combo"> ' +
+								'<label for="amount_input" class="label_amount">Public Address</label> ' +
+								'<input id="amount_input" ' +
+										'ng-model="dash.new_address" ' +
+										'class="public_addy_input form-input" ' +
+										'type="text" ' +
+										'placeholder="{{dash.acct_address}}"> ' +
+							'</div> ' +
+
+							'<button type="submit" ' +
+									'class="btn btn_med btn_send_now"> ' +
+									'{{dash.save_btn_text}} ' +
+							'</button> ' +
+
+							'<button ng-click="dash.removeAccount(dash.acct_id)" ' +
+									'class="btn btn_med btn_remove"> ' +
+									'Remove' +
+							'</button> ' +
+						'</div> ' +
+					'</form>' +
+
+				'</section>'
+	    };
+	});
+
+})();
+
+
+/*global angular */
+/* =========================================
+   Settings module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
+	.controller('SettingsCtrl',
+		['$scope', '$timeout', 'settingsService', 
+		function($scope, $timeout, settingsService) {
+
+		// Angular File upload:
+		//http://flowjs.github.io/ng-flow/
+		//https://github.com/flowjs/ng-flow
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		this.saveProfile = function(isValid) {
+
+			// check to make sure form is valid
+            if (isValid) {
+                settingsService.postProfile(
+                	this.formData,
+					vm.dash,
+					$timeout,
+					timeoutMsg
+				);
+            } else {
+            	alert('Please check the form!');
+               // swal({
+               //     title: "Oops!",
+               //     text: "Please check the form!",
+               //     type: "error",
+               //     confirmButtonText: "Ok",
+               //     confirmButtonColor: "#024562" });
+            }
+
+		};
+	}])
+
+	.service('settingsService', [function() {
+
+	    // send updated profile to server
+		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
+
+			if (fdata !== undefined) {
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'success';
+				console.log(fdata);
+			} else if (fdata === undefined) {
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'error';
+			}
+
+			// Show notification
+			dash.notification = true;
+			$timeout(timeoutMsg, 4000);
+		};
+	}]);
+
+})();
+
+/*global angular */
+/* =========================================
+   HELP Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-help', ['notification-directives'])
+
+	.controller('HelpCtrl',
+	['$scope', '$http', '$timeout', 'helpService',
+	function($scope, $http, $timeout, helpService) {
+
+		var vmt = this;
+		var vms = $scope;
+
+		var timeoutMsg = function() {
+			vms.$parent.notification = false;
+		};
+
+		vms.$parent.closeMsg = function() {
+			vms.$parent.notification = false;
+		};
+
+		// setup e-mail data with unicode symbols
+		// send user name, email and public address
+		var helpMessage = {
+		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+		    to: 'leon@bitage.io', // list of receivers
+		    subject: 'Bitage Help Request! ✔', // Subject line
+		    text: 'Hello world ✔', // plaintext body
+		    html: '<b>Hello world ✔</b>' // html body
+		};
+
+		// Quick form submit
+		this.submitHelpForm = function(isValid) {
+
+			// check to make sure form is valid
+			if (isValid) {
+				alert('our form is amazing');
+				var data = this.formData;
+
+				// Post form in helpService
+				helpService.postHelpForm($http, data);
+
+				// Show success notification
+				vms.$parent.message = 'Thanks! We will get back to you soon.';
+				vms.$parent.notification = true;
+				$timeout(timeoutMsg, 4000);
+
+			} else {
+				// Show error notification
+				alert('Please correct the form');
+			}
+
+		};
+
+	}])
+
+	.service('helpService', [function() {
+
+		this.postHelpForm = function($http, data) {
+			console.log(data.message);
+
+			// process the form
+			// login data contains remember boolean
+			var request = $http({
+					method  : 'POST',
+					url     : '/help',
+					// data    : $.param(vm.formData),
+					data    : data.message,
+					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+				})
+				.success(function() {
+					// Show notification
+					// vms.$parent.message = 'Thanks! We will get back to you soon.';
+					// vms.$parent.notification = true;
+					// $timeout(timeoutMsg, 4000);
+				});
+		};
+
+	}]);
+
+})();
+
+
+
+

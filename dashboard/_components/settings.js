@@ -45,7 +45,6 @@
             }
 
 		};
-	    
 	}])
 
 	.service('settingsService', [function() {
@@ -53,10 +52,16 @@
 	    // send updated profile to server
 		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
 
-			console.log(fdata);
+			if (fdata !== undefined) {
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'success';
+				console.log(fdata);
+			} else if (fdata === undefined) {
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'error';
+			}
 
 			// Show notification
-			dash.message = 'Profile updated!';
 			dash.notification = true;
 			$timeout(timeoutMsg, 4000);
 		};
