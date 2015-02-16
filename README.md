@@ -23,28 +23,28 @@ Technologies (MEAN stack):
 Demos
 ------
 <img style="float: left" src="https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png">
-<p style="float: left">http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/</p>
+http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
 
-Sprint tracking
+Sprint tracking | Trello
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/trello.png)
-<span>https://trello.com/b/pu37qnwO/bitage-io-web-app</span>
+https://trello.com/b/pu37qnwO/bitage-io-web-app
 
-Task runner
+Task runner | Gulp
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/gulp.png)
 http://gulpjs.com/
 
-Continuous integration
+Continuous integration | Codeship
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/codeship.png)
 http://codeship.com | https://codeship.com/documentation
 
-Team communication
+Team communication | Slack
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/slack.png)
 https://bitage.slack.com
 
-Documents
+Documents | Google Docs
 ------
 https://drive.google.com/a/bitage.io/#my-drive
