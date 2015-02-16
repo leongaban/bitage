@@ -22,23 +22,14 @@ Technologies (MEAN stack):
 
 Demos
 ------
-<table>
-    <tr>
-        <td>
+![Bitage](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png)
+<span style="margin-top: -20px;">http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/</span>
 
-            ![Bitage](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png)
-
-        </td>
-        <td>
-            http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
-        </td>
-    </tr>
-</table>
 
 Sprint tracking
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/trello.png)
-https://trello.com/b/pu37qnwO/bitage-io-web-app
+<span>https://trello.com/b/pu37qnwO/bitage-io-web-app</span>
 
 Task runner
 ------
