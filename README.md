@@ -12,6 +12,8 @@ RUN
 
 Technologies (MEAN stack):
 ------
+![MEAN stack](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/mean.png)
+
 * <a href="http://docs.mongodb.org/manual/">MongoDB</a>
 * <a href="http://expressjs.com/">Express</a>
 * <a href="https://docs.angularjs.org/guide">Angular</a> | <a href="http://ngmodules.org/">ngmodules</a>
@@ -20,29 +22,33 @@ Technologies (MEAN stack):
 
 Demos
 ------
-![Bitage](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png)
-###### http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
+<table>
+    <tr>
+        <td>![Bitage](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png)</td>
+        <td>http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/</td>
+    </tr>
+</table>
 
 Sprint tracking
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/trello.png)
-###### https://trello.com/b/pu37qnwO/bitage-io-web-app
+https://trello.com/b/pu37qnwO/bitage-io-web-app
 
 Task runner
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/gulp.png)
-###### http://gulpjs.com/
+http://gulpjs.com/
 
 Continuous integration
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/codeship.png)
-###### http://codeship.com | https://codeship.com/documentation
+http://codeship.com | https://codeship.com/documentation
 
 Team communication
 ------
 ![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/slack.png)
-###### https://bitage.slack.com
+https://bitage.slack.com
 
 Documents
 ------
-###### https://drive.google.com/a/bitage.io/#my-drive
+https://drive.google.com/a/bitage.io/#my-drive
