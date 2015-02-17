@@ -12,10 +12,12 @@
 @media all and (max-width: 1200px) {
 }
 
-/* 1000
+/* 1024
 ==================================================== */
-@media all and (max-width: 1000px) {
-
+@media all and (max-width: 1024px) {
+	.wallet_actions {
+		float: left;
+	}
 }
 
 /* 900

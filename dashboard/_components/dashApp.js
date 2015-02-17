@@ -61,6 +61,18 @@
 
 		var quotes = [
 			{
+				quote: "Bitcoin is a protocol, not a currency. Currency is just the first app.",
+				author: "Andreas Antonopoulos"
+			},
+			{
+				quote: "The most interesting disruption comes when a problem is not solved but rather made irrelevant.",
+				author: "Andreas Antonopoulos"
+			},
+			{
+				quote: "Bitcoin gives us the ability to transmit value globally, instantly, securely, and is far more valuable than email.",
+				author: "Andreas Antonopoulos"
+			},
+			{
 				quote: "Money won't create success, the freedom to make it will.",
 				author: "Nelson Mandela"
 			},
@@ -103,6 +115,34 @@
 			{
 				quote: "Not everything that can be counted counts, and not everything that counts can be counted.",
 				author: "Albert Einstein"
+			},
+			{
+				quote: "Because bitcoin is a protocol for transmitting value. It will be bigger than Internet and will accelerate Internet.",
+				author: "Andreas Antonopoulos"
+			},
+			{
+				quote: "First you're curious and jealous of people having it, then you have it, and then you want more. Bitcoin is just like sex.",
+				author: "Andreas Antonopoulos"
+			},
+			{
+				quote: "It's money 2.0, a huge huge huge deal.",
+				author: "Chamath Palihapitiya"
+			},
+			{
+				quote: "In Spanish, we have a saying that when a genius points at the moon, a fool looks at the finger. I find that happens a lot with bitcoin.",
+				author: "Wences Casares, CEO of Xapo"
+			},
+			{
+				quote: "Bitcoin is a remarkable cryptographic achievement and the ability to create something that is not duplicable in the digital world has enormous value",
+				author: "Eric Schmidt, CEO of Google"
+			},
+			{
+				quote: "I really like Bitcoin. I own Bitcoins. It’s a store of value, a distributed ledger. It’s a great place to put assets",
+				author: "David Marcus, CEO of Paypal"
+			},
+			{
+				quote: "A portion of what you make, is yours to keep",
+				author: "Book - The Richest Man in Babylon"
 			}
 		];
 
@@ -110,7 +150,7 @@
 		    return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
 
-		vm.num = getRandomNum(0, 10);
+		vm.num = getRandomNum(0, 20);
 
 		vm.showQuote = function(i) {
 			return quotes[i]["quote"];
