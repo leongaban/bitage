@@ -11,11 +11,10 @@
     color: #fff;
     overflow-y: auto;
     z-index: 1000;
-    // transition: all 0.4s ease 0s;
     @include transition (all, 0.4s, ease);
-    background-image: url("../img/blue.gif");
-    background-size: 600px 225px;
-    // @include linear-gradient($sidebarActive, $sidebarHover);
+    // background-image: url("../img/blue.gif");
+    // background-size: 600px 225px;
+    @include linear-gradient($sidebarActive, $sidebarHover);
     // @include linear-gradient($dgray, $lgray);
 }
 
@@ -50,13 +49,11 @@ li.active { background: $button; }
 // Brand Logo
 li.sidebar-brand {
     margin-bottom: 25px;
-    // margin-bottom: 36px;
 
     h1 {
         margin-bottom: 10px;
         font-weight: 700;
         font-size: em(32);
-        // font-size: em(48);
     }
 
     h2 { font-size: em(14); }
