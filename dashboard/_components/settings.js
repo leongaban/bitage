@@ -7,7 +7,7 @@
 
 	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
 	.controller('SettingsCtrl',
-		['$scope', '$timeout', 'settingsService', 
+		['$scope', '$timeout', 'settingsService',
 		function($scope, $timeout, settingsService) {
 
 		// Angular File upload:
@@ -35,13 +35,13 @@
 					timeoutMsg
 				);
             } else {
-            	alert('Please check the form!');
-               // swal({
-               //     title: "Oops!",
-               //     text: "Please check the form!",
-               //     type: "error",
-               //     confirmButtonText: "Ok",
-               //     confirmButtonColor: "#024562" });
+            	// alert('Please check the form!');
+             //   	swal({
+                //    title: "Oops!",
+                //    text: "Please check the form!",
+                //    type: "error",
+                //    confirmButtonText: "Ok",
+                //    confirmButtonColor: "#024562" });
             }
 
 		};
@@ -57,7 +57,7 @@
 				dash.message = 'Profile updated!';
 				dash.notification_type = 'success';
 			} else if (fdata === undefined) {
-				dash.message = 'Profile updated!';
+				dash.message = 'Please check the form!';
 				dash.notification_type = 'error';
 			}
 
