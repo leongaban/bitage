@@ -6,12 +6,12 @@
     </div>
 
     <div class="widget-container profile_container">
-        
+
 		<section flow-init="{target: '/upload'}"
             flow-files-submitted="$flow.upload()"
             flow-file-success="$file.msg = $message"
             class="profile_avatar">
-            
+
             <div flow-init="{singleFile:true}"
                  flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 
@@ -31,7 +31,9 @@
                 </div>
             </div>
 		</section>
-        <form name="profileForm" ng-submit="settings.saveProfile(profileForm.$valid)" novalidate>
+
+        <form name="profileForm"
+              ng-submit="settings.saveProfile(profileForm.$valid)" novalidate>
 
             <section class="profile_details">
                 <div class="field_set">
@@ -60,10 +62,9 @@
                     <a href="#" class="change_password">Change Password</a>
                 </div>
 
-                <button ng-click="settings.saveProfile('saving...')" 
+                <button ng-click="settings.saveProfile('saving...')"
                         class="btn btn_med">Save Profile</button>
             </section>
-
         </form>
 
     </div>
