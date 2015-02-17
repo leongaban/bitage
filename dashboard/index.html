@@ -46,7 +46,6 @@
             <div class="avatar"
                  ng-click="dash.clickAvatar('clicked menu', $event)"
                  ng-class="{ active: dash.avatarMenuBool }">
-                 <!-- <div class="icon-menu"></div> -->
                  <img src="_assets/img/leon.png" title="settings" alt="user avatar" />
             </div>
 
@@ -103,7 +102,7 @@
                 </li>
             </ul>
             <div class="quotes" title="{{dash.showAuthor(dash.num)}}">
-                <p>{{dash.showQuote(dash.num)}}</p>
+                <p>"{{dash.showQuote(dash.num)}}"</p>
                 <sub>- {{dash.showAuthor(dash.num)}}</sub>
             </div>
         </div>

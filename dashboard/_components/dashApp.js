@@ -43,8 +43,7 @@
 
 				.state('help', {
 					url: '/help',
-					templateUrl: '_views/help.html',
-					controller: 'HelpCtrl'
+					templateUrl: '_views/help.html'
 				});
 
 			$urlRouterProvider.otherwise('wallet');

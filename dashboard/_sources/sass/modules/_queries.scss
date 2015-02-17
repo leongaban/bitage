@@ -15,9 +15,7 @@
 /* 1024
 ==================================================== */
 @media all and (max-width: 1024px) {
-	.wallet_actions {
-		float: left;
-	}
+	.wallet_actions { float: left; }
 }
 
 /* 900
@@ -69,7 +67,6 @@
 
 @media all and (max-width: 640px) {
 	
-	/* STYLES GO HERE */
 	.hide_mobile { display: none; }
 
 	.show_mobile { display: block; }
