@@ -11,15 +11,14 @@
 	['$scope', '$http', '$timeout', 'helpService',
 	function($scope, $http, $timeout, helpService) {
 
-		var vmt = this;
-		var vms = $scope;
+		var vm = $scope;
 
 		var timeoutMsg = function() {
-			vms.$parent.notification = false;
-		};
+ 			vm.dash.notification = false;
+ 		};
 
-		vms.$parent.closeMsg = function() {
-			vms.$parent.notification = false;
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
 		};
 
 		// setup e-mail data with unicode symbols
@@ -37,19 +36,14 @@
 
 			// check to make sure form is valid
 			if (isValid) {
-				alert('our form is amazing');
+
 				var data = this.formData;
-
 				// Post form in helpService
-				helpService.postHelpForm($http, data);
-
-				// Show success notification
-				vms.$parent.message = 'Thanks! We will get back to you soon.';
-				vms.$parent.notification = true;
-				$timeout(timeoutMsg, 4000);
+				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
 
 			} else {
-				// Show error notification
+
+				// Show error notification - sweet alert
 				alert('Please correct the form');
 			}
 
@@ -59,11 +53,9 @@
 
 	.service('helpService', [function() {
 
-		this.postHelpForm = function($http, data) {
-			console.log(data.message);
+		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
 
 			// process the form
-			// login data contains remember boolean
 			var request = $http({
 					method  : 'POST',
 					url     : '/help',
@@ -73,9 +65,10 @@
 				})
 				.success(function() {
 					// Show notification
-					// vms.$parent.message = 'Thanks! We will get back to you soon.';
-					// vms.$parent.notification = true;
-					// $timeout(timeoutMsg, 4000);
+					dash.message = 'Message sent! We will get back to you soon.';
+					dash.notification_type = 'success';
+					dash.notification = true;
+					$timeout(timeoutMsg, 4000);
 				});
 		};
 

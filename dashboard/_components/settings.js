@@ -53,9 +53,9 @@
 		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
 
 			if (fdata !== undefined) {
+				console.log(fdata);
 				dash.message = 'Profile updated!';
 				dash.notification_type = 'success';
-				console.log(fdata);
 			} else if (fdata === undefined) {
 				dash.message = 'Profile updated!';
 				dash.notification_type = 'error';

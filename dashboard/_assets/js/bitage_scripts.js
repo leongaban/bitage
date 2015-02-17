@@ -6121,8 +6121,7 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 
 				.state('help', {
 					url: '/help',
-					templateUrl: '_views/help.html',
-					controller: 'HelpCtrl'
+					templateUrl: '_views/help.html'
 				});
 
 			$urlRouterProvider.otherwise('wallet');
@@ -6783,9 +6782,9 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
 
 			if (fdata !== undefined) {
+				console.log(fdata);
 				dash.message = 'Profile updated!';
 				dash.notification_type = 'success';
-				console.log(fdata);
 			} else if (fdata === undefined) {
 				dash.message = 'Profile updated!';
 				dash.notification_type = 'error';
@@ -6812,15 +6811,14 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 	['$scope', '$http', '$timeout', 'helpService',
 	function($scope, $http, $timeout, helpService) {
 
-		var vmt = this;
-		var vms = $scope;
+		var vm = $scope;
 
 		var timeoutMsg = function() {
-			vms.$parent.notification = false;
-		};
+ 			vm.dash.notification = false;
+ 		};
 
-		vms.$parent.closeMsg = function() {
-			vms.$parent.notification = false;
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
 		};
 
 		// setup e-mail data with unicode symbols
@@ -6838,19 +6836,14 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 
 			// check to make sure form is valid
 			if (isValid) {
-				alert('our form is amazing');
+
 				var data = this.formData;
-
 				// Post form in helpService
-				helpService.postHelpForm($http, data);
-
-				// Show success notification
-				vms.$parent.message = 'Thanks! We will get back to you soon.';
-				vms.$parent.notification = true;
-				$timeout(timeoutMsg, 4000);
+				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
 
 			} else {
-				// Show error notification
+
+				// Show error notification - sweet alert
 				alert('Please correct the form');
 			}
 
@@ -6860,11 +6853,9 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 
 	.service('helpService', [function() {
 
-		this.postHelpForm = function($http, data) {
-			console.log(data.message);
+		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
 
 			// process the form
-			// login data contains remember boolean
 			var request = $http({
 					method  : 'POST',
 					url     : '/help',
@@ -6874,9 +6865,10 @@ angular.module('flow', ['flow.provider', 'flow.init', 'flow.events', 'flow.btn',
 				})
 				.success(function() {
 					// Show notification
-					// vms.$parent.message = 'Thanks! We will get back to you soon.';
-					// vms.$parent.notification = true;
-					// $timeout(timeoutMsg, 4000);
+					dash.message = 'Message sent! We will get back to you soon.';
+					dash.notification_type = 'success';
+					dash.notification = true;
+					$timeout(timeoutMsg, 4000);
 				});
 		};
 
