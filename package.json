@@ -12,7 +12,6 @@
     "event-stream": "^3.2.2",
     "express": "~4.0.0",
     "express-session": "~1.0.0",
-    "ghost": "^0.5.8",
     "gulp": "^3.8.11",
     "gulp-if": "^1.2.5",
     "gulp-util": "^3.0.3",

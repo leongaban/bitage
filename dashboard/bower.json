@@ -1,0 +1,27 @@
+{
+  "name": "dashboard",
+  "version": "0.0.1",
+  "homepage": "https://github.com/leongaban/bitage",
+  "authors": [
+    "Paulo Darocha <prochafilho@gmail.com>"
+  ],
+  "main": "index.html",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sweetalert": "~0.4.2"
+  }
+}
