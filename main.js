@@ -18,7 +18,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-var configDB 	 = require('./config/database.js');
+var configDB 	 = require('./server/config/database.js');
 
 // Express router
 var router 		 = express.Router();
@@ -28,10 +28,10 @@ mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox
 
 
 // loading static and bower components ===================
-app.use(express.static(__dirname + '/public'));
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use(express.static(__dirname + '/client'));
+app.use('/client/bower_components',  express.static(__dirname + '/client/bower_components'));
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./server/config/passport')(passport); // pass passport for configuration
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -53,8 +53,9 @@ app.use(express.static(__dirname + '/dashboard'));
 
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport);
+require('./server/routes/routes.js')(app, passport);
 // load our routes and pass in our app and fully configured passport
+
 
 //dashboard api
 var dashboard = express.Router();
