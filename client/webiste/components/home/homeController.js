@@ -30,17 +30,17 @@
 
 				.state('about', {
 					url: '/about',
-					templateUrl: 'views/about.html'
+					templateUrl: '_views/about.html'
 				})
 
 				.state('login', {
 					url: '/login',
-					templateUrl: 'views/login.html'
+					templateUrl: '_views/login.html'
 				})
 
 				.state('register', {
 					url: '/register',
-					templateUrl: 'views/register.html'
+					templateUrl: '_views/register.html'
 				});
 
 			$urlRouterProvider.otherwise('/home');
