@@ -22,7 +22,7 @@ Technologies (MEAN stack):
 
 Demos
 ------
-<img style="float: left" src="https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png?token=AALslBngee8aycaF5ihbTiXBaR29poAfks5U7AOWwA%3D%3D">
+<img style="float: left" src="https://raw.githubusercontent.com/leongaban/github_images/master/bitage.png">
 http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
 
 Sprint tracking | Trello
