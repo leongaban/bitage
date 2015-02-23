@@ -80,8 +80,7 @@ gulp.task('production', function() {
     return compile_js(minify);
 });
 
-gulp.task('default', ['delete', 'web_css', 'web_js']);
-// gulp.task('default', ['web_css', 'web_js', 'dash_css', 'dash_js']);
+gulp.task('default', ['delete', 'web_css', 'dash_css', 'web_js', 'dash_js']);
 
 // Watch for file updates
 gulp.task('watch', function() {
