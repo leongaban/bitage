@@ -20,7 +20,7 @@ function compile_js(minify, folder) {
     var jsLibs = gulp.src('client/'+folder+'/_sources/js/libs/*.js');
     var jsPlugins = gulp.src('client/'+folder+'/_sources/js/plugins/*.js');
     var jsCustom = gulp.src('client/'+folder+'/_sources/js/custom/*.js');
-    var jsComponents = gulp.src('client/'+folder+'/components/*.js');
+    var jsComponents = gulp.src('client/'+folder+'/components/**/*.js');
 
     // Order the streams and compile
     return streamqueue({ objectMode: true },
