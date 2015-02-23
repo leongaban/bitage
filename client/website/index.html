@@ -35,9 +35,7 @@
     <link href="assets/css/bitage_web.css" rel="stylesheet">
 </head>
 
-<body id="body_id"
-      ng-app="bitAge"
-      ng-controller="MainCtrl as main">
+<body id="body_id" ng-app="bitAge" ng-controller="MainCtrl as main">
 
     <header>
         <section class="bitage_logo">
@@ -84,8 +82,7 @@
 
                 <span class="input jiro form-group">
                     <input ng-model="formData.fullname" required
-                           name="name" type="text" id="input-1"
-                           class="input__field jiro_field" />
+                           name="name" type="text" id="input-1" class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-1">
                         <span class="input_content jiro_content">Full Name</span>
                         <em ng-show="quickForm.name.$invalid && !quickForm.name.$pristine"
@@ -95,8 +92,7 @@
 
                 <span class="input jiro form-group">
                     <input ng-model="formData.email" required
-                           name="email" type="email" id="input-2"
-                           class="input__field jiro_field" />
+                           name="email" type="email" id="input-2" class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-2">
                         <span class="input_content jiro_content">Email</span>
                         <em ng-show="quickForm.email.$invalid && !quickForm.email.$pristine"
@@ -106,8 +102,7 @@
 
                 <span class="input jiro form-group" class="">
                     <input ng-model="formData.password" ng-minlength="6" required
-                           name="password" type="password" id="input-3"
-                           class="input__field jiro_field" />
+                           name="password" type="password" id="input-3" class="input__field jiro_field" />
                     <label class="input__label jiro_label" for="input-3">
                         <span class="input_content jiro_content">Password</span>
                         <em ng-show="quickForm.password.$error.minlength"
@@ -179,8 +174,6 @@
         <a href="https://twitter.com/bitageio" target="_blank"><div class="icon-twitter-squared"></div></a>
     </footer>
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script> -->
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.min.js"></script> -->
     <script src="assets/libs/angular/1.3.8/angular.min.js"></script>
     <script src="assets/libs/angular/1.3.8/angular-animate.min.js"></script>
     <script src="assets/js/website.module.js"></script>

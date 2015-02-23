@@ -10,7 +10,7 @@ var gulp        = require('gulp'),
     sass        = require('gulp-ruby-sass'),
     streamqueue = require('streamqueue'),
     sourcemaps  = require('gulp-sourcemaps'),
-    livereload  = require('gulp-livereload'),
+    // livereload  = require('gulp-livereload'),  // run again when node fixed
     del         = require('del'),
     es          = require('event-stream');
 
@@ -29,18 +29,17 @@ function compile_js(minify, folder) {
         jsCustom,
         jsComponents
     )
-    // .pipe(concat('client/'+folder+'.module.js'))
     .pipe(concat(folder+'.module.js'))
     .pipe(gulpif(minify, uglify()))
     .pipe(gulp.dest('client/'+folder+'/assets/js'));
 };
 
 gulp.task('delete', function() {
-    del(['client/website/js/*'], function(err) {
+    del(['client/website/assets/js/*'], function(err) {
         console.log('web js deleted');
     });
 
-    del(['client/dashboard/js/*'], function(err) {
+    del(['client/dashboard/assets/js/*'], function(err) {
         console.log('dashboard js deleted');
     });
 });
@@ -81,12 +80,12 @@ gulp.task('production', function() {
     return compile_js(minify);
 });
 
-gulp.task('default', ['web_css', 'web_js']);
+gulp.task('default', ['delete', 'web_css', 'web_js']);
 // gulp.task('default', ['web_css', 'web_js', 'dash_css', 'dash_js']);
 
 // Watch for file updates
 gulp.task('watch', function() {
-    livereload.listen();
+    // livereload.listen();
 
     // Watch Pubic (Site) Pages | Styles | Scripts
     gulp.watch('client/website/*.html').on('change', function(file) {
