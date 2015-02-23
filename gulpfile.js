@@ -29,7 +29,8 @@ function compile_js(minify, folder) {
         jsCustom,
         jsComponents
     )
-    .pipe(concat('client/'+folder+'.module.js'))
+    // .pipe(concat('client/'+folder+'.module.js'))
+    .pipe(concat(folder+'.module.js'))
     .pipe(gulpif(minify, uglify()))
     .pipe(gulp.dest('client/'+folder+'/assets/js'));
 };
@@ -80,7 +81,8 @@ gulp.task('production', function() {
     return compile_js(minify);
 });
 
-gulp.task('default', ['web_css', 'web_js', 'dash_css', 'dash_js']);
+gulp.task('default', ['web_css', 'web_js']);
+// gulp.task('default', ['web_css', 'web_js', 'dash_css', 'dash_js']);
 
 // Watch for file updates
 gulp.task('watch', function() {
