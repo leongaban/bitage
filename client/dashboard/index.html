@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bitage | dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bitage | A Bitcoin Services Company">
+    <meta name="author" content="NodeDallas">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="application">
+    <meta property="og:site_name" content="Bitage">
+    <meta property="og:title" content="Bitage">
+    <meta property="og:image" content="logo@2x.png">
+    <meta property="og:url" content="http://www.bitage.io">
+    <meta property="og:description" content="A Bitcoin Services Company">
+
+    <link rel="icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,500,700' rel='stylesheet'>
+    <link href="assets/css/bitage_app.css" rel="stylesheet">
+</head>
+
+<body ng-app="bitAge"
+      ng-controller="DashCtrl as dash"
+      ng-click="dash.closeMenu()">
+
+    <notification-msg></notification-msg>
+    <receive-modal></receive-modal>
+    <send-modal></send-modal>
+    <edit-account-modal></edit-account-modal>
+
+    <div ng-show="dash.modal"
+         ng-click="dash.closeModal()" class="ng-modal-overlay"></div>
+
+    <div id="wrapper">
+
+        <nav id="top_nav" class="noselect">
+            <ul class="top_link_group">
+                <li class="top_link hide_mobile"><a href="#">Features</a></li>
+                <li class="top_link hide_mobile"><a href="#">Blog</a></li>
+                <li class="top_link hide_mobile"><a ui-sref="help">Help</a></li>
+            </ul>
+
+            <div class="avatar"
+                 ng-click="dash.clickAvatar('clicked menu', $event)"
+                 ng-class="{ active: dash.avatarMenuBool }">
+                 <img src="assets/img/leon.png" title="settings" alt="user avatar" />
+            </div>
+
+            <div ng-show="dash.avatarMenuBool"
+                 ng-click="dash.menuClick($event)"
+                 id="avatar_menu">
+                <ul>
+                    <li ng-click="dash.sidebarClick();">
+                        <a ui-sref="wallet" ng-click="dash.closeMenu();">Wallet</a>
+                    </li>
+                    <li ng-click="dash.sidebarClick();">
+                        <a ui-sref="accounts" ng-click="dash.closeMenu();">Accounts</a>
+                    </li>
+                    <li ng-click="dash.sidebarClick();">
+                        <a ui-sref="settings" ng-click="dash.closeMenu();">Settings</a>
+                    </li>
+
+                    <!-- <li ng-click="dash.sidebarClick();" class="show_mobile">
+                        <a ui-sref="#" ng-click="dash.closeMenu();">Features</a>
+                    </li>
+
+                    <li ng-click="dash.sidebarClick();" class="show_mobile">
+                        <a ui-sref="#" ng-click="dash.closeMenu();">Blog</a>
+                    </li> -->
+
+                    <li ng-click="dash.sidebarClick();" class="show_mobile">
+                        <a ui-sref="help" ng-click="dash.closeMenu();">Help</a>
+                    </li>
+
+                    <li>
+                        <a ng-click="dash.closeMenu()" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <h1>Bitage</h1>
+                    <h2>Welcome to the age of bitcoin</h2>
+                </li>
+                <li ng-click="dash.sidebarClick();"
+                    ng-class="{active: dash.$state.includes('wallet')}">
+                    <a ui-sref="wallet">Wallet</a>
+                </li>
+                <li ng-click="dash.sidebarClick();"
+                    ng-class="{active: dash.$state.includes('accounts')}">
+                    <a ui-sref="accounts">Accounts</a>
+                </li>
+                <li ng-click="dash.sidebarClick();"
+                    ng-class="{active: dash.$state.includes('settings')}">
+                    <a ui-sref="settings">Settings</a>
+                </li>
+            </ul>
+            <div class="quotes" title="{{dash.showAuthor(dash.num)}}">
+                <p>"{{dash.showQuote(dash.num)}}"</p>
+                <sub>- {{dash.showAuthor(dash.num)}}</sub>
+            </div>
+        </div>
+
+        <section id="page-content-wrapper">
+            <ui-view></ui-view>
+        </section>
+
+        <footer>&copy; Bitage.io</footer>
+
+    </div>
+
+    <script src="assets/libs/angular/1.3.8/angular.min.js"></script>
+    <script src="assets/libs/angular/1.3.8/angular-animate.min.js"></script>
+    <script src="assets/js/dashboard.module.js"></script>
+
+    <script type="text/javascript">
+        setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0006/1105.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56442460-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+</html>

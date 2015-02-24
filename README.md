@@ -12,6 +12,8 @@ RUN
 
 Technologies (MEAN stack):
 ------
+![MEAN stack](https://raw.githubusercontent.com/leongaban/github_images/master/mean.png)
+
 * <a href="http://docs.mongodb.org/manual/">MongoDB</a>
 * <a href="http://expressjs.com/">Express</a>
 * <a href="https://docs.angularjs.org/guide">Angular</a> | <a href="http://ngmodules.org/">ngmodules</a>
@@ -20,24 +22,29 @@ Technologies (MEAN stack):
 
 Demos
 ------
+<img style="float: left" src="https://raw.githubusercontent.com/leongaban/github_images/master/bitage.png">
 http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
 
-Sprint tracking
+Sprint tracking | Trello
 ------
+![Trello](https://raw.githubusercontent.com/leongaban/github_images/master/trello.png)
 https://trello.com/b/pu37qnwO/bitage-io-web-app
 
-Task runner
+Task runner | Gulp
 ------
+![Gulp](https://raw.githubusercontent.com/leongaban/github_images/master/gulp.png)
 http://gulpjs.com/
 
-Continuous integration
+Continuous integration | Codeship
 ------
+![Trello](https://raw.githubusercontent.com/leongaban/github_images/master/codeship.png)
 http://codeship.com | https://codeship.com/documentation
 
-Team communication
+Team communication | Slack
 ------
+![Trello](https://raw.githubusercontent.com/leongaban/github_images/master/slack.png)
 https://bitage.slack.com
 
-Documents
+Documents | Google Docs
 ------
 https://drive.google.com/a/bitage.io/#my-drive
