@@ -17,16 +17,16 @@ var gulp        = require('gulp'),
 var minify = true;
 
 function compile_js(minify, folder) {
-    var jsLibs = gulp.src('client/'+folder+'/_sources/js/libs/*.js');
-    var jsPlugins = gulp.src('client/'+folder+'/_sources/js/plugins/*.js');
-    var jsCustom = gulp.src('client/'+folder+'/_sources/js/custom/*.js');
+    var jsPlugins = gulp.src('client/'+folder+'/_sources/js/plugins/**/*.js');
+    var jsCustom = gulp.src('client/'+folder+'/_sources/js/custom/**/*.js');
+    var jsShared = gulp.src('client/'+folder+'/shared/**/*.js');
     var jsComponents = gulp.src('client/'+folder+'/components/**/*.js');
 
     // Order the streams and compile
     return streamqueue({ objectMode: true },
-        jsLibs,
         jsPlugins,
         jsCustom,
+        jsShared,
         jsComponents
     )
     .pipe(concat(folder+'.module.js'))
