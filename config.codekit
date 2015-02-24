@@ -2139,14 +2139,14 @@
 		},
 	"\/client\/dashboard\/assets\/js\/dashboard.module.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/assets\/js\/dashboard.module.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/assets\/js\/min\/dashboard.module-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/assets\/libs\/angular-ui-router\/0.2.13\/angular-ui-router.min.js": {
 		"fileType": 64,
@@ -2923,21 +2923,10 @@
 		},
 	"\/main.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/main.js",
 		"outputAbbreviatedPath": "\/min\/main-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/min\/main-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/min\/main-min.js",
-		"outputAbbreviatedPath": "\/min\/min\/main-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -2979,14 +2968,14 @@
 		},
 	"\/server\/config\/passport.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/server\/config\/passport.js",
 		"outputAbbreviatedPath": "\/server\/config\/min\/passport-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/server\/models\/user.js": {
 		"fileType": 64,
@@ -3001,14 +2990,14 @@
 		},
 	"\/server\/routes\/routes.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/server\/routes\/routes.js",
 		"outputAbbreviatedPath": "\/server\/routes\/min\/routes-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/server\/utils\/nodemailer.js": {
 		"fileType": 64,
