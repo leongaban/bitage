@@ -1669,50 +1669,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/client\/dashboard\/_sources\/libs\/angular-ui-router\/0.2.13\/angular-ui-router.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/angular-ui-router\/0.2.13\/angular-ui-router.min.js",
-		"outputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/angular-ui-router\/0.2.13\/min\/angular-ui-router.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/client\/dashboard\/_sources\/libs\/angular\/1.3.8\/angular-animate.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/angular\/1.3.8\/angular-animate.min.js",
-		"outputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/angular\/1.3.8\/min\/angular-animate.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/client\/dashboard\/_sources\/libs\/angular\/1.3.8\/angular.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/angular\/1.3.8\/angular.min.js",
-		"outputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/angular\/1.3.8\/min\/angular.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/client\/dashboard\/_sources\/libs\/ng-flow\/2.6.0\/ng-flow-standalone.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/ng-flow\/2.6.0\/ng-flow-standalone.min.js",
-		"outputAbbreviatedPath": "\/client\/dashboard\/_sources\/libs\/ng-flow\/2.6.0\/min\/ng-flow-standalone.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/client\/dashboard\/_sources\/sass\/bitage_app.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -2183,124 +2139,124 @@
 		},
 	"\/client\/dashboard\/assets\/libs\/angular-ui-router\/0.2.13\/angular-ui-router.min.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/angular-ui-router\/0.2.13\/angular-ui-router.min.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/angular-ui-router\/0.2.13\/min\/angular-ui-router.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/assets\/libs\/angular\/1.3.8\/angular-animate.min.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/angular\/1.3.8\/angular-animate.min.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/angular\/1.3.8\/min\/angular-animate.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/assets\/libs\/angular\/1.3.8\/angular.min.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/angular\/1.3.8\/angular.min.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/angular\/1.3.8\/min\/angular.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/assets\/libs\/ng-flow\/2.6.0\/ng-flow-standalone.min.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/ng-flow\/2.6.0\/ng-flow-standalone.min.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/assets\/libs\/ng-flow\/2.6.0\/min\/ng-flow-standalone.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/accounts\/accounts.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/accounts\/accounts.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/accounts\/min\/accounts-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/accounts\/accountsDirectives.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/accounts\/accountsDirectives.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/accounts\/min\/accountsDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/dash\/dashApp.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/dash\/dashApp.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/dash\/min\/dashApp-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/help\/help.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/help\/help.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/help\/min\/help-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/settings\/settings.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/settings\/settings.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/settings\/min\/settings-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/wallet\/wallet.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/wallet\/wallet.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/wallet\/min\/wallet-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/components\/wallet\/walletDirectives.js": {
 		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/dashboard\/components\/wallet\/walletDirectives.js",
 		"outputAbbreviatedPath": "\/client\/dashboard\/components\/wallet\/min\/walletDirectives-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 1
 		},
 	"\/client\/dashboard\/index.html": {
 		"fileType": 8192,
@@ -2386,17 +2342,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/website\/_sources\/js\/custom\/particles-custom.js",
 		"outputAbbreviatedPath": "\/client\/website\/_sources\/js\/custom\/min\/particles-custom-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/client\/website\/_sources\/js\/libs\/angular-ui-router.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/website\/_sources\/js\/libs\/angular-ui-router.js",
-		"outputAbbreviatedPath": "\/client\/website\/_sources\/js\/libs\/min\/angular-ui-router-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -2896,38 +2841,11 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/client\/website\/index.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/website\/index.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/client\/website\/views\/about.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/client\/website\/views\/about.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/client\/website\/views\/login.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/website\/views\/login.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/client\/website\/views\/register.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/client\/website\/views\/register.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
