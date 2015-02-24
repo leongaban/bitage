@@ -10,100 +10,113 @@ var gulp        = require('gulp'),
     sass        = require('gulp-ruby-sass'),
     streamqueue = require('streamqueue'),
     sourcemaps  = require('gulp-sourcemaps'),
-    livereload  = require('gulp-livereload'),
+    // livereload  = require('gulp-livereload'),  // run again when node fixed
+    del         = require('del'),
     es          = require('event-stream');
 
 var minify = true;
 
 function compile_js(minify, folder) {
-    var jsLibs = gulp.src(folder+'/_sources/js/libs/*.js');
-    var jsPlugins = gulp.src(folder+'/_sources/js/plugins/*.js');
-    var jsCustom = gulp.src(folder+'/_sources/js/custom/*.js');
-    var jsComponents = gulp.src(folder+'/_components/*.js');
+    var jsPlugins = gulp.src('client/'+folder+'/_sources/js/plugins/**/*.js');
+    var jsCustom = gulp.src('client/'+folder+'/_sources/js/custom/**/*.js');
+    var jsShared = gulp.src('client/'+folder+'/shared/**/*.js');
+    var jsComponents = gulp.src('client/'+folder+'/components/**/*.js');
 
     // Order the streams and compile
     return streamqueue({ objectMode: true },
-        jsLibs,
         jsPlugins,
         jsCustom,
+        jsShared,
         jsComponents
     )
-    .pipe(concat('bitage_scripts.js'))
+    .pipe(concat(folder+'.module.js'))
     .pipe(gulpif(minify, uglify()))
-    .pipe(gulp.dest(folder+'/_assets/js'));
+    .pipe(gulp.dest('client/'+folder+'/assets/js'));
 };
 
+gulp.task('delete', function() {
+    del(['client/website/assets/js/*'], function(err) {
+        console.log('web js deleted');
+    });
+
+    del(['client/dashboard/assets/js/*'], function(err) {
+        console.log('dashboard js deleted');
+    });
+});
+
 // Compile public SASS
-gulp.task('sass_site', function () {
-    return sass('public/_sources/sass/bitage_web.scss', { style: 'compressed' })
+gulp.task('web_css', function() {
+    return sass('client/website/_sources/sass/bitage_web.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('public/_assets/css'))
-        .pipe(livereload());
+        .pipe(gulp.dest('client/website/assets/css'));
+        // .pipe(livereload());
 });
 
 // Compile dashboard SASS
-gulp.task('sass_app', function () {
-    return sass('dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
-        // .pipe(sourcemaps.init())
-        // .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('dashboard/_assets/css'))
-        .pipe(livereload());
+gulp.task('dash_css', function() {
+    return sass('client/dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('client/dashboard/assets/css'));
+        // .pipe(livereload());
 });
 
 // Development task
-gulp.task('devsite', function () {
-    // minify = false;
-    return compile_js(minify, 'public');
+gulp.task('web_js', function() {
+    minify = false;
+    return compile_js(minify, 'website');
 });
 
 // Development task
-gulp.task('devapp', function () {
-    // minify = false;
+gulp.task('dash_js', function() {
+    minify = false;
     return compile_js(minify, 'dashboard');
 });
 
 // Production task (minify)
-gulp.task('production', function () {
-    // minify = true;
-    return public_js(minify);
+gulp.task('production', function() {
+    minify = true;
+    return compile_js(minify);
 });
 
+gulp.task('default', ['delete', 'web_css', 'dash_css', 'web_js', 'dash_js']);
+
 // Watch for file updates
-gulp.task('watch', function () {
-    livereload.listen();
+gulp.task('watch', function() {
+    // livereload.listen();
 
     // Watch Pubic (Site) Pages | Styles | Scripts
-    gulp.watch('public/*.html').on('change', function(file) {
-        livereload.changed(file.path);
+    gulp.watch('client/website/*.html').on('change', function(file) {
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Site HTML changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']).on('change', function(file) {
-        livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('Public CSS changed' + ' (' + file.path + ')'));
+    gulp.watch('client/website/_sources/sass/**/*.scss', ['web_css']).on('change', function(file) {
+        // livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('Website CSS changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('public/_sources/js/libs/*.js', ['devsite']);
-    gulp.watch('public/_sources/js/plugins/*.js', ['devsite']);
-    gulp.watch('public/_components/*.js', ['devsite']);
+    gulp.watch('client/website/_sources/js/libs/*.js', ['web_js']);
+    gulp.watch('client/website/_sources/js/plugins/*.js', ['web_js']);
+    gulp.watch('client/website/components/*.js', ['web_js']);
 
 
     // Watch Dashboard (App) Pages | Styles | Scripts
-    gulp.watch('dashboard/*.html').on('change', function(file) {
-        livereload.changed(file.path);
+    gulp.watch('client/dashboard/*.html').on('change', function(file) {
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']).on('change', function(file) {
-        livereload.changed(file.path);
+    gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('dashboard/_sources/js/libs/*.js', ['devsite']);
-    gulp.watch('dashboard/_sources/js/plugins/*.js', ['devsite']);
-    gulp.watch('dashboard/_components/*.js', ['devsite']);
+    gulp.watch('client/dashboard/_sources/js/libs/*.js', ['dash_js']);
+    gulp.watch('client/dashboard/_sources/js/plugins/*.js', ['dash_js']);
+    gulp.watch('client/dashboard/components/*.js', ['dash_js']);
 
-    // gulp.watch('public/_sources/sass/**/*.scss', ['sass_site']);
-    // gulp.watch('dashboard/_sources/sass/**/*.scss', ['sass_app']);
+    // gulp.watch('client/website/_sources/sass/**/*.scss', ['web_css']);
+    // gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']);
 });

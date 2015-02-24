@@ -12,7 +12,7 @@ RUN
 
 Technologies (MEAN stack):
 ------
-![MEAN stack](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/mean.png)
+![MEAN stack](https://raw.githubusercontent.com/leongaban/github_images/master/mean.png)
 
 * <a href="http://docs.mongodb.org/manual/">MongoDB</a>
 * <a href="http://expressjs.com/">Express</a>
@@ -22,27 +22,27 @@ Technologies (MEAN stack):
 
 Demos
 ------
-<img style="float: left" src="https://raw.githubusercontent.com/leongaban/bitage/master/github_only/bitage.png">
+<img style="float: left" src="https://raw.githubusercontent.com/leongaban/github_images/master/bitage.png">
 http://nodedallas.io/apps/web/ | http://nodedallas.io/apps/dash/
 
 Sprint tracking | Trello
 ------
-![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/trello.png)
+![Trello](https://raw.githubusercontent.com/leongaban/github_images/master/trello.png)
 https://trello.com/b/pu37qnwO/bitage-io-web-app
 
 Task runner | Gulp
 ------
-![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/gulp.png)
+![Gulp](https://raw.githubusercontent.com/leongaban/github_images/master/gulp.png)
 http://gulpjs.com/
 
 Continuous integration | Codeship
 ------
-![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/codeship.png)
+![Trello](https://raw.githubusercontent.com/leongaban/github_images/master/codeship.png)
 http://codeship.com | https://codeship.com/documentation
 
 Team communication | Slack
 ------
-![Trello](https://raw.githubusercontent.com/leongaban/bitage/master/github_only/slack.png)
+![Trello](https://raw.githubusercontent.com/leongaban/github_images/master/slack.png)
 https://bitage.slack.com
 
 Documents | Google Docs

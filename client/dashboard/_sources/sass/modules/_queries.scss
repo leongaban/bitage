@@ -1,0 +1,121 @@
+/*  RESPONSIVE MEDIA QUERIES
+====================================================
+==================================================== */
+
+/* 1600
+==================================================== */
+@media all and (max-width: 1600px) {
+}
+
+/* 1200
+==================================================== */
+@media all and (max-width: 1200px) {
+}
+
+/* 1024
+==================================================== */
+@media all and (max-width: 1024px) {
+	.wallet_actions { float: left; }
+}
+
+/* 900
+==================================================== */
+@media all and (max-width: 900px) {
+	.td_icon { padding-right: 20px !important; width: 5%; }
+}
+
+/* 800
+==================================================== */
+@media all and (max-width: 800px) {
+}
+
+/* 768 (Mobile Break)
+==================================================== */
+@media all and (max-width: 768px) {
+	.content_header {
+		h1 {
+			font-size: em(20);
+			font-weight: 300;
+			color: #666;
+		}
+	}
+
+	.mobile_logo {
+		display: block;
+		float: left;
+		margin-right: 5px;
+	}
+
+	#wrapper { padding-left: 0; }
+
+    #sidebar-wrapper { left: 0; }
+
+    #wrapper.active { position: relative; left: 250px; }
+
+    #wrapper.active #sidebar-wrapper {
+    	left: 250px;
+    	width: 250px;
+    	transition: all 0.4s ease 0s;
+    }
+
+    .delete_address { right: 0; }
+
+	.widget-container { margin: 0; }
+
+	.wallet-transactions { padding: 0; }
+}
+
+@media all and (max-width: 640px) {
+	
+	.hide_mobile { display: none; }
+
+	.show_mobile { display: block; }
+
+	#sidebar-wrapper { display: none; }
+
+	.content_header h1 { font-size: em(18); }
+
+	.address_label { line-height: 0; margin-bottom: 25px; }
+
+	.btc_public_address,
+	.address_balance,
+	.qr_btn { float: none; }
+
+	.address_balance {
+		padding: 5px 10px;
+		width: 200px;
+		min-width: 100%;
+	}
+
+	.qr_btn {
+		top: 20px;
+		margin-left: 0px;
+		margin-right: 10px;
+	}
+
+	.btc_public_address {
+		margin-left: 30px;
+		margin-top: 10px;
+		font-size: em(8);
+		line-height: 0;
+	}
+
+	.delete_address {
+	    top: -40px;
+		img { left: 10px; }
+	}
+
+	li.add_currency_btn_li { margin-top: 15px; margin-left: 0; }
+
+	select#account_type { margin-bottom: 15px; width: 220px; }
+}
+
+/* 400
+==================================================== */
+@media all and (max-width: 400px) {
+}
+
+/* 360
+==================================================== */
+@media all and (max-width: 360px) {
+}
