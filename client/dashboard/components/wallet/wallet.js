@@ -98,7 +98,7 @@
 	    this.modalRecieve = function(dash) {
 	        dash.modal_receive  = true;
 			dash.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			dash.qr_code 	    = '_assets/img/qrcode.png';
+			dash.qr_code 	    = 'assets/img/qrcode.png';
 	    };
 
 	    // wire modal send
