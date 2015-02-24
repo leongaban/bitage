@@ -6,7 +6,7 @@ var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 var bitcoin          = require('bitcoinjs-lib');
 
 // load up the user model
-var User             = require('../app/models/user');
+var User             = require('../models/user');
 
 var moment           = require('moment');
 // load the auth variables

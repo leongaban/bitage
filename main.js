@@ -48,8 +48,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// The Angular App itself below
-app.use(express.static(__dirname + '/dashboard'));
+// The Bitage Website:
+app.use(express.static(__dirname, '/client/website'));
+
+// The Bitage Dashboard:
+app.use(express.static(__dirname + '/client/dashboard'));
 
 
 // routes ======================================================================

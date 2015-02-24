@@ -8,8 +8,9 @@ module.exports = function(app, passport) {
 
 	// show the home page (will also have our login links)
 	app.get('/', function(req, res) {
-		res.render('index.hbs');	});
-
+		// res.render('index.hbs');
+		res.render('client/website/index.html');
+	});
 
 	// PROFILE SECTION =========================
 	app.get('/profile', isLoggedIn, function(req, res) {
