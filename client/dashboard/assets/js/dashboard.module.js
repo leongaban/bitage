@@ -246,6 +246,84 @@
 
 })();
 
+/*global angular */
+/* =========================================
+   HELP Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-help', ['notification-directives'])
+
+	.controller('HelpCtrl',
+	['$scope', '$http', '$timeout', 'helpService',
+	function($scope, $http, $timeout, helpService) {
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		// setup e-mail data with unicode symbols
+		// send user name, email and public address
+		var helpMessage = {
+		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+		    to: 'leon@bitage.io', // list of receivers
+		    subject: 'Bitage Help Request! ✔', // Subject line
+		    text: 'Hello world ✔', // plaintext body
+		    html: '<b>Hello world ✔</b>' // html body
+		};
+
+		// Quick form submit
+		this.submitHelpForm = function(isValid) {
+
+			// check to make sure form is valid
+			if (isValid) {
+
+				var data = this.formData;
+				// Post form in helpService
+				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
+
+			} else {
+
+				// Show error notification - sweet alert
+				alert('Please correct the form');
+			}
+
+		};
+
+	}])
+
+	.service('helpService', [function() {
+
+		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
+
+			// process the form
+			var request = $http({
+					method  : 'POST',
+					url     : '/help',
+					// data    : $.param(vm.formData),
+					data    : data.message,
+					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+				})
+				.success(function() {
+					// Show notification
+					dash.message = 'Message sent! We will get back to you soon.';
+					dash.notification_type = 'success';
+					dash.notification = true;
+					$timeout(timeoutMsg, 4000);
+				});
+		};
+
+	}]);
+
+})();
+
 /*global angular*/
 /* =========================================
 --------------------------------------------
@@ -438,155 +516,6 @@
 			vm.modal = false;
 		};
 
-	}]);
-
-})();
-
-/*global angular */
-/* =========================================
-   HELP Module
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-help', ['notification-directives'])
-
-	.controller('HelpCtrl',
-	['$scope', '$http', '$timeout', 'helpService',
-	function($scope, $http, $timeout, helpService) {
-
-		var vm = $scope;
-
-		var timeoutMsg = function() {
- 			vm.dash.notification = false;
- 		};
-
-		vm.dash.closeMsg = function() {
-			vm.dash.notification = false;
-		};
-
-		// setup e-mail data with unicode symbols
-		// send user name, email and public address
-		var helpMessage = {
-		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
-		    to: 'leon@bitage.io', // list of receivers
-		    subject: 'Bitage Help Request! ✔', // Subject line
-		    text: 'Hello world ✔', // plaintext body
-		    html: '<b>Hello world ✔</b>' // html body
-		};
-
-		// Quick form submit
-		this.submitHelpForm = function(isValid) {
-
-			// check to make sure form is valid
-			if (isValid) {
-
-				var data = this.formData;
-				// Post form in helpService
-				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
-
-			} else {
-
-				// Show error notification - sweet alert
-				alert('Please correct the form');
-			}
-
-		};
-
-	}])
-
-	.service('helpService', [function() {
-
-		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
-
-			// process the form
-			var request = $http({
-					method  : 'POST',
-					url     : '/help',
-					// data    : $.param(vm.formData),
-					data    : data.message,
-					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-				})
-				.success(function() {
-					// Show notification
-					dash.message = 'Message sent! We will get back to you soon.';
-					dash.notification_type = 'success';
-					dash.notification = true;
-					$timeout(timeoutMsg, 4000);
-				});
-		};
-
-	}]);
-
-})();
-
-/*global angular */
-/* =========================================
-   Settings module
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
-	.controller('SettingsCtrl',
-		['$scope', '$timeout', 'settingsService',
-		function($scope, $timeout, settingsService) {
-
-		// Angular File upload:
-		//http://flowjs.github.io/ng-flow/
-		//https://github.com/flowjs/ng-flow
-
-		var vm = $scope;
-
-		var timeoutMsg = function() {
- 			vm.dash.notification = false;
- 		};
-
-		vm.dash.closeMsg = function() {
-			vm.dash.notification = false;
-		};
-
-		this.saveProfile = function(isValid) {
-
-			// check to make sure form is valid
-            if (isValid) {
-                settingsService.postProfile(
-                	this.formData,
-					vm.dash,
-					$timeout,
-					timeoutMsg
-				);
-            } else {
-            	// alert('Please check the form!');
-             //   	swal({
-                //    title: "Oops!",
-                //    text: "Please check the form!",
-                //    type: "error",
-                //    confirmButtonText: "Ok",
-                //    confirmButtonColor: "#024562" });
-            }
-
-		};
-	}])
-
-	.service('settingsService', [function() {
-
-	    // send updated profile to server
-		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
-
-			if (fdata !== undefined) {
-				console.log(fdata);
-				dash.message = 'Profile updated!';
-				dash.notification_type = 'success';
-			} else if (fdata === undefined) {
-				dash.message = 'Please check the form!';
-				dash.notification_type = 'error';
-			}
-
-			// Show notification
-			dash.notification = true;
-			$timeout(timeoutMsg, 4000);
-		};
 	}]);
 
 })();
@@ -790,5 +719,75 @@
 				'</section>'
 	    };
 	});
+
+})();
+/*global angular */
+/* =========================================
+   Settings module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
+	.controller('SettingsCtrl',
+		['$scope', '$timeout', 'settingsService',
+		function($scope, $timeout, settingsService) {
+
+		// Angular File upload:
+		//http://flowjs.github.io/ng-flow/
+		//https://github.com/flowjs/ng-flow
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		this.saveProfile = function(isValid) {
+
+			// check to make sure form is valid
+            if (isValid) {
+                settingsService.postProfile(
+                	this.formData,
+					vm.dash,
+					$timeout,
+					timeoutMsg
+				);
+            } else {
+            	// alert('Please check the form!');
+             //   	swal({
+                //    title: "Oops!",
+                //    text: "Please check the form!",
+                //    type: "error",
+                //    confirmButtonText: "Ok",
+                //    confirmButtonColor: "#024562" });
+            }
+
+		};
+	}])
+
+	.service('settingsService', [function() {
+
+	    // send updated profile to server
+		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
+
+			if (fdata !== undefined) {
+				console.log(fdata);
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'success';
+			} else if (fdata === undefined) {
+				dash.message = 'Please check the form!';
+				dash.notification_type = 'error';
+			}
+
+			// Show notification
+			dash.notification = true;
+			$timeout(timeoutMsg, 4000);
+		};
+	}]);
 
 })();

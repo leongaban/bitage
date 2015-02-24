@@ -10,7 +10,7 @@ var gulp        = require('gulp'),
     sass        = require('gulp-ruby-sass'),
     streamqueue = require('streamqueue'),
     sourcemaps  = require('gulp-sourcemaps'),
-    // livereload  = require('gulp-livereload'),  // run again when node fixed
+    // livereload  = require('gulp-livereload'),
     del         = require('del'),
     es          = require('event-stream');
 
