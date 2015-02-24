@@ -11,7 +11,7 @@ var gulp        = require('gulp'),
     streamqueue = require('streamqueue'),
     sourcemaps  = require('gulp-sourcemaps'),
     runSequence = require('run-sequence'),
-    // livereload  = require('gulp-livereload'),
+    livereload  = require('gulp-livereload'),
     del         = require('del'),
     es          = require('event-stream');
 
@@ -67,52 +67,54 @@ gulp.task('delete_dash', function() {
     });
 });
 
-// Compile public SASS
 gulp.task('web_css', function() {
     return sass('client/website/_sources/sass/bitage_web.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('client/website/assets/css'));
-        // .pipe(livereload());
+        .pipe(gulp.dest('client/website/assets/css'))
+        .pipe(livereload());
 });
 
-// Compile dashboard SASS
 gulp.task('dash_css', function() {
     return sass('client/dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('client/dashboard/assets/css'));
-        // .pipe(livereload());
+        .pipe(gulp.dest('client/dashboard/assets/css'))
+        .pipe(livereload());
 });
 
-// Development task
 gulp.task('web_js', function() {
     minify = false;
     return compile_js(minify, 'website');
 });
 
-// Development task
 gulp.task('dash_js', function() {
     minify = false;
     return compile_js(minify, 'dashboard');
 });
 
-// Production task (minify)
-gulp.task('production', function() {
-    minify = true;
-    return compile_js(minify);
+// gulp.task('production', function() {
+//     minify = true;
+//     return compile_js(minify);
+// });
+
+// Website task:
+gulp.task('web', function(callback) {
+    runSequence('delete_web',
+                'web_css',
+                'web_js',
+                callback);
 });
 
-gulp.task('web', ['delete_web', 'web_css', 'web_js']);
-gulp.task('dash', ['delete_dash', 'dash_css', 'dash_js']);
+// Dashboard task:
+gulp.task('dash', function(callback) {
+    runSequence('delete_dash',
+                'dash_css',
+                'dash_js',
+                callback);
+});
 
-// gulp.task('default', ['delete', 'dash_css', 'web_css', 'web_js', 'dash_js']);
-
-// This will run in this order:
-// * build-clean
-// * build-scripts and build-styles in parallel
-// * build-html
-// * Finally call the callback function
+// Default task:
 gulp.task('default', function(callback) {
     runSequence('delete',
                ['web_css', 'web_js'],
@@ -122,16 +124,16 @@ gulp.task('default', function(callback) {
 
 // Watch for file updates
 gulp.task('watch', function() {
-    // livereload.listen();
+    livereload.listen();
 
     // Watch Pubic (Site) Pages | Styles | Scripts
     gulp.watch('client/website/*.html').on('change', function(file) {
-        // livereload.changed(file.path);
+        livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Site HTML changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('client/website/_sources/sass/**/*.scss', ['web_css']).on('change', function(file) {
-        // livereload.changed(file.path);
+        livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Website CSS changed' + ' (' + file.path + ')'));
     });
 
@@ -142,12 +144,12 @@ gulp.task('watch', function() {
 
     // Watch Dashboard (App) Pages | Styles | Scripts
     gulp.watch('client/dashboard/*.html').on('change', function(file) {
-        // livereload.changed(file.path);
+        livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
-        // livereload.changed(file.path);
+        livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });
 
