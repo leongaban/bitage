@@ -10,6 +10,7 @@ var gulp        = require('gulp'),
     sass        = require('gulp-ruby-sass'),
     streamqueue = require('streamqueue'),
     sourcemaps  = require('gulp-sourcemaps'),
+    runSequence = require('run-sequence'),
     // livereload  = require('gulp-livereload'),
     del         = require('del'),
     es          = require('event-stream');
@@ -34,26 +35,35 @@ function compile_js(minify, folder) {
     .pipe(gulp.dest('client/'+folder+'/assets/js'));
 };
 
-gulp.task('delete', function() {
-    
+// Delete all js and css
+gulp.task('delete', function(cb) {
+    del([
+        'client/website/assets/css/maps',
+        'client/website/assets/css/*.css',
+        'client/dashboard/assets/css/maps',
+        'client/dashboard/assets/css/*.css',
+        'client/website/assets/js/*',
+        'client/dashboard/assets/js/*'
+    ], cb);
+});
+
+gulp.task('delete_web', function() {
     del(['client/website/assets/css/maps'], function(err) {});
-
-    del(['client/website/assets/css/bitage_web.css'], function(err) {
-        console.log('           web css deleted');
+    del(['client/website/assets/css/*.css'], function(err) {
+        console.log('           web       css deleted');
     });
+    del(['client/website/assets/js/*'], function(err) {
+        console.log('           web       js  deleted');
+    });
+});
 
+gulp.task('delete_dash', function() {
     del(['client/dashboard/assets/css/maps'], function(err) {});
-
-    del(['client/dashboard/assets/css/bitage_app.css'], function(err) {
+    del(['client/dashboard/assets/css/*.css'], function(err) {
         console.log('           dashboard css deleted');
     });
-
-    del(['client/website/assets/js/*'], function(err) {
-        console.log('           web js deleted');
-    });
-
     del(['client/dashboard/assets/js/*'], function(err) {
-        console.log('           dashboard js deleted');
+        console.log('           dashboard js  deleted');
     });
 });
 
@@ -93,7 +103,22 @@ gulp.task('production', function() {
     return compile_js(minify);
 });
 
-gulp.task('default', ['delete', 'web_css', 'dash_css', 'web_js', 'dash_js']);
+gulp.task('web', ['delete_web', 'web_css', 'web_js']);
+gulp.task('dash', ['delete_dash', 'dash_css', 'dash_js']);
+
+// gulp.task('default', ['delete', 'dash_css', 'web_css', 'web_js', 'dash_js']);
+
+// This will run in this order:
+// * build-clean
+// * build-scripts and build-styles in parallel
+// * build-html
+// * Finally call the callback function
+gulp.task('default', function(callback) {
+    runSequence('delete',
+               ['web_css', 'web_js'],
+               ['dash_css', 'dash_js'],
+                callback);
+});
 
 // Watch for file updates
 gulp.task('watch', function() {
