@@ -35,6 +35,19 @@ function compile_js(minify, folder) {
 };
 
 gulp.task('delete', function() {
+    
+    del(['client/website/assets/css/maps'], function(err) {});
+
+    del(['client/website/assets/css/bitage_web.css'], function(err) {
+        console.log('web css deleted');
+    });
+
+    del(['client/dashboard/assets/css/maps'], function(err) {});
+
+    del(['client/dashboard/assets/css/bitage_app.css'], function(err) {
+        console.log('dashboard css deleted');
+    });
+
     del(['client/website/assets/js/*'], function(err) {
         console.log('web js deleted');
     });
