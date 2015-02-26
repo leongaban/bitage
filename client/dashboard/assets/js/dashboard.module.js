@@ -208,7 +208,7 @@
 					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' +
 
 					'<h1>Edit Watch Account</h1> ' +
-					'<form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" ' +
+					'<form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" novalidate>' +
 						'<div class="modal_form" data-id="{{dash.acct_id}}"> ' +
 							'<div class="label_input_combo"> ' +
 								'<label for="to_input">Account Name</label> ' +
@@ -216,7 +216,7 @@
 										'ng-model="dash.new_label" ' +
 										'class="form-input" ' +
 										'type="text" ' +
-										'placeholder="{{dash.acct_label}}"> ' +
+										'value="{{dash.acct_label}}"> ' +
 							'</div> ' +
 
 							'<div class="label_input_combo"> ' +
@@ -225,7 +225,7 @@
 										'ng-model="dash.new_address" ' +
 										'class="public_addy_input form-input" ' +
 										'type="text" ' +
-										'placeholder="{{dash.acct_address}}"> ' +
+										'value="{{dash.acct_address}}"> ' +
 							'</div> ' +
 
 							'<button type="submit" ' +
@@ -522,6 +522,77 @@
 
 /*global angular */
 /* =========================================
+   Settings module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
+	.controller('SettingsCtrl',
+		['$scope', '$timeout', 'settingsService',
+		function($scope, $timeout, settingsService) {
+
+		// Angular File upload:
+		//http://flowjs.github.io/ng-flow/
+		//https://github.com/flowjs/ng-flow
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		this.saveProfile = function(isValid) {
+
+			// check to make sure form is valid
+            if (isValid) {
+                settingsService.postProfile(
+                	this.formData,
+					vm.dash,
+					$timeout,
+					timeoutMsg
+				);
+            } else {
+            	// alert('Please check the form!');
+             //   	swal({
+                //    title: "Oops!",
+                //    text: "Please check the form!",
+                //    type: "error",
+                //    confirmButtonText: "Ok",
+                //    confirmButtonColor: "#024562" });
+            }
+
+		};
+	}])
+
+	.service('settingsService', [function() {
+
+	    // send updated profile to server
+		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
+
+			if (fdata !== undefined) {
+				console.log(fdata);
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'success';
+			} else if (fdata === undefined) {
+				dash.message = 'Please check the form!';
+				dash.notification_type = 'error';
+			}
+
+			// Show notification
+			dash.notification = true;
+			$timeout(timeoutMsg, 4000);
+		};
+	}]);
+
+})();
+
+/*global angular */
+/* =========================================
    WALLET Module
    ========================================= */
 
@@ -719,75 +790,5 @@
 				'</section>'
 	    };
 	});
-
-})();
-/*global angular */
-/* =========================================
-   Settings module
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
-	.controller('SettingsCtrl',
-		['$scope', '$timeout', 'settingsService',
-		function($scope, $timeout, settingsService) {
-
-		// Angular File upload:
-		//http://flowjs.github.io/ng-flow/
-		//https://github.com/flowjs/ng-flow
-
-		var vm = $scope;
-
-		var timeoutMsg = function() {
- 			vm.dash.notification = false;
- 		};
-
-		vm.dash.closeMsg = function() {
-			vm.dash.notification = false;
-		};
-
-		this.saveProfile = function(isValid) {
-
-			// check to make sure form is valid
-            if (isValid) {
-                settingsService.postProfile(
-                	this.formData,
-					vm.dash,
-					$timeout,
-					timeoutMsg
-				);
-            } else {
-            	// alert('Please check the form!');
-             //   	swal({
-                //    title: "Oops!",
-                //    text: "Please check the form!",
-                //    type: "error",
-                //    confirmButtonText: "Ok",
-                //    confirmButtonColor: "#024562" });
-            }
-
-		};
-	}])
-
-	.service('settingsService', [function() {
-
-	    // send updated profile to server
-		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
-
-			if (fdata !== undefined) {
-				console.log(fdata);
-				dash.message = 'Profile updated!';
-				dash.notification_type = 'success';
-			} else if (fdata === undefined) {
-				dash.message = 'Please check the form!';
-				dash.notification_type = 'error';
-			}
-
-			// Show notification
-			dash.notification = true;
-			$timeout(timeoutMsg, 4000);
-		};
-	}]);
 
 })();

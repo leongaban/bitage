@@ -17,7 +17,7 @@
 					'<div ng-click="dash.closeModal()" class="close_modal icon-cancel-1"></div> ' +
 
 					'<h1>Edit Watch Account</h1> ' +
-					'<form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" ' +
+					'<form id="update_acct_form" ng-submit="dash.updateAccount(dash.acct_id)" novalidate>' +
 						'<div class="modal_form" data-id="{{dash.acct_id}}"> ' +
 							'<div class="label_input_combo"> ' +
 								'<label for="to_input">Account Name</label> ' +

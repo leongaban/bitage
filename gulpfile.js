@@ -139,13 +139,13 @@ gulp.task('watch', function() {
 
     gulp.watch('client/website/_sources/js/libs/*.js', ['web_js']);
     gulp.watch('client/website/_sources/js/plugins/*.js', ['web_js']);
-    gulp.watch('client/website/components/*.js', ['web_js']);
+    gulp.watch('client/website/components/**/*.js', ['web_js']);
 
 
     // Watch Dashboard (App) Pages | Styles | Scripts
     gulp.watch('client/dashboard/*.html').on('change', function(file) {
         livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('App HTML changed' + ' (' + file.path + ')'));
+        gutil.log(gutil.colors.yellow('Dashboard HTML changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
@@ -155,8 +155,12 @@ gulp.task('watch', function() {
 
     gulp.watch('client/dashboard/_sources/js/libs/*.js', ['dash_js']);
     gulp.watch('client/dashboard/_sources/js/plugins/*.js', ['dash_js']);
-    gulp.watch('client/dashboard/components/*.js', ['dash_js']);
+    gulp.watch('client/dashboard/components/**/*.js').on('change', function(file) {
+        livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('Dashboard JS changed' + ' (' + file.path + ')'));
+    });
 
+    // gulp.watch('client/dashboard/components/**/*.js', ['dash_js']);
     // gulp.watch('client/website/_sources/sass/**/*.scss', ['web_css']);
     // gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']);
 });
