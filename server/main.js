@@ -29,7 +29,7 @@ mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox
 
 // loading static and bower components ===================
 app.use(express.static(__dirname + '/client'));
-app.use('/client/bower_components',  express.static(__dirname + '/client/bower_components'));
+app.use('../client/bower_components',  express.static(__dirname + '../client/bower_components'));
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -49,10 +49,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // The Bitage Website:
-app.use(express.static(__dirname, '/client/website'));
+app.use(express.static(__dirname, '../client/website'));
 
 // The Bitage Dashboard:
-app.use(express.static(__dirname + '/client/dashboard'));
+app.use(express.static(__dirname + '../client/dashboard'));
 
 
 // routes ======================================================================
