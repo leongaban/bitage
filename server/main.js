@@ -39,8 +39,9 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('view engine', 'ejs'); // set up ejs for templating
-app.engine('hbs', cons.handlebars);
+app.set('views', '../client');
+// app.set('view engine', 'ejs'); // set up ejs for templating
+// app.engine('hbs', cons.handlebars);
 
 // required for passport
 app.use(session({ secret: 'itisalwayssunnyinphilly@21!6' })); // session secret
@@ -52,7 +53,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(express.static(__dirname, '../client/website'));
 
 // The Bitage Dashboard:
-app.use(express.static(__dirname + '../client/dashboard'));
+// app.use(express.static(__dirname + '../client/dashboard'));
 
 
 // routes ======================================================================
