@@ -18,10 +18,10 @@ var gulp        = require('gulp'),
 var minify = true;
 
 function compile_js(minify, folder) {
-    var jsPlugins = gulp.src('client/'+folder+'/_sources/js/plugins/**/*.js');
-    var jsCustom = gulp.src('client/'+folder+'/_sources/js/custom/**/*.js');
-    var jsShared = gulp.src('client/'+folder+'/app/shared/**/*.js');
-    var jsComponents = gulp.src('client/'+folder+'/app/components/**/*.js');
+    var jsPlugins = gulp.src(folder+'/_sources/js/plugins/**/*.js');
+    var jsCustom = gulp.src(folder+'/_sources/js/custom/**/*.js');
+    var jsShared = gulp.src(folder+'/app/shared/**/*.js');
+    var jsComponents = gulp.src(folder+'/app/components/**/*.js');
 
     // Order the streams and compile
     return streamqueue({ objectMode: true },
@@ -32,54 +32,54 @@ function compile_js(minify, folder) {
     )
     .pipe(concat(folder+'.module.js'))
     .pipe(gulpif(minify, uglify()))
-    .pipe(gulp.dest('client/'+folder+'/assets/js'));
+    .pipe(gulp.dest(folder+'/assets/js'));
 };
 
 // Delete all js and css
 gulp.task('delete', function(cb) {
     del([
-        'client/website/assets/css/maps',
-        'client/website/assets/css/*.css',
-        'client/dashboard/assets/css/maps',
-        'client/dashboard/assets/css/*.css',
-        'client/website/assets/js/*',
-        'client/dashboard/assets/js/*'
+        'website/assets/css/maps',
+        'website/assets/css/*.css',
+        'dashboard/assets/css/maps',
+        'dashboard/assets/css/*.css',
+        'website/assets/js/*',
+        'dashboard/assets/js/*'
     ], cb);
 });
 
 gulp.task('delete_web', function() {
-    del(['client/website/assets/css/maps'], function(err) {});
-    del(['client/website/assets/css/*.css'], function(err) {
+    del(['website/assets/css/maps'], function(err) {});
+    del(['website/assets/css/*.css'], function(err) {
         console.log('           web       css deleted');
     });
-    del(['client/website/assets/js/*'], function(err) {
+    del(['website/assets/js/*'], function(err) {
         console.log('           web       js  deleted');
     });
 });
 
 gulp.task('delete_dash', function() {
-    del(['client/dashboard/assets/css/maps'], function(err) {});
-    del(['client/dashboard/assets/css/*.css'], function(err) {
+    del(['dashboard/assets/css/maps'], function(err) {});
+    del(['dashboard/assets/css/*.css'], function(err) {
         console.log('           dashboard css deleted');
     });
-    del(['client/dashboard/assets/js/*'], function(err) {
+    del(['dashboard/assets/js/*'], function(err) {
         console.log('           dashboard js  deleted');
     });
 });
 
 gulp.task('web_css', function() {
-    return sass('client/website/_sources/sass/bitage_web.scss', { style: 'compressed' })
+    return sass('website/_sources/sass/bitage_web.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('client/website/assets/css'))
+        .pipe(gulp.dest('website/assets/css'))
         .pipe(livereload());
 });
 
 gulp.task('dash_css', function() {
-    return sass('client/dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
+    return sass('dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('client/dashboard/assets/css'))
+        .pipe(gulp.dest('dashboard/assets/css'))
         .pipe(livereload());
 });
 
@@ -127,40 +127,40 @@ gulp.task('watch', function() {
     livereload.listen();
 
     // Watch Pubic (Site) Pages | Styles | Scripts
-    gulp.watch('client/website/*.html').on('change', function(file) {
+    gulp.watch('website/*.html').on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Site HTML changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('client/website/_sources/sass/**/*.scss', ['web_css']).on('change', function(file) {
+    gulp.watch('website/_sources/sass/**/*.scss', ['web_css']).on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Website CSS changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('client/website/_sources/js/libs/*.js', ['web_js']);
-    gulp.watch('client/website/_sources/js/plugins/*.js', ['web_js']);
-    gulp.watch('client/website/components/**/*.js', ['web_js']);
+    gulp.watch('website/_sources/js/libs/*.js', ['web_js']);
+    gulp.watch('website/_sources/js/plugins/*.js', ['web_js']);
+    gulp.watch('website/components/**/*.js', ['web_js']);
 
 
     // Watch Dashboard (App) Pages | Styles | Scripts
-    gulp.watch('client/dashboard/*.html').on('change', function(file) {
+    gulp.watch('dashboard/*.html').on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard HTML changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
+    gulp.watch('dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });
 
-    gulp.watch('client/dashboard/_sources/js/libs/*.js', ['dash_js']);
-    gulp.watch('client/dashboard/_sources/js/plugins/*.js', ['dash_js']);
-    gulp.watch('client/dashboard/components/**/*.js').on('change', function(file) {
+    gulp.watch('dashboard/_sources/js/libs/*.js', ['dash_js']);
+    gulp.watch('dashboard/_sources/js/plugins/*.js', ['dash_js']);
+    gulp.watch('dashboard/components/**/*.js').on('change', function(file) {
         livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard JS changed' + ' (' + file.path + ')'));
     });
 
-    // gulp.watch('client/dashboard/components/**/*.js', ['dash_js']);
-    // gulp.watch('client/website/_sources/sass/**/*.scss', ['web_css']);
-    // gulp.watch('client/dashboard/_sources/sass/**/*.scss', ['dash_css']);
+    // gulp.watch('dashboard/components/**/*.js', ['dash_js']);
+    // gulp.watch('website/_sources/sass/**/*.scss', ['web_css']);
+    // gulp.watch('dashboard/_sources/sass/**/*.scss', ['dash_css']);
 });

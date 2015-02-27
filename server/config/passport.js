@@ -103,7 +103,6 @@ module.exports = function(passport) {
                         newUser.local.wallet   = key.pub.getAddress().toString();
                         newUser.local.email    = email;
                         newUser.local.password = newUser.generateHash(password);
-
                         newUser.local.visits   = visit;
 
                         newUser.save(function(err) {
