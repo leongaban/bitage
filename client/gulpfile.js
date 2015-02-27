@@ -20,8 +20,8 @@ var minify = true;
 function compile_js(minify, folder) {
     var jsPlugins = gulp.src('client/'+folder+'/_sources/js/plugins/**/*.js');
     var jsCustom = gulp.src('client/'+folder+'/_sources/js/custom/**/*.js');
-    var jsShared = gulp.src('client/'+folder+'/shared/**/*.js');
-    var jsComponents = gulp.src('client/'+folder+'/components/**/*.js');
+    var jsShared = gulp.src('client/'+folder+'/app/shared/**/*.js');
+    var jsComponents = gulp.src('client/'+folder+'/app/components/**/*.js');
 
     // Order the streams and compile
     return streamqueue({ objectMode: true },
