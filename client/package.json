@@ -1,5 +1,6 @@
 {
-  "name": "bitage client apps",
+  "name": "bitage",
+  "description" : "bitage client apps",
   "dependencies": {
     "gulp": "^3.8.11",
     "gulp-if": "^1.2.5",

@@ -1,5 +1,6 @@
 {
-  "name": "bitage server app",
+  "name": "bitage",
+  "description" : "bitage server app",
   "main": "main.js",
   "dependencies": {
     "bcrypt-nodejs": "latest",
@@ -24,8 +25,5 @@
     "passport-local": "~0.1.6",
     "passport-twitter": "~1.0.2",
     "streamqueue": "^0.1.3"
-  },
-  "devDependencies": {
-
   }
 }
