@@ -6,7 +6,7 @@
 // get all the tools we need
 var express  	 = require('express');
 var app      	 = express();
-var port     	 = process.env.PORT || 9876;
+var port     	 = process.env.PORT || 9999;
 var mongoose 	 = require('mongoose');
 var passport 	 = require('passport');
 var flash    	 = require('connect-flash');
@@ -19,6 +19,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var configDB 	 = require('./config/database.js');
+// var config 	   	 = require('./config/config');
 
 // Express router
 var router 		 = express.Router();
@@ -39,8 +40,8 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('views', '../client');
-// app.set('view engine', 'ejs'); // set up ejs for templating
+// app.set('views', '../client');
+// app.set('view engine', 'hbs'); // set up hbs for templating
 // app.engine('hbs', cons.handlebars);
 
 // required for passport
@@ -57,18 +58,29 @@ app.use(express.static(__dirname, '../client/website'));
 
 
 // routes ======================================================================
-require('./routes/routes.js')(app, passport);
+// require('./routes/routes.js')(app, passport);
 // load our routes and pass in our app and fully configured passport
 
+// from MEAN Machine:
+var dashRouter = require('./routes/routes')(app, express);
+app.use('/dashboard', dashRouter);
 
 //dashboard api
-var dashboard = express.Router();
-app.use('/dashboard', dashboard);
-dashboard.get('/', function(req, res) {
-	res.sendfile('./dashboard/index.html');
-});
+// var dashboard = express.Router();
+// app.use('/dashboard', dashboard);
+// dashboard.get('/', function(req, res) {
+// 	res.sendfile('./dashboard/index.html');
+// });
 
 
 // launch ======================================================================
 app.listen(port);
 console.log('Server running at ' + port);
+
+// Start server
+// app.listen(config.port, function () {
+//   console.log('Express server listening on %d, in %s mode', config.port);
+// });
+
+// Expose app
+exports = module.exports = app;
