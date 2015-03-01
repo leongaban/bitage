@@ -40,9 +40,9 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.set('views', '../client');
-// app.set('view engine', 'hbs'); // set up hbs for templating
-// app.engine('hbs', cons.handlebars);
+app.set('views', '../client');
+app.set('view engine', 'hbs'); // set up hbs for templating
+app.engine('hbs', cons.handlebars);
 
 // required for passport
 app.use(session({ secret: 'itisalwayssunnyinphilly@21!6' })); // session secret
@@ -65,11 +65,32 @@ app.use(express.static(__dirname, '../client/website'));
 var dashRouter = require('./routes/routes')(app, express);
 app.use('/dashboard', dashRouter);
 
-//dashboard api
+//website api ==================================================================
+// var website = express.Router();
+// app.use('/website', website);
+
+// website.use(function(req, res, next) {
+// 	console.log(req.method, req.url);
+
+// 	next();
+// });
+
+// website.get('/', function(req, res) {
+// 	res.sendfile('../client/website/index.html');
+// });
+
+//dashboard api ================================================================
 // var dashboard = express.Router();
 // app.use('/dashboard', dashboard);
+
+// dashboard.use(function(req, res, next) {
+// 	console.log(req.method, req.url);
+
+// 	next();
+// });
+
 // dashboard.get('/', function(req, res) {
-// 	res.sendfile('./dashboard/index.html');
+// 	res.sendfile('../client/dashboard/index.html');
 // });
 
 

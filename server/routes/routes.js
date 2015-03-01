@@ -17,11 +17,11 @@ module.exports = function(app, passport) {
 
 	dashRouter.get('/', function(req, res) {
 
+		// console.log(res);
+		console.log('try to load dashboard');
+		// res.render('../index.html');
 		// res.send('dashboard!');
-		// res.sendFile(path.join(__dirname + '../client/dashboard/index.html'));
-		// res.sendFile('index.html');
-		console.log(res);
-		res.sendStatus(500);
+		res.sendFile(path.join(__dirname + '../client/dashboard/index.html'));
 
 		// var fileName = 'index.html';
 
