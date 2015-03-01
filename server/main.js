@@ -62,22 +62,24 @@ app.use(express.static(__dirname, '../client/website'));
 // load our routes and pass in our app and fully configured passport
 
 // from MEAN Machine:
-var dashRouter = require('./routes/routes')(app, express);
-app.use('/dashboard', dashRouter);
+// var dashRouter = require('./routes/routes')(app, express);
+// app.use('/dashboard', dashRouter);
 
 //website api ==================================================================
-// var website = express.Router();
-// app.use('/website', website);
+var website = express.Router();
+app.use('/website', website);
 
-// website.use(function(req, res, next) {
-// 	console.log(req.method, req.url);
+website.use(function(req, res, next) {
+	console.log(req.method, req.url);
 
-// 	next();
-// });
+	next();
+});
 
-// website.get('/', function(req, res) {
-// 	res.sendfile('../client/website/index.html');
-// });
+website.get('/', function(req, res) {
+	var path = 'index.html';
+	res.sendfile(path, {'root': '../client/website/'});
+	// res.sendfile('../client/website/index.html');
+});
 
 //dashboard api ================================================================
 // var dashboard = express.Router();
