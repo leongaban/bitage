@@ -17,6 +17,12 @@ var gulp        = require('gulp'),
 
 var minify = true;
 
+/**
+ * Compiles all Javascript
+ * @param  { boolean - minify true/false }
+ * @param  { string  - folder path name }
+ * @return { object  - streamqueue objects }
+ */
 function compile_js(minify, folder) {
     var jsPlugins = gulp.src(folder+'/_sources/js/plugins/**/*.js');
     var jsCustom = gulp.src(folder+'/_sources/js/custom/**/*.js');
