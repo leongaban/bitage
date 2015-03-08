@@ -1,6 +1,6 @@
 The Bitage.io web application
 ================
-<strong>A Bitcoin Services Company</strong>
+<strong>A Bitcoin wallet and accounts watcher</strong>
 
 <a href="https://twitter.com/leongaban">@leongaban</a> & <a href="https://twitter.com/paulinhorocha">@paulinhorocha</a>
 
