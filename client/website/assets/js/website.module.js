@@ -1874,7 +1874,7 @@ particlesJS('particle_bg', {
 
 				.state('about', {
 					url: '/about',
-					templateUrl: 'client/website/views/about.html'
+					templateUrl: 'views/about.html'
 				})
 
 				.state('login', {
@@ -1914,18 +1914,17 @@ particlesJS('particle_bg', {
 		});
 
 		// var postSignUpForm = function() {
-  //           console.log(vm.formData);
+			// console.log(vm.formData);
 
-  //           // process the form
-  //           var request = $http({
-  //                   method  : 'POST',
-  //                   url     : '/signup',
-  //                   data    : $.param(vm.formData),
-  //                   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-  //               })
-  //               .success(function(data) {
-  //                   console.log('go to wallet');
-  //               });
+		// 	var request = $http({
+		// 	        method  : 'POST',
+		// 	        url     : '/signup',
+		// 	        data    : $.param(vm.formData),
+		// 	        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		// 	    })
+		// 	    .success(function(data) {
+		// 	        console.log('go to wallet');
+		// 	    });
 		// };
 
 	   	// Quick form submit
