@@ -130,39 +130,40 @@ gulp.task('default', function(callback) {
 
 // Watch for file updates
 gulp.task('watch', function() {
-    livereload.listen();
+    // livereload.listen();
 
     // Watch Pubic (Site) Pages | Styles | Scripts
     gulp.watch('website/*.html').on('change', function(file) {
-        livereload.changed(file.path);
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Site HTML changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('website/_sources/sass/**/*.scss', ['web_css']).on('change', function(file) {
-        livereload.changed(file.path);
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Website CSS changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('website/_sources/js/libs/*.js', ['web_js']);
     gulp.watch('website/_sources/js/plugins/*.js', ['web_js']);
-    gulp.watch('website/components/**/*.js', ['web_js']);
-
+    gulp.watch('website/app/components/**/*.js', ['web_js']).on('change', function(file) {
+        gutil.log(gutil.colors.yellow('Web JS changed' + ' (' + file.path + ')'));
+    });
 
     // Watch Dashboard (App) Pages | Styles | Scripts
     gulp.watch('dashboard/*.html').on('change', function(file) {
-        livereload.changed(file.path);
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard HTML changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
-        livereload.changed(file.path);
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
     });
 
     gulp.watch('dashboard/_sources/js/libs/*.js', ['dash_js']);
     gulp.watch('dashboard/_sources/js/plugins/*.js', ['dash_js']);
     gulp.watch('dashboard/components/**/*.js').on('change', function(file) {
-        livereload.changed(file.path);
+        // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard JS changed' + ' (' + file.path + ')'));
     });
 
