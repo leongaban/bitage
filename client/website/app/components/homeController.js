@@ -30,7 +30,7 @@
 
 				.state('about', {
 					url: '/about',
-					templateUrl: 'views/about.html'
+					templateUrl: 'client/website/views/about.html'
 				})
 
 				.state('login', {
