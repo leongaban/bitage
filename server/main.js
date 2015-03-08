@@ -70,8 +70,10 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //website api ==================================================================
 var website = express.Router();
 app.use('/', website);
-app.use('/assets', express.static("../client/website/assets"));
-console.log(__dirname + "../client/website/assets");
+// app.use('/assets', express.static("../client/website/assets"));
+// console.log(__dirname + "../client/website/assets");
+app.use('/', express.static("../client/website/"));
+console.log(__dirname + "../client/website/");
 
 website.use(function(req, res, next) {
 	console.log(req.method, req.url);
