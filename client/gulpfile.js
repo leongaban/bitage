@@ -42,16 +42,16 @@ function compile_js(minify, folder) {
 };
 
 // Delete all js and css
-gulp.task('delete', function(cb) {
-    del([
-        'website/assets/css/maps',
-        'website/assets/css/*.css',
-        'dashboard/assets/css/maps',
-        'dashboard/assets/css/*.css',
-        'website/assets/js/*',
-        'dashboard/assets/js/*'
-    ], cb);
-});
+// gulp.task('delete', function(cb) {
+//     del([
+//         'website/assets/css/maps',
+//         'website/assets/css/*.css',
+//         'dashboard/assets/css/maps',
+//         'dashboard/assets/css/*.css',
+//         'website/assets/js/*',
+//         'dashboard/assets/js/*'
+//     ], cb);
+// });
 
 gulp.task('delete_web', function() {
     del(['website/assets/css/maps'], function(err) {});
@@ -63,15 +63,15 @@ gulp.task('delete_web', function() {
     });
 });
 
-gulp.task('delete_dash', function() {
-    del(['dashboard/assets/css/maps'], function(err) {});
-    del(['dashboard/assets/css/*.css'], function(err) {
-        console.log('           dashboard css deleted');
-    });
-    del(['dashboard/assets/js/*'], function(err) {
-        console.log('           dashboard js  deleted');
-    });
-});
+// gulp.task('delete_dash', function() {
+//     del(['dashboard/assets/css/maps'], function(err) {});
+//     del(['dashboard/assets/css/*.css'], function(err) {
+//         console.log('           dashboard css deleted');
+//     });
+//     del(['dashboard/assets/js/*'], function(err) {
+//         console.log('           dashboard js  deleted');
+//     });
+// });
 
 gulp.task('web_css', function() {
     return sass('website/_sources/sass/bitage_web.scss', { style: 'compressed' })
@@ -81,23 +81,23 @@ gulp.task('web_css', function() {
         .pipe(livereload());
 });
 
-gulp.task('dash_css', function() {
-    return sass('dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('dashboard/assets/css'))
-        .pipe(livereload());
-});
+// gulp.task('dash_css', function() {
+//     return sass('dashboard/_sources/sass/bitage_app.scss', { style: 'compressed' })
+//         .pipe(sourcemaps.init())
+//         .pipe(sourcemaps.write('./maps'))
+//         .pipe(gulp.dest('dashboard/assets/css'))
+//         .pipe(livereload());
+// });
 
 gulp.task('web_js', function() {
     minify = false;
     return compile_js(minify, 'website');
 });
 
-gulp.task('dash_js', function() {
-    minify = false;
-    return compile_js(minify, 'dashboard');
-});
+// gulp.task('dash_js', function() {
+//     minify = false;
+//     return compile_js(minify, 'dashboard');
+// });
 
 // gulp.task('production', function() {
 //     minify = true;
@@ -106,25 +106,28 @@ gulp.task('dash_js', function() {
 
 // Website task:
 gulp.task('web', function(callback) {
-    runSequence('delete_web',
+    runSequence(
+        // 'delete_web',
                 'web_css',
                 'web_js',
                 callback);
 });
 
 // Dashboard task:
-gulp.task('dash', function(callback) {
-    runSequence('delete_dash',
-                'dash_css',
-                'dash_js',
-                callback);
-});
+// gulp.task('dash', function(callback) {
+//     runSequence(
+//         // 'delete_dash',
+//                 'dash_css',
+//                 'dash_js',
+//                 callback);
+// });
 
 // Default task:
 gulp.task('default', function(callback) {
-    runSequence('delete',
+    runSequence(
+        // 'delete',
                ['web_css', 'web_js'],
-               ['dash_css', 'dash_js'],
+               // ['dash_css', 'dash_js'],
                 callback);
 });
 
@@ -150,22 +153,22 @@ gulp.task('watch', function() {
     });
 
     // Watch Dashboard (App) Pages | Styles | Scripts
-    gulp.watch('dashboard/*.html').on('change', function(file) {
-        // livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('Dashboard HTML changed' + ' (' + file.path + ')'));
-    });
+    // gulp.watch('dashboard/*.html').on('change', function(file) {
+    //     // livereload.changed(file.path);
+    //     gutil.log(gutil.colors.yellow('Dashboard HTML changed' + ' (' + file.path + ')'));
+    // });
 
-    gulp.watch('dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
-        // livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
-    });
+    // gulp.watch('dashboard/_sources/sass/**/*.scss', ['dash_css']).on('change', function(file) {
+    //     // livereload.changed(file.path);
+    //     gutil.log(gutil.colors.yellow('Dashboard CSS changed' + ' (' + file.path + ')'));
+    // });
 
-    gulp.watch('dashboard/_sources/js/libs/*.js', ['dash_js']);
-    gulp.watch('dashboard/_sources/js/plugins/*.js', ['dash_js']);
-    gulp.watch('dashboard/components/**/*.js').on('change', function(file) {
-        // livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('Dashboard JS changed' + ' (' + file.path + ')'));
-    });
+    // gulp.watch('dashboard/_sources/js/libs/*.js', ['dash_js']);
+    // gulp.watch('dashboard/_sources/js/plugins/*.js', ['dash_js']);
+    // gulp.watch('dashboard/components/**/*.js').on('change', function(file) {
+    //     // livereload.changed(file.path);
+    //     gutil.log(gutil.colors.yellow('Dashboard JS changed' + ' (' + file.path + ')'));
+    // });
 
     // gulp.watch('dashboard/components/**/*.js', ['dash_js']);
     // gulp.watch('website/_sources/sass/**/*.scss', ['web_css']);

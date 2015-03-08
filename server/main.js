@@ -19,7 +19,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var configDB 	 = require('./config/database.js');
-// var config 	   	 = require('./config/config');
+var config 	   	 = require('./config/config');
 
 // Express router
 var router 		 = express.Router();
@@ -103,13 +103,13 @@ website.get('/', function(req, res) {
 
 
 // launch ======================================================================
-app.listen(port);
-console.log('Server running at ' + port);
+// app.listen(port);
+// console.log('Server running at ' + port);
 
 // Start server
-// app.listen(config.port, function () {
-//   console.log('Express server listening on %d, in %s mode', config.port);
-// });
+app.listen(config.port, function () {
+  console.log('Server listening on %d, in %s mode', config.port, config.env);
+});
 
 // Expose app
 exports = module.exports = app;
