@@ -31,22 +31,22 @@
 
 				.state('wallet', {
 					url: '/wallet',
-					templateUrl: 'views/wallet.html'
+					templateUrl: 'dashboard/views/wallet.html'
 				})
 
 				.state('accounts', {
 					url: '/accounts',
-					templateUrl: 'views/accounts.html'
+					templateUrl: 'dashboard/views/accounts.html'
 				})
 
 				.state('settings', {
 					url: '/settings',
-					templateUrl: 'views/settings.html'
+					templateUrl: 'dashboard/views/settings.html'
 				})
 
 				.state('help', {
 					url: '/help',
-					templateUrl: 'views/help.html'
+					templateUrl: 'dashboard/views/help.html'
 				});
 
 			$urlRouterProvider.otherwise('wallet');

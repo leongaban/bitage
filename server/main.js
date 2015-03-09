@@ -73,8 +73,8 @@ var website = express.Router();
 app.use('/', website);
 // app.use('/assets', express.static("../client/website/assets"));
 // console.log(__dirname + "../client/website/assets");
-app.use('/', express.static("../client/website/"));
-console.log(__dirname + "../client/website/");
+app.use('/', express.static("../client/"));
+console.log(__dirname + "../client/");
 
 website.use(function(req, res, next) {
 	console.log(req.method, req.url);
@@ -90,8 +90,8 @@ website.get('/', function(req, res) {
 //dashboard api ================================================================
 var dashboard = express.Router();
 app.use('/dashboard', dashboard);
-app.use('/', express.static("../client/dashboard/"));
-console.log(__dirname + "../client/dashboard/");
+// app.use('/', express.static("../client/"));
+// console.log(__dirname + "../client/");
 
 dashboard.use(function(req, res, next) {
 	console.log(req.method, req.url);

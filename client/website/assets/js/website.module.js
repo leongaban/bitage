@@ -1874,17 +1874,17 @@ particlesJS('particle_bg', {
 
 				.state('about', {
 					url: '/about',
-					templateUrl: 'views/about.html'
+					templateUrl: 'website/views/about.html'
 				})
 
 				.state('login', {
 					url: '/login',
-					templateUrl: 'views/login.html'
+					templateUrl: 'website/views/login.html'
 				})
 
 				.state('register', {
 					url: '/register',
-					templateUrl: 'views/register.html'
+					templateUrl: 'website/views/register.html'
 				});
 
 			$urlRouterProvider.otherwise('/home');
