@@ -26,6 +26,9 @@
 		function($stateProvider, $urlRouterProvider) {
 
 			$stateProvider
+
+				.state('wallet', { url: '/wallet' })
+
 				.state('wallet', {
 					url: '/wallet',
 					templateUrl: 'views/wallet.html'
