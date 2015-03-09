@@ -90,7 +90,7 @@ website.get('/', function(req, res) {
 //dashboard api ================================================================
 var dashboard = express.Router();
 app.use('/dashboard', dashboard);
-// app.use('/', express.static("../client/"));
+// app.use('/dashboard', express.static("../client/"));
 // console.log(__dirname + "../client/");
 
 dashboard.use(function(req, res, next) {

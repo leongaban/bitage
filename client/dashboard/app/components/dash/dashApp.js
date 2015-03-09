@@ -27,26 +27,24 @@
 
 			$stateProvider
 
-				.state('wallet', { url: '/wallet' })
-
 				.state('wallet', {
 					url: '/wallet',
-					templateUrl: 'dashboard/views/wallet.html'
+					templateUrl: 'views/wallet.html'
 				})
 
 				.state('accounts', {
 					url: '/accounts',
-					templateUrl: 'dashboard/views/accounts.html'
+					templateUrl: 'views/accounts.html'
 				})
 
 				.state('settings', {
 					url: '/settings',
-					templateUrl: 'dashboard/views/settings.html'
+					templateUrl: 'views/settings.html'
 				})
 
 				.state('help', {
 					url: '/help',
-					templateUrl: 'dashboard/views/help.html'
+					templateUrl: 'views/help.html'
 				});
 
 			$urlRouterProvider.otherwise('wallet');

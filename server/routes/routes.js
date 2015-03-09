@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
 	// ADMIN ROUTES -------------------------------
 	dashRouter.use(function(req, res, next) {
 		console.log(req.method, req.url);
-
+		console.log('*** dashboard view ***');
 		next();
 	});
 
