@@ -25,7 +25,8 @@ var config 	   	 = require('./config/config');
 var router 		 = express.Router();
 
 // configuration ===============================================================
-mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox');
+// mongoose.connect('mongodb://users:leonardo2016!@kahana.mongohq.com:10016/sandbox');
+// mongoose.connect('mongodb://node:noder@novus.modulusmongo.net:27017/Iganiq8o');
 
 
 // loading static and bower components ===================
@@ -72,8 +73,8 @@ var website = express.Router();
 app.use('/', website);
 // app.use('/assets', express.static("../client/website/assets"));
 // console.log(__dirname + "../client/website/assets");
-app.use('/', express.static("../client/website/"));
-console.log(__dirname + "../client/website/");
+app.use('/', express.static("../client/"));
+console.log(__dirname + "../client/");
 
 website.use(function(req, res, next) {
 	console.log(req.method, req.url);
@@ -82,25 +83,26 @@ website.use(function(req, res, next) {
 });
 
 website.get('/', function(req, res) {
-	// res.render('../client/website/index.html');
 	var path = 'index.html';
-	res.sendfile(path, {'root': '../client/website/'});
-	// res.sendfile('../client/website/index.html');
+	res.sendfile(path, { 'root': '../client/website/' });
 });
 
 //dashboard api ================================================================
-// var dashboard = express.Router();
-// app.use('/dashboard', dashboard);
+var dashboard = express.Router();
+app.use('/dashboard', dashboard);
+// app.use('/dashboard', express.static("../client/"));
+// console.log(__dirname + "../client/");
 
-// dashboard.use(function(req, res, next) {
-// 	console.log(req.method, req.url);
+dashboard.use(function(req, res, next) {
+	console.log(req.method, req.url);
 
-// 	next();
-// });
+	next();
+});
 
-// dashboard.get('/', function(req, res) {
-// 	res.sendfile('../client/dashboard/index.html');
-// });
+dashboard.get('/dashboard', function(req, res) {
+	var path = 'index.html';
+	res.sendfile(path, { 'root': '../client/dashboard/' });
+});
 
 
 // launch ======================================================================
