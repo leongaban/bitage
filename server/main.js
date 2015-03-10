@@ -103,7 +103,7 @@ dashboard.get('/dashboard', function(req, res) {
 });
 
 // API to add new accounts:
-app.post('/api/accounts/', accountsController.create);
+app.post('/api/accounts', accountsController.create);
 
 
 // launch ======================================================================
