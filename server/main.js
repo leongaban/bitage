@@ -73,8 +73,6 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //website api ==================================================================
 var website = express.Router();
 app.use('/', website);
-// app.use('/assets', express.static("../client/website/assets"));
-// console.log(__dirname + "../client/website/assets");
 app.use('/', express.static("../client/"));
 console.log(__dirname + "../client/");
 
@@ -92,8 +90,6 @@ website.get('/', function(req, res) {
 //dashboard api ================================================================
 var dashboard = express.Router();
 app.use('/dashboard', dashboard);
-// app.use('/dashboard', express.static("../client/"));
-// console.log(__dirname + "../client/");
 
 dashboard.use(function(req, res, next) {
 	console.log(req.method, req.url);
@@ -106,6 +102,7 @@ dashboard.get('/dashboard', function(req, res) {
 	res.sendfile(path, { 'root': '../client/dashboard/' });
 });
 
+// API to add new accounts:
 app.post('/api/accounts/', accountsController.create);
 
 
