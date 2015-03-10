@@ -4,22 +4,24 @@
 
 // set up ======================================================================
 // get all the tools we need
-var express  	 = require('express');
-var app      	 = express();
-var port     	 = process.env.PORT || 9999;
-var mongoose 	 = require('mongoose');
-var passport 	 = require('passport');
-var flash    	 = require('connect-flash');
-var hbs 	 	 = require('handlebars');
-var cons 	 	 = require('consolidate');
-var bitcoin  	 = require('bitcoinjs-lib');
-var moment 		 = require('moment');
-var morgan       = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
-var configDB 	 = require('./config/database.js');
-var config 	   	 = require('./config/config');
+var express  	 = require('express'),
+	app      	 = express(),
+	port     	 = process.env.PORT || 9999,
+	mongoose 	 = require('mongoose'),
+	passport 	 = require('passport'),
+	flash    	 = require('connect-flash'),
+	hbs 	 	 = require('handlebars'),
+	cons 	 	 = require('consolidate'),
+	bitcoin  	 = require('bitcoinjs-lib'),
+	moment 		 = require('moment'),
+	morgan       = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	bodyParser   = require('body-parser'),
+	session      = require('express-session'),
+	configDB 	 = require('./config/database.js'),
+	config 	   	 = require('./config/config'),
+
+	accountsController = require('./controllers/accounts-controller.js');
 
 // Express router
 var router 		 = express.Router();
@@ -103,6 +105,8 @@ dashboard.get('/dashboard', function(req, res) {
 	var path = 'index.html';
 	res.sendfile(path, { 'root': '../client/dashboard/' });
 });
+
+app.post('/api/accounts/', accountsController.create);
 
 
 // launch ======================================================================

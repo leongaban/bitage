@@ -14,7 +14,8 @@
 
 		var vm = $scope;
 			vm.$parent.modal = false;
-			
+
+		var Account = $resource('/api/accounts');
 
 		// Setup accounts model
 		this.accounts = [];
@@ -50,27 +51,34 @@
 		];
 
 		this.addAccount = function() {
+			var account = new Account();
+			account.label = this.label;
+			account.address = this.address;
+			account.$save();
+		}
 
-			// Create next account id
-			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
+		// this.addAccount = function() {
 
-			// Don't add account if blank
-		    if (this.label === '' ||
-		    	this.label === undefined ||
-		    	this.address === undefined) { return; }
+		// 	// Create next account id
+		// 	var nextId = 'acct-' + (vm.acct.accounts.length + 1);
 
-		    // Add new account to accounts array
-		    this.accounts.push({
-				id: nextId,
-				label: this.label,
-				balance: 0,
-				address: this.address
-		    });
+		// 	// Don't add account if blank
+		//     if (this.label === '' ||
+		//     	this.label === undefined ||
+		//     	this.address === undefined) { return; }
 
-		    // Reset inputs
-		    this.label = '';
-		    this.address = '';
-		};
+		//     // Add new account to accounts array
+		//     this.accounts.push({
+		// 		id: nextId,
+		// 		label: this.label,
+		// 		balance: 0,
+		// 		address: this.address
+		//     });
+
+		//     // Reset inputs
+		//     this.label = '';
+		//     this.address = '';
+		// };
 
 		// Open edit account modal:
 		this.editAccount = function(id, label, address) {
