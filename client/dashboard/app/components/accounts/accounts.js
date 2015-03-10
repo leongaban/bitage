@@ -50,6 +50,7 @@
 			}
 		];
 
+		// POST new account to '/api/accounts'
 		this.addAccount = function() {
 			var account = new Account();
 			account.label = this.label;
@@ -57,28 +58,30 @@
 			account.$save();
 		}
 
-		// this.addAccount = function() {
+		/*
+		this.addAccount = function() {
 
-		// 	// Create next account id
-		// 	var nextId = 'acct-' + (vm.acct.accounts.length + 1);
+			// Create next account id
+			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
 
-		// 	// Don't add account if blank
-		//     if (this.label === '' ||
-		//     	this.label === undefined ||
-		//     	this.address === undefined) { return; }
+			// Don't add account if blank
+		    if (this.label === '' ||
+		    	this.label === undefined ||
+		    	this.address === undefined) { return; }
 
-		//     // Add new account to accounts array
-		//     this.accounts.push({
-		// 		id: nextId,
-		// 		label: this.label,
-		// 		balance: 0,
-		// 		address: this.address
-		//     });
+		    // Add new account to accounts array
+		    this.accounts.push({
+				id: nextId,
+				label: this.label,
+				balance: 0,
+				address: this.address
+		    });
 
-		//     // Reset inputs
-		//     this.label = '';
-		//     this.address = '';
-		// };
+		    // Reset inputs
+		    this.label = '';
+		    this.address = '';
+		};
+		*/
 
 		// Open edit account modal:
 		this.editAccount = function(id, label, address) {
