@@ -162,7 +162,7 @@ gulp.task('watch', function() {
 
     gulp.watch('dashboard/_sources/js/libs/*.js', ['dash_js']);
     gulp.watch('dashboard/_sources/js/plugins/*.js', ['dash_js']);
-    gulp.watch('dashboard/components/**/*.js').on('change', function(file) {
+    gulp.watch('dashboard/app/**/*.js', ['dash_js']).on('change', function(file) {
         // livereload.changed(file.path);
         gutil.log(gutil.colors.yellow('Dashboard JS changed' + ' (' + file.path + ')'));
     });

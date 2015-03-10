@@ -6,11 +6,11 @@
 (function() {
 
 	var app = angular.module('app-accounts',
-		['ngAnimate', 'account-directives'])
+		['ngAnimate', 'ngResource', 'account-directives'])
 
 	.controller('AcctCtrl',
-		['$scope', 'accountsService',
-		function($scope, accountsService) {
+		['$scope', '$resource', 'accountsService',
+		function($scope, $resource, accountsService) {
 
 		var vm = $scope;
 			vm.$parent.modal = false;
