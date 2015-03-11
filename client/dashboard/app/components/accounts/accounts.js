@@ -68,6 +68,8 @@
 		vm.dash.updateAccount = function(i) {
 
 			console.log(i);
+			// console.log($scope.new_label);
+			// console.log($scope.new_address);
 
 			// Don't add account if blank
 		    // if ($scope.new_label === '' ||
@@ -176,7 +178,7 @@
 
 	}])
 
-	// Accounts factory (edit-model, get all, update, remote):
+	// Accounts factory (edit-model, get all, update, remove):
 	.factory('Accounts', ['$http', '$resource', function($http, $resource) {
 
 		var accountsFactory = {};
