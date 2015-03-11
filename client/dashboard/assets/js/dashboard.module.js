@@ -33,13 +33,21 @@
 		['ngAnimate', 'ngResource', 'account-directives'])
 
 	.controller('AcctCtrl',
-		['$scope', '$resource', 'accountsService',
-		function($scope, $resource, accountsService) {
+		['$scope', '$resource', 'Accounts',
+		function($scope, $resource, Accounts) {
 
 		var vm = $scope;
 			vm.$parent.modal = false;
 
-		var Account = $resource('/api/accounts');
+		// Account API calls:
+		var AccountsGet   = $resource('/api/accounts/all');
+		var AccountSave   = $resource('/api/accounts/save');
+		var AccountUpdate = $resource('/api/accounts/update');
+		var AccountDelete = $resource('/api/accounts/delete');
+
+		// Get all accounts:
+		var acctsGet = new AccountsGet();
+		acctsGet.$get();
 
 		// Setup accounts model
 		this.accounts = [];
@@ -74,43 +82,57 @@
 			}
 		];
 
+		// POST new account to '/api/accounts'
 		this.addAccount = function() {
-			var account = new Account();
-			account.label = this.label;
-			account.address = this.address;
-			account.$save();
+			var acctSave 	 = new AccountSave();
+			acctSave.label 	 = this.label;
+			acctSave.address = this.address;
+			acctSave.$save();
 		}
 
-		// this.addAccount = function() {
-
-		// 	// Create next account id
-		// 	var nextId = 'acct-' + (vm.acct.accounts.length + 1);
-
-		// 	// Don't add account if blank
-		//     if (this.label === '' ||
-		//     	this.label === undefined ||
-		//     	this.address === undefined) { return; }
-
-		//     // Add new account to accounts array
-		//     this.accounts.push({
-		// 		id: nextId,
-		// 		label: this.label,
-		// 		balance: 0,
-		// 		address: this.address
-		//     });
-
-		//     // Reset inputs
-		//     this.label = '';
-		//     this.address = '';
-		// };
-
-		// Open edit account modal:
+		// Open the edit account modal:
 		this.editAccount = function(id, label, address) {
 			// console.log(id);
 			vm.dash.modal = true;
-			accountsService.modalEditAccount(vm.dash, id, label, address);
+			Accounts.modalEditAccount(vm.dash, id, label, address);
 		};
 
+		vm.dash.updateAccount = function(i) {
+
+			// Don't add account if blank
+		    if (this.new_label === '' ||
+		    	this.new_label   === undefined ||
+		    	this.new_address === undefined) { return; }
+
+		    // Update account
+		    var acctUpdate = new AccountUpdate();
+			acctUpdate.label   = this.new_label;
+			acctUpdate.address = this.new_address;
+			acctUpdate.$save();
+
+			// find account by id and update it's obj values
+			function changeAccountValues( id, new_label, new_address ) {
+				for (var i in vm.acct.accounts) {
+					if (vm.acct.accounts[i].id == id) {
+						vm.acct.accounts[i].label = new_label;
+						vm.acct.accounts[i].address = new_address;
+						break;
+					}
+				}
+			}
+
+			changeAccountValues (i, this.new_label, this.new_address);
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label   = '';
+		    this.new_address = '';
+		}
+
+		/*
 		vm.dash.updateAccount = function(i) {
 
 			// Don't add account if blank
@@ -143,14 +165,47 @@
 			var theRow = angular.element( document.querySelector('#acct-'+i));
 			theRow.addClass('ping-row');
 		}
+		*/
 
-		vm.dash.removeAccount = function(acct_id) {
+		/*
+		this.addAccount = function() {
+
+			// Create next account id
+			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
+
+			// Don't add account if blank
+		    if (this.label === '' ||
+		    	this.label === undefined ||
+		    	this.address === undefined) { return; }
+
+		    // Add new account to accounts array
+		    this.accounts.push({
+				id: nextId,
+				label: this.label,
+				balance: 0,
+				address: this.address
+		    });
+
+		    // Reset inputs
+		    this.label = '';
+		    this.address = '';
+		};
+		*/
+
+		vm.dash.removeAccount = function(id) {
+
+			console.log('remove: ' + id);
+
+			// Update account
+		    var acctDelete = new AccountDelete();
+		    acctDelete.id  = id;
+			acctDelete.$delete();
 
 			// Find object by id and remove from array
 			for (var i = 0; i < vm.acct.accounts.length; i++) {
 			    var obj = vm.acct.accounts[i];
 
-			    if (acct_id.indexOf(obj.id) !== -1) {
+			    if (id.indexOf(obj.id) !== -1) {
 			        vm.acct.accounts.splice(i, 1);
 			    }
 			}
@@ -182,16 +237,30 @@
 
 	}])
 
-	.service('accountsService', [function() {
+	// Accounts factory (edit-model, get all, update, remove):
+	.factory('Accounts', ['$http', function($http) {
 
-		// Wire up edit account modal
-	    this.modalEditAccount = function(vm, id, label, address) {
+		var accountsFactory = {};
+
+		accountsFactory.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
 	        vm.acct_id = id;
 	        vm.acct_label = label;
 	        vm.acct_address = address;
 			vm.save_btn_text = 'save';
 	    };
+
+		// Get all the accounts
+		accountsFactory.all = function() {
+			return $http.get('/api/stuff');
+		};
+
+		// Delete account
+		accountsFactory.remove = function(id) {
+			return $http.delete('/api/accounts/'+id);
+		};
+		
+		return accountsFactory;
 
 	}]);
 
@@ -251,6 +320,84 @@
 				'</section>'
 	    };
 	});
+
+})();
+
+/*global angular */
+/* =========================================
+   HELP Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-help', ['notification-directives'])
+
+	.controller('HelpCtrl',
+	['$scope', '$http', '$timeout', 'helpService',
+	function($scope, $http, $timeout, helpService) {
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		// setup e-mail data with unicode symbols
+		// send user name, email and public address
+		var helpMessage = {
+		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+		    to: 'leon@bitage.io', // list of receivers
+		    subject: 'Bitage Help Request! ✔', // Subject line
+		    text: 'Hello world ✔', // plaintext body
+		    html: '<b>Hello world ✔</b>' // html body
+		};
+
+		// Quick form submit
+		this.submitHelpForm = function(isValid) {
+
+			// check to make sure form is valid
+			if (isValid) {
+
+				var data = this.formData;
+				// Post form in helpService
+				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
+
+			} else {
+
+				// Show error notification - sweet alert
+				alert('Please correct the form');
+			}
+
+		};
+
+	}])
+
+	.service('helpService', [function() {
+
+		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
+
+			// process the form
+			var request = $http({
+					method  : 'POST',
+					url     : '/help',
+					// data    : $.param(vm.formData),
+					data    : data.message,
+					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+				})
+				.success(function() {
+					// Show notification
+					dash.message = 'Message sent! We will get back to you soon.';
+					dash.notification_type = 'success';
+					dash.notification = true;
+					$timeout(timeoutMsg, 4000);
+				});
+		};
+
+	}]);
 
 })();
 
@@ -518,84 +665,6 @@
 			dash.notification = true;
 			$timeout(timeoutMsg, 4000);
 		};
-	}]);
-
-})();
-
-/*global angular */
-/* =========================================
-   HELP Module
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-help', ['notification-directives'])
-
-	.controller('HelpCtrl',
-	['$scope', '$http', '$timeout', 'helpService',
-	function($scope, $http, $timeout, helpService) {
-
-		var vm = $scope;
-
-		var timeoutMsg = function() {
- 			vm.dash.notification = false;
- 		};
-
-		vm.dash.closeMsg = function() {
-			vm.dash.notification = false;
-		};
-
-		// setup e-mail data with unicode symbols
-		// send user name, email and public address
-		var helpMessage = {
-		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
-		    to: 'leon@bitage.io', // list of receivers
-		    subject: 'Bitage Help Request! ✔', // Subject line
-		    text: 'Hello world ✔', // plaintext body
-		    html: '<b>Hello world ✔</b>' // html body
-		};
-
-		// Quick form submit
-		this.submitHelpForm = function(isValid) {
-
-			// check to make sure form is valid
-			if (isValid) {
-
-				var data = this.formData;
-				// Post form in helpService
-				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
-
-			} else {
-
-				// Show error notification - sweet alert
-				alert('Please correct the form');
-			}
-
-		};
-
-	}])
-
-	.service('helpService', [function() {
-
-		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
-
-			// process the form
-			var request = $http({
-					method  : 'POST',
-					url     : '/help',
-					// data    : $.param(vm.formData),
-					data    : data.message,
-					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-				})
-				.success(function() {
-					// Show notification
-					dash.message = 'Message sent! We will get back to you soon.';
-					dash.notification_type = 'success';
-					dash.notification = true;
-					$timeout(timeoutMsg, 4000);
-				});
-		};
-
 	}]);
 
 })();
