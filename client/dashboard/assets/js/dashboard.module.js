@@ -41,7 +41,8 @@
 
 		// Account API calls:
 		var AccountSave   = $resource('/api/accounts');
-		var AccountUpdate = $resource('/api/accounts/:id');
+		var AccountUpdate = $resource('/api/accounts/update');
+		var AccountDelete = $resource('/api/accounts/delete');
 
 		// Setup accounts model
 		this.accounts = [];
@@ -95,15 +96,35 @@
 
 			// Don't add account if blank
 		    if (this.new_label === '' ||
-		    	this.new_label === undefined ||
+		    	this.new_label   === undefined ||
 		    	this.new_address === undefined) { return; }
 
 		    // Update account
-		    // Accounts.update(i, this.new_label, this.new_address);
 		    var acctUpdate = new AccountUpdate();
 			acctUpdate.label   = this.new_label;
 			acctUpdate.address = this.new_address;
 			acctUpdate.$save();
+
+			// find account by id and update it's obj values
+			function changeAccountValues( id, new_label, new_address ) {
+				for (var i in vm.acct.accounts) {
+					if (vm.acct.accounts[i].id == id) {
+						vm.acct.accounts[i].label = new_label;
+						vm.acct.accounts[i].address = new_address;
+						break;
+					}
+				}
+			}
+
+			changeAccountValues (i, this.new_label, this.new_address);
+
+			// Hide modal
+			vm.dash.modal_edit_account = false;
+			vm.dash.modal = false;
+
+			// Reset inputs
+		    this.new_label   = '';
+		    this.new_address = '';
 		}
 
 		/*
@@ -166,13 +187,20 @@
 		};
 		*/
 
-		vm.dash.removeAccount = function(acct_id) {
+		vm.dash.removeAccount = function(id) {
+
+			console.log('remove: ' + id);
+
+			// Update account
+		    var acctDelete = new AccountDelete();
+		    acctDelete.id  = id;
+			acctDelete.$delete();
 
 			// Find object by id and remove from array
 			for (var i = 0; i < vm.acct.accounts.length; i++) {
 			    var obj = vm.acct.accounts[i];
 
-			    if (acct_id.indexOf(obj.id) !== -1) {
+			    if (id.indexOf(obj.id) !== -1) {
 			        vm.acct.accounts.splice(i, 1);
 			    }
 			}

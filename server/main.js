@@ -18,8 +18,7 @@ var express  	 = require('express'),
 	session      = require('express-session'),
 	configDB 	 = require('./config/database.js'),
 	config 	   	 = require('./config/config'),
-
-	accountsController = require('./controllers/accounts-controller.js');
+	acctCtrl 	 = require('./controllers/accounts-controller.js');
 
 // Express router
 var router 		 = express.Router();
@@ -55,7 +54,6 @@ console.log(__dirname + "../client/");
 
 website.use(function(req, res, next) {
 	console.log(req.method, req.url);
-
 	next();
 });
 
@@ -70,7 +68,6 @@ app.use('/dashboard', dashboard);
 
 dashboard.use(function(req, res, next) {
 	console.log(req.method, req.url);
-
 	next();
 });
 
@@ -80,10 +77,13 @@ dashboard.get('/dashboard', function(req, res) {
 });
 
 // Dashboard API to add new accounts:
-app.post('/api/accounts', accountsController.create);
+app.post('/api/accounts', acctCtrl.create);
 
-// Dashboard API to update account
-app.put('/api/accounts/:id', accountsController.update);
+// Dashboard API to update account:
+app.post('/api/accounts/update', acctCtrl.update);
+
+// Dashboard API to delete account:
+app.delete('/api/accounts/delete', acctCtrl.delete);
 
 // Start server ================================================================
 app.listen(config.port, function () {
