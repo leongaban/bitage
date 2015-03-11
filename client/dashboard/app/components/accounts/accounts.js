@@ -16,9 +16,14 @@
 			vm.$parent.modal = false;
 
 		// Account API calls:
-		var AccountSave   = $resource('/api/accounts');
+		var AccountsGet   = $resource('/api/accounts/all');
+		var AccountSave   = $resource('/api/accounts/save');
 		var AccountUpdate = $resource('/api/accounts/update');
 		var AccountDelete = $resource('/api/accounts/delete');
+
+		// Get all accounts:
+		var acctsGet = new AccountsGet();
+		acctsGet.$get();
 
 		// Setup accounts model
 		this.accounts = [];

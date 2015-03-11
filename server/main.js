@@ -76,8 +76,11 @@ dashboard.get('/dashboard', function(req, res) {
 	res.sendfile(path, { 'root': '../client/dashboard/' });
 });
 
+// Dashboard API to get all accounts:
+app.get('/api/accounts/all', acctCtrl.all);
+
 // Dashboard API to add new accounts:
-app.post('/api/accounts', acctCtrl.create);
+app.post('/api/accounts/save', acctCtrl.create);
 
 // Dashboard API to update account:
 app.post('/api/accounts/update', acctCtrl.update);
