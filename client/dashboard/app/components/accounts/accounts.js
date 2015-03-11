@@ -9,8 +9,8 @@
 		['ngAnimate', 'ngResource', 'account-directives'])
 
 	.controller('AcctCtrl',
-		['$scope', '$resource', 'accountsService',
-		function($scope, $resource, accountsService) {
+		['$scope', '$resource', 'Accounts',
+		function($scope, $resource, Accounts) {
 
 		var vm = $scope;
 			vm.$parent.modal = false;
@@ -58,38 +58,27 @@
 			account.$save();
 		}
 
-		/*
-		this.addAccount = function() {
-
-			// Create next account id
-			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
-
-			// Don't add account if blank
-		    if (this.label === '' ||
-		    	this.label === undefined ||
-		    	this.address === undefined) { return; }
-
-		    // Add new account to accounts array
-		    this.accounts.push({
-				id: nextId,
-				label: this.label,
-				balance: 0,
-				address: this.address
-		    });
-
-		    // Reset inputs
-		    this.label = '';
-		    this.address = '';
-		};
-		*/
-
-		// Open edit account modal:
+		// Open the edit account modal:
 		this.editAccount = function(id, label, address) {
 			// console.log(id);
 			vm.dash.modal = true;
-			accountsService.modalEditAccount(vm.dash, id, label, address);
+			Accounts.modalEditAccount(vm.dash, id, label, address);
 		};
 
+		vm.dash.updateAccount = function(i) {
+
+			console.log(i);
+
+			// Don't add account if blank
+		    // if ($scope.new_label === '' ||
+		    // 	$scope.new_label === undefined ||
+		    // 	$scope.new_address === undefined) { return; }
+
+		    // Update account
+		    Accounts.update(i, $scope.new_label, $scope.new_address);
+		}
+
+		/*
 		vm.dash.updateAccount = function(i) {
 
 			// Don't add account if blank
@@ -122,6 +111,32 @@
 			var theRow = angular.element( document.querySelector('#acct-'+i));
 			theRow.addClass('ping-row');
 		}
+		*/
+
+		/*
+		this.addAccount = function() {
+
+			// Create next account id
+			var nextId = 'acct-' + (vm.acct.accounts.length + 1);
+
+			// Don't add account if blank
+		    if (this.label === '' ||
+		    	this.label === undefined ||
+		    	this.address === undefined) { return; }
+
+		    // Add new account to accounts array
+		    this.accounts.push({
+				id: nextId,
+				label: this.label,
+				balance: 0,
+				address: this.address
+		    });
+
+		    // Reset inputs
+		    this.label = '';
+		    this.address = '';
+		};
+		*/
 
 		vm.dash.removeAccount = function(acct_id) {
 
@@ -161,16 +176,35 @@
 
 	}])
 
-	.service('accountsService', [function() {
+	// Accounts factory (edit-model, get all, update, remote):
+	.factory('Accounts', ['$http', '$resource', function($http, $resource) {
 
-		// Wire up edit account modal
-	    this.modalEditAccount = function(vm, id, label, address) {
+		var accountsFactory = {};
+
+		accountsFactory.modalEditAccount = function(vm, id, label, address) {
 	        vm.modal_edit_account = true;
 	        vm.acct_id = id;
 	        vm.acct_label = label;
 	        vm.acct_address = address;
 			vm.save_btn_text = 'save';
 	    };
+
+		// Get all the accounts
+		accountsFactory.all = function() {
+			return $http.get('/api/stuff');
+		};
+
+		// Updates an account
+		accountsFactory.update = function(id) {
+			return $http.put('/api/accounts/'+id);
+		};
+
+		// Delete account
+		accountsFactory.remove = function(id) {
+			return $http.delete('/api/accounts/'+id);
+		};
+		
+		return accountsFactory;
 
 	}]);
 

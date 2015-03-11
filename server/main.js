@@ -102,9 +102,11 @@ dashboard.get('/dashboard', function(req, res) {
 	res.sendfile(path, { 'root': '../client/dashboard/' });
 });
 
-// API to add new accounts:
+// Dashboard API to add new accounts:
 app.post('/api/accounts', accountsController.create);
 
+// Dashboard API to update account
+app.post('/api/accounts/:id', accountsController.update);
 
 // launch ======================================================================
 // app.listen(port);
