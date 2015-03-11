@@ -15,7 +15,9 @@
 		var vm = $scope;
 			vm.$parent.modal = false;
 
-		var Account = $resource('/api/accounts');
+		// Account API calls:
+		var AccountSave   = $resource('/api/accounts');
+		var AccountUpdate = $resource('/api/accounts/:id');
 
 		// Setup accounts model
 		this.accounts = [];
@@ -52,10 +54,10 @@
 
 		// POST new account to '/api/accounts'
 		this.addAccount = function() {
-			var account = new Account();
-			account.label = this.label;
-			account.address = this.address;
-			account.$save();
+			var acctSave 	 = new AccountSave();
+			acctSave.label 	 = this.label;
+			acctSave.address = this.address;
+			acctSave.$save();
 		}
 
 		// Open the edit account modal:
@@ -67,17 +69,17 @@
 
 		vm.dash.updateAccount = function(i) {
 
-			console.log(i);
-			// console.log($scope.new_label);
-			// console.log($scope.new_address);
-
 			// Don't add account if blank
-		    // if ($scope.new_label === '' ||
-		    // 	$scope.new_label === undefined ||
-		    // 	$scope.new_address === undefined) { return; }
+		    if (this.new_label === '' ||
+		    	this.new_label === undefined ||
+		    	this.new_address === undefined) { return; }
 
 		    // Update account
-		    Accounts.update(i, $scope.new_label, $scope.new_address);
+		    // Accounts.update(i, this.new_label, this.new_address);
+		    var acctUpdate = new AccountUpdate();
+			acctUpdate.label   = this.new_label;
+			acctUpdate.address = this.new_address;
+			acctUpdate.$save();
 		}
 
 		/*
@@ -179,7 +181,7 @@
 	}])
 
 	// Accounts factory (edit-model, get all, update, remove):
-	.factory('Accounts', ['$http', '$resource', function($http, $resource) {
+	.factory('Accounts', ['$http', function($http) {
 
 		var accountsFactory = {};
 
@@ -194,11 +196,6 @@
 		// Get all the accounts
 		accountsFactory.all = function() {
 			return $http.get('/api/stuff');
-		};
-
-		// Updates an account
-		accountsFactory.update = function(id) {
-			return $http.put('/api/accounts/'+id);
 		};
 
 		// Delete account
