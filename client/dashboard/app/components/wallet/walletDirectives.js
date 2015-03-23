@@ -5,7 +5,15 @@
 
 (function() {
 
-	var app = angular.module('wallet-directives', [])
+	var app = angular.module('app-wallet-directives', [])
+
+	.directive('walletTransactions', function() {
+	    return {
+	        templateUrl: "app/components/wallet/walletTransactions.html",
+	        restrict: "E"
+	    }
+	})
+
 	.directive('receiveModal', function () {
 
 	    return {

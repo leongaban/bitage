@@ -1,0 +1,19 @@
+<section class="widget-container wallet-transactions">
+	<table class="wallet_table">
+        <tr class="row_body"
+            ng-repeat="trans in wallet.transactions">
+
+            <td class="td_icon" ng-switch="trans.type">
+                <div ng-switch-when="incoming" class="icon-download-outline"></div>
+                <div ng-switch-when="outgoing" class="icon-upload-outline"></div>
+            </td>
+
+            <td class="td_comment" ng-switch="trans.type">
+                <div ng-switch-when="incoming" class="green">+ {{ trans.amount }}</div>
+                <div ng-switch-when="outgoing" class="red">- {{ trans.amount }}</div>
+                <p class="comment">{{ trans.comment }}</p>
+                <p class="date">{{ trans.time }}</p><span class="type">- {{ trans.status }}</span>
+            </td>
+        </tr>
+	</table>
+</section>

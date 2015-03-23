@@ -323,84 +323,6 @@
 
 })();
 
-/*global angular */
-/* =========================================
-   HELP Module
-   ========================================= */
-
-(function() {
-
-	var app = angular.module('app-help', ['notification-directives'])
-
-	.controller('HelpCtrl',
-	['$scope', '$http', '$timeout', 'helpService',
-	function($scope, $http, $timeout, helpService) {
-
-		var vm = $scope;
-
-		var timeoutMsg = function() {
- 			vm.dash.notification = false;
- 		};
-
-		vm.dash.closeMsg = function() {
-			vm.dash.notification = false;
-		};
-
-		// setup e-mail data with unicode symbols
-		// send user name, email and public address
-		var helpMessage = {
-		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
-		    to: 'leon@bitage.io', // list of receivers
-		    subject: 'Bitage Help Request! ✔', // Subject line
-		    text: 'Hello world ✔', // plaintext body
-		    html: '<b>Hello world ✔</b>' // html body
-		};
-
-		// Quick form submit
-		this.submitHelpForm = function(isValid) {
-
-			// check to make sure form is valid
-			if (isValid) {
-
-				var data = this.formData;
-				// Post form in helpService
-				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
-
-			} else {
-
-				// Show error notification - sweet alert
-				alert('Please correct the form');
-			}
-
-		};
-
-	}])
-
-	.service('helpService', [function() {
-
-		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
-
-			// process the form
-			var request = $http({
-					method  : 'POST',
-					url     : '/help',
-					// data    : $.param(vm.formData),
-					data    : data.message,
-					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-				})
-				.success(function() {
-					// Show notification
-					dash.message = 'Message sent! We will get back to you soon.';
-					dash.notification_type = 'success';
-					dash.notification = true;
-					$timeout(timeoutMsg, 4000);
-				});
-		};
-
-	}]);
-
-})();
-
 /*global angular*/
 /* =========================================
 --------------------------------------------
@@ -415,11 +337,15 @@
 (function() { "use strict";
 
 	var app = angular.module('bitAge',
+		// ['ui.router'])
+
 		['ui.router',
-		 'app-wallet',
-		 'wallet-directives',
 		 'notification-directives',
+		 'account-directives',
 		 'app-accounts',
+		 'app-wallet-controller',
+		 'app-wallet-directives',
+		 'app-wallet-modal-service',
 		 'app-settings',
 		 'app-help'])
 
@@ -597,22 +523,18 @@
 	}]);
 
 })();
-
 /*global angular */
 /* =========================================
-   Settings module
+   HELP Module
    ========================================= */
 
 (function() {
 
-	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
-	.controller('SettingsCtrl',
-		['$scope', '$timeout', 'settingsService',
-		function($scope, $timeout, settingsService) {
+	var app = angular.module('app-help', ['notification-directives'])
 
-		// Angular File upload:
-		//http://flowjs.github.io/ng-flow/
-		//https://github.com/flowjs/ng-flow
+	.controller('HelpCtrl',
+	['$scope', '$http', '$timeout', 'helpService',
+	function($scope, $http, $timeout, helpService) {
 
 		var vm = $scope;
 
@@ -624,47 +546,57 @@
 			vm.dash.notification = false;
 		};
 
-		this.saveProfile = function(isValid) {
+		// setup e-mail data with unicode symbols
+		// send user name, email and public address
+		var helpMessage = {
+		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+		    to: 'leon@bitage.io', // list of receivers
+		    subject: 'Bitage Help Request! ✔', // Subject line
+		    text: 'Hello world ✔', // plaintext body
+		    html: '<b>Hello world ✔</b>' // html body
+		};
+
+		// Quick form submit
+		this.submitHelpForm = function(isValid) {
 
 			// check to make sure form is valid
-            if (isValid) {
-                settingsService.postProfile(
-                	this.formData,
-					vm.dash,
-					$timeout,
-					timeoutMsg
-				);
-            } else {
-            	// alert('Please check the form!');
-             //   	swal({
-                //    title: "Oops!",
-                //    text: "Please check the form!",
-                //    type: "error",
-                //    confirmButtonText: "Ok",
-                //    confirmButtonColor: "#024562" });
-            }
+			if (isValid) {
 
-		};
-	}])
+				var data = this.formData;
+				// Post form in helpService
+				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
 
-	.service('settingsService', [function() {
+			} else {
 
-	    // send updated profile to server
-		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
-
-			if (fdata !== undefined) {
-				console.log(fdata);
-				dash.message = 'Profile updated!';
-				dash.notification_type = 'success';
-			} else if (fdata === undefined) {
-				dash.message = 'Please check the form!';
-				dash.notification_type = 'error';
+				// Show error notification - sweet alert
+				alert('Please correct the form');
 			}
 
-			// Show notification
-			dash.notification = true;
-			$timeout(timeoutMsg, 4000);
 		};
+
+	}])
+
+	.service('helpService', [function() {
+
+		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
+
+			// process the form
+			var request = $http({
+					method  : 'POST',
+					url     : '/help',
+					// data    : $.param(vm.formData),
+					data    : data.message,
+					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+				})
+				.success(function() {
+					// Show notification
+					dash.message = 'Message sent! We will get back to you soon.';
+					dash.notification_type = 'success';
+					dash.notification = true;
+					$timeout(timeoutMsg, 4000);
+				});
+		};
+
 	}]);
 
 })();
@@ -676,13 +608,21 @@
 
 (function() {
 
-	var app = angular.module('app-wallet',
+	var app = angular.module('app-wallet-controller',
 		['wallet-directives',
 		 'notification-directives'])
 
 	.controller('WalletCtrl',
-		['$scope', '$sce', '$timeout', 'walletModalService',
-		function($scope, $sce, $timeout, walletModalService) {
+		['$scope',
+		 '$sce',
+		 '$timeout',
+		 'walletModalService',
+		 'walletTransactions',
+		function($scope,
+				 $sce,
+				 $timeout,
+				 walletModalService,
+				 walletTransactions) {
 
 		var vm 			     = $scope,
 			public_address   = '';
@@ -761,53 +701,7 @@
 				amount: 0.064904
 			}
 		];
-	}])
-
-	.service('walletModalService', [function() {
-
-		// wire modal recieve
-	    this.modalRecieve = function(dash) {
-	        dash.modal_receive  = true;
-			dash.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
-			dash.qr_code 	    = 'assets/img/qrcode.png';
-	    };
-
-	    // wire modal send
-	    this.modalSend = function(dash, $timeout, timeoutMsg) {
-	    	dash.modal_send = true;
-			dash.send_btn_text = 'Send';
-
-			// btn_usd in walletDirective html
-			dash.switchCurrency = function() {
-				if (dash.currency === 'USD') {
-					dash.currency = 'BTC';
-				} else if (dash.currency = 'BTC') {
-					dash.currency = 'USD';
-				}
-			};
-
-			dash.sendTransaction = function() {
-
-				// Make API call to check address
-				dash.send_btn_text = 'Sending...';
-
-				// Get response back and close modal
-				dash.modal_send = false;
-				dash.modal = false;
-
-				// Show notification
-				dash.message = 'Transaction sent!';
-
-				// success or error
-				dash.notification_type = 'success';
-
-				// show notifcation and settimeout
-				dash.notification = true;
-				$timeout(timeoutMsg, 4000);
-			};
-	    }
 	}]);
-
 })();
 
 /*global angular */
@@ -817,7 +711,15 @@
 
 (function() {
 
-	var app = angular.module('wallet-directives', [])
+	var app = angular.module('app-wallet-directives', [])
+
+	.directive('walletTransactions', function() {
+	    return {
+	        templateUrl: "app/components/wallet/walletTransactions.html",
+	        restrict: "E"
+	    }
+	})
+
 	.directive('receiveModal', function () {
 
 	    return {
@@ -868,5 +770,130 @@
 				'</section>'
 	    };
 	});
+
+})();
+/*global angular */
+/* =========================================
+   WALLET Modal Service
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-wallet-modal-service', [])
+
+	.service('walletModalService', [function() {
+
+		// wire modal recieve
+	    this.modalRecieve = function(dash) {
+	        dash.modal_receive  = true;
+			dash.public_address = '17dPAMzZiosQYVty6ES4KSWN8R8XFcxShH';
+			dash.qr_code 	    = 'assets/img/qrcode.png';
+	    };
+
+	    // wire modal send
+	    this.modalSend = function(dash, $timeout, timeoutMsg) {
+	    	dash.modal_send = true;
+			dash.send_btn_text = 'Send';
+
+			// btn_usd in walletDirective html
+			dash.switchCurrency = function() {
+				if (dash.currency === 'USD') {
+					dash.currency = 'BTC';
+				} else if (dash.currency = 'BTC') {
+					dash.currency = 'USD';
+				}
+			};
+
+			dash.sendTransaction = function() {
+
+				// Make API call to check address
+				dash.send_btn_text = 'Sending...';
+
+				// Get response back and close modal
+				dash.modal_send = false;
+				dash.modal = false;
+
+				// Show notification
+				dash.message = 'Transaction sent!';
+
+				// success or error
+				dash.notification_type = 'success';
+
+				// show notifcation and settimeout
+				dash.notification = true;
+				$timeout(timeoutMsg, 4000);
+			};
+	    }
+	}]);
+
+})();
+/*global angular */
+/* =========================================
+   Settings module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
+	.controller('SettingsCtrl',
+		['$scope', '$timeout', 'settingsService',
+		function($scope, $timeout, settingsService) {
+
+		// Angular File upload:
+		//http://flowjs.github.io/ng-flow/
+		//https://github.com/flowjs/ng-flow
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		this.saveProfile = function(isValid) {
+
+			// check to make sure form is valid
+            if (isValid) {
+                settingsService.postProfile(
+                	this.formData,
+					vm.dash,
+					$timeout,
+					timeoutMsg
+				);
+            } else {
+            	// alert('Please check the form!');
+             //   	swal({
+                //    title: "Oops!",
+                //    text: "Please check the form!",
+                //    type: "error",
+                //    confirmButtonText: "Ok",
+                //    confirmButtonColor: "#024562" });
+            }
+
+		};
+	}])
+
+	.service('settingsService', [function() {
+
+	    // send updated profile to server
+		this.postProfile = function (fdata, dash, $timeout, timeoutMsg) {
+
+			if (fdata !== undefined) {
+				console.log(fdata);
+				dash.message = 'Profile updated!';
+				dash.notification_type = 'success';
+			} else if (fdata === undefined) {
+				dash.message = 'Please check the form!';
+				dash.notification_type = 'error';
+			}
+
+			// Show notification
+			dash.notification = true;
+			$timeout(timeoutMsg, 4000);
+		};
+	}]);
 
 })();
