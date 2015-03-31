@@ -12,11 +12,15 @@
 (function() { "use strict";
 
 	var app = angular.module('bitAge',
+		// ['ui.router'])
+
 		['ui.router',
-		 'app-wallet',
-		 'wallet-directives',
 		 'notification-directives',
+		 'account-directives',
 		 'app-accounts',
+		 // 'app-wallet-controller',
+		 // 'app-wallet-directives',
+		 // 'app-wallet-modal-service',
 		 'app-settings',
 		 'app-help'])
 
@@ -27,10 +31,10 @@
 
 			$stateProvider
 
-				.state('wallet', {
-					url: '/wallet',
-					templateUrl: 'views/wallet.html'
-				})
+				// .state('wallet', {
+				// 	url: '/wallet',
+				// 	templateUrl: 'views/wallet.html'
+				// })
 
 				.state('accounts', {
 					url: '/accounts',
@@ -47,7 +51,7 @@
 					templateUrl: 'views/help.html'
 				});
 
-			$urlRouterProvider.otherwise('wallet');
+			$urlRouterProvider.otherwise('accounts');
 	}])
 
 	.controller('DashCtrl',
