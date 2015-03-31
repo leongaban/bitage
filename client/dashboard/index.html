@@ -26,8 +26,8 @@
       ng-click="dash.closeMenu()">
 
     <notification-msg></notification-msg>
-    <receive-modal></receive-modal>
-    <send-modal></send-modal>
+    <!-- <receive-modal></receive-modal>
+    <send-modal></send-modal> -->
     <edit-account-modal></edit-account-modal>
 
     <div ng-show="dash.modal"
@@ -52,9 +52,9 @@
                  ng-click="dash.menuClick($event)"
                  id="avatar_menu">
                 <ul>
-                    <li ng-click="dash.sidebarClick();">
+                    <!-- <li ng-click="dash.sidebarClick();">
                         <a ui-sref="wallet" ng-click="dash.closeMenu();">Wallet</a>
-                    </li>
+                    </li> -->
                     <li ng-click="dash.sidebarClick();">
                         <a ui-sref="accounts" ng-click="dash.closeMenu();">Accounts</a>
                     </li>
@@ -87,10 +87,10 @@
                     <h1>Bitage</h1>
                     <h2>Welcome to the age of bitcoin</h2>
                 </li>
-                <li ng-click="dash.sidebarClick();"
+                <!-- <li ng-click="dash.sidebarClick();"
                     ng-class="{active: dash.$state.includes('wallet')}">
                     <a ui-sref="wallet">Wallet</a>
-                </li>
+                </li> -->
                 <li ng-click="dash.sidebarClick();"
                     ng-class="{active: dash.$state.includes('accounts')}">
                     <a ui-sref="accounts">Accounts</a>
