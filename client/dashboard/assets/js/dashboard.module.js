@@ -23,9 +23,9 @@
 })();
 
 /*global angular */
-/* =========================================
+/* =============================================================================
    Accounts module
-   ========================================= */
+   ========================================================================== */
 
 (function() {
 
@@ -33,8 +33,8 @@
 		['ngAnimate', 'ngResource', 'account-directives'])
 
 	.controller('AcctCtrl',
-		['$scope', '$resource', 'Accounts',
-		function($scope, $resource, Accounts) {
+		['$scope', '$resource', 'AccountsFactory',
+		function($scope, $resource, AccountsFactory) {
 
 		var vm = $scope;
 			vm.$parent.modal = false;
@@ -94,7 +94,7 @@
 		this.editAccount = function(id, label, address) {
 			// console.log(id);
 			vm.dash.modal = true;
-			Accounts.modalEditAccount(vm.dash, id, label, address);
+			AccountsFactory.modalEditAccount(vm.dash, id, label, address);
 		};
 
 		vm.dash.updateAccount = function(i) {
@@ -121,7 +121,7 @@
 				}
 			}
 
-			changeAccountValues (i, this.new_label, this.new_address);
+			changeAccountValues(i, this.new_label, this.new_address);
 
 			// Hide modal
 			vm.dash.modal_edit_account = false;
@@ -235,37 +235,9 @@
 			selectAddress(the_id);
 		};
 
-	}])
-
-	// Accounts factory (edit-model, get all, update, remove):
-	.factory('Accounts', ['$http', function($http) {
-
-		var accountsFactory = {};
-
-		accountsFactory.modalEditAccount = function(vm, id, label, address) {
-	        vm.modal_edit_account = true;
-	        vm.acct_id = id;
-	        vm.acct_label = label;
-	        vm.acct_address = address;
-			vm.save_btn_text = 'save';
-	    };
-
-		// Get all the accounts
-		accountsFactory.all = function() {
-			return $http.get('/api/stuff');
-		};
-
-		// Delete account
-		accountsFactory.remove = function(id) {
-			return $http.delete('/api/accounts/'+id);
-		};
-		
-		return accountsFactory;
-
 	}]);
 
 })();
-
 /*global angular */
 /* =========================================
    Wallet directive
@@ -324,93 +296,55 @@
 })();
 
 /*global angular */
-/* =========================================
-   HELP Module
-   ========================================= */
+/* =============================================================================
+   Accounts module
+   ========================================================================== */
 
 (function() {
 
-	var app = angular.module('app-help', ['notification-directives'])
+	var app = angular.module('app-accounts-factory',
+		['ngAnimate',
+		 'ngResource',
+		 'account-directives'])
 
-	.controller('HelpCtrl',
-	['$scope', '$http', '$timeout', 'helpService',
-	function($scope, $http, $timeout, helpService) {
+	// Accounts factory (edit-model, get all, update, remove):
+	.factory('AccountsFactory', ['$http', function($http) {
 
-		var vm = $scope;
+		var accountsFactory = {};
 
-		var timeoutMsg = function() {
- 			vm.dash.notification = false;
- 		};
+		accountsFactory.modalEditAccount = function(vm, id, label, address) {
+	        vm.modal_edit_account = true;
+	        vm.acct_id 			  = id;
+	        vm.acct_label 		  = label;
+	        vm.acct_address 	  = address;
+			vm.save_btn_text 	  = 'save';
+	    };
 
-		vm.dash.closeMsg = function() {
-			vm.dash.notification = false;
+		// Get all the accounts
+		accountsFactory.all = function() {
+			return $http.get('/api/stuff');
 		};
 
-		// setup e-mail data with unicode symbols
-		// send user name, email and public address
-		var helpMessage = {
-		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
-		    to: 'leon@bitage.io', // list of receivers
-		    subject: 'Bitage Help Request! ✔', // Subject line
-		    text: 'Hello world ✔', // plaintext body
-		    html: '<b>Hello world ✔</b>' // html body
+		// Delete account
+		accountsFactory.remove = function(id) {
+			return $http.delete('/api/accounts/'+id);
 		};
-
-		// Quick form submit
-		this.submitHelpForm = function(isValid) {
-
-			// check to make sure form is valid
-			if (isValid) {
-
-				var data = this.formData;
-				// Post form in helpService
-				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
-
-			} else {
-
-				// Show error notification - sweet alert
-				alert('Please correct the form');
-			}
-
-		};
-
-	}])
-
-	.service('helpService', [function() {
-
-		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
-
-			// process the form
-			var request = $http({
-					method  : 'POST',
-					url     : '/help',
-					// data    : $.param(vm.formData),
-					data    : data.message,
-					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-				})
-				.success(function() {
-					// Show notification
-					dash.message = 'Message sent! We will get back to you soon.';
-					dash.notification_type = 'success';
-					dash.notification = true;
-					$timeout(timeoutMsg, 4000);
-				});
-		};
+		
+		return accountsFactory;
 
 	}]);
 
 })();
-
 /*global angular*/
-/* =========================================
---------------------------------------------
+/* =============================================================================
+--------------------------------------------------------------------------------
 
 	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
 	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
---------------------------------------------
-============================================ */
+--------------------------------------------------------------------------------
+============================================================================= */
 
 (function() { "use strict";
 
@@ -421,11 +355,13 @@
 		 'notification-directives',
 		 'account-directives',
 		 'app-accounts',
+		 'app-accounts-factory',
 		 // 'app-wallet-controller',
 		 // 'app-wallet-directives',
 		 // 'app-wallet-modal-service',
+		 // 'app-help',
 		 'app-settings',
-		 'app-help'])
+		 'app-settings-service'])
 
 	.config([
 		'$stateProvider',
@@ -441,18 +377,18 @@
 
 				.state('accounts', {
 					url: '/accounts',
-					templateUrl: 'views/accounts.html'
+					templateUrl: 'app/components/accounts/accounts.html'
 				})
 
 				.state('settings', {
 					url: '/settings',
-					templateUrl: 'views/settings.html'
-				})
-
-				.state('help', {
-					url: '/help',
-					templateUrl: 'views/help.html'
+					templateUrl: 'app/components/settings/settings.html'
 				});
+
+				// .state('help', {
+				// 	url: '/help',
+				// 	templateUrl: 'app/components/help/help.html'
+				// });
 
 			$urlRouterProvider.otherwise('accounts');
 	}])
@@ -602,16 +538,20 @@
 
 })();
 /*global angular */
-/* =========================================
+/* =============================================================================
    Settings module
-   ========================================= */
+   ========================================================================== */
 
 (function() {
 
 	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
 	.controller('SettingsCtrl',
-		['$scope', '$timeout', 'settingsService',
-		function($scope, $timeout, settingsService) {
+		['$scope',
+		 '$timeout',
+		 'settingsService',
+		function($scope,
+				 $timeout,
+				 settingsService) {
 
 		// Angular File upload:
 		//http://flowjs.github.io/ng-flow/
@@ -638,18 +578,27 @@
 					timeoutMsg
 				);
             } else {
-            	// alert('Please check the form!');
-             //   	swal({
-                //    title: "Oops!",
-                //    text: "Please check the form!",
-                //    type: "error",
-                //    confirmButtonText: "Ok",
-                //    confirmButtonColor: "#024562" });
+			 // alert('Please check the form!');
+             // 	swal({
+             //       title: "Oops!",
+             //       text: "Please check the form!",
+             //       type: "error",
+             //       confirmButtonText: "Ok",
+             //       confirmButtonColor: "#024562" });
             }
 
 		};
-	}])
+	}]);
 
+})();
+/*global angular */
+/* =============================================================================
+   Settings Service to update name, email and password
+   ========================================================================== */
+
+(function() {
+
+	var app = angular.module('app-settings-service', [])
 	.service('settingsService', [function() {
 
 	    // send updated profile to server
@@ -668,6 +617,83 @@
 			dash.notification = true;
 			$timeout(timeoutMsg, 4000);
 		};
+	}]);
+
+})();
+/*global angular */
+/* =========================================
+   HELP Module
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-help', ['notification-directives'])
+
+	.controller('HelpCtrl',
+	['$scope', '$http', '$timeout', 'helpService',
+	function($scope, $http, $timeout, helpService) {
+
+		var vm = $scope;
+
+		var timeoutMsg = function() {
+ 			vm.dash.notification = false;
+ 		};
+
+		vm.dash.closeMsg = function() {
+			vm.dash.notification = false;
+		};
+
+		// setup e-mail data with unicode symbols
+		// send user name, email and public address
+		var helpMessage = {
+		    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+		    to: 'leon@bitage.io', // list of receivers
+		    subject: 'Bitage Help Request! ✔', // Subject line
+		    text: 'Hello world ✔', // plaintext body
+		    html: '<b>Hello world ✔</b>' // html body
+		};
+
+		// Quick form submit
+		this.submitHelpForm = function(isValid) {
+
+			// check to make sure form is valid
+			if (isValid) {
+
+				var data = this.formData;
+				// Post form in helpService
+				helpService.postHelpForm($http, data, vm.dash, $timeout, timeoutMsg);
+
+			} else {
+
+				// Show error notification - sweet alert
+				alert('Please correct the form');
+			}
+
+		};
+
+	}])
+
+	.service('helpService', [function() {
+
+		this.postHelpForm = function($http, data, dash, $timeout, timeoutMsg) {
+
+			// process the form
+			var request = $http({
+					method  : 'POST',
+					url     : '/help',
+					// data    : $.param(vm.formData),
+					data    : data.message,
+					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+				})
+				.success(function() {
+					// Show notification
+					dash.message = 'Message sent! We will get back to you soon.';
+					dash.notification_type = 'success';
+					dash.notification = true;
+					$timeout(timeoutMsg, 4000);
+				});
+		};
+
 	}]);
 
 })();

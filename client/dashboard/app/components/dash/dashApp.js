@@ -1,13 +1,13 @@
 /*global angular*/
-/* =========================================
---------------------------------------------
+/* =============================================================================
+--------------------------------------------------------------------------------
 
 	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
 	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
---------------------------------------------
-============================================ */
+--------------------------------------------------------------------------------
+============================================================================= */
 
 (function() { "use strict";
 
@@ -18,11 +18,13 @@
 		 'notification-directives',
 		 'account-directives',
 		 'app-accounts',
+		 'app-accounts-factory',
 		 // 'app-wallet-controller',
 		 // 'app-wallet-directives',
 		 // 'app-wallet-modal-service',
+		 // 'app-help',
 		 'app-settings',
-		 'app-help'])
+		 'app-settings-service'])
 
 	.config([
 		'$stateProvider',
@@ -38,18 +40,18 @@
 
 				.state('accounts', {
 					url: '/accounts',
-					templateUrl: 'views/accounts.html'
+					templateUrl: 'app/components/accounts/accounts.html'
 				})
 
 				.state('settings', {
 					url: '/settings',
-					templateUrl: 'views/settings.html'
-				})
-
-				.state('help', {
-					url: '/help',
-					templateUrl: 'views/help.html'
+					templateUrl: 'app/components/settings/settings.html'
 				});
+
+				// .state('help', {
+				// 	url: '/help',
+				// 	templateUrl: 'app/components/help/help.html'
+				// });
 
 			$urlRouterProvider.otherwise('accounts');
 	}])
