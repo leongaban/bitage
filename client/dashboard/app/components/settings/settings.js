@@ -7,8 +7,12 @@
 
 	var app = angular.module('app-settings', ['ngAnimate', 'flow'])
 	.controller('SettingsCtrl',
-		['$scope', '$timeout', 'settingsService',
-		function($scope, $timeout, settingsService) {
+		['$scope',
+		 '$timeout',
+		 'settingsService',
+		function($scope,
+				 $timeout,
+				 settingsService) {
 
 		// Angular File upload:
 		//http://flowjs.github.io/ng-flow/
