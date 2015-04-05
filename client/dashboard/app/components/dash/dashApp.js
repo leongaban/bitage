@@ -1,13 +1,13 @@
 /*global angular*/
-/* =========================================
---------------------------------------------
+/* =============================================================================
+--------------------------------------------------------------------------------
 
 	BITAGE.io Dashboard views app
 	"Keep watch over your Bitcoins"
 	(Leon Gaban @leongaban | Paulo Rocha @paulinhorocha)
 
---------------------------------------------
-============================================ */
+--------------------------------------------------------------------------------
+============================================================================= */
 
 (function() { "use strict";
 
@@ -18,11 +18,13 @@
 		 'notification-directives',
 		 'account-directives',
 		 'app-accounts',
+		 'app-accounts-factory',
 		 // 'app-wallet-controller',
 		 // 'app-wallet-directives',
 		 // 'app-wallet-modal-service',
 		 // 'app-help',
-		 'app-settings'])
+		 'app-settings',
+		 'app-settings-service'])
 
 	.config([
 		'$stateProvider',
