@@ -96,15 +96,15 @@
 .total_label,
 .total_btc,
 .total_usd,
-.total_euro { line-height: 26px; }
+.total_euro   { line-height: 26px; }
 
-.total_btc { color: $btc; }
+.total_btc    { color: $btc; }
 .total_btc,
 .total_usd,
-.total_euro { font-weight: 600; }
+.total_euro   { font-weight: 600; }
 
 .total_usd,
-.total_euro { color: $gray; }
+.total_euro   { color: $gray; }
 
 .denomination {
     float: left;
