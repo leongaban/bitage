@@ -1,7 +1,7 @@
 /*global angular */
-/* =========================================
+/* =============================================================================
    Accounts module
-   ========================================= */
+   ========================================================================== */
 
 (function() {
 
@@ -9,8 +9,8 @@
 		['ngAnimate', 'ngResource', 'account-directives'])
 
 	.controller('AcctCtrl',
-		['$scope', '$resource', 'Accounts',
-		function($scope, $resource, Accounts) {
+		['$scope', '$resource', 'AccountsFactory',
+		function($scope, $resource, AccountsFactory) {
 
 		var vm = $scope;
 			vm.$parent.modal = false;
@@ -70,7 +70,7 @@
 		this.editAccount = function(id, label, address) {
 			// console.log(id);
 			vm.dash.modal = true;
-			Accounts.modalEditAccount(vm.dash, id, label, address);
+			AccountsFactory.modalEditAccount(vm.dash, id, label, address);
 		};
 
 		vm.dash.updateAccount = function(i) {
@@ -97,7 +97,7 @@
 				}
 			}
 
-			changeAccountValues (i, this.new_label, this.new_address);
+			changeAccountValues(i, this.new_label, this.new_address);
 
 			// Hide modal
 			vm.dash.modal_edit_account = false;
@@ -210,33 +210,6 @@
 		vm.pubAddress.getClick = function(the_id) {
 			selectAddress(the_id);
 		};
-
-	}])
-
-	// Accounts factory (edit-model, get all, update, remove):
-	.factory('Accounts', ['$http', function($http) {
-
-		var accountsFactory = {};
-
-		accountsFactory.modalEditAccount = function(vm, id, label, address) {
-	        vm.modal_edit_account = true;
-	        vm.acct_id = id;
-	        vm.acct_label = label;
-	        vm.acct_address = address;
-			vm.save_btn_text = 'save';
-	    };
-
-		// Get all the accounts
-		accountsFactory.all = function() {
-			return $http.get('/api/stuff');
-		};
-
-		// Delete account
-		accountsFactory.remove = function(id) {
-			return $http.delete('/api/accounts/'+id);
-		};
-		
-		return accountsFactory;
 
 	}]);
 
