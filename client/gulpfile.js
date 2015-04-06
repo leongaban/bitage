@@ -95,7 +95,7 @@ gulp.task('web_js', function() {
 });
 
 gulp.task('dash_js', function() {
-    minify = false;
+    minify = true;
     return compile_js(minify, 'dashboard');
 });
 

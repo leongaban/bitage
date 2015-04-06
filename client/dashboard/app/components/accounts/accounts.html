@@ -1,7 +1,9 @@
 <div class="account-content"
      ng-controller="AcctCtrl as acct">
 
-    <div class="content_header"><h1><span class="mobile_logo"><strong>Bitage</strong> | </span>My account balances</h1></div>
+    <div class="content_header">
+        <h1><span class="mobile_logo"><strong>Bitage</strong> | </span>My account balances</h1>
+    </div>
 
     <section ng-show="!!acct.accounts.length" 
              class="widget-container total_widget">
@@ -57,7 +59,10 @@
 
     <section class="widget-container add_account_widget">
 
-        <h1><div class="icon-help-circled"></div>Add accounts to monitor here:</h1>
+        <h1>
+            <!-- <div class="icon-help-circled"></div> -->
+            Add accounts to monitor here:
+        </h1>
 
         <form id="add_new_address_form" ng-submit="acct.addAccount()" novalidate>
             <!-- <select id="account_type">
@@ -71,9 +76,11 @@
 
             <div class="icon-down-open"></div> -->
 
-            <input type="text" class="form-input" placeholder="Account name" ng-model="acct.label"></input>
+            <input type="text" class="form-input" placeholder="Account name"
+                   ng-model="acct.label"></input>
 
-            <input type="text" class="form-input" placeholder="Public address" ng-model="acct.address"></input>
+            <input type="text" class="form-input" placeholder="Public address"
+                   ng-model="acct.address"></input>
 
             <button type="submit" class="btn btn_med btn_add_account">Add</button>
         </form>
