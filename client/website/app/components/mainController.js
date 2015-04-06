@@ -14,6 +14,7 @@
 	var app = angular.module('bitAge',
 		['ui.router',
 		 'matchmedia-ng',
+		 'app-auth-service',
 		 'app-about',
 		 'app-login',
 		 'app-register'])
@@ -47,9 +48,19 @@
 	}])
 
 	.controller('MainCtrl',
-		['$http', '$location', '$state', 'matchmedia', 'homeService',
-		function($http, $location, $state, matchmedia, homeService) {
+		['$http',
+		 '$location',
+		 '$state',
+		 'matchmedia',
+		 'homeService',
+		function($http,
+				 $location,
+				 $state,
+				 matchmedia,
+				 homeService) {
 
+		// Init MainCtrl scope:
+    	// --------------------
 		var vm = this;
 
 		// Show HTML only on home
@@ -68,20 +79,6 @@
 			vm.isDesktop = mediaQueryList.matches;
 			vm.isMobileNavOpen = false;
 		});
-
-		// var postSignUpForm = function() {
-			// console.log(vm.formData);
-
-		// 	var request = $http({
-		// 	        method  : 'POST',
-		// 	        url     : '/signup',
-		// 	        data    : $.param(vm.formData),
-		// 	        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-		// 	    })
-		// 	    .success(function(data) {
-		// 	        console.log('go to wallet');
-		// 	    });
-		// };
 
 	   	// Quick form submit
         vm.submitForm = function(isValid) {

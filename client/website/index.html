@@ -53,7 +53,6 @@
         <nav id="main_nav">
             <ul>
                 <li><a ui-sref="about">About</a></li>
-                <li><a href="http://localhost:2368">Blog</a></li>
                 <li><a ui-sref="login">Sign In</a></li>
                 <li><a ui-sref="register">Create Account</a></li>
             </ul>
@@ -62,7 +61,6 @@
         <nav id="mobile_nav" ng-show="main.isMobileNavOpen">
             <ul ng-click="main.isMobileNavOpen = false">
                 <li><a ui-sref="about">About</a></li>
-                <li><a href="http://localhost:2368">Blog</a></li>
                 <li><a ui-sref="login">Sign In</a></li>
                 <li><a ui-sref="register">Create Account</a></li>
             </ul>
@@ -147,7 +145,7 @@
 
     <footer>
         <p>&copy; <script>document.write(new Date().getFullYear())</script> Bitage.io</p>
-        
+
         <!-- <a href="https://www.facebook.com/pages/Bitage/892722747434539" target="blank">
             <div class="icon-facebook-squared"></div>
         </a>
@@ -161,15 +159,6 @@
     <script src="website/assets/libs/angular/1.3.8/angular-animate.min.js"></script>
     <script src="website/assets/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
     <script src="website/assets/js/website.module.js"></script>
-
-    <!-- CrazyEgg -->
-    <script>
-        setTimeout(function(){var a=document.createElement("script");
-        var b=document.getElementsByTagName("script")[0];
-        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0006/1105.js?"
-        +Math.floor(new Date().getTime()/3600000);
-        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-    </script>
 
     <!-- Google Analytics -->
     <script>

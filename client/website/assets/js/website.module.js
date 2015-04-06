@@ -1800,17 +1800,31 @@ angular.module("matchmedia-ng", []).
 })();
 /*global angular */
 /* =========================================
-   Login Controller
+   Auth Service
    ========================================= */
 
 (function() {
 
-	var app = angular.module('app-login', [])
-	.controller('LoginCtrl', ['$http', function($http) {
+    var app = angular.module('app-auth-service', [])
+    .service('authService', ['$http', function($http) {
 
-        var vm = this;
+    	// Sign up
+        this.postSignUpForm = function(fdata) {
+            console.log(fdata);
 
-        var postLoginForm = function() {
+            var request = $http({
+                    method  : 'POST',
+                    url     : '/signup',
+                    data    : $.param(fdata),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                })
+                .success(function() {
+                	console.log('go to wallet');
+                });
+        };
+
+        // Login
+        this.postLoginForm = function() {
             console.log(vm.formData);
             
             // process the form
@@ -1822,9 +1836,30 @@ angular.module("matchmedia-ng", []).
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                 })
                 .success(function() {
-                
+                    
                 });
         };
+
+    }]);
+
+})();
+/*global angular */
+/* =========================================
+   Login Controller
+   ========================================= */
+
+(function() {
+
+	var app = angular.module('app-login', [])
+	.controller('LoginCtrl',
+        ['$http',
+         'authService',
+        function($http,
+                 authService) {
+
+        // Init LoginCtrl scope:
+        // ---------------------
+        var vm = this;
 
 		// Quick form submit          
         vm.submitLoginForm = function(isValid) {
@@ -1832,7 +1867,7 @@ angular.module("matchmedia-ng", []).
             // check to make sure form is valid
             if (isValid) {
                 // alert('our form is amazing');
-                postLoginForm();
+                authService.postLoginForm(vm.formData);
             } else {
             	alert('Please correct the form');
             }
@@ -1858,6 +1893,7 @@ angular.module("matchmedia-ng", []).
 	var app = angular.module('bitAge',
 		['ui.router',
 		 'matchmedia-ng',
+		 'app-auth-service',
 		 'app-about',
 		 'app-login',
 		 'app-register'])
@@ -1891,9 +1927,19 @@ angular.module("matchmedia-ng", []).
 	}])
 
 	.controller('MainCtrl',
-		['$http', '$location', '$state', 'matchmedia', 'homeService',
-		function($http, $location, $state, matchmedia, homeService) {
+		['$http',
+		 '$location',
+		 '$state',
+		 'matchmedia',
+		 'homeService',
+		function($http,
+				 $location,
+				 $state,
+				 matchmedia,
+				 homeService) {
 
+		// Init MainCtrl scope:
+    	// --------------------
 		var vm = this;
 
 		// Show HTML only on home
@@ -1912,20 +1958,6 @@ angular.module("matchmedia-ng", []).
 			vm.isDesktop = mediaQueryList.matches;
 			vm.isMobileNavOpen = false;
 		});
-
-		// var postSignUpForm = function() {
-			// console.log(vm.formData);
-
-		// 	var request = $http({
-		// 	        method  : 'POST',
-		// 	        url     : '/signup',
-		// 	        data    : $.param(vm.formData),
-		// 	        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-		// 	    })
-		// 	    .success(function(data) {
-		// 	        console.log('go to wallet');
-		// 	    });
-		// };
 
 	   	// Quick form submit
         vm.submitForm = function(isValid) {
@@ -1966,9 +1998,13 @@ angular.module("matchmedia-ng", []).
 
     var app = angular.module('app-register', [])
     .controller('RegisterCtrl',
-        ['$http', 'registerService',
-        function($http, registerService) {
+        ['$http',
+         'authService',
+        function($http,
+                 authService) {
 
+        // Init RegisterCtrl scope:
+        // ------------------------
         var vm = this;
 
         // Sign up form submit
@@ -1976,9 +2012,9 @@ angular.module("matchmedia-ng", []).
 
             // check to make sure form is valid
             if (isValid) {
-                registerService.postSignUpForm(vm.formData);
+                authService.postSignUpForm(vm.formData);
             } else {
-               swal({
+                swal({
                    title: "Oops!",
                    text: "Please check the form!",
                    type: "error",
@@ -1988,24 +2024,6 @@ angular.module("matchmedia-ng", []).
 
         };
 
-    }])
-
-    .service('registerService', ['$http', function($http) {
-
-        this.postSignUpForm = function(fdata) {
-
-            // console.log(location);
-
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(fdata),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-
-                });
-        };
     }]);
 
 })();

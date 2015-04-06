@@ -7,9 +7,13 @@
 
     var app = angular.module('app-register', [])
     .controller('RegisterCtrl',
-        ['$http', 'registerService',
-        function($http, registerService) {
+        ['$http',
+         'authService',
+        function($http,
+                 authService) {
 
+        // Init RegisterCtrl scope:
+        // ------------------------
         var vm = this;
 
         // Sign up form submit
@@ -17,9 +21,9 @@
 
             // check to make sure form is valid
             if (isValid) {
-                registerService.postSignUpForm(vm.formData);
+                authService.postSignUpForm(vm.formData);
             } else {
-               swal({
+                swal({
                    title: "Oops!",
                    text: "Please check the form!",
                    type: "error",
@@ -29,24 +33,6 @@
 
         };
 
-    }])
-
-    .service('registerService', ['$http', function($http) {
-
-        this.postSignUpForm = function(fdata) {
-
-            // console.log(location);
-
-            var request = $http({
-                    method  : 'POST',
-                    url     : '/signup',
-                    data    : $.param(fdata),
-                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .success(function() {
-
-                });
-        };
     }]);
 
 })();
