@@ -76,8 +76,10 @@
         <section id="fast_signup" class="content">
 
             <h2>
-                Join the age of Bitcoin<br/>
-                Get your own digital wallet
+                Keep watch over your coins<br/>
+                in the age of Bitcoin
+                <!-- Join the age of Bitcoin<br/> -->
+                <!-- Get your own digital wallet -->
             </h2>
 
             <form name="quickForm" ng-submit="main.submitForm(quickForm.$valid)" novalidate>
@@ -113,60 +115,33 @@
                 </span>
 
                 <span class="input jiro">
-                    <button id="btn_start_account" type="submit" class="btn">Create Wallet</button>
+                    <button id="btn_start_account" type="submit" class="btn">Create Account</button>
                 </span>
 
-                <span class="input jiro jiro_facebook">
+                <!-- <span class="input jiro jiro_facebook">
                     <button id="btn_use_facebook" type="submit" class="btn">Use Facebook</button>
                 </span>
 
                 <span class="input jiro jiro_twitter">
                     <button id="btn_use_twitter" type="submit" class="btn">Use Twitter</button>
-                </span>
+                </span> -->
 
             </form>
 
         </section>
     </section>
 
-    <div ng-show="main.showHome()" id="particle_bg"></div>
+    <!-- <div ng-show="main.showHome()" id="particle_bg"></div> -->
+    <div ng-show="main.showHome()"></div>
 
     <section id="bitcoin_services" ng-show="main.showHome()">
 
-        <h1>Our Bitcoin Services</h1>
+        <h1>Monitor multiple accounts</h1>
 
-        <div class="service_blocks">
+        <img src="website/assets/img/accounts.png" alt="Accounts">
 
-            <div class="service_block">
-                <h2>A secure online wallet</h2>
-                <p>Safely store your bitcoins and conveniently access them with ease</p>
-                <div class="key"></div>
-            </div>
-
-            <div class="service_block">
-                <h2>Spend and tip</h2>
-                <p>Buy, send or tip across the globe, instantly</p>
-                <div class="globe"></div>
-            </div>
-
-            <div class="service_block last_block">
-                <h2>Monitor multiple accounts</h2>
-                <p>We make it easy to keep track of all your bitcoins</p>
-                <div class="dashboard"></div>
-            </div>
-        </div>
-
-    </section>
-
-    <section id="whatisbitcoin" ng-show="main.showHome()">
-
-        <h1>What is Bitcoin</h1>
-
-        <p>Bitcoin is a decentralized digital currency and payments network. Due to characteristics such as it's limited supply, and fungibility, it is akin to being digital gold.</p>
-
-        <p>And because of its technological advantages over gold, such as its transportability and divisibility we believe it is far superior to gold as a store of value and form of money.</p>
-
-        <p>To learn more about our thoughts on bitcoin, check out <a href="#">our blog</a>. If you are ready to get started using bitcoin <a ui-sref="register">create an account</a> and get your own free digital wallet with us.</p>
+        <p>We make it easy to keep track of all your bitcoins</p>
+        <p>Just enter in your public addresses and we'll calculate your balance</p>
 
     </section>
 

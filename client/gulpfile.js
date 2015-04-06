@@ -144,7 +144,7 @@ gulp.task('watch', function() {
     });
 
     gulp.watch('website/_sources/js/libs/*.js', ['web_js']);
-    gulp.watch('website/_sources/js/plugins/*.js', ['web_js']);
+    // gulp.watch('website/_sources/js/plugins/*.js', ['web_js']);
     gulp.watch('website/app/components/**/*.js', ['web_js']).on('change', function(file) {
         gutil.log(gutil.colors.yellow('Web JS changed' + ' (' + file.path + ')'));
     });
