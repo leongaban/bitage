@@ -65,6 +65,20 @@
 	@include clearfix();
 
 	h1 { margin-bottom: 40px; font-size: em(32); color: #fff; }
+
+	p {
+		margin-bottom: 10px;
+		color: lighten(#666, 30%);
+	}
+}
+
+#bitcoin_services {
+	margin-bottom: 40px;
+	
+	img {
+		margin-bottom: 30px;
+		width: 320px;
+	}
 }
 
 .service_blocks {
@@ -107,24 +121,6 @@ _::-webkit-full-page-media, _:future, :root .service_blocks { padding: 0; }
 _::-webkit-full-page-media, _:future, :root .service_block {
 	padding-left: 0;
 	width: 100%;
-}
-
-.key {
-	width: 60px;
-	height: 64px;
-	background-position: 0 -80px;
-}
-
-.globe {
-	width: 68px;
-	height: 72px;
-	background-position: 0 -160px;
-}
-
-.dashboard {
-	width: 68px;
-	height: 64px;
-	background-position: 0 -240px;
 }
 
 #whatisbitcoin {
