@@ -20,6 +20,13 @@ var express  	 = require('express'),
 	config 	   	 = require('./config/config'),
 	acctCtrl 	 = require('./controllers/accounts-controller.js');
 
+//Use YOUR Firebase URL (not the one below)
+var fb = new Firebase("https://bitage.firebaseio.com");
+
+var FirebaseTokenGenerator = require("firebase-token-generator");
+var tokenGenerator 		   = new FirebaseTokenGenerator("<YOUR_FIREBASE_SECRET>");
+var token 				   = tokenGenerator.createToken({uid: "1", some: "arbitrary", data: "here"});
+
 // Express router
 var router 		 = express.Router();
 

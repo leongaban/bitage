@@ -4,12 +4,12 @@
 
 #sidebar-wrapper {
     position: fixed;
+    overflow-y: auto;
     margin-left: -250px;
     left: 250px;
     width: 250px;
     height: 100%;
     color: #fff;
-    overflow-y: auto;
     z-index: 1000;
     background-image: url("../img/blue.gif");
     background-size: 600px 225px;
