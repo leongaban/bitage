@@ -1,0 +1,70 @@
+<div class="settings-content"
+     ng-controller="SettingsCtrl as settings">
+
+    <div class="content_header">
+        <h1><span class="mobile_logo"><strong>Bitage</strong> | </span> My Settings</h1>
+    </div>
+
+    <div class="widget-container profile_container">
+        
+		<section flow-init="{target: '/upload'}"
+            flow-files-submitted="$flow.upload()"
+            flow-file-success="$file.msg = $message"
+            class="profile_avatar">
+            
+            <div flow-init="{singleFile:true}"
+                 flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+
+                <div class="thumbnail" ng-show="!$flow.files.length">
+                    <img src="http://www.placehold.it/180x180/EFEFEF/AAAAAA&text=no+image" />
+                </div>
+
+                <div class="thumbnail" ng-show="$flow.files.length">
+                    <img flow-img="$flow.files[0]" />
+                </div>
+
+                <div class="image_upload_buttons">
+                    <span class="btn btn_small" ng-show="!$flow.files.length" flow-btn>Choose Image</span>
+                    <span class="btn btn_small" ng-show="$flow.files.length" flow-btn>Change</span>
+                    <span class="btn btn_small" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove</span>
+                    <p>PNG, GIF, JPG, JPEG files only.</p>
+                </div>
+            </div>
+		</section>
+        <form name="profileForm" ng-submit="settings.saveProfile(profileForm.$valid)" novalidate>
+
+            <section class="profile_details">
+                <div class="field_set">
+                    <label for="full_name">My Name</label>
+                    <input ng-model="settings.formData.full_name"
+                           id="full_name"
+                           class="form-input"
+                           type="text"
+                           placeholder="Leon Gaban"></input>
+                </div>
+
+                <div class="field_set">
+                    <label for="user_email">Email</label>
+                    <input ng-model="settings.formData.email"
+                           id="user_email"
+                           class="form-input"
+                           type="text"
+                           placeholder="leon@bitage.io"></input>
+
+                    <p ng-show="profileForm.email.$invalid && !profileForm.email.$pristine"
+                       class="help-block">Enter a valid email.</p>
+                </div>
+
+                <div class="field_set">
+                    <label for="user_password">Password</label>
+                    <a href="#" class="change_password">Change Password</a>
+                </div>
+
+                <button ng-click="settings.saveProfile('saving...')" 
+                        class="btn btn_med">Save Profile</button>
+            </section>
+
+        </form>
+
+    </div>
+</div>

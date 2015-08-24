@@ -1,0 +1,53 @@
+<div class="wallet-content"
+     ng-controller="WalletCtrl as wallet">
+
+    <div class="content_header">
+    	<h1><span class="mobile_logo"><strong>Bitage</strong> | </span> My Bitcoin wallet</h1>
+    </div>
+
+    <section class="widget-container wallet-balance">
+		<div class="current_balance">
+			<h1>Balance:</h1>
+			<span class="btc_amount">1.01045678</span>
+			<em class="denomination">BTC</em>
+			<span class="usd_amount">$234.30</span>
+			<em class="denomination">USD</em>
+		</div>
+
+		<ul class="wallet_actions">
+			<li>
+				<button ng-click="wallet.openModal('receive')" class="btn btn_med">
+					<div class="icon icon-download-outline"></div>
+					<span>Receive Bitcoin</span>
+				</button>
+			</li>
+			<li>
+				<button ng-click="wallet.openModal('send')" class="btn btn_med">
+					<div class="icon icon-upload-outline"></div>
+					<span>Send Bitcoin</span>
+				</button>
+			</li>
+		</ul>
+    </section>
+
+    <section class="widget-container wallet-transactions">
+    	<table class="wallet_table">
+            <tr class="row_body"
+                ng-repeat="trans in wallet.transactions">
+
+                <td class="td_icon" ng-switch="trans.type">
+                    <div ng-switch-when="incoming" class="icon-download-outline"></div>
+                    <div ng-switch-when="outgoing" class="icon-upload-outline"></div>
+                </td>
+
+                <td class="td_comment" ng-switch="trans.type">
+                    <div ng-switch-when="incoming" class="green">+ {{ trans.amount }}</div>
+                    <div ng-switch-when="outgoing" class="red">- {{ trans.amount }}</div>
+                    <p class="comment">{{ trans.comment }}</p>
+                    <p class="date">{{ trans.time }}</p><span class="type">- {{ trans.status }}</span>
+                </td>
+            </tr>
+    	</table>
+    </section>
+
+</div>

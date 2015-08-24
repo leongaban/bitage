@@ -1,0 +1,44 @@
+<div class="settings-content"
+     ng-controller="HelpCtrl as help">
+
+    <div class="content_header">
+        <h1>
+            <span class="mobile_logo"><strong>Bitage</strong> | </span>
+            Help &amp; Support
+        </h1>
+    </div>
+
+    <div class="widget-container help_container">
+
+        <form name="helpForm" ng-submit="help.submitHelpForm(helpForm.$valid)" novalidate>
+            <section>
+                <div class="help_instructions">
+                    <h2>Have a question or need help and support?</h2>
+                    <p>Please use the form below, or tweet us at
+                        <a href="http://twitter.com/bitageio" target="_blank">@bitageio</a>
+                        <span class="icon-twitter"></span>
+                    </p>
+                </div>
+
+                <div class="field_set field_message">
+
+                    <p ng-show="helpForm.message.$error.minlength"
+                       class="help-error">Your message is a tab bit short.</p>
+
+                    <textarea ng-model="help.formData.message"
+                              ng-minlength="25" required
+                              id="contact_message"
+                              class="form-input"
+                              name="message"
+                              type="text"
+                              placeholder="Your Message"></textarea>
+                </div>
+
+                <div class="send_message_btn_area">
+                    <button class="btn btn_med">Send Message</button>
+                </div>
+            </section>
+        </form>
+
+    </div>
+</div>

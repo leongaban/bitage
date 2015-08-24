@@ -17,6 +17,16 @@ var gulp        = require('gulp'),
 
 var minify = true;
 
+var web_paths = {
+    scripts: ['website/_sources/js/plugins/**/*.js',
+              'website/_sources/js/custom/**/*.js',
+              'website/app/*.js',
+              'website/app/about/*js',
+              'website/app/auth/**/*.js',
+              'website/app/login/*.js',
+              'website/app/register/*.js']
+};
+
 /**
  * Compiles all Javascript
  * @param  { boolean - minify true/false }
@@ -90,8 +100,14 @@ gulp.task('dash_css', function() {
 });
 
 gulp.task('web_js', function() {
-    minify = false;
-    return compile_js(minify, 'website');
+    // minify = false;
+    // return compile_js(minify, 'website');
+
+    return gulp.src(web_paths.scripts)
+        .pipe(uglify())
+        // .pipe(cachebust.resources())
+        .pipe(concat('app.min.js'))
+        .pipe(gulp.dest('website/assets/js'));
 });
 
 gulp.task('dash_js', function() {
@@ -144,8 +160,12 @@ gulp.task('watch', function() {
     });
 
     gulp.watch('website/_sources/js/libs/*.js', ['web_js']);
-    // gulp.watch('website/_sources/js/plugins/*.js', ['web_js']);
-    gulp.watch('website/app/components/**/*.js', ['web_js']).on('change', function(file) {
+
+    gulp.watch('website/app/*.js', ['web_js']).on('change', function(file) {
+        gutil.log(gutil.colors.yellow('Web JS changed' + ' (' + file.path + ')'));
+    });
+
+    gulp.watch('website/app/**/*.js', ['web_js']).on('change', function(file) {
         gutil.log(gutil.colors.yellow('Web JS changed' + ' (' + file.path + ')'));
     });
 

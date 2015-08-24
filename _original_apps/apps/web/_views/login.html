@@ -1,0 +1,37 @@
+<section id="login_widget"
+		 ng-controller="LoginCtrl as login">
+
+	<form name="loginForm" ng-submit="login.submitLoginForm(loginForm.$valid)" novalidate>
+		<h2>Login to your account</h2>
+
+		<span class="form-group">
+			<input ng-model="login.formData.email" name="email" required
+				   id="form_login_email" type="email" placeholder="Email" tabindex="1">
+
+			<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine"
+			   class="help-block">Enter a valid email.</p>
+		</span>
+
+		<span class="form-group">
+			<input ng-model="login.formData.password" ng-minlength="6" name="password" required
+				   id="form_login_password" type="password" placeholder="Password" tabindex="2">
+
+			<p ng-show="loginForm.password.$error.minlength"
+			   class="help-block">Password is too short.</p>
+		</span>
+
+		<span>
+			<button id="btn_login" class="btn" tabindex="3">Sign In</button>
+		</span>
+
+		<span class="login_comments">
+			<input ng-model="login.formData.remember" id="stay_signed_in" name="stay_signed_in" tabindex="4" type="checkbox" value="1">
+			<p>Stay signed in for 30 days</p>
+		</span>
+
+		<span class="login_forgot_password">
+			<a ui-sref="#">Forgot password?</a> | <a ui-sref="register">Sign Up</a>
+		</span>
+	</form>
+
+</section>

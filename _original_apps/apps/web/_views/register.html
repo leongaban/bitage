@@ -1,0 +1,44 @@
+<section id="register_widget"
+		 ng-controller="RegisterCtrl as register">
+
+	<form name="registerForm" ng-submit="register.submitForm(registerForm.$valid)" novalidate>
+		<h2>Create your account</h2>
+
+        <span>
+            <input ng-model="register.formData.fullname"
+            	   name="name" required
+                   id="form_register_name" type="text" placeholder="Full Name" tabindex="1">
+
+            <p ng-show="registerForm.name.$invalid && !registerForm.name.$pristine"
+			   class="help-block">Name required.</p>
+        </span>
+
+		<span>
+			<input ng-model="register.formData.email"
+				   name="email" required
+                   id="form_register_email" type="email" placeholder="Email" tabindex="2">
+
+            <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine"
+               class="help-block">Enter a valid email.</p>
+		</span>
+
+		<span>
+			<input ng-model="register.formData.password"
+				   ng-minlength="6" name="password" required
+                   id="form_register_password" type="password"
+                   placeholder="Choose Password" tabindex="3">
+
+            <p ng-show="registerForm.password.$error.minlength"
+               class="help-block">Password is too short.</p>
+		</span>
+
+		<span>
+			<button id="btn_register" class="btn" tabindex="4">Create Account</button>
+		</span>
+
+		<span class="login_forgot_password">
+			Have an account? | <a ui-sref="login">Sign In</a>
+		</span>
+	</form>
+	
+</section>

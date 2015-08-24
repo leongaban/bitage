@@ -21,11 +21,12 @@ var express  	 = require('express'),
 	acctCtrl 	 = require('./controllers/accounts-controller.js');
 
 //Use YOUR Firebase URL (not the one below)
-var fb = new Firebase("https://bitage.firebaseio.com");
+// var fb = new Firebase("https://bitage.firebaseio.com");
+// fb.set({ name: "Bitage" });
 
-var FirebaseTokenGenerator = require("firebase-token-generator");
-var tokenGenerator 		   = new FirebaseTokenGenerator("<YOUR_FIREBASE_SECRET>");
-var token 				   = tokenGenerator.createToken({uid: "1", some: "arbitrary", data: "here"});
+// var FirebaseTokenGenerator = require("firebase-token-generator");
+// var tokenGenerator 		   = new FirebaseTokenGenerator("<YOUR_FIREBASE_SECRET>");
+// var token 				   = tokenGenerator.createToken({uid: "1", some: "arbitrary", data: "here"});
 
 // Express router
 var router 		 = express.Router();
